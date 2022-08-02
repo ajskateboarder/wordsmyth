@@ -18,10 +18,10 @@ def dlmodel():
 
 
 @cli.command()
-def commit():
+def c():
     """Dev command!"""
     commit = input("Commit name: ")
-    system(f'git commit -am "{commit}"')
+    system(f'git commit -am "{commit}" && git push')
 
 
 if __name__ == "__main__":
