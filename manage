@@ -1,0 +1,17 @@
+#!venv/bin/python3
+
+from click import group
+
+@group()
+def cli():
+	pass
+
+
+@cli.command()
+def dlmodel():
+	'''Download TorchMoji model for use'''
+	from torchmoji.dl_utils import execute_download
+	execute_download()
+
+if __name__ == '__main__':
+	cli()

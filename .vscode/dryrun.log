@@ -1,5 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/adijo/Desktop/ytstars'
+cd src/deepmoji; \
+  python3 download.py
 make: Leaving directory '/home/adijo/Desktop/ytstars'
  
-make: *** No targets.  Stop.
-
