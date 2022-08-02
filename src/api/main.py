@@ -1,18 +1,9 @@
-import warnings
+from fastapi import FastAPI
 
-from fastapi import FastAPI, Header
-from typing import Union
-from src.deepmoji.deepmoj import Emojize
-
-warnings.filterwarnings('ignore')
+from src.api.routes.api import predict
+from src.api.routes import root
 
 app = FastAPI()
-emoji = Emojize()
 
-@app.get('/')
-def read_root():
-    return "Hello world!!"
-
-@app.get('/api/predictEmoji')
-def read_predict_emoji(text: Union[str, None] = Header(default=None)):
-    return {"emoji": emoji.predict(text)}
+app.include_router(root.router)
+app.include_router(predict.router)

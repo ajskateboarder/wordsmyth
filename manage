@@ -1,17 +1,28 @@
 #!venv/bin/python3
 
 from click import group
+from os import system
+
 
 @group()
 def cli():
-	pass
+    pass
 
 
 @cli.command()
 def dlmodel():
-	'''Download TorchMoji model for use'''
-	from torchmoji.dl_utils import execute_download
-	execute_download()
+    """Download TorchMoji model for use"""
+    from torchmoji.dl_utils import execute_download
 
-if __name__ == '__main__':
-	cli()
+    execute_download()
+
+
+@cli.command()
+def commit():
+    """Dev command!"""
+    commit = input("Commit name: ")
+    system(f'git commit -am "{commit}"')
+
+
+if __name__ == "__main__":
+    cli()
