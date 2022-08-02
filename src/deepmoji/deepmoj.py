@@ -19,8 +19,8 @@ EMOJIS = ":joy: :unamused: :weary: :sob: :heart_eyes: \
 :angry: :no_good: :muscle: :facepunch: :purple_heart: \
 :sparkling_heart: :blue_heart: :grimacing: :sparkles:".split(' ')
 
-vocab_file_path = 'model/vocabulary.json'
-model_weights_path = 'model/pytorch_model.bin'
+vocab_file_path = 'src/deepmoji/model/vocabulary.json'
+model_weights_path = 'src/deepmoji/model/pytorch_model.bin'
 
 def top_elements(array, k):
         ind = np.argpartition(array, -k)[-k:]

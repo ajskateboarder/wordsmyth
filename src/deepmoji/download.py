@@ -1,2 +1,0 @@
-from torchmoji.download_weights import execute_download
-execute_download()
