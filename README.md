@@ -9,3 +9,8 @@ git clone --depth=1 https://github.com/themysticsavages/ytstars
 cd ytstars
 ```
 
+Get prerequisites:
+```bash
+pip install -r requirements.txt
+./manage dlmodel
+```
