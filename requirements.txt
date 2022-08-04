@@ -1,4 +1,5 @@
 fastapi
 uvicorn[standard]
+selenium
 click
 git+https://github.com/themysticsavages/torchMoji
