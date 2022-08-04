@@ -1,4 +1,4 @@
-from pydantic import BaseModel, AnyHttpUrl
+from pydantic import BaseModel, HttpUrl
 
 
 class YTComment(BaseModel):
@@ -8,5 +8,5 @@ class YTComment(BaseModel):
     author: str
     channel: str
     likes: int
-    avatar: str
+    avatar: HttpUrl
     heart: bool

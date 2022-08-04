@@ -4,18 +4,11 @@ Refactored into a module
 """
 
 import json
-from os import path
 import time
 
-import pandas as pd
 import requests
 
 from .helpers import ajax_request, regex_search, search_dict
-
-
-pd.set_option("display.max_rows", 500)
-pd.set_option("display.max_columns", 500)
-pd.set_option("display.width", 1000)
 
 YOUTUBE_COMMENTS_AJAX_URL = "https://www.youtube.com/comment_service_ajax"
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36"
