@@ -14,7 +14,7 @@ def dlmodel():
     """Download TorchMoji model for use"""
     from torchmoji.dl_utils import execute_download
 
-    execute_download()
+    execute_download("src/deepmoji/model/pytorch_model.bin")
 
 
 @cli.command()
