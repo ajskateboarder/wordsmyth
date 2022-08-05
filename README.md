@@ -3,7 +3,7 @@ Rate YouTube videos based on comments
 
 ## Requirements
 - Python 3 (entire app codebase)
-- Docker (browser container stuff)
+- Docker (optional but good for scaling)
 
 ## Usage
 
@@ -20,10 +20,14 @@ pip install -r requirements.txt
 ./manage dlmodel
 ```
 
-Pull the standalone-chrome image down from Docker and start it:
+Start the API locally:
 ```bash
-docker pull selenium/standalone-chrome
-# may require sudo
-docker run --rm -d -p 4444:4444 --shm-size=2g selenium/standalone-chrome
+uvicorn src:app
 ```
 
+Heading to http://localhost:8000 should give you `"Pong.\n"`
+
+You can also start this up with Docker Compose:
+```bash
+docker-compose up
+```
