@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from src.api.routes.api import predict, ytscrape
+from src.api.routes.functions import predict, ytscrape
 from src.api.routes import root
 
 app = FastAPI()
