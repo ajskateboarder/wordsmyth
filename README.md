@@ -58,3 +58,9 @@ PORTS                                       NAMES
 0.0.0.0:8002->8002/tcp, :::8002->8002/tcp   econ2
 0.0.0.0:8001->8001/tcp, :::8001->8001/tcp   econ1
 ```
+
+Kill the containers when you are done with them:
+
+```bash
+make killcons
+```

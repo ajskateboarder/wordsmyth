@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Aug  2 07:41:50 2022
+# Make data base, printed on Mon Aug  8 12:47:36 2022
 
 # Variables
 
@@ -45,7 +45,7 @@ DBUS_SESSION_BUS_ADDRESS = disabled:
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /tmp/vscode-ipc-49dedec1-6086-4cea-ada0-f7d8cbbfd15d.sock
+VSCODE_IPC_HOOK_EXTHOST = /tmp/vscode-ipc-248303ac-47fb-4518-9342-7119ef18a05c.sock
 # environment
 VSCODE_CWD = /home/adijo
 # default
@@ -65,7 +65,7 @@ LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:
 # automatic
 %F = $(notdir $%)
 # environment
-DISPLAY = 172.18.96.1:0
+DISPLAY = 172.31.0.1:0
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
@@ -73,7 +73,7 @@ PWD = /home/adijo/Desktop/ytstars
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/8_interop
+WSL_INTEROP = /run/WSL/13115_interop
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
@@ -105,7 +105,7 @@ MAKE_VERSION := 4.2.1
 # environment
 USER = adijo
 # makefile
-.DEFAULT_GOAL := model
+.DEFAULT_GOAL := scale
 # environment
 NAME = vortex
 # environment
@@ -113,7 +113,7 @@ LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
-I3SOCK = /tmp/i3-adijo.rlNIoh/ipc-socket.14
+I3SOCK = /tmp/i3-adijo.ljcEIl/ipc-socket.13121
 # default
 MAKE_COMMAND := make
 # environment
@@ -163,7 +163,7 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 347
+VSCODE_PID = 13161
 # environment
 WSL_DISTRO_NAME = Ubuntu-20.04
 # variable set hash-table stats:
@@ -175,9 +175,9 @@ WSL_DISTRO_NAME = Ubuntu-20.04
 
 # Directories
 
-# . (device 2064, inode 429426): 11 files, no impossibilities.
+# . (device 2064, inode 429426): 17 files, no impossibilities.
 
-# 11 files, no impossibilities in 1 directories.
+# 17 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -195,9 +195,23 @@ all:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-01 14:40:48.2354447
+#  Last modified 2022-08-08 05:11:09.7153201
 #  File has been updated.
 #  Successfully updated.
+
+killcons:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 5):
+	@ ./scripts/killcons.sh
+
+scale:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 2):
+	@ ./scripts/scale.sh $(image)
 
 # Not a target:
 .DEFAULT:
@@ -205,28 +219,29 @@ Makefile:
 #  Modification time never checked.
 #  File has not been updated.
 
-model:
+dlmodel:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 2):
-	@ cd src/deepmoji; \
-	  python3 download.py
+#  recipe to execute (from 'Makefile', line 8):
+	@ python3 -c \
+		'from torchmoji.dl_utils import execute_download; \
+		execute_download("src/deepmoji/model/pytorch_model.bin")'
 
 # files hash-table stats:
-# Load=5/1024=0%, Rehash=0, Collisions=0/15=0%
+# Load=7/1024=1%, Rehash=0, Collisions=0/17=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 17 / storage = 143 B / avg = 8 B
-# current buf: size = 8162 B / used = 143 B / count = 17 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 25 / storage = 233 B / avg = 9 B
+# current buf: size = 8162 B / used = 233 B / count = 25 / avg = 9 B
 
-# strcache performance: lookups = 22 / hit rate = 22%
+# strcache performance: lookups = 32 / hit rate = 21%
 # hash-table stats:
-# Load=17/8192=0%, Rehash=0, Collisions=1/22=5%
-# Finished Make data base on Tue Aug  2 07:41:50 2022
+# Load=25/8192=0%, Rehash=0, Collisions=1/32=3%
+# Finished Make data base on Mon Aug  8 12:47:36 2022
 
  
