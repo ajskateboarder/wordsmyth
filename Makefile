@@ -1,5 +1,5 @@
 scale:
-	@ ./scripts/scale.sh
+	@ ./scripts/scale.sh $(image)
 
 killcons:
 	@ ./scripts/killcons.sh

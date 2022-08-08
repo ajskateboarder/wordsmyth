@@ -6,6 +6,7 @@ Rate YouTube videos based on comments
 
 - Python 3 (entire app codebase)
 - Docker (optional but good for scaling)
+- Linux (only platform the app was tested on)
 
 ## Usage
 
@@ -33,10 +34,18 @@ uvicorn src:app
 
 Heading to [http://localhost:8000](http://localhost:8000) should give you `"Pong.\n"`
 
+### Scaling
+
+Build the Docker image from the Dockerfile:
+
+```bash
+docker build -t myimage .
+```
+
 Scale the API for faster processing of comments:
 
 ```bash
-make scale
+make image=myimage scale
 ```
 
 After running `docker ps`, you should see these containers:
