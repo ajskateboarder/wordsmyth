@@ -2,7 +2,5 @@ version: '3.9'
 
 services:
   api:
-    container_name: ys_api
     build: .
-    ports:
-      - 8000:8000
+    
