@@ -14,7 +14,6 @@ def read(texts: list = Header()):
     texts = texts[0].strip("][").split(", ")
 
     for text in texts:
-        print(text)
         res = emoji.predict(text)
-        emojis.append({"emoji": res[0], "repr": res[1]})
+        emojis.append({"emoji": res[0], "repr": res[1], "text": text})
     return emojis
