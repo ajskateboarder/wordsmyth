@@ -24,7 +24,8 @@ def chunk(xs, n):
 chunks = list(chunk(texts, 2))
 
 futures = [
-    session.get(f"http://localhost:8001/predict", headers={"texts": str(chunks[0])})
+    session.get(f"http://localhost:800{i}/predict", headers={"texts": str(c)})
+    for i, c in zip(list(range(6))[1:], chunks)
 ]
 
 for future in as_completed(futures):
