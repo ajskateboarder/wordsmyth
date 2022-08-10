@@ -1,7 +1,7 @@
 from youtube_comment_downloader.downloader import YoutubeCommentDownloader
 
 
-def get_comments(video_id):
+def get_comments(video_id, limit):
     comment = YoutubeCommentDownloader()
     gen = comment.get_comments(video_id)
     count = 1
@@ -10,5 +10,5 @@ def get_comments(video_id):
         yield comment["text"]
         count += 1
 
-        if count == 200:
+        if count == limit:
             break

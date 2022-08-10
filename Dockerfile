@@ -12,4 +12,4 @@ RUN python3 -c 'from torchmoji.dl_utils import execute_download; execute_downloa
 RUN ls
 
 ENV PORT 8000
-CMD ["sh", "-c", "uvicorn src:app --host 0.0.0.0 --port ${PORT}"]
+CMD ["sh", "-c", "uvicorn src.api.main:app --host 0.0.0.0 --port ${PORT}"]
