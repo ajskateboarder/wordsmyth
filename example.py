@@ -1,4 +1,5 @@
 from concurrent.futures import as_completed
+import json
 import streamlit as st
 
 from requests_futures.sessions import FuturesSession
@@ -39,7 +40,12 @@ with st.form("form"):
             for i, c in zip(list(range(6))[1:], chunks)
         ]
 
+        res = []
+        
         for future in as_completed(futures):
             resp = future.result().json()
             for re in resp:
-                st.write(re["text"], re["emoji"])
+                res.append([re["text"], re["emoji"]])
+
+        with open('data.json', 'w') as fh:
+            json.dump(res, fh)
