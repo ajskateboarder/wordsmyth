@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Aug 13 11:00:00 2022
+# Make data base, printed on Sun Aug 14 13:18:55 2022
 
 # Variables
 
@@ -43,7 +45,7 @@ DBUS_SESSION_BUS_ADDRESS = disabled:
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /tmp/vscode-ipc-20ec4728-9210-4b88-a751-9c5fdecc4c14.sock
+VSCODE_IPC_HOOK_EXTHOST = /tmp/vscode-ipc-27772bb7-98d2-4340-a7b3-88fe0c6ab2f1.sock
 # environment
 VSCODE_CWD = /home/adijo
 # default
@@ -63,7 +65,7 @@ LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:
 # automatic
 %F = $(notdir $%)
 # environment
-DISPLAY = 172.31.112.1:0
+DISPLAY = 172.17.16.1:0
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
@@ -111,7 +113,7 @@ LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
-I3SOCK = /tmp/i3-adijo.VrIQbf/ipc-socket.14
+I3SOCK = /tmp/i3-adijo.5TQRwe/ipc-socket.14
 # default
 MAKE_COMMAND := make
 # environment
@@ -161,7 +163,7 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 14548
+VSCODE_PID = 54
 # environment
 WSL_DISTRO_NAME = Ubuntu-20.04
 # variable set hash-table stats:
@@ -173,9 +175,9 @@ WSL_DISTRO_NAME = Ubuntu-20.04
 
 # Directories
 
-# . (device 2064, inode 16889): 15 files, no impossibilities.
+# . (device 2064, inode 16889): 18 files, no impossibilities.
 
-# 15 files, no impossibilities in 1 directories.
+# 18 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -234,14 +236,12 @@ dlmodel:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 23 / storage = 209 B / avg = 9 B
-# current buf: size = 8162 B / used = 209 B / count = 23 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 26 / storage = 239 B / avg = 9 B
+# current buf: size = 8162 B / used = 239 B / count = 26 / avg = 9 B
 
-# strcache performance: lookups = 30 / hit rate = 23%
+# strcache performance: lookups = 33 / hit rate = 21%
 # hash-table stats:
-# Load=23/8192=0%, Rehash=0, Collisions=1/30=3%
-# Finished Make data base on Sat Aug 13 11:00:00 2022
+# Load=26/8192=0%, Rehash=0, Collisions=1/33=3%
+# Finished Make data base on Sun Aug 14 13:18:55 2022
 
  
-make: *** No rule to make target 'all'.  Stop.
-

@@ -47,6 +47,6 @@ class Emojize:
         prob = self.model(tokenized)[0]
 
         emoji_ids = top_elements(prob, 1)
-        emojis = list(map(lambda x: EMOJIS[x], emoji_ids))
+        emoji = list(map(lambda x: EMOJIS[x], emoji_ids))
 
-        return (emojize(emojis[0], use_aliases=True), emojis[0])
+        return emoji[0]
