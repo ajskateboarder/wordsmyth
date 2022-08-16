@@ -7,7 +7,7 @@ def get_comments(video_id, limit):
     count = 1
 
     for comment in gen:
-        yield comment["text"]
+        yield {"text": comment["text"], "author": comment["author"]}
         count += 1
 
         if count == limit:
