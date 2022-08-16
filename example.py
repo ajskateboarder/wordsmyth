@@ -29,7 +29,10 @@ with st.form("form"):
         title = res.json()["title"]
         st.write(f'Downloading comments for "{title}". Please wait...')
 
-        texts = [i for i in get_comments(yt_id, 100)]
+        comments = [i for i in get_comments(yt_id, 100)]
+        texts = [i["text"] for i in comments]
+        authors = [i["author"] for i in comments]
+
         chunks = list(chunk(texts, 20))
 
         futures = [
@@ -41,11 +44,11 @@ with st.form("form"):
         ]
 
         res = []
-        
-        for future in as_completed(futures):
-            resp = future.result().json()
-            for re in resp:
-                res.append([re["text"], re["emoji"]])
 
-        with open('data.json', 'w') as fh:
+        for future in as_completed(futures):
+            print(future.result().text)
+            resp = future.result().json()
+            res.append(resp)
+
+        with open("data.json", "w") as fh:
             json.dump(res, fh)

@@ -3,12 +3,12 @@ from typing import List, Union
 from fastapi import APIRouter, Header
 
 from . import emoji
-from src.api.models.emoji import Emoji
+from src.api.models.emojis import Emojis
 
 router = APIRouter()
 
 
-@router.get("/predict")
+@router.get("/predict", response_model=Emojis)
 def read(texts: list = Header()):
     emojis = []
     texts = texts[0].strip("][").split(", ")
@@ -16,4 +16,10 @@ def read(texts: list = Header()):
     for text in texts:
         res = emoji.predict(text)
         emojis.append({"emoji": res, "text": text})
+
+    emojis = {
+        "emojis": emojis,
+        "alltext": " ".join([e["text"] for e in emojis]).replace("  ", " "),
+    }
+
     return emojis
