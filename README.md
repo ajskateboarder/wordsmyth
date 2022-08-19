@@ -1,12 +1,15 @@
-# ytstars
+<div align="center">
+<img src="https://github.com/themysticsavages/ytstars/blob/main/media/ytstars_logo.png" height=250>
+<h1>YTStars</h1>
 
-Rate YouTube videos based on comments
+<i>Rate YouTube videos based on comments (i know the logo's kinda crappy it's just a draft)</i>
+</div>
 
 ## Requirements
 
 - Python 3 (entire app codebase)
-- Docker (optional but good for scaling)
-- Linux (only platform the app was tested on)
+- Docker (required for demos)
+- Linux/WSL (only platform the app was tested on)
 
 ## Usage
 
@@ -24,12 +27,12 @@ Get the torchMoji model:
 make dlmodel
 ```
 
-If you do not have [wget](https://www.gnu.org/software/wget/) installed, get the model from [here](https://dropbox.com/s/q8lax9ary32c7t9/pytorch_model.bin?dl=0) and put it in `src/deepmoji/model`.
+If you do not have [wget](https://www.gnu.org/software/wget/) installed, get the model from [here](https://dropbox.com/s/q8lax9ary32c7t9/pytorch_model.bin?dl=0) and save it to `src/deepmoji/model`.
 
 Start the comment processing microservice locally:
 
 ```bash
-uvicorn src:app
+uvicorn src:api:main.app
 ```
 
 Heading to [http://localhost:8000](http://localhost:8000) should give you `"Pong.\n"`
