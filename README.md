@@ -32,7 +32,7 @@ If you do not have [wget](https://www.gnu.org/software/wget/) installed, get the
 Start the comment processing microservice locally:
 
 ```bash
-uvicorn src:api:main.app
+uvicorn src.api.main:app
 ```
 
 Heading to [http://localhost:8000](http://localhost:8000) should give you `"Pong.\n"`
@@ -48,7 +48,13 @@ docker build -t myimage .
 Scale the API for faster processing of comments:
 
 ```bash
-make image=myimage scale
+make scale image=myimage
+```
+
+Or use it without make:
+
+```bash
+bash scripts/scale.sh myimage
 ```
 
 After running `docker ps`, you should see these containers:
@@ -66,4 +72,10 @@ Kill the containers when you are done with them:
 
 ```bash
 make killcons
+```
+
+Or its alternative:
+
+```bash
+bash scripts/killcons.sh
 ```
