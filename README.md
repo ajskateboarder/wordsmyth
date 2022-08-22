@@ -1,7 +1,7 @@
 <div align="center">
 <img src="https://github.com/themysticsavages/ytstars/blob/main/media/ytstars_logo.png" height=200 width=900>
 
-<i>Rate YouTube videos based on comments (i know the logo's kinda crappy it's just a draft)</i>
+<i><br><br>Rate YouTube videos based on comments (i know the logo's kinda crappy it's just a draft)</i>
 </div>
 
 ## Requirements
