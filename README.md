@@ -1,8 +1,15 @@
 <div align="center">
 <img src="https://github.com/themysticsavages/ytstars/blob/main/media/ytstars_logo.png" height=200 width=900>
 
-<i><br><br>Rate YouTube videos based on comments (i know the logo's kinda crappy it's just a draft)</i>
+<i><br><br>Rate YouTube videos based on comments (yes the logo looks draft-y)</i>
+
+![status](https://img.shields.io/badge/status-alpha-orange)
 </div>
+
+## Overview
+YTStars was made to make finding videos where overall criticism can be made (tutorials, for example) much easier. It's goal is to obviously give videos a star rating.
+
+The backbone of this project is MIT's DeepMoji pretrained model to predict emojis.
 
 ## Requirements
 
@@ -12,7 +19,7 @@
 
 ## Usage
 
-Clone the repository with `--depth=1` because there is a large file in the Git history and it would take years to download without the flag.
+Clone the repository with `--depth=1` because there is a large file in the Git history and it would take way too long to clone without the flag.
 
 ```bash
 git clone --depth=1 https://github.com/themysticsavages/ytstars
@@ -26,7 +33,7 @@ Get the torchMoji model:
 make dlmodel
 ```
 
-If you do not have [wget](https://www.gnu.org/software/wget/) installed, get the model from [here](https://dropbox.com/s/q8lax9ary32c7t9/pytorch_model.bin?dl=0) and save it to `src/deepmoji/model`.
+If you do not have [wget](https://www.gnu.org/software/wget) installed, get the model from [here](https://dropbox.com/s/q8lax9ary32c7t9/pytorch_model.bin?dl=0) and save it in `src/deepmoji/model/`.
 
 Start the comment processing microservice locally:
 
