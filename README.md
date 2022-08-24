@@ -1,4 +1,7 @@
+#
+
 <div align="center">
+
 <img src="https://github.com/themysticsavages/ytstars/blob/main/media/ytstars_logo.png" height=200 width=900>
 
 <i><br><br>Rate YouTube videos based on comments (yes the logo looks draft-y)</i>
@@ -7,6 +10,7 @@
 </div>
 
 ## Overview
+
 YTStars was made to make finding videos where overall criticism can be made (tutorials, for example) much easier. It's goal is to obviously give videos a star rating.
 
 The backbone of this project is MIT's DeepMoji pretrained model to predict emojis.
@@ -85,3 +89,5 @@ Or its alternative:
 ```bash
 bash scripts/killcons.sh
 ```
+
+## References
