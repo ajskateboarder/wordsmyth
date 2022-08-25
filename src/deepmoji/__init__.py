@@ -1,9 +1,13 @@
+"""
+Abstracted library to make emoji processing nicer, mostly from this gist
+https://gist.github.com/cw75/57ca89cfa496f10c7c7b888ec5703d7f#file-emojize-py
+"""
+
 import json
 
 import numpy as np
 from torchmoji.sentence_tokenizer import SentenceTokenizer
 from torchmoji.model_def import torchmoji_emojis
-from emoji import emojize
 
 EMOJIS = ":joy: :unamused: :weary: :sob: :heart_eyes: \
 :pensive: :ok_hand: :blush: :heart: :smirk: \

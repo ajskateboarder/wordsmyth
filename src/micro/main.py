@@ -1,6 +1,8 @@
+"""Strings all the routes together into a single app"""
+
 from fastapi import FastAPI
 
-from src.api.routes import predict, root
+from src.micro.routes import predict, root
 
 app = FastAPI()
 

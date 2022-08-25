@@ -1,3 +1,5 @@
+"""A simple library made even easier"""
+
 from youtube_comment_downloader.downloader import YoutubeCommentDownloader
 
 

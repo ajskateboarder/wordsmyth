@@ -1,10 +1,12 @@
 #!/bin/bash
 
+# Scale up an image, particularly an src/micro app
+
 set -e
 
 if [ $# -eq 0 ]
   then
-    echo "No arguments supplied"
+    echo "Image name not supplied"
     exit 1
 fi
 
