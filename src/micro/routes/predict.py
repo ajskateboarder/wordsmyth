@@ -1,10 +1,12 @@
+"""API route to predict emojis"""
+
 from typing import List
 import ast
 
 from fastapi import APIRouter, Header
 
 from . import emoji
-from src.api.models.emojis import Emoji
+from src.micro.models.emojis import Emoji
 
 router = APIRouter()
 

@@ -13,7 +13,31 @@
 
 YTStars was made to make finding videos where overall criticism can be made (tutorials, for example) much easier. It's goal is to obviously give videos a star rating.
 
-The backbone of this project is MIT's DeepMoji pretrained model to predict emojis.
+The backbone of this project is Hugging Face's [PyTorch implementation](https://github.com/huggingface/torchMoji) of [DeepMoji](https://github.com/bfelbo/DeepMoji), which has a pre-trained model to predict emojis. However, I made some updates to the library to make it Python 3 compatible.
+
+Since I didn't feel like digging into the torchMoji library, I got a usable API to use with the model from this [gist](https://gist.github.com/cw75/57ca89cfa496f10c7c7b888ec5703d7f#file-emojize-py).
+
+Whatever comments the program gets is thanks to [youtube-comment-downloader](https://github.com/egbertbouman/youtube-comment-downloader), a fast and completely free extractor that actually works.
+
+## Structure
+
+This only contains top level folders for simplicity.
+
+```text
+citations/
+    Any citations the project uses
+media/
+    Github README content
+scripts/
+    Scripts to abstract Docker scaling
+src/
+    deepmoji/
+        Model library
+    micro/
+        Microservice to multiprocess comments
+    ytd/
+        Small wrapper over youtube-comment-downloader
+```
 
 ## Requirements
 
@@ -42,7 +66,7 @@ If you do not have [wget](https://www.gnu.org/software/wget) installed, get the 
 Start the comment processing microservice locally:
 
 ```bash
-uvicorn src.api.main:app
+uvicorn src.micro.main:app
 ```
 
 Heading to [http://localhost:8000](http://localhost:8000) should give you `"Pong.\n"`
@@ -52,6 +76,7 @@ Heading to [http://localhost:8000](http://localhost:8000) should give you `"Pong
 Build the Docker image from the Dockerfile:
 
 ```bash
+# prepend DOCKER_BUILDKIT=1 to apply better caching and faster build times
 docker build -t myimage .
 ```
 
@@ -67,7 +92,7 @@ Or use it without make:
 bash scripts/scale.sh myimage
 ```
 
-After running `docker ps`, you should see these containers:
+After running `docker ps`, you should see these containers listed:
 
 ```text
 PORTS                                       NAMES
@@ -89,5 +114,3 @@ Or its alternative:
 ```bash
 bash scripts/killcons.sh
 ```
-
-## References

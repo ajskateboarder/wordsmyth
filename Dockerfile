@@ -12,4 +12,4 @@ RUN wget https://www.dropbox.com/s/q8lax9ary32c7t9/pytorch_model.bin?dl=0# -O /a
 RUN ls
 
 ENV PORT 8000
-CMD ["sh", "-c", "uvicorn src.api.main:app --host 0.0.0.0 --port ${PORT}"]
+CMD ["sh", "-c", "uvicorn src.micro.main:app --host 0.0.0.0 --port ${PORT}"]

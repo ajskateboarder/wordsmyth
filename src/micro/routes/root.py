@@ -1,3 +1,5 @@
+"""Insert docstring text here"""
+
 from fastapi import APIRouter
 
 
