@@ -1,8 +1,8 @@
 scale:
-	@ ./scripts/scale.sh $(image)
+	@ ./scripts/scale $(image)
 
 killcons:
-	@ ./scripts/killcons.sh
+	@ ./scripts/killcons
 
 dlmodel:
 	@ python3 -c \

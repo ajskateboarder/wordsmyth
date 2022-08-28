@@ -1,0 +1,19 @@
+#!/usr/bin/python3
+
+import os
+import sys
+
+try:
+    for i in range(1, 6):
+        code = os.system(f"docker rm --force econ{i} > /dev/null")
+        if code != 0:
+            sys.exit(code)
+        code = os.system(
+            f"docker run -p 800{i}:800{i} -d --name econ{i} -e PORT=800{i} {sys.argv[1]}"
+        )
+        if code != 0:
+            sys.exit(code)
+except Exception as e:
+    sys.exit(e)
+
+print(f'5 containers started under image "{sys.argv[1]}"')

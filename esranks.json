@@ -1,0 +1,642 @@
+[
+    {
+        "emoji_repr": ":joy:",
+        "emoji": "\ud83d\ude02",
+        "desc": "face with tears of joy",
+        "ratio": [
+            0.247,
+            0.285,
+            0.468
+        ]
+    },
+    {
+        "emoji_repr": ":heart:",
+        "emoji": "\u2665",
+        "desc": "black heart suit",
+        "ratio": [
+            0.035,
+            0.272,
+            0.693
+        ]
+    },
+    {
+        "emoji_repr": ":heart_eyes:",
+        "emoji": "\ud83d\ude0d",
+        "desc": "smiling face with heart-shaped eyes",
+        "ratio": [
+            0.052,
+            0.219,
+            0.729
+        ]
+    },
+    {
+        "emoji_repr": ":sob:",
+        "emoji": "\ud83d\ude2d",
+        "desc": "loudly crying face",
+        "ratio": [
+            0.436,
+            0.22,
+            0.343
+        ]
+    },
+    {
+        "emoji_repr": ":kissing_heart:",
+        "emoji": "\ud83d\ude18",
+        "desc": "face throwing a kiss",
+        "ratio": [
+            0.053,
+            0.193,
+            0.754
+        ]
+    },
+    {
+        "emoji_repr": ":blush:",
+        "emoji": "\ud83d\ude0a",
+        "desc": "smiling face with smiling eyes",
+        "ratio": [
+            0.06,
+            0.237,
+            0.704
+        ]
+    },
+    {
+        "emoji_repr": ":ok_hand:",
+        "emoji": "\ud83d\udc4c",
+        "desc": "ok hand sign",
+        "ratio": [
+            0.094,
+            0.249,
+            0.657
+        ]
+    },
+    {
+        "emoji_repr": ":two_hearts:",
+        "emoji": "\ud83d\udc95",
+        "desc": "two hearts",
+        "ratio": [
+            0.042,
+            0.285,
+            0.674
+        ]
+    },
+    {
+        "emoji_repr": ":clap:",
+        "emoji": "\ud83d\udc4f",
+        "desc": "clapping hands sign",
+        "ratio": [
+            0.104,
+            0.271,
+            0.624
+        ]
+    },
+    {
+        "emoji_repr": ":grin:",
+        "emoji": "\ud83d\ude01",
+        "desc": "grinning face with smiling eyes",
+        "ratio": [
+            0.127,
+            0.296,
+            0.577
+        ]
+    },
+    {
+        "emoji_repr": ":relaxed:",
+        "emoji": "\u263a",
+        "desc": "white smiling face",
+        "ratio": [
+            0.062,
+            0.218,
+            0.72
+        ]
+    },
+    {
+        "emoji_repr": ":thumbsup:",
+        "emoji": "\ud83d\udc4d",
+        "desc": "thumbs up sign",
+        "ratio": [
+            0.115,
+            0.248,
+            0.637
+        ]
+    },
+    {
+        "emoji_repr": ":weary:",
+        "emoji": "\ud83d\ude29",
+        "desc": "weary face",
+        "ratio": [
+            0.591,
+            0.186,
+            0.223
+        ]
+    },
+    {
+        "emoji_repr": ":pray:",
+        "emoji": "\ud83d\ude4f",
+        "desc": "person with folded hands",
+        "ratio": [
+            0.081,
+            0.421,
+            0.498
+        ]
+    },
+    {
+        "emoji_repr": ":v:",
+        "emoji": "\u270c",
+        "desc": "victory hand",
+        "ratio": [
+            0.113,
+            0.31,
+            0.576
+        ]
+    },
+    {
+        "emoji_repr": ":smirk:",
+        "emoji": "\ud83d\ude0f",
+        "desc": "smirking face",
+        "ratio": [
+            0.112,
+            0.444,
+            0.444
+        ]
+    },
+    {
+        "emoji_repr": ":wink:",
+        "emoji": "\ud83d\ude09",
+        "desc": "winking face",
+        "ratio": [
+            0.1,
+            0.337,
+            0.563
+        ]
+    },
+    {
+        "emoji_repr": ":raised_hands:",
+        "emoji": "\ud83d\ude4c",
+        "desc": "person raising both hands in celebration",
+        "ratio": [
+            0.101,
+            0.238,
+            0.661
+        ]
+    },
+    {
+        "emoji_repr": ":see_no_evil:",
+        "emoji": "\ud83d\ude48",
+        "desc": "see-no-evil monkey",
+        "ratio": [
+            0.164,
+            0.241,
+            0.596
+        ]
+    },
+    {
+        "emoji_repr": ":muscle:",
+        "emoji": "\ud83d\udcaa",
+        "desc": "flexed biceps",
+        "ratio": [
+            0.072,
+            0.301,
+            0.627
+        ]
+    },
+    {
+        "emoji_repr": ":smile:",
+        "emoji": "\ud83d\ude04",
+        "desc": "smiling face with open mouth and smiling eyes",
+        "ratio": [
+            0.137,
+            0.305,
+            0.558
+        ]
+    },
+    {
+        "emoji_repr": ":unamused:",
+        "emoji": "\ud83d\ude12",
+        "desc": "unamused face",
+        "ratio": [
+            0.591,
+            0.192,
+            0.217
+        ]
+    },
+    {
+        "emoji_repr": ":sparkling_heart:",
+        "emoji": "\ud83d\udc96",
+        "desc": "sparkling heart",
+        "ratio": [
+            0.043,
+            0.201,
+            0.755
+        ]
+    },
+    {
+        "emoji_repr": ":pensive:",
+        "emoji": "\ud83d\ude14",
+        "desc": "pensive face",
+        "ratio": [
+            0.464,
+            0.219,
+            0.318
+        ]
+    },
+    {
+        "emoji_repr": ":stuck_out_tongue_winking_eye:",
+        "emoji": "\ud83d\ude1c",
+        "desc": "face with stuck-out tongue and winking eye",
+        "ratio": [
+            0.112,
+            0.322,
+            0.566
+        ]
+    },
+    {
+        "emoji_repr": ":purple_heart:",
+        "emoji": "\ud83d\udc9c",
+        "desc": "purple heart",
+        "ratio": [
+            0.045,
+            0.257,
+            0.699
+        ]
+    },
+    {
+        "emoji_repr": ":blue_heart:",
+        "emoji": "\ud83d\udc99",
+        "desc": "blue heart",
+        "ratio": [
+            0.033,
+            0.204,
+            0.763
+        ]
+    },
+    {
+        "emoji_repr": ":sparkles:",
+        "emoji": "\u2728",
+        "desc": "sparkles",
+        "ratio": [
+            0.052,
+            0.545,
+            0.403
+        ]
+    },
+    {
+        "emoji_repr": ":flushed:",
+        "emoji": "\ud83d\ude33",
+        "desc": "flushed face",
+        "ratio": [
+            0.327,
+            0.327,
+            0.345
+        ]
+    },
+    {
+        "emoji_repr": ":rage:",
+        "emoji": "\ud83d\ude21",
+        "desc": "pouting face",
+        "ratio": [
+            0.532,
+            0.108,
+            0.36
+        ]
+    },
+    {
+        "emoji_repr": ":sunglasses:",
+        "emoji": "\ud83d\ude0e",
+        "desc": "smiling face with sunglasses",
+        "ratio": [
+            0.106,
+            0.297,
+            0.597
+        ]
+    },
+    {
+        "emoji_repr": ":cry:",
+        "emoji": "\ud83d\ude22",
+        "desc": "crying face",
+        "ratio": [
+            0.384,
+            0.225,
+            0.391
+        ]
+    },
+    {
+        "emoji_repr": ":yum:",
+        "emoji": "\ud83d\ude0b",
+        "desc": "face savouring delicious food",
+        "ratio": [
+            0.046,
+            0.277,
+            0.677
+        ]
+    },
+    {
+        "emoji_repr": ":speak_no_evil:",
+        "emoji": "\ud83d\ude4a",
+        "desc": "speak-no-evil monkey",
+        "ratio": [
+            0.135,
+            0.272,
+            0.593
+        ]
+    },
+    {
+        "emoji_repr": ":sleeping:",
+        "emoji": "\ud83d\ude34",
+        "desc": "sleeping face",
+        "ratio": [
+            0.422,
+            0.237,
+            0.341
+        ]
+    },
+    {
+        "emoji_repr": ":notes:",
+        "emoji": "\ud83c\udfb6",
+        "desc": "multiple musical notes",
+        "ratio": [
+            0.097,
+            0.27,
+            0.634
+        ]
+    },
+    {
+        "emoji_repr": ":relieved:",
+        "emoji": "\ud83d\ude0c",
+        "desc": "relieved face",
+        "ratio": [
+            0.141,
+            0.237,
+            0.623
+        ]
+    },
+    {
+        "emoji_repr": ":100:",
+        "emoji": "\ud83d\udcaf",
+        "desc": "hundred points symbol",
+        "ratio": [
+            0.281,
+            0.317,
+            0.402
+        ]
+    },
+    {
+        "emoji_repr": ":gun:",
+        "emoji": "\ud83d\udd2b",
+        "desc": "pistol",
+        "ratio": [
+            0.493,
+            0.209,
+            0.298
+        ]
+    },
+    {
+        "emoji_repr": ":yellow_heart:",
+        "emoji": "\ud83d\udc9b",
+        "desc": "yellow heart",
+        "ratio": [
+            0.043,
+            0.205,
+            0.752
+        ]
+    },
+    {
+        "emoji_repr": ":information_desk_person:",
+        "emoji": "\ud83d\udc81",
+        "desc": "information desk person",
+        "ratio": [
+            0.192,
+            0.29,
+            0.518
+        ]
+    },
+    {
+        "emoji_repr": ":disappointed:",
+        "emoji": "\ud83d\ude1e",
+        "desc": "disappointed face",
+        "ratio": [
+            0.479,
+            0.161,
+            0.361
+        ]
+    },
+    {
+        "emoji_repr": ":sleepy:",
+        "emoji": "\ud83d\ude2a",
+        "desc": "sleepy face",
+        "ratio": [
+            0.431,
+            0.219,
+            0.351
+        ]
+    },
+    {
+        "emoji_repr": ":tired_face:",
+        "emoji": "\ud83d\ude2b",
+        "desc": "tired face",
+        "ratio": [
+            0.485,
+            0.174,
+            0.34
+        ]
+    },
+    {
+        "emoji_repr": ":sweat_smile:",
+        "emoji": "\ud83d\ude05",
+        "desc": "smiling face with open mouth and cold sweat",
+        "ratio": [
+            0.292,
+            0.237,
+            0.471
+        ]
+    },
+    {
+        "emoji_repr": ":facepunch:",
+        "emoji": "\ud83d\udc4a",
+        "desc": "fisted hand sign",
+        "ratio": [
+            0.265,
+            0.243,
+            0.492
+        ]
+    },
+    {
+        "emoji_repr": ":skull:",
+        "emoji": "\ud83d\udc80",
+        "desc": "skull",
+        "ratio": [
+            0.468,
+            0.27,
+            0.261
+        ]
+    },
+    {
+        "emoji_repr": ":eyes:",
+        "emoji": "\ud83d\udc40",
+        "desc": "eyes",
+        "ratio": [
+            0.228,
+            0.482,
+            0.291
+        ]
+    },
+    {
+        "emoji_repr": ":hand:",
+        "emoji": "\u270b",
+        "desc": "raised hand",
+        "ratio": [
+            0.328,
+            0.218,
+            0.454
+        ]
+    },
+    {
+        "emoji_repr": ":confused:",
+        "emoji": "\ud83d\ude15",
+        "desc": "confused face",
+        "ratio": [
+            0.601,
+            0.195,
+            0.204
+        ]
+    },
+    {
+        "emoji_repr": ":broken_heart:",
+        "emoji": "\ud83d\udc94",
+        "desc": "broken heart",
+        "ratio": [
+            0.414,
+            0.293,
+            0.293
+        ]
+    },
+    {
+        "emoji_repr": ":triumph:",
+        "emoji": "\ud83d\ude24",
+        "desc": "face with look of triumph",
+        "ratio": [
+            0.479,
+            0.252,
+            0.27
+        ]
+    },
+    {
+        "emoji_repr": ":smiling_imp:",
+        "emoji": "\ud83d\ude08",
+        "desc": "smiling face with horns",
+        "ratio": [
+            0.204,
+            0.326,
+            0.47
+        ]
+    },
+    {
+        "emoji_repr": ":expressionless:",
+        "emoji": "\ud83d\ude11",
+        "desc": "expressionless face",
+        "ratio": [
+            0.513,
+            0.285,
+            0.202
+        ]
+    },
+    {
+        "emoji_repr": ":angry:",
+        "emoji": "\ud83d\ude20",
+        "desc": "angry face",
+        "ratio": [
+            0.564,
+            0.172,
+            0.265
+        ]
+    },
+    {
+        "emoji_repr": ":sweat:",
+        "emoji": "\ud83d\ude13",
+        "desc": "face with cold sweat",
+        "ratio": [
+            0.431,
+            0.217,
+            0.351
+        ]
+    },
+    {
+        "emoji_repr": ":persevere:",
+        "emoji": "\ud83d\ude23",
+        "desc": "persevering face",
+        "ratio": [
+            0.54,
+            0.131,
+            0.328
+        ]
+    },
+    {
+        "emoji_repr": ":neutral_face:",
+        "emoji": "\ud83d\ude10",
+        "desc": "neutral face",
+        "ratio": [
+            0.553,
+            0.282,
+            0.165
+        ]
+    },
+    {
+        "emoji_repr": ":confounded:",
+        "emoji": "\ud83d\ude16",
+        "desc": "confounded face",
+        "ratio": [
+            0.483,
+            0.188,
+            0.328
+        ]
+    },
+    {
+        "emoji_repr": ":heartbeat:",
+        "emoji": "\ud83d\udc93",
+        "desc": "beating heart",
+        "ratio": [
+            0.061,
+            0.214,
+            0.725
+        ]
+    },
+    {
+        "emoji_repr": ":mask:",
+        "emoji": "\ud83d\ude37",
+        "desc": "face with medical mask",
+        "ratio": [
+            0.474,
+            0.221,
+            0.305
+        ]
+    },
+    {
+        "emoji_repr": ":musical_note:",
+        "emoji": "\ud83c\udfb5",
+        "desc": "musical note",
+        "ratio": [
+            0.106,
+            0.288,
+            0.606
+        ]
+    },
+    {
+        "emoji_repr": ":grimacing:",
+        "emoji": "\ud83d\ude2c",
+        "desc": "grimacing face",
+        "ratio": [
+            0.267,
+            0.272,
+            0.461
+        ]
+    },
+    {
+        "emoji_repr": ":no_good:",
+        "emoji": "\ud83d\ude45",
+        "desc": "face with no good gesture",
+        "ratio": [
+            0.458,
+            0.286,
+            0.256
+        ]
+    }
+]

@@ -1,0 +1,17 @@
+#!/usr/bin/python3
+
+"""
+Kills any running Docker containers starting with econ,
+which is what is started with scale.py
+"""
+
+import os
+import sys
+
+
+for i in range(1, 6):
+    code = os.system(f"docker rm --force econ{i}")
+    if code != 0:
+        sys.exit(code)
+
+print("All containers killed sucessfully.")
