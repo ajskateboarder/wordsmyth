@@ -5,7 +5,7 @@ from youtube_comment_downloader.downloader import YoutubeCommentDownloader
 
 def get_comments(video_id, limit):
     comment = YoutubeCommentDownloader()
-    gen = comment.get_comments(video_id, sort_by=0)
+    gen = comment.get_comments(video_id, sort_by=1)
     count = 1
 
     for comment in gen:

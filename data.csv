@@ -1,22 +1,104 @@
-text,emoji,sentiment,neg,neu,pos,compound
-Agreed.,:thumbsup:,positive,0.0,0.0,1.0,
-Well structured content,:relieved:,positive,0.0,0.488,0.512,
-"yes, I totally agree",:thumbsup:,positive,0.0,0.267,0.733,
-Yes A very good presentation with noble service mind,:thumbsup:,positive,0.0,0.403,0.597,
-Definitely,:ok_hand:,positive,0.0,0.0,1.0,
-tbh <3,:ok_hand:,positive,0.0,0.256,0.744,
-Sure,:thumbsup:,positive,0.0,0.0,1.0,
-absolutely! The man is the best teacher. Best.,:thumbsup:,positive,0.0,0.408,0.592,
-Agreed,:thumbsup:,positive,0.0,0.0,1.0,
-Very true,:thumbsup:,positive,0.0,0.244,0.756,
-"amazing tip, thanks April!",:thumbsup:,positive,0.0,0.222,0.778,
-Life saver lmao!,:raised_hands:,positive,0.0,0.323,0.677,
-dang ty man,:sleepy:,positive,0.0,0.435,0.565,
-This video was really helpful thank you.,:relieved:,positive,0.0,0.46,0.54,
-Nah,:hand:,negative,1.0,0.0,0.0,
+text,emoji,sentiment,neg,neu,pos,compound,detected
+"Do you have more questions about Figma? Leave them in the comments below ð
+And if you want to become a UX designer but don't know how to get started check out our video on that topic ð https://youtu.be/t0aCoqXKFOU",:rage:,neutral,0.028,0.943,0.029,,True
+thank you for your really good tutorial... please learn us UI design step by step on more videos... tnx again,:pray:,neutral,0.0,0.601,0.399,,True
+So nice. May I know how to link the button links to other pages? I see some other people posting like a network of pages. I want to konw how that works. Great vid!,:thumbsup:,neutral,0.0,0.727,0.273,,True
+Big time saver for beginners to get started,:raised_hands:,neutral,0.0,1.0,0.0,,True
+ð,:muscle:,neutral,0.0,1.0,0.0,,True
+Please you often use the word double click option . Which of the key on the keyboard do you refer to option key? is it the function key Fn key+Alt together to get the exact measurement ?,:eyes:,neutral,0.0,0.931,0.069,,True
+your tutorial is very awesome. This is my first time of searching for this course and with your lecture I caught the vision quickly,:sparkles:,neutral,0.0,0.775,0.225,,True
+This is crazy. I really thought it was gonna be hard but this is already stuff Iâve been doing for fun for years ð­ Iâm half way through my UX design course. Havenât gotten to the fun parts like this yet,:cry:,neutral,0.057,0.705,0.238,,True
+Thanks. Read an article at CNBC today about Figma. Signed up and created my first project following you. Only issue. ALT was not giving me the distances like you showed.,:rage:,neutral,0.057,0.734,0.209,,True
+thank you! i want to start learning using figma but was super confuse on what to do. but now i know how!,:grimacing:,neutral,0.081,0.617,0.303,,True
+Being a beginner how I should start,:relieved:,neutral,0.0,1.0,0.0,,True
+Can we use fiqma  in android smartphones,:pray:,neutral,0.0,1.0,0.0,,True
+Do you have any video on design principles?,:eyes:,neutral,0.0,1.0,0.0,,True
+This is perhaps the most helpful ui video I watched as a beginner,:sweat_smile:,neutral,0.0,0.795,0.205,,True
+very good ty :D,:heartbeat:,positive,0.0,0.088,0.912,,False
+"Awesome tutorial Masha Allah. Thanks a lot, you made my day.",:heartbeat:,neutral,0.0,0.562,0.438,,True
+THANK YOU SO MUCHHHHH i just began learning UI design today and this video really helped me with some basic things,:sparkles:,neutral,0.0,0.861,0.139,,True
+how do i create a white background please,:tired_face:,neutral,0.0,0.577,0.423,,True
+This is so helpful!,:thumbsup:,positive,0.0,0.434,0.566,,False
+"LITERALLY   LITERALLY  LITERALLY  LITERALLY  LITERALLY..... uughh, please learn how to stop saying this word.",:rage:,neutral,0.133,0.727,0.139,,True
+I've been trying to copy a file onto figma it's way harder than how you show it on the video all I get is download but no open in figma. Please help what am I doing wrong or what am I suppose to do?,:cry:,neutral,0.13,0.748,0.122,,True
+Where is this template that you used?,:notes:,neutral,0.0,1.0,0.0,,True
+"Hi. This video was incredibly helpful but I'm having a hard time finding the exact same website you got the resource from. Are there any other sites that have that ""copy to FIgma"" feature? Thanks again for the video!",:thumbsup:,neutral,0.037,0.822,0.141,,True
+"hi! i cannot get my icon to paste in front of the white circle - everytime i try, it pastes behind and i cannot figure out how to bring to front. what am i doing wrong? thanks!!",:rage:,neutral,0.095,0.836,0.069,,True
+Amazing course.,:information_desk_person:,positive,0.0,0.208,0.792,,False
+"hi, can you do a video about how are components used in figma? how can we use them to create a sticker sheet of our own apps? and i really liked this video , came to know about so many things... thanks",:blush:,neutral,0.0,0.817,0.183,,True
+"Once again congrats for this super helpful video! This is just straight to the point, detailed and very easy to follow. Congrats AJ&Smart for the amazing content and talented people you have!!! Keep up the good work! :)",:thumbsup:,positive,0.0,0.461,0.539,,False
+"Good day coach, am pretty new to this but am very much interested in knowing this figma. can you help because i really enjoyed your video that i just watched",:thumbsup:,neutral,0.0,0.603,0.397,,True
+This is the best,:heart_eyes:,positive,0.0,0.417,0.583,,False
+I am a beginner.... It's really useful for me.... Thank you brother,:thumbsup:,neutral,0.0,0.637,0.363,,True
+"thank you very much sir, but how can you play your designs after you are done with your designs because i design with xd.",:heartbeat:,neutral,0.0,0.819,0.181,,True
+thanks. short and to the point,:thumbsup:,neutral,0.0,0.633,0.367,,True
+I love it can I start with a smart phone I donât have laptop,:smile:,neutral,0.0,0.635,0.365,,True
+THANK YOU,:pray:,positive,0.0,0.286,0.714,,False
+"hi, I'm unable to copy Figma resources to the Figma panel, can anyone help me out, it only has a download option!!!",:cry:,neutral,0.0,0.854,0.146,,True
+"Amazing video. Was very demotivated at the start. This video helps me understand the possibilities for this. Thank you so much, AJ!",:thumbsup:,neutral,0.0,0.665,0.335,,True
+Hi AJ&Smart I'd like to as you a Question what do you mean by theory of design ?!  pls I would like to know.,:sparkles:,neutral,0.0,0.761,0.239,,True
+"Hi, Sir. I have a question. When I try to create the same exact frame style, it doesn't say what type of frame specifically just like in your tutorial.",:expressionless:,neutral,0.0,0.854,0.146,,True
+This video was really helpful thank you.,:relieved:,positive,0.0,0.46,0.54,,False
+Mine isn't looking quite like this since that Font isn't avail.... also some of the specifics aren't working for me.  But I guess it's some practice for beginners like myself.,:confused:,neutral,0.051,0.851,0.099,,True
+Wow! I think I could do this for a living. That would be cool.,:sunglasses:,neutral,0.0,0.652,0.348,,True
+Nah,:hand:,negative,1.0,0.0,0.0,,False
+"hey! My figma doesn't have the option to ""duplicate to drafts"" so I'm stuck in view mode. Do you know how to fix this? cheers!",:angry:,neutral,0.077,0.78,0.143,,True
+"Please make more videos I like you guys  you guys humble and cool. Especially the guy in this video.. the way he says things with great enthusiasm, that helps easy to gasp things.",:thumbsup:,neutral,0.0,0.567,0.433,,True
 "I canât find any free icons
-Help please",:pray:,positive,0.0,0.376,0.624,
-"That was amazing thank you, literally just what I needed to boost my confidence in Figma, now practice time :D",:heartbeat:,positive,0.0,0.479,0.521,
-"Once again congrats for this super helpful video! This is just straight to the point, detailed and very easy to follow. Congrats AJ&Smart for the amazing content and talented people you have!!! Keep up the good work! :)",:thumbsup:,positive,0.0,0.461,0.539,
-"Can we all just take a minute to appreciate how well produced this was? Great scenario, great lightning, great audio, great animations... Very nice!",:thumbsup:,positive,0.0,0.409,0.591,
-"definitely a great ""getting started"" tutorial. Very well done, very clear. Thanks!",:thumbsup:,positive,0.0,0.31,0.69,
+Help please",:pray:,positive,0.0,0.376,0.624,,False
+Im less than 4 minutes in and already this is so beneficial. Thnak you so much for this content.,:relieved:,neutral,0.0,0.828,0.172,,True
+"Hi Sir, do you also teach other tools that help for Business Analyst career?",:wink:,neutral,0.0,0.828,0.172,,True
+"Hi sir, if creating a new design as portfolio on Figma, can I also add motion to it?",:wink:,neutral,0.0,0.885,0.115,,True
+"thank you! wow, as a graphic designer who uses Photoshop and illustrator...I had no idea how simple this program was, and here I was telling people ""sorry no I don't do Figma"", hehe. Also...will you have a video of the part where Figma shares with other workers? and what do you do after the design? do you export? etc? I havent' played around with it yet but just curious, thanks!!!",:thumbsup:,neutral,0.072,0.748,0.18,,True
+AJ one question can I copy a picture from one page from figma to other figma page?,:eyes:,neutral,0.0,1.0,0.0,,True
+"AJ am not sure if you got my question? Cause I donât see it, could I pay an image from a page from figma to other from figma as well?",:stuck_out_tongue_winking_eye:,neutral,0.113,0.823,0.064,,True
+Curious what do you recommend for a screen recording for recording your processes? I work on a PC but wanted to be able to record long good quality videos of my work process in Figma.,:confused:,neutral,0.0,0.815,0.185,,True
+"Thank you for your great video and tips. After my Figma designed was done, I been trying to use the play button to see how it looks but it looks empty, nothing on it.. I dont know how to see my design, any help @AJ&Smart",:thumbsup:,neutral,0.043,0.773,0.185,,True
+I'm having trouble finding the templates website. Do you know if that website is still available? The ones I've seen look different and have a different domain. Thanks in advance.,:expressionless:,neutral,0.08,0.833,0.086,,True
+figmaresources got taken over by templatefreebees that loads up dibbble. You can still copy the images and paste them into Figma but you won't get the full effect of seeing those redlines,:rage:,neutral,0.0,1.0,0.0,,True
+"Thank you! I'm starting a course in a few weeks and this makes me have a little more confidence, as I have no experience!  You are a great instructor!!!",:thumbsup:,neutral,0.057,0.653,0.289,,True
+Dude just earned my respect <3,:100:,positive,0.0,0.4,0.6,,False
+AIght let's do this!,:muscle:,neutral,0.0,1.0,0.0,,True
+"Highly recommended, explained step by step, so clear and understandable.",:thumbsup:,neutral,0.0,0.594,0.406,,True
+Thank you so much for your amazing tutorial.,:two_hearts:,positive,0.0,0.488,0.512,,False
+Hi! Great easy to understand content. I have a question though. Let's say you work for a company with a team. What about if you don't have the exact icons you need or you are looking for? Do you design them yourself if skilled enough or is there any team member within the company that can do this graphic design? Thanks!,:thumbsup:,neutral,0.0,0.842,0.158,,True
+Hi! how do you create the image of the video? with the cellphone design,:sparkles:,neutral,0.0,0.845,0.155,,True
+"thank you so much, I loved this video.",:heartbeat:,positive,0.0,0.474,0.526,,False
+"This is amazing, I followed your instructions step by step and I designed an online shop and I am really happy that I managed to design something even though it has a lot of problems. Thank you so much",:sparkling_heart:,neutral,0.056,0.729,0.214,,True
+Great video. cheers...,:thumbsup:,positive,0.0,0.122,0.878,,False
+Keep up the good work ðð,:muscle:,neutral,0.0,0.633,0.367,,True
+Sir how do u create that design shade of purple,:confused:,neutral,0.0,0.811,0.189,,True
+this was a fantastic tutorial. Thank you from Nepal,:pray:,neutral,0.0,0.534,0.466,,True
+"Thank you so much, you're a blessing!!!!",:pray:,positive,0.0,0.421,0.579,,False
+"This is such a great video! Been binging your content - what can I say, Iâm hooked!
+
+Just curious; when creating a title to replicate the existing one ânon-contact deliveriesâ why didnât you just hold option and drag it to duplicate the content?",:thumbsup:,neutral,0.038,0.779,0.183,,True
+"Hi! I'm new in my UI journey and I am not seeing the, ""copy to Figma"" button on a lot of the templates I really like on figmaresources. Is figmaresources still the resources you recommend to beginners?",:wink:,neutral,0.0,0.862,0.138,,True
+I am just starting learning how to use Figma for the UX design course I am taking. I tried watching a few tutorial videos. Unfortunately I couldn't follow. So glad that I came across your video. Your tutorial is the best for the beginners. Thank you.,:thumbsup:,neutral,0.044,0.764,0.192,,True
+"Thanks so much, you just saved tons of hours, I'm already a skilled graphic designer so this transition/explore has been made easy.
+
+Cheers to AJ&Smart",:thumbsup:,neutral,0.0,0.642,0.358,,True
+Very good tutorial. Thank you!,:blush:,positive,0.0,0.324,0.676,,False
+Amazing video! it's exactly what I was looking for. Thank you so much!ðð»ðð»ðð»,:heartbeat:,neutral,0.0,0.615,0.385,,True
+Not the best way to get to know Figma from a beginner standpoint. A project from scratch would be more appropriate.,:confounded:,neutral,0.144,0.856,0.0,,True
+"you are amazing   your animation  your audio, everthing was great but i have a question to ask that i have search figma resources just like you said but i didn't  get it and yes how can separate a template like you back there i have tried many times but  i just get a photo can you tell me about spearating a template",:cry:,neutral,0.0,0.792,0.208,,True
+hi!! i just start to learn how to use figma and i found your video. i find it really helpful. i want to say thank you for making this video. the audio is really good. it's easy to understand every word that you said. english is not my mother language but im happy that i can learn how to design while learn english listening too. soooo happy! thank you thank you thank you! keep up the good work >.<,:heartbeat:,neutral,0.028,0.644,0.328,,True
+This was brilliant sir.  I had fun doing it. Also this the best one I came across. Do you offer any course in ui ux?,:smile:,neutral,0.0,0.661,0.339,,True
+"LIKE  
+Thank you for sharing this tips and tricks ...",:clap:,positive,0.094,0.374,0.532,,False
+"thank you for this super good tutorial! One question: what should I use (from PC) to verify the distance between two elements? You say ""hold options"" but I have no clue about what it means",:sweat_smile:,neutral,0.069,0.763,0.168,,True
+"omg, dude.... THANK YOU!!!",:raised_hands:,positive,0.0,0.422,0.578,,False
+Great tutorial! Very simplified which helps me finding a starting point. When I try to copy over the Figma Template it wonât let me download onto Figma and I already have an account open. Any advice?,:thumbsup:,neutral,0.0,0.824,0.176,,True
+How can i apply what i have designed in mobile app??,:tired_face:,neutral,0.0,1.0,0.0,,True
+Great video!! Would this be a good program to use to make app icons/ icon packs for Android and iPhone? If so could you make a video of it?,:sparkles:,neutral,0.0,0.773,0.227,,True
+"Will it automatically write html code in background, how can I see html code in figma in case if i change anything at code level?",:rage:,neutral,0.0,1.0,0.0,,True
+your sign out was sharp (lit),:smiling_imp:,neutral,0.0,1.0,0.0,,True
+Can you direct me to the exact file to copy?,:eyes:,neutral,0.0,1.0,0.0,,True
+Hi! How can I be a better UX/UI designer? I know nothing about designing and I want to learn. Please I need help,:pray:,neutral,0.0,0.667,0.333,,True
+you kinda look like seth rolling,:skull:,neutral,0.0,0.692,0.308,,True
+"Shortcuts:
+Find out how far away elements are from each other: double click until you select the element you want then hold Option/Alt
+Create text: ""t""
+Create rectangle: ""r""
+Copy elements: hold Option/Alt and drag",:thumbsup:,neutral,0.049,0.807,0.143,,True
+"How to get free graphics elements ike ... flowers, clouds, ant other stuff... ?",:confused:,neutral,0.0,0.798,0.202,,True
