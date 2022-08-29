@@ -29,7 +29,7 @@ with st.form("form"):
         title = res.json()["title"]
         st.write(f'Downloading comments for "{title}". Please wait...')
 
-        comments = [i for i in get_comments(yt_id, 100)]
+        comments = [i for i in get_comments(yt_id, 300)]
         texts = [i["text"] for i in comments]
         authors = [i["author"] for i in comments]
 

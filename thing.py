@@ -1,17 +1,38 @@
 import json
 import itertools
-from emoji import emojize
+import csv
+
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+
+analyzer = SentimentIntensityAnalyzer()
 
 with open("data.json") as fh:
     data = json.load(fh)
 
-with open("esranks.json") as fh:
-    emojis: "list[dict]" = json.load(fh)
-    classes = [e["emoji_repr"] for e in emojis]
-
 ab = list(itertools.chain(*[e for e in data]))
 
-for emoji in ab:
-    if not emoji["text"].startswith("\xa0@"):
-        print(emoji["text"].strip(), emoji["emoji"], "\n")
-        print(emojis[classes.index(emoji["emoji"])])
+ratio = ["negative", "neutral", "positive"]
+
+with open("data.csv", "w") as csv_file:
+    fieldnames = ["text", "emoji", "sentiment", "neg", "neu", "pos", "compound"]
+    writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+
+    writer.writeheader()
+    for emoji in ab:
+        if not emoji["text"].startswith("\xa0@"):
+            sentence = emoji["text"].strip()
+            vs = analyzer.polarity_scores(sentence)
+
+            if ratio[list(vs.values()).index(max(list(vs.values())[:-1]))] != "neutral":
+                writer.writerow(
+                    {
+                        "text": sentence,
+                        "emoji": emoji["emoji"],
+                        "sentiment": ratio[
+                            list(vs.values()).index(max(list(vs.values())[:-1]))
+                        ],
+                        "neg": vs["neg"],
+                        "neu": vs["neu"],
+                        "pos": vs["pos"],
+                    }
+                )
