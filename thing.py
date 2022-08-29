@@ -14,7 +14,16 @@ ab = list(itertools.chain(*[e for e in data]))
 ratio = ["negative", "neutral", "positive"]
 
 with open("data.csv", "w") as csv_file:
-    fieldnames = ["text", "emoji", "sentiment", "neg", "neu", "pos", "compound"]
+    fieldnames = [
+        "text",
+        "emoji",
+        "sentiment",
+        "neg",
+        "neu",
+        "pos",
+        "compound",
+        "detected",
+    ]
     writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
     writer.writeheader()
@@ -22,17 +31,18 @@ with open("data.csv", "w") as csv_file:
         if not emoji["text"].startswith("\xa0@"):
             sentence = emoji["text"].strip()
             vs = analyzer.polarity_scores(sentence)
+            sentiment = ratio[list(vs.values()).index(max(list(vs.values())[:-1]))]
 
-            if ratio[list(vs.values()).index(max(list(vs.values())[:-1]))] != "neutral":
-                writer.writerow(
-                    {
-                        "text": sentence,
-                        "emoji": emoji["emoji"],
-                        "sentiment": ratio[
-                            list(vs.values()).index(max(list(vs.values())[:-1]))
-                        ],
-                        "neg": vs["neg"],
-                        "neu": vs["neu"],
-                        "pos": vs["pos"],
-                    }
-                )
+            writer.writerow(
+                {
+                    "text": sentence,
+                    "emoji": emoji["emoji"],
+                    "sentiment": ratio[
+                        list(vs.values()).index(max(list(vs.values())[:-1]))
+                    ],
+                    "neg": vs["neg"],
+                    "neu": vs["neu"],
+                    "pos": vs["pos"],
+                    "detected": (True if sentiment == "neutral" else False),
+                }
+            )
