@@ -33,7 +33,7 @@ with st.form("form"):
         texts = [i["text"] for i in comments]
         authors = [i["author"] for i in comments]
 
-        chunks = list(chunk(texts, 20))
+        chunks = list(chunk(texts, 100))
 
         futures = [
             session.get(
