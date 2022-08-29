@@ -43,6 +43,6 @@ with open("data.csv", "w") as csv_file:
                     "neg": vs["neg"],
                     "neu": vs["neu"],
                     "pos": vs["pos"],
-                    "detected": (True if sentiment == "neutral" else False),
+                    "detected": (True if sentiment != "neutral" else False),
                 }
             )
