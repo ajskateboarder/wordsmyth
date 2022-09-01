@@ -1,19 +1,28 @@
 #!/usr/bin/python3
 
+"""Scale up a certain amount of Docker containers"""
+
 import os
 import sys
 
-try:
-    for i in range(1, 6):
-        code = os.system(f"docker rm --force econ{i} > /dev/null")
-        if code != 0:
-            sys.exit(code)
-        code = os.system(
-            f"docker run -p 800{i}:800{i} -d --name econ{i} -e PORT=800{i} {sys.argv[1]}"
-        )
-        if code != 0:
-            sys.exit(code)
-except Exception as e:
-    sys.exit(e)
 
-print(f'5 containers started under image "{sys.argv[1]}"')
+def check_code(code):
+    if code != 0:
+        return sys.exit(code)
+
+
+def start_instance(pid: int):
+    code = os.system(f"docker rm --force econ{pid} > /dev/null")
+    check_code(code)
+
+    code = os.system(
+        f"docker run -p {8000 + pid}:{8000 + pid} -d --name econ{pid} -e PORT=800{pid} {sys.argv[1]}"
+    )
+    check_code(code)
+
+
+if __name__ == "__main__":
+    for i in range(1, 6):
+        start_instance(i)
+
+    print(f'5 containers started under image "{sys.argv[1]}"')

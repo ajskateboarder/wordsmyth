@@ -84,12 +84,7 @@ Scale the API for faster processing of comments:
 
 ```bash
 make scale image=myimage
-```
-
-Or use it without make:
-
-```bash
-bash scripts/scale.sh myimage
+# ./scripts/scale myimage
 ```
 
 After running `docker ps`, you should see these containers listed:
@@ -107,10 +102,5 @@ Kill the containers when you are done with them:
 
 ```bash
 make killcons
-```
-
-Or its alternative:
-
-```bash
-bash scripts/killcons.sh
+# ./scripts/killcons
 ```
