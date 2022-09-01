@@ -104,3 +104,27 @@ Kill the containers when you are done with them:
 make killcons
 # ./scripts/killcons
 ```
+
+## Citations
+
+```bibtex
+@inproceedings{felbo2017,
+  title={Using millions of emoji occurrences to learn any-domain representations for detecting sentiment, emotion and sarcasm},
+  author={Felbo, Bjarke and Mislove, Alan and S{\o}gaard, Anders and Rahwan, Iyad and Lehmann, Sune},
+  booktitle={Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+  year={2017}
+}
+```
+
+```bibtex
+@article{Kralj2015emojis,
+  author={{Kralj Novak}, Petra and Smailovi{\'c}, Jasmina and Sluban, Borut and Mozeti\v{c}, Igor},
+  title={Sentiment of emojis},
+  journal={PLoS ONE},
+  volume={10},
+  number={12},
+  pages={e0144296},
+  url={http://dx.doi.org/10.1371/journal.pone.0144296},
+  year={2015}
+}
+```
