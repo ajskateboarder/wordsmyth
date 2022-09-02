@@ -4,3 +4,4 @@ git+https://github.com/themysticsavages/torchMoji
 youtube-comment-downloader
 requests
 requests-futures
+transformers

@@ -2,9 +2,11 @@
 
 from fastapi import FastAPI
 
-from src.micro.routes import predict, root
+from src.micro.routes import deepmoji_predict, roberta_predict, root
 
 app = FastAPI()
 
 app.include_router(root.router)
-app.include_router(predict.router)
+
+app.include_router(deepmoji_predict.router)
+app.include_router(roberta_predict.router)

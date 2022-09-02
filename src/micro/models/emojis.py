@@ -1,9 +1,8 @@
-from typing_extensions import TypedDict
 from typing import List
 
-from pydantic import BaseModel
+from typing_extensions import TypedDict
 
 
 class Emoji(TypedDict):
-    emoji: str
+    emojis: List[str]
     text: str
