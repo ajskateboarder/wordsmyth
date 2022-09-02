@@ -21,11 +21,7 @@ Whatever comments the program gets is thanks to [youtube-comment-downloader](htt
 
 ## Structure
 
-This only contains top level folders for simplicity.
-
 ```text
-citations/
-    Any citations the project uses
 media/
     Github README content
 scripts/
