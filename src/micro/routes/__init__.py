@@ -1,9 +1,12 @@
 """A single module variable"""
-
 import warnings
+
+from src.algo.deepmoji import Emojize
+from src.algo.roberta import Roberta
+
 
 warnings.filterwarnings("ignore")
 
-from src.deepmoji import Emojize
 
 emoji = Emojize()
+roberta = Roberta()
