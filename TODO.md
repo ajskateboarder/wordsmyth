@@ -10,4 +10,4 @@
 ### In progress
 
 - [ ] Migrate from VADER to MIRANDA so everything isn't marked as neutral
-- [ ] Use that little fork of youtube-comment-downloader which checks for replies until my PR gets merged
+- [ ] Migrate from REST to gRPC for interal APIs because it's way faster
