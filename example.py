@@ -42,13 +42,3 @@ with st.form("form"):
             )
             for i, c in zip(list(range(6))[1:], chunks)
         ]
-
-        res = []
-
-        for future in as_completed(futures):
-            print(future.result().text)
-            resp = future.result().json()
-            res.append(resp)
-
-        with open("data.json", "w") as fh:
-            json.dump(res, fh)
