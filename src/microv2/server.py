@@ -5,8 +5,8 @@ import logging
 
 import grpc
 
-from server_pb2_grpc import ModelServicer, add_ModelServicer_to_server
-from server_pb2 import emojis, sentiments
+from microv2.server_pb2_grpc import ModelServicer, add_ModelServicer_to_server
+from microv2.server_pb2 import emojis, sentiments
 
 
 from algo.deepmoji import Emojize
@@ -22,7 +22,11 @@ class Model(ModelServicer):
         return emojis(emojis=response)
 
     def roberta(self, request, _):
-        response = [", ".join(r.predict(text)) for text in request.texts]
+        response = [
+            str(r.predict(text)).replace("[", "").replace("]", "")
+            for text in request.texts
+        ]
+        print(response)
         return sentiments(sentiments=response)
 
 
