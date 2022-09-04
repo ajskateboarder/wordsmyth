@@ -4,7 +4,7 @@ import streamlit as st
 
 from requests_futures.sessions import FuturesSession
 
-from src.ytd import get_comments
+from ytd import get_comments
 
 
 def chunk(lst, n):

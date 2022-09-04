@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package modelsuite;
+
+message texts {
+    repeated string texts = 1;
+}
+
+message emojis {
+    repeated string emojis = 1;
+}
+
+message sentiments {
+    repeated string sentiments = 1;
+}
+
+service Model {
+    rpc torchmoji(texts) returns (emojis) {};
+    rpc roberta(texts) returns (sentiments) {};
+}
