@@ -5,3 +5,5 @@ youtube-comment-downloader
 requests
 requests-futures
 transformers
+grpcio
+grpcio_tools

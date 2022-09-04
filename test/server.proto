@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+service YoutubeComments {
+    rpc fetch(query) returns (comments) {}
+}
+
+message query {
+    string videoId = 1;
+    int32 limit = 2;
+}
+
+message comments {
+    repeated string comments = 1;
+}
