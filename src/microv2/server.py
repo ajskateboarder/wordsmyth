@@ -26,7 +26,6 @@ class Model(ModelServicer):
             str(r.predict(text)).replace("[", "").replace("]", "")
             for text in request.texts
         ]
-        print(response)
         return sentiments(sentiments=response)
 
 
