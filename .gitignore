@@ -9,5 +9,5 @@ ENV/
 env.bak/
 venv.bak/
 src/algo/deepmoji/model/*.bin
-src/microv2/server_pb2*
+src/microv2/server_pb2*.py
 **/*.egg-info
