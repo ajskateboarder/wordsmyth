@@ -1,9 +1,10 @@
-"""ok"""
 from concurrent.futures import ThreadPoolExecutor, as_completed
+
+from google.protobuf.json_format import MessageToDict
 import grpc
 
-from microv2.server_pb2 import emojis, texts
-from microv2.server_pb2_grpc import ModelStub
+from microv2.stubs.server_pb2 import Texts
+from microv2.stubs.server_pb2_grpc import ModelStub
 
 print("Connecting to gRPC server")
 channel = grpc.insecure_channel("localhost:50051")
@@ -15,11 +16,11 @@ def main(nlps):
     print("Requesting comments")
 
     with ThreadPoolExecutor() as executor:
-        futures = [executor.submit(fetch, texts(texts=v)) for v in nlps]
+        futures = [executor.submit(fetch, request=Texts(texts=v)) for v in nlps]
 
     for f in as_completed(futures):
         print("Collected")
-        print([e.split(", ") for e in f.result().emojis])
+        print(MessageToDict(f.result()))
 
 
 main([["This is the shit!", "You are shit."], ["Nice", "Very cool"]])
