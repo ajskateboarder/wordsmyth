@@ -11,7 +11,7 @@ channel = grpc.insecure_channel("localhost:50051")
 
 
 def main(nlps):
-    fetch = ModelStub(channel).torchmoji
+    fetch = ModelStub(channel).roberta
 
     print("Requesting comments")
 
