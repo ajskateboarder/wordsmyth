@@ -1,12 +1,12 @@
 import pytest
 from grpc._channel import _InactiveRpcError
 
-from microv2.server_pb2 import texts
+from microv2.stubs.server_pb2 import Texts
 
 
 @pytest.fixture(scope="module")
 def grpc_add_to_server():
-    from microv2.server_pb2_grpc import add_ModelServicer_to_server
+    from microv2.stubs.server_pb2_grpc import add_ModelServicer_to_server
 
     return add_ModelServicer_to_server
 
@@ -20,7 +20,7 @@ def grpc_servicer():
 
 @pytest.fixture(scope="module")
 def grpc_stub(grpc_channel):
-    from microv2.server_pb2_grpc import ModelStub
+    from microv2.stubs.server_pb2_grpc import ModelStub
 
     return ModelStub(grpc_channel)
 
@@ -29,7 +29,7 @@ def grpc_stub(grpc_channel):
 def test_none(grpc_stub):
     """Test if an empty response returns an empty list as there's nothing to process"""
 
-    request = texts()
+    request = Texts()
     response = grpc_stub.torchmoji(request)
 
     assert response.emojis == []
