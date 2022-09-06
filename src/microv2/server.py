@@ -4,8 +4,14 @@ from concurrent.futures import ThreadPoolExecutor
 
 import grpc
 
+<<<<<<< HEAD
 from microv2.stubs.server_pb2_grpc import add_ModelServicer_to_server, ModelServicer
 from microv2.stubs.server_pb2 import Emoji, Emojis, Sentiment, Sentiments
+=======
+from microv2.server_pb2_grpc import ModelServicer, add_ModelServicer_to_server
+from microv2.server_pb2 import emojis, sentiments
+
+>>>>>>> db68cdb87ca9b53b9071dbc82dd375f9d7bbcbb1
 
 from algo.deepmoji import Emojize
 from algo.roberta import Roberta
@@ -24,9 +30,16 @@ class Model(ModelServicer):
 
     def roberta(self, request, _):
         response = [
+<<<<<<< HEAD
             Sentiment(**roberta.predict(text), text=text) for text in request.texts
         ]
         return Sentiments(response=response)
+=======
+            str(r.predict(text)).replace("[", "").replace("]", "")
+            for text in request.texts
+        ]
+        return sentiments(sentiments=response)
+>>>>>>> db68cdb87ca9b53b9071dbc82dd375f9d7bbcbb1
 
 
 def main():
