@@ -1,32 +1,35 @@
 """Some random docstring"""
 
 from concurrent.futures import ThreadPoolExecutor
-import logging
 
 import grpc
 
-from server_pb2_grpc import ModelServicer, add_ModelServicer_to_server
-from server_pb2 import emojis, sentiments
-
+from microv2.stubs.server_pb2_grpc import add_ModelServicer_to_server, ModelServicer
+from microv2.stubs.server_pb2 import Emoji, Emojis, Sentiment, Sentiments
 
 from algo.deepmoji import Emojize
 from algo.roberta import Roberta
 
-e = Emojize()
-r = Roberta()
+
+deepmoji = Emojize()
+roberta = Roberta()
 
 
 class Model(ModelServicer):
     def torchmoji(self, request, _):
-        response = [", ".join(e.predict(text)) for text in request.texts]
-        return emojis(emojis=response)
+        response = [
+            Emoji(emojis=deepmoji.predict(text), text=text) for text in request.texts
+        ]
+        return Emojis(response=response)
 
     def roberta(self, request, _):
-        response = [", ".join(r.predict(text)) for text in request.texts]
-        return sentiments(sentiments=response)
+        response = [
+            Sentiment(**roberta.predict(text), text=text) for text in request.texts
+        ]
+        return Sentiments(response=response)
 
 
-def serve():
+def main():
     server = grpc.server(ThreadPoolExecutor(max_workers=10))
     add_ModelServicer_to_server(Model(), server)
     server.add_insecure_port("[::]:50051")
@@ -35,5 +38,4 @@ def serve():
 
 
 if __name__ == "__main__":
-    logging.basicConfig()
-    serve()
+    main()
