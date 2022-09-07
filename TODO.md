@@ -9,5 +9,4 @@
 
 ## In progress
 
-- [ ] Migrate from VADER to MIRANDA so everything isn't marked as neutral
-- [ ] Migrate from REST to gRPC for interal APIs because it's way faster
+Nothing

@@ -14,13 +14,14 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0cserver.proto\x12\x06models\"\x16\n\x05Texts\x12\r\n\x05texts\x18\x01 \x03(\t\"%\n\x05\x45moji\x12\x0e\n\x06\x65mojis\x18\x01 \x03(\t\x12\x0c\n\x04text\x18\x02 \x01(\t\")\n\x06\x45mojis\x12\x1f\n\x08response\x18\x01 \x03(\x0b\x32\r.models.Emoji\"@\n\tSentiment\x12\x0b\n\x03neg\x18\x01 \x01(\x02\x12\x0b\n\x03neu\x18\x02 \x01(\x02\x12\x0b\n\x03pos\x18\x03 \x01(\x02\x12\x0c\n\x04text\x18\x04 \x01(\t\"1\n\nSentiments\x12#\n\x08response\x18\x01 \x03(\x0b\x32\x11.models.Sentiment2e\n\x05Model\x12,\n\ttorchmoji\x12\r.models.Texts\x1a\x0e.models.Emojis\"\x00\x12.\n\x07roberta\x12\r.models.Texts\x1a\x12.models.Sentiments\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0cserver.proto\x12\x06models\"\x16\n\x05Texts\x12\r\n\x05texts\x18\x01 \x03(\t\"%\n\x05\x45moji\x12\x0e\n\x06\x65mojis\x18\x01 \x03(\t\x12\x0c\n\x04text\x18\x02 \x01(\t\")\n\x06\x45mojis\x12\x1f\n\x08response\x18\x01 \x03(\x0b\x32\r.models.Emoji\"2\n\tNegNeuPos\x12\x0b\n\x03neg\x18\x01 \x01(\x02\x12\x0b\n\x03neu\x18\x02 \x01(\x02\x12\x0b\n\x03pos\x18\x03 \x01(\x02\"?\n\tSentiment\x12$\n\tsentiment\x18\x01 \x01(\x0b\x32\x11.models.NegNeuPos\x12\x0c\n\x04text\x18\x02 \x01(\t\"1\n\nSentiments\x12#\n\x08response\x18\x01 \x03(\x0b\x32\x11.models.Sentiment2e\n\x05Model\x12,\n\ttorchmoji\x12\r.models.Texts\x1a\x0e.models.Emojis\"\x00\x12.\n\x07roberta\x12\r.models.Texts\x1a\x12.models.Sentiments\"\x00\x62\x06proto3')
 
 
 
 _TEXTS = DESCRIPTOR.message_types_by_name['Texts']
 _EMOJI = DESCRIPTOR.message_types_by_name['Emoji']
 _EMOJIS = DESCRIPTOR.message_types_by_name['Emojis']
+_NEGNEUPOS = DESCRIPTOR.message_types_by_name['NegNeuPos']
 _SENTIMENT = DESCRIPTOR.message_types_by_name['Sentiment']
 _SENTIMENTS = DESCRIPTOR.message_types_by_name['Sentiments']
 Texts = _reflection.GeneratedProtocolMessageType('Texts', (_message.Message,), {
@@ -43,6 +44,13 @@ Emojis = _reflection.GeneratedProtocolMessageType('Emojis', (_message.Message,),
   # @@protoc_insertion_point(class_scope:models.Emojis)
   })
 _sym_db.RegisterMessage(Emojis)
+
+NegNeuPos = _reflection.GeneratedProtocolMessageType('NegNeuPos', (_message.Message,), {
+  'DESCRIPTOR' : _NEGNEUPOS,
+  '__module__' : 'server_pb2'
+  # @@protoc_insertion_point(class_scope:models.NegNeuPos)
+  })
+_sym_db.RegisterMessage(NegNeuPos)
 
 Sentiment = _reflection.GeneratedProtocolMessageType('Sentiment', (_message.Message,), {
   'DESCRIPTOR' : _SENTIMENT,
@@ -68,10 +76,12 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _EMOJI._serialized_end=85
   _EMOJIS._serialized_start=87
   _EMOJIS._serialized_end=128
-  _SENTIMENT._serialized_start=130
-  _SENTIMENT._serialized_end=194
-  _SENTIMENTS._serialized_start=196
-  _SENTIMENTS._serialized_end=245
-  _MODEL._serialized_start=247
-  _MODEL._serialized_end=348
+  _NEGNEUPOS._serialized_start=130
+  _NEGNEUPOS._serialized_end=180
+  _SENTIMENT._serialized_start=182
+  _SENTIMENT._serialized_end=245
+  _SENTIMENTS._serialized_start=247
+  _SENTIMENTS._serialized_end=296
+  _MODEL._serialized_start=298
+  _MODEL._serialized_end=399
 # @@protoc_insertion_point(module_scope)

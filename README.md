@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<img src="https://github.com/themysticsavages/ytstars/blob/main/media/ytstars_logo.png" height=200 width=900>
+<img src="https://github.com/themysticsavages/ytstars/blob/main/media/ytstars_logo.png?raw=1" height=200 width=900>
 
 <i><br><br>Rate YouTube videos based on comments (yes the logo looks draft-y)</i>
 
@@ -27,18 +27,20 @@ media/
 scripts/
     Scripts to abstract Docker scaling
 src/
-    deepmoji/
-        Model library
+    algo/
+        Model libraries
     micro/
         Microservice to multiprocess comments
-    ytd/
-        Small wrapper over youtube-comment-downloader
+    microv2/
+        GRPC-based API to process data faster
+        (almost done migrating to this)
 ```
 
 ## Requirements
 
 - Python 3 (entire app codebase)
 - Docker (required for demos)
+- Makefile (optional but makes development very enjoyable)
 - Linux/WSL (only platform the app was tested on)
 
 ## Usage
@@ -59,46 +61,41 @@ make dlmodel
 
 If you do not have [wget](https://www.gnu.org/software/wget) installed, get the model from [here](https://dropbox.com/s/q8lax9ary32c7t9/pytorch_model.bin?dl=0) and save it in `src/deepmoji/model/`.
 
-Start the comment processing microservice locally:
+##
+
+Since the completion of the GRPC microservice, we recommend using it as the original REST API will soon be deprecated.
+
+Create interoperable stubs, if needed:
 
 ```bash
-uvicorn src.micro.main:app
+make proto
 ```
 
-Heading to [http://localhost:8000](http://localhost:8000) should give you `"Pong.\n"`
+Start the server:
 
-### Scaling
+```bash
+make grpc
+```
+
+Run it with an example client:
+
+```bash
+python3 future/client.py
+```
+
+### Dockerizing
 
 Build the Docker image from the Dockerfile:
 
 ```bash
 # prepend DOCKER_BUILDKIT=1 to apply better caching and faster build times
-docker build -t myimage .
+docker build -t myimage -f Dockerfile.v2 .
 ```
 
-Scale the API for faster processing of comments:
+Start the Docker image on port `50051`:
 
 ```bash
-make scale image=myimage
-# ./scripts/scale myimage
-```
-
-After running `docker ps`, you should see these containers listed:
-
-```text
-PORTS                                       NAMES
-0.0.0.0:8005->8005/tcp, :::8005->8005/tcp   econ5
-0.0.0.0:8004->8004/tcp, :::8004->8004/tcp   econ4
-0.0.0.0:8003->8003/tcp, :::8003->8003/tcp   econ3
-0.0.0.0:8002->8002/tcp, :::8002->8002/tcp   econ2
-0.0.0.0:8001->8001/tcp, :::8001->8001/tcp   econ1
-```
-
-Kill the containers when you are done with them:
-
-```bash
-make killcons
-# ./scripts/killcons
+docker run -dp 50051:50051 myimage
 ```
 
 ## Citations
