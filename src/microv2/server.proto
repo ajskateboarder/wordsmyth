@@ -15,11 +15,15 @@ message Emojis {
     repeated Emoji response = 1;
 }
 
-message Sentiment {
+message NegNeuPos {
     float neg = 1;
     float neu = 2;
     float pos = 3;
-    string text = 4;
+}
+
+message Sentiment {
+    NegNeuPos sentiment = 1; 
+    string text = 2;
 }
 
 message Sentiments {

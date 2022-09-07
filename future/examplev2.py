@@ -4,8 +4,8 @@ import streamlit as st
 import requests
 import grpc
 
-from microv2.server_pb2 import sentiments, texts
-from microv2.server_pb2_grpc import ModelStub
+from microv2.stubs.server_pb2 import Sentiments, Texts
+from microv2.stubs.server_pb2_grpc import ModelStub
 
 from ytd import get_comments
 
@@ -42,11 +42,11 @@ with st.form("form"):
         print("Requesting comments")
 
         with ThreadPoolExecutor() as executor:
-            futures = [executor.submit(fetch, texts(texts=v)) for v in chunks]
+            futures = [executor.submit(fetch, Texts(texts=v)) for v in chunks]
 
         for f in as_completed(futures):
             print("Collected")
-            print([[g for g in e.split(", ")] for e in f.result().emojis])
+            print(f.result())
 
 
 # main([["This is the shit!", "You are shit."], ["Nice", "Very cool"]])

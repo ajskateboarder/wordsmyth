@@ -64,26 +64,42 @@ class Emojis(google.protobuf.message.Message):
 
 global___Emojis = Emojis
 
-class Sentiment(google.protobuf.message.Message):
+class NegNeuPos(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
     NEG_FIELD_NUMBER: builtins.int
     NEU_FIELD_NUMBER: builtins.int
     POS_FIELD_NUMBER: builtins.int
-    TEXT_FIELD_NUMBER: builtins.int
     neg: builtins.float
     neu: builtins.float
     pos: builtins.float
-    text: builtins.str
     def __init__(
         self,
         *,
         neg: builtins.float = ...,
         neu: builtins.float = ...,
         pos: builtins.float = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["neg", b"neg", "neu", b"neu", "pos", b"pos"]) -> None: ...
+
+global___NegNeuPos = NegNeuPos
+
+class Sentiment(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    SENTIMENT_FIELD_NUMBER: builtins.int
+    TEXT_FIELD_NUMBER: builtins.int
+    @property
+    def sentiment(self) -> global___NegNeuPos: ...
+    text: builtins.str
+    def __init__(
+        self,
+        *,
+        sentiment: global___NegNeuPos | None = ...,
         text: builtins.str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["neg", b"neg", "neu", b"neu", "pos", b"pos", "text", b"text"]) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["sentiment", b"sentiment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["sentiment", b"sentiment", "text", b"text"]) -> None: ...
 
 global___Sentiment = Sentiment
 

@@ -17,4 +17,4 @@ class Roberta:
         output = self.model(**encoded_text)
 
         scores = softmax(output[0][0].detach().numpy())
-        return [scores[0], scores[1], scores[2]]
+        return {"neg": scores[0], "neu": scores[1], "pos": scores[2]}
