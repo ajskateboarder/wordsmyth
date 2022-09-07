@@ -59,7 +59,7 @@ main(
         chunks(
             [
                 e["text"]
-                for e, _ in zip(yt.get_comments("QGlCjVG-Hyc", sort_by=1), range(50))
+                for e, _ in zip(yt.get_comments("v9jSFtD40Wk", sort_by=1), range(50))
                 if not e["reply"]
             ],
             10,
