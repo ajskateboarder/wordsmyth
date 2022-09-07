@@ -1,39 +1,40 @@
 ,text,sentiment,pos,neg,emojis
-0,i feel like if you built 1 small thing each stream instead of big projects and you where more engaged with your viewers as well as coding since its a small simple project it wont be that hard to do both but i do agree with you i've tried streaming my projects and it just would not pick up any traction. and i think if you did your big project in the off time of your stream and you updated your viewers on what you have done i feel like that would be a better option than streaming the code live or you could make the coding of your big project into a Youtube video kinda like a dev log and promote it in your twitch streams,pos,0.47734484,0.06679908,":thumbsup:, :heartbeat:, :yellow_heart:, :blush:, :smile:"
-1,yes me  too i hate that moment when I implement bubble sort and some other algorithms accidentally  LMAO,neg,0.013431091,0.8962621,":sweat:, :sleeping:, :persevere:, :disappointed:, :confused:"
-2,Valid points but… My goal is still to make Live Coding as fun as gaming one day. 🤞,pos,0.9259232,0.0024893947,":thumbsup:, :rage:, :v:, :angry:, :smile:"
-3,"very late, but I think live coding can be good entertainment-wise, as long as it's something interesting that you can make relatively constant viewable progress on
-If you can write a small part of what you're working on, then show immediately the results of that, that's interesting imo, tho this is mainly a gamedev person talking",pos,0.9073903,0.0059465473,":thumbsup:, :smile:, :wink:, :stuck_out_tongue_winking_eye:, :confused:"
-4,"Literally searched how to live stream in twitch about my programming skills, watched this video and retired that thought. Thanks 👍👍..",pos,0.62243384,0.023588879,":raised_hands:, :ok_hand:, :thumbsup:, :clap:, :heart_eyes:"
-5,Totally agree. Not worth it. It's very easy to go off track when many are involved.,neg,0.0347488,0.6821973,":thumbsup:, :no_good:, :angry:, :rage:, :hand:"
-6,I think you overestimate the number of people who actually code compared to the number of gamers.,neg,0.02600191,0.69312614,":neutral_face:, :expressionless:, :confused:, :hand:, :unamused:"
-7,"Oh yes, walking around while thinking is so essential I feel you",pos,0.7226004,0.013849285,":pensive:, :broken_heart:, :sweat:, :gun:, :disappointed:"
-8,"Ben: Minus the part where I sell my soul to Microsoft 
-Also Ben: Microsoft still hasn’t acquired my VSCode extension",neg,0.056508947,0.4886498,":expressionless:, :neutral_face:, :cry:, :rage:, :angry:"
-9,george hotz gets a good amount of viewers,pos,0.89128965,0.0038833204,":clap:, :thumbsup:, :ok_hand:, :eyes:, :flushed:"
-10,Why would you watch a someone coding live? I see your 10min videos in 1min.,neg,0.0285565,0.60529447,":expressionless:, :neutral_face:, :unamused:, :confused:, :flushed:"
-11,"I usually watch people livestreaming coding projects because it kind of motivates me to work on my stuff, and it's a nice kind of white-noise that puts me into the zone/flow because what I am hearing is people tackling their own problems in their projects and how they solve them.",pos,0.9226124,0.0034500747,":thumbsup:, :muscle:, :relieved:, :blush:, :smile:"
-12,"I sometimes watch George Hotz. He's very engaging with the chat, and it's not so much for the code. More about hearing his thoughts and understanding of things. He really gives some nice insights sometimes.",pos,0.9595286,0.0030179578,":thumbsup:, :blush:, :smile:, :relaxed:, :wink:"
-13,So fun the phrase about implementing the new Facebook... If you think about Dogehouse now jejeje,pos,0.9018389,0.00297734,":stuck_out_tongue_winking_eye:, :smile:, :speak_no_evil:, :smiling_imp:, :wink:"
-14,"Can you please try Gitpod (created by Github), it's Visual Studio Code in The Browser, but you don't waste your storage and everything you code is 100% secure and private.",pos,0.8496641,0.008937217,":thumbsup:, :rage:, :wink:, :pray:, :angry:"
-15,Please look at the camera :),pos,0.6872368,0.012810645,":heartbeat:, :yellow_heart:, :pray:, :broken_heart:, :thumbsup:"
-16,"simple, streaming code is less popular than streaming games because coding is less popular than gaming. Besides, you are not really supposed to stream coding, I mean why can't you just do a screencast and edit out the junk and make it cleaner so people can better digest it? Games are entertainments, coding is education. That's the difference.",neg,0.07635257,0.58038217,":rage:, :confused:, :angry:, :wink:, :thumbsup:"
-17,I disagree,neg,0.03335677,0.5688788,":no_good:, :hand:, :information_desk_person:, :unamused:, :neutral_face:"
-18,"Ottomated is great at streaming and coding, you can check him out",pos,0.9780254,0.0016778348,":thumbsup:, :wink:, :smile:, :blush:, :stuck_out_tongue_winking_eye:"
-19,"I used to livestream code, and what ended up kind of working for me was making micro projects. Pretty much game jam level problems, working with tech I already knew really well, and hacking things in super fast without caring about code quality. This let me get back to playtesting the game faster, and make the streams more entertaining. This is totally correct though, for anything even remotely challenging, the livestream was just the worst place to do it. Twitch chat completely breaks progress. I ended up spending most of my time in the streams ""teaching"" or just explaining how things work, and very little time actually writing code.",neg,0.17357977,0.48689497,":rage:, :angry:, :confused:, :expressionless:, :neutral_face:"
-20,"It's actually pretty beneficial to see a pro struggle with an unexpected error for a few reasons. First it's a good ego boost, resets the voices in your head telling you you're the only one that googles stuff for days with no hope in sight, an then you get carried along the whole thought process of fixing the damn thing. The downtime is a downside though so it's not entirely efficient, maybe a stream supercut on youtube would be even better.",pos,0.52810234,0.16448519,":v:, :sleeping:, :no_good:, :sunglasses:, :hand:"
-21,"Next, the problem with livestreaming doing homework",neg,0.010498617,0.72828573,":confused:, :thumbsup:, :neutral_face:, :grimacing:, :smile:"
-22,TBH 94.27% I get bored and close a stream. After 2 months I try again.,neg,0.025508067,0.72484356,":gun:, :expressionless:, :sweat:, :unamused:, :sleepy:"
-23,I feel like live-streaming teaching an e-girl code could actually be a popular longtime thing.,pos,0.8151143,0.0038969324,":sweat_smile:, :neutral_face:, :confused:, :expressionless:, :sleepy:"
-24,"My programming stream is built to entertain primarily, but we do work on projects (Twitch chat bot, Data Analysis, etc.) that are pretty easy to follow. The big educational value-add is my discord server, where myself and professionals from my audience can give and receive help. 
+0,Ben Awad outdoes TechLead. ;),pos,0.7123838,0.017985577,":heartbeat:, :yellow_heart:, :heart:, :v:, :relaxed:"
+1,or maybe dont start a project if youre not really that excited about it. twitch started as justin tv imagine if they quit three months in.,neg,0.06977422,0.48463437,":neutral_face:, :flushed:, :expressionless:, :confused:, :grimacing:"
+2,I think there's two sides to the argument. Nice to hear your take on it. Read Derek Yu's book on Spelunky for the other side.,pos,0.6767408,0.019208021,":thumbsup:, :clap:, :ok_hand:, :wink:, :blush:"
+3,This a great habit.  Keep it up.,pos,0.97001946,0.002553148,":thumbsup:, :muscle:, :clap:, :ok_hand:, :raised_hands:"
+4,Vsinder Sinking Ship,neg,0.020967264,0.5485613,":broken_heart:, :cry:, :musical_note:, :notes:, :blue_heart:"
+5,This dude is a walking meme.,neg,0.011282192,0.9036769,":skull:, :joy:, :flushed:, :sob:, :neutral_face:"
+6,"your glasses arent straight, bothering me",neg,0.0040961197,0.9352138,":unamused:, :expressionless:, :angry:, :persevere:, :triumph:"
+7,"I only follow for the angular hate, even though I haven't written one line of it in my entire life",neg,0.01989759,0.76058936,":sweat_smile:, :unamused:, :information_desk_person:, :neutral_face:, :expressionless:"
+8,why do u have such a  batman joker vibe,neg,0.025626656,0.6414358,":expressionless:, :neutral_face:, :unamused:, :confused:, :angry:"
+9,"Zero context here. Not sure if he is talking about a new solo project or an actual employed  position. Either way, he should do some proper investigation or thought before spending 3 months. 
+I think the SV “fail fast” dogma doesn’t mean quit fast before achieve anything.",neg,0.03296316,0.57290137,":confused:, :rage:, :angry:, :thumbsup:, :neutral_face:"
+10,"ah the angular diss is back
 
-A year ago this month, I wrote my “hello world” on stream, and I’ve grown with my audience, and I now get a (modest) pay check from Twitch every month. It can happen, just gotta commit to the time, effort, and funding.",pos,0.9210887,0.002500459,":neutral_face:, :flushed:, :sweat_smile:, :confused:, :information_desk_person:"
-25,"however, I recommend watching one stream of Handmade Hero. Casey is... amazing in a very unique way - whatever he does, he first explains and discusses with the viewers, and then he's able to code it very quickly in the most magically simple, straightforward, and fast way. His coding streams are... great, and he manages to stay in the flow the whole time, even when talking to chat, because he's talking about the task, and chat is too.",pos,0.9848595,0.001705487,":thumbsup:, :heartbeat:, :blush:, :yellow_heart:, :wink:"
-26,"i tried livestreaming my coding, and I up-front decided to not care whether it's engaging or not, and with that mindset, the main upside was that I avoided distractions and too many pauses, because I was aware I could be watched at any moment.
-it was still surprisingly more exhausting, since i was commenting out loud what i was doing, and talking in that way for 4 hours is... exhausting.",neg,0.11005708,0.5669266,":thumbsup:, :blush:, :rage:, :confused:, :cry:"
-27,"This is odd, George Hotz has no issues with live streaming programming activities. I have had  success coding along with twitchslam and other projects. Please do some more programming renders as they are helpful to people imo way more than the placebo effect of comprehending vlogs. Im glad you have great goals for your start ups but i find those vlogs vague and too short. I follow you bc of your brain, and would imagine in my ignorance of business ventures that your success comes intrinsically from your ideas being fleshed out. Im probably in the minority but a live stream programming render from you would be valuable in whatever incomplete or imperfect form that it is. Thanks for sharing all the hard work",pos,0.8284159,0.025323765,":expressionless:, :angry:, :gun:, :persevere:, :confounded:"
-28,"I recently found a good place for coding livestreams. Im maintaining a quite large OSS project, and we have some difficulty involving the users in the development process of the library. So i started lifestreaming some of the development of the project. This means people can come and hang out, ask more about quickly about issues etc. It also allows me to give a tour of the entire project really nice and quickly without having to spend hours in a discord chat going through it.
+thank god",pos,0.9234111,0.0054628826,":joy:, :sunglasses:, :v:, :smirk:, :sweat_smile:"
+11,"What if you’re an employee without a YouTube channel and thousands of followers. Quitting four times makes it seem like you’re the problem not the project.
 
-I do realise though that this doesnt apply to everyone, and your points are definitely very valid. Just thought i would share my recent experience.",pos,0.9031073,0.011561045,":muscle:, :thumbsup:, :sunglasses:, :smiling_imp:, :facepunch:"
-29,Bubble sort is the best data structure,pos,0.85840076,0.00795025,":thumbsup:, :wink:, :smile:, :stuck_out_tongue_winking_eye:, :eyes:"
-30,"And for that reason, I'm out",neg,0.019451493,0.65238065,":thumbsup:, :neutral_face:, :expressionless:, :clap:, :sweat_smile:"
+By the fourth time, based on the expertise this channel feigns, how are you not asking different questions or qualifying projects better.
+
+
+If you didn’t have a YouTube channel or savings, how many people are going to be realistically in a position to quit their company? 
+
+Just saying, sounds like he’s shitting on the projects and we of course are only hearing one side but calling a project a boat and yourself (which happens to group in your coworkers) a sailor kind of sounds like you’re shitting on people.",neg,0.022358108,0.7490661,":sweat_smile:, :flushed:, :thumbsup:, :confused:, :ok_hand:"
+12,I love Angular,pos,0.91127497,0.020515084,":thumbsup:, :neutral_face:, :rage:, :broken_heart:, :expressionless:"
+13,"Control+S you can quit now
+If you did something bad Control-Z
+Thank me later boys",neg,0.02214974,0.5615171,":rage:, :angry:, :triumph:, :no_good:, :hand:"
+14,Why I quit my project (as a millionaire),neg,0.041018575,0.5761429,":pray:, :sunglasses:, :muscle:, :100:, :thumbsup:"
+15,"LOL
+
+Guess I'm on the right path then =P",pos,0.8357825,0.0048420024,":pray:, :raised_hands:, :clap:, :100:, :sweat_smile:"
+16,No idea what the fuck you said at the end but decent advice I think?,neg,0.02352907,0.7773911,":rage:, :angry:, :neutral_face:, :confused:, :expressionless:"
+17,"You put your heart and soul into something for 3 measly months and you quit? Ok man.
+
+Love how all the comments are 3 months old. Must've subscribed and after 3 months they unsubscribe.",neg,0.041821107,0.7303786,":heart:, :yellow_heart:, :heart_eyes:, :heartbeat:, :blue_heart:"
+18,"yeah quitting start ups is fine, but not when you involve a lot of people into it, hype up everyone like it’s “the next big thing” and when developers spend hundreds of hours working on this project, community is formed, you just quit, it’s not okay to others. I personally spent a lot of time developing a bot for Doge house and bfore I finished it you quit and that was the end of my work… wasting others time is not okay",neg,0.021749547,0.82561123,":v:, :clap:, :facepunch:, :hand:, :thumbsup:"
+19,Broski I'm not in the coding world but I've been job hoping for 3~ years. This is the same thing imo for every Carrer path. I love the analogy cuz it's true!!! Dont stick to a poor company that doesn't value you. Be the captain..... I am the captain now,pos,0.50830287,0.13649128,":sweat:, :expressionless:, :triumph:, :rage:, :angry:"
+20,Someone was insulted here haha. :P,neg,0.050160088,0.5881987,":v:, :heartbeat:, :stuck_out_tongue_winking_eye:, :smile:, :joy:"
+21,The worst thing to make is to toke this as an influence,neg,0.0050883284,0.9338034,":sweat:, :sleepy:, :confused:, :no_good:, :unamused:"
+22,"Hey look, another video in which u didn't diss on angular. Too damn humble.",neg,0.0592851,0.6363259,":sunglasses:, :100:, :raised_hands:, :relieved:, :pray:"
