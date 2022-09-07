@@ -35,7 +35,11 @@ def main():
             emojis.append(", ".join(res["emojis"]))
 
     df["emojis"] = emojis
-    print(df.to_csv("./extracts.csv", columns=["text", "sentiment", "emojis"]))
+    print(
+        df.to_csv(
+            "./extracts.csv", columns=["text", "sentiment", "pos", "neg", "emojis"]
+        )
+    )
 
 
 main()
