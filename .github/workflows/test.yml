@@ -22,6 +22,11 @@ jobs:
           pip install -r requirements_dev.txt
           pip install torch --extra-index-url https://download.pytorch.org/whl/cpu
           pip install -r requirements.txt
+      - name: Download torchMoji model
+        run: |
+          python -c \
+            'from torchmoji.dl_utils import execute_download; \
+            execute_download("./src/algo/deepmoji/model/pytorch_model.bin")'
       - name: Test with pytest
         run: |
           pytest
