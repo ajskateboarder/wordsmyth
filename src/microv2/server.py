@@ -5,14 +5,14 @@ from concurrent.futures import ThreadPoolExecutor
 import grpc
 
 from microv2.stubs.server_pb2_grpc import add_ModelServicer_to_server, ModelServicer
-from microv2.stubs.server_pb2 import Emoji, Emojis, Sentiment, Sentiments, NegNeuPos
+from microv2.stubs.server_pb2 import Emoji, Emojis, Sentiment, Sentiments, Intensity
 
 from algo.deepmoji import Emojize
-from algo.roberta import Roberta
+from algo.flairnlp import Flair
 
 
 deepmoji = Emojize()
-roberta = Roberta()
+flair = Flair()
 
 
 class Model(ModelServicer):
@@ -22,9 +22,9 @@ class Model(ModelServicer):
         ]
         return Emojis(response=response)
 
-    def roberta(self, request, _):
+    def flair(self, request, _):
         response = [
-            Sentiment(sentiment=NegNeuPos(**roberta.predict(text)), text=text)
+            Sentiment(sentiment=Intensity(**flair.predict(text)), text=text)
             for text in request.texts
         ]
         return Sentiments(response=response)
