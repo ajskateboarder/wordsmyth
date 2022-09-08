@@ -18,7 +18,7 @@ flair = Flair()
 class Model(ModelServicer):
     def torchmoji(self, request, _):
         response = [
-            Emoji(emojis=deepmoji.predict(text), text=text) for text in request.texts
+            Emoji(emojis=deepmoji.predict(text, request.count), text=text) for text in request.texts
         ]
         return Emojis(response=response)
 

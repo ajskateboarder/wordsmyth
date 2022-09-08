@@ -25,7 +25,7 @@ def main():
     print("Requesting comments")
 
     with ThreadPoolExecutor() as executor:
-        futures = [executor.submit(fetch, request=Request(texts=v)) for v in text]
+        futures = [executor.submit(fetch, request=Request(texts=v, count=10)) for v in text]
 
     emojis = []
     for f in as_completed(futures):

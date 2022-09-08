@@ -14,22 +14,22 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0cserver.proto\x12\x06models\"\x16\n\x05Texts\x12\r\n\x05texts\x18\x01 \x03(\t\"%\n\x05\x45moji\x12\x0e\n\x06\x65mojis\x18\x01 \x03(\t\x12\x0c\n\x04text\x18\x02 \x01(\t\")\n\x06\x45mojis\x12\x1f\n\x08response\x18\x01 \x03(\x0b\x32\r.models.Emoji\"-\n\tIntensity\x12\x11\n\tsentiment\x18\x01 \x01(\t\x12\r\n\x05score\x18\x02 \x01(\x02\"?\n\tSentiment\x12$\n\tsentiment\x18\x01 \x01(\x0b\x32\x11.models.Intensity\x12\x0c\n\x04text\x18\x02 \x01(\t\"1\n\nSentiments\x12#\n\x08response\x18\x01 \x03(\x0b\x32\x11.models.Sentiment2c\n\x05Model\x12,\n\ttorchmoji\x12\r.models.Texts\x1a\x0e.models.Emojis\"\x00\x12,\n\x05\x66lair\x12\r.models.Texts\x1a\x12.models.Sentiments\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0cserver.proto\x12\x06models\"\'\n\x07Request\x12\r\n\x05texts\x18\x01 \x03(\t\x12\r\n\x05\x63ount\x18\x02 \x01(\x05\"%\n\x05\x45moji\x12\x0e\n\x06\x65mojis\x18\x01 \x03(\t\x12\x0c\n\x04text\x18\x02 \x01(\t\")\n\x06\x45mojis\x12\x1f\n\x08response\x18\x01 \x03(\x0b\x32\r.models.Emoji\"-\n\tIntensity\x12\x11\n\tsentiment\x18\x01 \x01(\t\x12\r\n\x05score\x18\x02 \x01(\x02\"?\n\tSentiment\x12$\n\tsentiment\x18\x01 \x01(\x0b\x32\x11.models.Intensity\x12\x0c\n\x04text\x18\x02 \x01(\t\"1\n\nSentiments\x12#\n\x08response\x18\x01 \x03(\x0b\x32\x11.models.Sentiment2g\n\x05Model\x12.\n\ttorchmoji\x12\x0f.models.Request\x1a\x0e.models.Emojis\"\x00\x12.\n\x05\x66lair\x12\x0f.models.Request\x1a\x12.models.Sentiments\"\x00\x62\x06proto3')
 
 
 
-_TEXTS = DESCRIPTOR.message_types_by_name['Texts']
+_REQUEST = DESCRIPTOR.message_types_by_name['Request']
 _EMOJI = DESCRIPTOR.message_types_by_name['Emoji']
 _EMOJIS = DESCRIPTOR.message_types_by_name['Emojis']
 _INTENSITY = DESCRIPTOR.message_types_by_name['Intensity']
 _SENTIMENT = DESCRIPTOR.message_types_by_name['Sentiment']
 _SENTIMENTS = DESCRIPTOR.message_types_by_name['Sentiments']
-Texts = _reflection.GeneratedProtocolMessageType('Texts', (_message.Message,), {
-  'DESCRIPTOR' : _TEXTS,
+Request = _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), {
+  'DESCRIPTOR' : _REQUEST,
   '__module__' : 'server_pb2'
-  # @@protoc_insertion_point(class_scope:models.Texts)
+  # @@protoc_insertion_point(class_scope:models.Request)
   })
-_sym_db.RegisterMessage(Texts)
+_sym_db.RegisterMessage(Request)
 
 Emoji = _reflection.GeneratedProtocolMessageType('Emoji', (_message.Message,), {
   'DESCRIPTOR' : _EMOJI,
@@ -70,18 +70,18 @@ _MODEL = DESCRIPTOR.services_by_name['Model']
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _TEXTS._serialized_start=24
-  _TEXTS._serialized_end=46
-  _EMOJI._serialized_start=48
-  _EMOJI._serialized_end=85
-  _EMOJIS._serialized_start=87
-  _EMOJIS._serialized_end=128
-  _INTENSITY._serialized_start=130
-  _INTENSITY._serialized_end=175
-  _SENTIMENT._serialized_start=177
-  _SENTIMENT._serialized_end=240
-  _SENTIMENTS._serialized_start=242
-  _SENTIMENTS._serialized_end=291
-  _MODEL._serialized_start=293
-  _MODEL._serialized_end=392
+  _REQUEST._serialized_start=24
+  _REQUEST._serialized_end=63
+  _EMOJI._serialized_start=65
+  _EMOJI._serialized_end=102
+  _EMOJIS._serialized_start=104
+  _EMOJIS._serialized_end=145
+  _INTENSITY._serialized_start=147
+  _INTENSITY._serialized_end=192
+  _SENTIMENT._serialized_start=194
+  _SENTIMENT._serialized_end=257
+  _SENTIMENTS._serialized_start=259
+  _SENTIMENTS._serialized_end=308
+  _MODEL._serialized_start=310
+  _MODEL._serialized_end=413
 # @@protoc_insertion_point(module_scope)

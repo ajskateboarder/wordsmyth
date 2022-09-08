@@ -16,20 +16,23 @@ else:
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
-class Texts(google.protobuf.message.Message):
+class Request(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
     TEXTS_FIELD_NUMBER: builtins.int
+    COUNT_FIELD_NUMBER: builtins.int
     @property
     def texts(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
+    count: builtins.int
     def __init__(
         self,
         *,
         texts: collections.abc.Iterable[builtins.str] | None = ...,
+        count: builtins.int = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["texts", b"texts"]) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["count", b"count", "texts", b"texts"]) -> None: ...
 
-global___Texts = Texts
+global___Request = Request
 
 class Emoji(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
