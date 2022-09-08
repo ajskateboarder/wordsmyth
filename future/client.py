@@ -6,7 +6,7 @@ from youtube_comment_downloader import YoutubeCommentDownloader
 import grpc
 
 from modelparser import Model
-from microv2.stubs.server_pb2 import Texts
+from microv2.stubs.server_pb2 import Request
 from microv2.stubs.server_pb2_grpc import ModelStub
 
 
@@ -33,7 +33,7 @@ def main(nlps):
         print("Requesting comments")
 
         with ThreadPoolExecutor() as executor:
-            futures = [executor.submit(fetch, request=Texts(texts=v)) for v in nlps]
+            futures = [executor.submit(fetch, request=Request(texts=v)) for v in nlps]
 
         for f in as_completed(futures):
             future = Model(**MessageToDict(f.result()))

@@ -3,7 +3,7 @@ from google.protobuf.json_format import MessageToDict
 import pandas as pd
 import grpc
 
-from microv2.stubs.server_pb2 import Texts
+from microv2.stubs.server_pb2 import Request
 from microv2.stubs.server_pb2_grpc import ModelStub
 
 
@@ -25,7 +25,7 @@ def main():
     print("Requesting comments")
 
     with ThreadPoolExecutor() as executor:
-        futures = [executor.submit(fetch, request=Texts(texts=v)) for v in text]
+        futures = [executor.submit(fetch, request=Request(texts=v)) for v in text]
 
     emojis = []
     for f in as_completed(futures):
