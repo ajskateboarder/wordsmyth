@@ -3,8 +3,6 @@ name: Run tests
 on: [push]
 
 jobs:
-  paths:
-    - src/**/*
   build:
     runs-on: ubuntu-latest
     strategy:
