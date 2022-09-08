@@ -19,6 +19,6 @@ class Flair:
         if "POSITIVE" in str(sent):
             return {"sentiment": "pos", "score": score }
         elif "NEGATIVE" in str(sent):
-            return {"sentiment": "neg", "score": score    }
+            return {"sentiment": "neg", "score": score}
         else:
             return {"sentiment": "neu", "score": score}
