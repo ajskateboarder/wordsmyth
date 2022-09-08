@@ -11,15 +11,15 @@ jobs:
     steps: 
       - uses: actions/checkout@v3
       - uses: dorny/paths-filter@v2
-      - uses: actions/setup-python@v2
-      - uses: actions/setup-python@v2
         id: changes
         with:
-          python-version: '3.9'
-          cache: 'pip'
           filters: |
             src:
               - 'src/**'
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+          cache: 'pip'
       - if: steps.changes.outputs.src == 'true'
         name: 'Run tests'
         run: |
