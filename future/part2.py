@@ -1,4 +1,3 @@
-from asyncio import as_completed
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from google.protobuf.json_format import MessageToDict
 import pandas as pd
@@ -18,7 +17,7 @@ channel = grpc.insecure_channel("localhost:50051")
 
 
 def main():
-    df = pd.read_csv("./future/data.csv")
+    df = pd.read_csv("./data.csv")
     text = list(chunks(df["text"].to_list(), 5))
 
     fetch = ModelStub(channel).torchmoji
@@ -37,7 +36,7 @@ def main():
     df["emojis"] = emojis
     print(
         df.to_csv(
-            "./extracts.csv", columns=["text", "sentiment", "pos", "neg", "emojis"]
+            "./extracts.csv"
         )
     )
 

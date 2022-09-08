@@ -4,9 +4,8 @@ from pydantic import BaseModel
 
 
 class Sentiment(BaseModel):
-    neg: float
-    neu: float
-    pos: float
+    sentiment: str
+    score: float
 
 
 class ResponseItem(BaseModel):
