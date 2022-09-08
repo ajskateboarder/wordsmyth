@@ -1,4 +1,4 @@
-"""Some random docstring"""
+"""Some random docstrings"""
 
 from concurrent.futures import ThreadPoolExecutor
 
