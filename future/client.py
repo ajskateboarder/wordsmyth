@@ -42,16 +42,15 @@ def main(nlps):
                 k = sentiment.sentiment.dict()
                 sent = dict(zip(k.values(), k.keys()))[max(list(k.values()))]
 
-                if sent != "neu":
-                    writer.writerow(
-                        {
-                            "text": sentiment.text,
-                            "sentiment": sent,
-                            "neg": sentiment.sentiment.neg,
-                            "neu": sentiment.sentiment.neu,
-                            "pos": sentiment.sentiment.pos,
-                        }
-                    )
+                writer.writerow(
+                    {
+                        "text": sentiment.text,
+                        "sentiment": sent,
+                        "neg": sentiment.sentiment.neg,
+                        "neu": sentiment.sentiment.neu,
+                        "pos": sentiment.sentiment.pos,
+                    }
+                )
 
 
 main(
