@@ -2,8 +2,9 @@ syntax = "proto3";
 
 package models;
 
-message Texts {
+message Request {
     repeated string texts = 1;
+    int32 count = 2;
 }
 
 message Emoji {
@@ -30,6 +31,6 @@ message Sentiments {
 }
 
 service Model {
-    rpc torchmoji(Texts) returns (Emojis) {};
-    rpc flair(Texts) returns (Sentiments) {};
+    rpc torchmoji(Request) returns (Emojis) {};
+    rpc flair(Request) returns (Sentiments) {};
 }

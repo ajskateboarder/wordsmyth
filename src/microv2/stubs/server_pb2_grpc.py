@@ -16,12 +16,12 @@ class ModelStub(object):
         """
         self.torchmoji = channel.unary_unary(
                 '/models.Model/torchmoji',
-                request_serializer=server__pb2.Texts.SerializeToString,
+                request_serializer=server__pb2.Request.SerializeToString,
                 response_deserializer=server__pb2.Emojis.FromString,
                 )
         self.flair = channel.unary_unary(
                 '/models.Model/flair',
-                request_serializer=server__pb2.Texts.SerializeToString,
+                request_serializer=server__pb2.Request.SerializeToString,
                 response_deserializer=server__pb2.Sentiments.FromString,
                 )
 
@@ -46,12 +46,12 @@ def add_ModelServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'torchmoji': grpc.unary_unary_rpc_method_handler(
                     servicer.torchmoji,
-                    request_deserializer=server__pb2.Texts.FromString,
+                    request_deserializer=server__pb2.Request.FromString,
                     response_serializer=server__pb2.Emojis.SerializeToString,
             ),
             'flair': grpc.unary_unary_rpc_method_handler(
                     servicer.flair,
-                    request_deserializer=server__pb2.Texts.FromString,
+                    request_deserializer=server__pb2.Request.FromString,
                     response_serializer=server__pb2.Sentiments.SerializeToString,
             ),
     }
@@ -76,7 +76,7 @@ class Model(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/models.Model/torchmoji',
-            server__pb2.Texts.SerializeToString,
+            server__pb2.Request.SerializeToString,
             server__pb2.Emojis.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
@@ -93,7 +93,7 @@ class Model(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/models.Model/flair',
-            server__pb2.Texts.SerializeToString,
+            server__pb2.Request.SerializeToString,
             server__pb2.Sentiments.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
