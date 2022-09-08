@@ -17,7 +17,7 @@ class Flair:
         score = sentence.score
 
         if "POSITIVE" in str(sent):
-            return {"sentiment": "pos", "score": score}
+            return {"sentiment": "pos", "score": score }
         elif "NEGATIVE" in str(sent):
             return {"sentiment": "neg", "score": score}
         else:
