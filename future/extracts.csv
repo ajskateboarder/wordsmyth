@@ -1,0 +1,38 @@
+,text,sentiment,score,emojis
+0,"Hey, thanks for the tip in 0:35:45",pos,0.9149073,":confused:, :neutral_face:, :rage:, :expressionless:, :angry:"
+1,"Great tutorial, Big Poppa! 😂",pos,0.99730194,":clap:, :thumbsup:, :ok_hand:, :raised_hands:, :smile:"
+2,Today I learned that I was only taught about WEB API's and I thought that was what all API's were... so excited to get through this video!,pos,0.9998036,":rage:, :angry:, :thumbsup:, :confused:, :triumph:"
+3,"Dissapointed that twilio doesn't work for my country, even you could say about it that there are countries that could test API twoards twilio.",neg,0.9999838,":heartbeat:, :v:, :gun:, :yellow_heart:, :muscle:"
+4,Great sense of humor!!! Subbed,pos,0.9976949,":angry:, :rage:, :expressionless:, :neutral_face:, :confounded:"
+5,"When was thie video made?  The Spotify website changed and the layout is different.  Spotify seems to only have the ""Get"" request in the search API.  Can someone point me to the site that has the ""Request"" version of the API?",neg,0.9999945,":stuck_out_tongue_winking_eye:, :smile:, :wink:, :sweat_smile:, :grin:"
+6,great tutorial for beginners,pos,0.9878209,":thumbsup:, :smile:, :blush:, :wink:, :relaxed:"
+7,"Please keep a constant level of volume and pronunciation. You drop off in volume and intelligibility at the end of each sentence, which makes it difficult to understand. If I am the ""only one"" to have pointed it out, it means that I am one of the few who watched long enough, and I am one of the few who actually wanted to understand you ... and, I have higher standards.",neg,0.99980503,":rage:, :angry:, :thumbsup:, :triumph:, :expressionless:"
+8,https://youtu.be/EBOq1xr0ieo,neg,0.5478433,":purple_heart:, :sparkling_heart:, :heart:, :blue_heart:, :two_hearts:"
+9,"This guy is so annoying. He knows his stuff and I need the information, and it's well-organized -- however his personality is so weird that I have to constantly rewind because his ""theater"" is so distracting from the information flow.  It absorbs 80% of my brain power just to cancel out the noise of his cringe mannerisms. His ""performance"" is like he's talking to 6 year old children, and he obviously thinks he's cute and entertaining. Hint: you're insulting the intelligence of your audience and I'd think even children would recognize this as b.s. ... Free Code Camp: just know that a rock star is somebody who can focus on delivering the goods, not somebody who thinks he is a Disney princess. You have a lot of great teachers but not this guy; he needs an education about the real world and to unplug from Sesame Street.. Craig: Here's one of many good examples of how to teach purely and simply, just delivering the information without injecting personality quirks. It's by an actual woman, not a guy pretending to be a woman or trying to ingratiate himself with women. Learn from her please.
+https://www.youtube.com/watch?v=t8pPdKYpowI",neg,0.9999839,":thumbsup:, :clap:, :sunglasses:, :raised_hands:, :ok_hand:"
+10,Get the notes and code for this course here: https://github.com/craigsdennis/intro-to-apis-course/blob/master/course-notes.md,neg,0.8956984,":heartbeat:, :yellow_heart:, :facepunch:, :rage:, :broken_heart:"
+11,They really cracked how to make an informative and fun video about a daunting topic!,pos,0.99974173,":thumbsup:, :blush:, :relaxed:, :clap:, :yellow_heart:"
+12,Amazing teacher..,pos,0.98559606,":pray:, :persevere:, :confounded:, :sweat:, :tired_face:"
+13,Am I the only one who noticed that he had a Tile on the back of his remote? 🤣,neg,0.9999788,":angry:, :rage:, :expressionless:, :unamused:, :triumph:"
+14,Anyone else having zero knowledge about IT and then got an understanding about what is API after seeing  this video ?,neg,0.9999491,":blush:, :relaxed:, :smile:, :blue_heart:, :heart:"
+15,"I choo choo choose to watch this course just   for the pun lines. JK!
+
+I want to be like Craig Dennis when I Grow up lol 😂😂😂😂",pos,0.941272,":sparkles:, :heartbeat:, :blue_heart:, :two_hearts:, :purple_heart:"
+16,"""Thank you for being inclusive. Inclusivity matters."" -Craig
+
+Agreed! Really great and fun video. I'll be back for more.",pos,0.9949532,":sparkles:, :heartbeat:, :blue_heart:, :two_hearts:, :purple_heart:"
+17,"This is just fantastic!!  APIs were so opaque to me.  Now I get it.  A lot clearer. And this is coming from someone who barely knows a line of code.  
+
+Having said that, is there a crash course I can do that teaches me the bare basics of python needed to access APIs without having to learn the stuff that I won't use – if I'm just interested in accessing APIs?
+
+Thanks again. :)",pos,0.99854714,":sparkles:, :heartbeat:, :blue_heart:, :two_hearts:, :purple_heart:"
+18,I completed the whole video and i absolutely loved it!!! thank you so much Craig for making it so much fun!!!!!!,pos,0.9983583,":gun:, :thumbsup:, :muscle:, :grimacing:, :sunglasses:"
+19,"I just took a position at work and just started using APIs, this was write on time.  ""B.I.G"" shout out for the Hip Hop reference.",neg,0.78168947,":joy:, :expressionless:, :rage:, :skull:, :angry:"
+20,P!,neg,0.96177727,":clap:, :heartbeat:, :thumbsup:, :heart_eyes:, :raised_hands:"
+21,It is an amazing video. It contains valuable and useful information. It motivates me. Thank you for this nice video,pos,0.9866094,":flushed:, :neutral_face:, :confused:, :joy:, :eyes:"
+22,"I have a problem,  I have Key 'To' but the output always says that Phone number is required, but I'd already put my phone number. please help me aSAP",neg,0.7149074,":neutral_face:, :confused:, :eyes:, :sweat_smile:, :expressionless:"
+23,"So annoying when these dweebs say ""she"" instead of ""he"" to show how progressive they are. How many women are writing code? But he's got to throw his politics into it.",neg,0.9998073,":yellow_heart:, :heartbeat:, :relaxed:, :thumbsup:, :heart:"
+24,"amazing course, thank you so much. The content was great!",pos,0.97582895,":clap:, :muscle:, :thumbsup:, :blue_heart:, :raised_hands:"
+25,25:19,pos,0.99414647,":smile:, :see_no_evil:, :grin:, :grimacing:, :sweat_smile:"
+26,24:11,pos,0.99097145,":disappointed:, :cry:, :confused:, :pensive:, :angry:"
+27,18:40,pos,0.9822343,":thumbsup:, :clap:, :smile:, :ok_hand:, :blush:"
