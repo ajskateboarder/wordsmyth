@@ -1,4 +1,5 @@
 """
+Simple docstring example
 """
 
 from flair.models import TextClassifier
