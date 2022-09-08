@@ -5,6 +5,7 @@ youtube-comment-downloader
 requests
 requests-futures
 transformers
+flair
 grpcio
 grpcio_tools
 -e .

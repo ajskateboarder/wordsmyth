@@ -15,14 +15,13 @@ message Emojis {
     repeated Emoji response = 1;
 }
 
-message NegNeuPos {
-    float neg = 1;
-    float neu = 2;
-    float pos = 3;
+message Intensity {
+    string sentiment = 1;
+    float score = 2;
 }
 
 message Sentiment {
-    NegNeuPos sentiment = 1; 
+    Intensity sentiment = 1; 
     string text = 2;
 }
 
@@ -32,5 +31,5 @@ message Sentiments {
 
 service Model {
     rpc torchmoji(Texts) returns (Emojis) {};
-    rpc roberta(Texts) returns (Sentiments) {};
+    rpc flair(Texts) returns (Sentiments) {};
 }

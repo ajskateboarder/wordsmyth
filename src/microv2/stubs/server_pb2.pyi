@@ -64,25 +64,22 @@ class Emojis(google.protobuf.message.Message):
 
 global___Emojis = Emojis
 
-class NegNeuPos(google.protobuf.message.Message):
+class Intensity(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
-    NEG_FIELD_NUMBER: builtins.int
-    NEU_FIELD_NUMBER: builtins.int
-    POS_FIELD_NUMBER: builtins.int
-    neg: builtins.float
-    neu: builtins.float
-    pos: builtins.float
+    SENTIMENT_FIELD_NUMBER: builtins.int
+    SCORE_FIELD_NUMBER: builtins.int
+    sentiment: builtins.str
+    score: builtins.float
     def __init__(
         self,
         *,
-        neg: builtins.float = ...,
-        neu: builtins.float = ...,
-        pos: builtins.float = ...,
+        sentiment: builtins.str = ...,
+        score: builtins.float = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["neg", b"neg", "neu", b"neu", "pos", b"pos"]) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["score", b"score", "sentiment", b"sentiment"]) -> None: ...
 
-global___NegNeuPos = NegNeuPos
+global___Intensity = Intensity
 
 class Sentiment(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
@@ -90,12 +87,12 @@ class Sentiment(google.protobuf.message.Message):
     SENTIMENT_FIELD_NUMBER: builtins.int
     TEXT_FIELD_NUMBER: builtins.int
     @property
-    def sentiment(self) -> global___NegNeuPos: ...
+    def sentiment(self) -> global___Intensity: ...
     text: builtins.str
     def __init__(
         self,
         *,
-        sentiment: global___NegNeuPos | None = ...,
+        sentiment: global___Intensity | None = ...,
         text: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing_extensions.Literal["sentiment", b"sentiment"]) -> builtins.bool: ...

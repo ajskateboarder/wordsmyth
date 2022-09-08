@@ -19,8 +19,8 @@ class ModelStub(object):
                 request_serializer=server__pb2.Texts.SerializeToString,
                 response_deserializer=server__pb2.Emojis.FromString,
                 )
-        self.roberta = channel.unary_unary(
-                '/models.Model/roberta',
+        self.flair = channel.unary_unary(
+                '/models.Model/flair',
                 request_serializer=server__pb2.Texts.SerializeToString,
                 response_deserializer=server__pb2.Sentiments.FromString,
                 )
@@ -35,7 +35,7 @@ class ModelServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def roberta(self, request, context):
+    def flair(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -49,8 +49,8 @@ def add_ModelServicer_to_server(servicer, server):
                     request_deserializer=server__pb2.Texts.FromString,
                     response_serializer=server__pb2.Emojis.SerializeToString,
             ),
-            'roberta': grpc.unary_unary_rpc_method_handler(
-                    servicer.roberta,
+            'flair': grpc.unary_unary_rpc_method_handler(
+                    servicer.flair,
                     request_deserializer=server__pb2.Texts.FromString,
                     response_serializer=server__pb2.Sentiments.SerializeToString,
             ),
@@ -82,7 +82,7 @@ class Model(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def roberta(request,
+    def flair(request,
             target,
             options=(),
             channel_credentials=None,
@@ -92,7 +92,7 @@ class Model(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/models.Model/roberta',
+        return grpc.experimental.unary_unary(request, target, '/models.Model/flair',
             server__pb2.Texts.SerializeToString,
             server__pb2.Sentiments.FromString,
             options, channel_credentials,
