@@ -1,40 +1,73 @@
-text,sentiment,neg,neu,pos
-Ben Awad outdoes TechLead. ;),pos,0.017985577,0.26963058,0.7123838
-or maybe dont start a project if youre not really that excited about it. twitch started as justin tv imagine if they quit three months in.,neg,0.48463437,0.44559145,0.06977422
-I think there's two sides to the argument. Nice to hear your take on it. Read Derek Yu's book on Spelunky for the other side.,pos,0.019208021,0.30405113,0.6767408
-This a great habit.  Keep it up.,pos,0.002553148,0.02742735,0.97001946
-Vsinder Sinking Ship,neg,0.5485613,0.43047148,0.020967264
-This dude is a walking meme.,neg,0.9036769,0.085040875,0.011282192
-"your glasses arent straight, bothering me",neg,0.9352138,0.060690023,0.0040961197
-"I only follow for the angular hate, even though I haven't written one line of it in my entire life",neg,0.76058936,0.21951303,0.01989759
-why do u have such a  batman joker vibe,neg,0.6414358,0.33293745,0.025626656
-"Zero context here. Not sure if he is talking about a new solo project or an actual employed  position. Either way, he should do some proper investigation or thought before spending 3 months. 
-I think the SV “fail fast” dogma doesn’t mean quit fast before achieve anything.",neg,0.57290137,0.39413545,0.03296316
-"ah the angular diss is back
+,text,sentiment,neg,neu,pos,flair_sent
+0,"<I believe I've listened to at least half of all the youtubers who talk about Crypto. You are easily the best most knowledgeable one.  Your information is priceless and i find it truly baffling as youtubers completely look at TA and ignore the bigger narrative of why there is a pump. Btc pumped due to the future ETF release, It's kind of irresponsible to ignore the fact that each ETF launch so far has caused a major dump at the peak of BTC.The entire space has always been volatile that's why we must always back up our crypto so that you do not have to be bothered when it goes bearish.I have always played safe in the space with a less talked about medium, trad ing.Rather than buying the dip and waiting for a pump, I just get to trade my assets with insight and signal provision from Mr. Michael E. Fred I have made over 14 btc in November alone.>.",neu,0.3172856,0.46765536,0.21505901,neg 0.9590077996253967
+1,there’s an old saying: half made things are useless. or u do it until its finished or you dont do it. that is why planning projects is important. you dont lose your life on half made projects.,neu,0.41530177,0.43744683,0.14725144,pos 0.9656282663345337
+2,Ben Awad outdoes TechLead. ;),pos,0.017985577,0.26963058,0.7123838,pos 0.9944930076599121
+3,lmao,neu,0.2551386,0.44301403,0.3018474,neg 0.9837724566459656
+4,or maybe dont start a project if youre not really that excited about it. twitch started as justin tv imagine if they quit three months in.,neg,0.48463437,0.44559145,0.06977422,neg 0.9999183416366577
+5,me,neu,0.21931444,0.5204763,0.26020926,pos 0.9667494893074036
+6,That thumbnail tho,neu,0.117263645,0.6915391,0.19119726,pos 0.9199490547180176
+7,I think there's two sides to the argument. Nice to hear your take on it. Read Derek Yu's book on Spelunky for the other side.,pos,0.019208021,0.30405113,0.6767408,pos 0.9928101301193237
+8,This a great habit.  Keep it up.,pos,0.002553148,0.02742735,0.97001946,pos 0.9826524257659912
+9,"format c:
+It's the only way to be sure.",neu,0.02529554,0.6775946,0.29710993,neg 0.7230100035667419
+10,"Zero context here. Not sure if he is talking about a new solo project or an actual employed  position. Either way, he should do some proper investigation or thought before spending 3 months. 
+I think the SV “fail fast” dogma doesn’t mean quit fast before achieve anything.",neg,0.57290137,0.39413545,0.03296316,neg 0.9999926090240479
+11,The angularjs cracked me up,neu,0.19559477,0.47638175,0.32802355,neg 0.9901757836341858
+12,Make sure you reach your fund goal before you quit,neu,0.090674564,0.74213755,0.1671879,pos 0.991901695728302
+13,"Once I quit quitting, then I quit that. Now Im just back to quitting... but I'll probably quit that soon too.",neu,0.3921623,0.4797992,0.12803847,neg 0.9495823979377747
+14,"ah the angular diss is back
 
-thank god",pos,0.0054628826,0.07112605,0.9234111
-"What if you’re an employee without a YouTube channel and thousands of followers. Quitting four times makes it seem like you’re the problem not the project.
+thank god",pos,0.0054628826,0.07112605,0.9234111,pos 0.9607012271881104
+15,"What if you’re an employee without a YouTube channel and thousands of followers. Quitting four times makes it seem like you’re the problem not the project.
 
 By the fourth time, based on the expertise this channel feigns, how are you not asking different questions or qualifying projects better.
 
 
 If you didn’t have a YouTube channel or savings, how many people are going to be realistically in a position to quit their company? 
 
-Just saying, sounds like he’s shitting on the projects and we of course are only hearing one side but calling a project a boat and yourself (which happens to group in your coworkers) a sailor kind of sounds like you’re shitting on people.",neg,0.7490661,0.22857577,0.022358108
-I love Angular,pos,0.020515084,0.0682099,0.91127497
-"Control+S you can quit now
+Just saying, sounds like he’s shitting on the projects and we of course are only hearing one side but calling a project a boat and yourself (which happens to group in your coworkers) a sailor kind of sounds like you’re shitting on people.",neg,0.7490661,0.22857577,0.022358108,neg 0.9994117021560669
+16,I love Angular,pos,0.020515084,0.0682099,0.91127497,pos 0.9979968667030334
+17,What haopend to your hair???,neu,0.11341749,0.8501221,0.036460385,neg 0.9996752738952637
+18,"Control+S you can quit now
 If you did something bad Control-Z
-Thank me later boys",neg,0.5615171,0.4163331,0.02214974
-Why I quit my project (as a millionaire),neg,0.5761429,0.38283852,0.041018575
-"LOL
+Thank me later boys",neg,0.5615171,0.4163331,0.02214974,pos 0.985296905040741
+19,you like to talk,neu,0.039365124,0.74569064,0.21494421,pos 0.9841837882995605
+20,Vsinder Sinking Ship,neg,0.5485613,0.43047148,0.020967264,neg 0.9997497200965881
+21,"He's right. We need to be capable of recognizing when it's better to stop, instead of taking a continuous risk of losing ourselves and our resources (time, money, energy, and space). But that's hard even for experts, we can't just predict the future, we can only estimate it",neu,0.37277406,0.50385004,0.12337587,neg 0.9766052961349487
+22,This dude is a walking meme.,neg,0.9036769,0.085040875,0.011282192,pos 0.9996069073677063
+23,Quit pro quo,neu,0.3284135,0.64274263,0.028843893,neg 0.9868293404579163
+24,I'm literally a Angular Developer,neu,0.041834854,0.48228884,0.47587633,pos 0.599708616733551
+25,"your glasses arent straight, bothering me",neg,0.9352138,0.060690023,0.0040961197,neg 0.9998186230659485
+26,"I only follow for the angular hate, even though I haven't written one line of it in my entire life",neg,0.76058936,0.21951303,0.01989759,neg 0.9984887838363647
+27,why do u have such a  batman joker vibe,neg,0.6414358,0.33293745,0.025626656,neg 0.8195145726203918
+28,Will u create a website for me?,neu,0.039888583,0.90577424,0.05433723,neg 0.8866267800331116
+29,"You should plan your exit points ahead of time.
+Leaving because you lost trust in the project for the last 2 weeks means you'll drop out of a good share of profitable and oftentimes super fun projects.
 
-Guess I'm on the right path then =P",pos,0.0048420024,0.15937546,0.8357825
-No idea what the fuck you said at the end but decent advice I think?,neg,0.7773911,0.19907984,0.02352907
-"You put your heart and soul into something for 3 measly months and you quit? Ok man.
+example
+If [project] doesn't [reach vertical slice within 3 months] then leave.
+If [estimated first year income] doesn't [reach 3x recoupment] then leave.
+The above are examples I have to somehow cope with in game dev. They are realistic though.",neu,0.34559175,0.49035832,0.16404988,neg 0.9996156692504883
+30,No idea what the fuck you said at the end but decent advice I think?,neg,0.7773911,0.19907984,0.02352907,neg 0.7058070302009583
+31,"You put your heart and soul into something for 3 measly months and you quit? Ok man.
 
-Love how all the comments are 3 months old. Must've subscribed and after 3 months they unsubscribe.",neg,0.7303786,0.2278003,0.041821107
-"yeah quitting start ups is fine, but not when you involve a lot of people into it, hype up everyone like it’s “the next big thing” and when developers spend hundreds of hours working on this project, community is formed, you just quit, it’s not okay to others. I personally spent a lot of time developing a bot for Doge house and bfore I finished it you quit and that was the end of my work… wasting others time is not okay",neg,0.82561123,0.15263927,0.021749547
-Broski I'm not in the coding world but I've been job hoping for 3~ years. This is the same thing imo for every Carrer path. I love the analogy cuz it's true!!! Dont stick to a poor company that doesn't value you. Be the captain..... I am the captain now,pos,0.13649128,0.35520586,0.50830287
-Someone was insulted here haha. :P,neg,0.5881987,0.36164126,0.050160088
-The worst thing to make is to toke this as an influence,neg,0.9338034,0.061108246,0.0050883284
-"Hey look, another video in which u didn't diss on angular. Too damn humble.",neg,0.6363259,0.30438906,0.0592851
+Love how all the comments are 3 months old. Must've subscribed and after 3 months they unsubscribe.",neg,0.7303786,0.2278003,0.041821107,neg 0.9999574422836304
+32,"yeah quitting start ups is fine, but not when you involve a lot of people into it, hype up everyone like it’s “the next big thing” and when developers spend hundreds of hours working on this project, community is formed, you just quit, it’s not okay to others. I personally spent a lot of time developing a bot for Doge house and bfore I finished it you quit and that was the end of my work… wasting others time is not okay",neg,0.82561123,0.15263927,0.021749547,neg 0.999977707862854
+33,Aren't you doing these project more for entertainment/practice anyways?,neu,0.08754353,0.8332146,0.0792418,neg 0.9984356760978699
+34,So I have a question for you. Forgive me but I have to set things up a little bit first. Let's assume that Elon musk is going to be successful and there will be a million people living on the surface of Mars. We can extrapolate that there's probably going to be lots of people living and working on the moon and traveling in between Earth Moon and Mars if that's the case. What I'm getting at is that there's a lot of communications that goes on between an individual and the rest of society that is largely ported through either a cell phone or a laptop. If you have a million people on Mars and each one has a cell phone and a laptop and one of them wants to order something locally like pizza right they call the local pizza guy and the guy says okay yeah I'll have it to your place in a minute you know. That's all fine and good that's just like we do it here but what I'm interested in is if you have someone living on Mars and they pull up an application like Facebook and it's a 20 minute delay at The far side of the orbit for a radio signal to make it from Mars to Earth and that's not counting whether or not it has to go through extra transmission points and whether those transmission points have very good data capacity or so forth. How will a person working on Mars who owns a cell phone how will that cell phone have to be programmed differently or the cell towers on Mars or the satellites around Mars and so forth all these the systems that it has to go through has to have software to run this communication. I would be interested in seeing what you would have to say about the programming necessary that would be unique to that situation.,neu,0.07887378,0.6456063,0.27551994,neg 0.8823111057281494
+35,Broski I'm not in the coding world but I've been job hoping for 3~ years. This is the same thing imo for every Carrer path. I love the analogy cuz it's true!!! Dont stick to a poor company that doesn't value you. Be the captain..... I am the captain now,pos,0.13649128,0.35520586,0.50830287,pos 0.9953489899635315
+36,Someone was insulted here haha. :P,neg,0.5881987,0.36164126,0.050160088,neg 0.7410004734992981
+37,The worst thing to make is to toke this as an influence,neg,0.9338034,0.061108246,0.0050883284,neg 0.9979857206344604
+38,"Hey look, another video in which u didn't diss on angular. Too damn humble.",neg,0.6363259,0.30438906,0.0592851,neg 0.8888692855834961
+39,angular 🔪🔪🔪,neu,0.094225876,0.6136263,0.29214785,neg 0.5912670493125916
+40,Maybe your YouTube channel is your real startup,neu,0.046596102,0.70239687,0.25100702,pos 0.9572703838348389
+41,This whole channel is big meme,neu,0.30548152,0.5406785,0.15383998,pos 0.9864454865455627
+42,Why you should  unsubscribe Ben?,neu,0.39312935,0.58710766,0.019763011,neg 0.7962774038314819
+43,Chala ja,neu,0.20480834,0.6007857,0.194406,neg 0.6601764559745789
+44,Plot twist he found a plot hole in a competitor startup to make them stop developing so he can catchup,neu,0.27145037,0.66506976,0.06347986,neg 0.9949192404747009
+45,Why I quit my project (as a millionaire),neg,0.5761429,0.38283852,0.041018575,neg 0.9878144264221191
+46,This is why coders get offered 2% equity,neu,0.1342047,0.734443,0.1313523,neg 0.9955497980117798
+47,"LOL
+
+Guess I'm on the right path then =P",pos,0.0048420024,0.15937546,0.8357825,pos 0.6680983901023865
+48,I like the dead expression in his eyes.,neu,0.18338832,0.5000325,0.31657922,pos 0.9722154140472412
