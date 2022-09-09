@@ -1,0 +1,8 @@
+version: '3.9'
+
+services:
+  grpc:
+    container_name: grpc_server
+    build: .
+    ports:
+      - 50051:50051

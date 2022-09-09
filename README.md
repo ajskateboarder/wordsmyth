@@ -85,17 +85,10 @@ python3 future/client.py
 
 ### Dockerizing
 
-Build the Docker image from the Dockerfile:
+Build and start the image with `docker-compose`:
 
-```bash
-# prepend DOCKER_BUILDKIT=1 to apply better caching and faster build times
-docker build -t myimage -f Dockerfile.v2 .
 ```
-
-Start the Docker image on port `50051`:
-
-```bash
-docker run -dp 50051:50051 myimage
+docker-compose up -d
 ```
 
 ## Citations

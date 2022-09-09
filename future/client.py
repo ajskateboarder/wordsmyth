@@ -36,6 +36,7 @@ def main(nlps):
             futures = [executor.submit(fetch, request=Request(texts=v)) for v in nlps]
 
         for f in as_completed(futures):
+            print(f.result())
             future = Model(**MessageToDict(f.result()))
             for sentiment in future.response:
                 k = sentiment.sentiment
@@ -54,10 +55,10 @@ main(
         chunks(
             [
                 e["text"]
-                for e, _ in zip(yt.get_comments("GZvSYJDk-us", sort_by=1), range(50))
+                for e, _ in zip(yt.get_comments("GZvSYJDk-us", sort_by=1), range(300))
                 if not e["reply"]
             ],
-            10,
+            30,
         )
     )
 )
