@@ -6,8 +6,8 @@ from youtube_comment_downloader import YoutubeCommentDownloader
 import grpc
 
 from modelparser import Model
-from microv2.stubs.server_pb2 import Request
-from microv2.stubs.server_pb2_grpc import ModelStub
+from micro.stubs.server_pb2 import Request
+from micro.stubs.server_pb2_grpc import ModelStub
 
 
 def chunks(lst, n):

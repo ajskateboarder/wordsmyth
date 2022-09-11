@@ -1,10 +1,11 @@
 from concurrent.futures import ThreadPoolExecutor, as_completed
+
 from google.protobuf.json_format import MessageToDict
 import pandas as pd
 import grpc
 
-from microv2.stubs.server_pb2 import Request
-from microv2.stubs.server_pb2_grpc import ModelStub
+from micro.stubs.server_pb2 import Request
+from micro.stubs.server_pb2_grpc import ModelStub
 
 
 def chunks(lst, n):
@@ -25,7 +26,9 @@ def main():
     print("Requesting comments")
 
     with ThreadPoolExecutor() as executor:
-        futures = [executor.submit(fetch, request=Request(texts=v, count=10)) for v in text]
+        futures = [
+            executor.submit(fetch, request=Request(texts=v, count=10)) for v in text
+        ]
 
     emojis = []
     for f in as_completed(futures):
@@ -34,11 +37,7 @@ def main():
             emojis.append(", ".join(res["emojis"]))
 
     df["emojis"] = emojis
-    print(
-        df.to_csv(
-            "./extracts.csv"
-        )
-    )
+    print(df.to_csv("./extracts.csv"))
 
 
 main()
