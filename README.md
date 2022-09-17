@@ -24,16 +24,15 @@ Whatever comments the program gets is thanks to [youtube-comment-downloader](htt
 ```text
 media/
     Github README content
-scripts/
-    Scripts to abstract Docker scaling
+future/
+    Random stuff because I couldn't put it on a separate branch
 src/
     algo/
         Model libraries
-    micro/
-        Microservice to multiprocess comments
     microv2/
-        GRPC-based API to process data faster
-        (almost done migrating to this)
+        GRPC-based API to process data
+tests/
+    Tests for APIs
 ```
 
 ## Requirements
