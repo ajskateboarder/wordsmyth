@@ -5,8 +5,8 @@ import random
 
 import grpc
 
-from microv2.stubs.server_pb2_grpc import add_ModelServicer_to_server, ModelServicer
-from microv2.stubs.server_pb2 import Emoji, Emojis, Sentiment, Sentiments, Intensity
+from micro.stubs.server_pb2_grpc import add_ModelServicer_to_server, ModelServicer
+from micro.stubs.server_pb2 import Emoji, Emojis, Sentiment, Sentiments, Intensity
 
 from algo.deepmoji import Emojize
 from algo.flairnlp import Flair

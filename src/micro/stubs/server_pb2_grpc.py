@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import microv2.stubs.server_pb2 as server__pb2
+import micro.stubs.server_pb2 as server__pb2
 
 
 class ModelStub(object):
