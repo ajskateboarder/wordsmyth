@@ -37,7 +37,7 @@ groups = [
         "emoji": td[0].text,
         "repr": COMBS.get(td[0].text, ""),
         "sentiment": list(sent.keys())[list(sent.values()).index(max(sent.values()))],
-        **sent
+        **sent,
     }
     for tr in trs
     if (td := tr.find_all("td"))
@@ -46,5 +46,5 @@ groups = [
 
 extracts = [g for g in groups if any(emoji in g["emoji"] for emoji in EMOJIS)]
 
-with open('emojimap.json', 'w', encoding='utf-8') as fh:
+with open("emojimap.json", "w", encoding="utf-8") as fh:
     json.dump(extracts, fh)

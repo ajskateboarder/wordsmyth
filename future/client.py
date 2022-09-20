@@ -5,7 +5,7 @@ from google.protobuf.json_format import MessageToDict
 from youtube_comment_downloader import YoutubeCommentDownloader
 import grpc
 
-from modelparser import Model
+from .modelparser import Model
 from micro.stubs.server_pb2 import Request
 from micro.stubs.server_pb2_grpc import ModelStub
 
