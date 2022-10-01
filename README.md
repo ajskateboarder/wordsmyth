@@ -1,5 +1,3 @@
-#
-
 <div align="center">
 
 <img src="https://github.com/themysticsavages/ytstars/blob/main/media/ytstars_logo.png?raw=1" height=200 width=900>
@@ -8,6 +6,8 @@
 
 ![status](https://img.shields.io/badge/status-alpha-orange)
 </div>
+
+#
 
 ## Overview
 
@@ -35,14 +35,16 @@ tests/
     Tests for APIs
 ```
 
+# Usage
+
 ## Requirements
 
 - Python 3 (entire app codebase)
 - Docker (required for demos)
-- Makefile (optional but makes development very enjoyable)
+- Makefile (optional but makes development very nice)
 - Linux/WSL (only platform the app was tested on)
 
-## Usage
+## Pre-requisites
 
 Clone the repository with `--depth=1` because there is a large file in the Git history and it would take way too long to clone without the flag.
 
@@ -60,8 +62,6 @@ make dlmodel
 
 If you do not have [wget](https://www.gnu.org/software/wget) installed, get the model from [here](https://dropbox.com/s/q8lax9ary32c7t9/pytorch_model.bin?dl=0) and save it in `src/deepmoji/model/`.
 
-##
-
 Since the completion of the GRPC microservice, we recommend using it as the original REST API will soon be deprecated.
 
 Create interoperable stubs, if needed:
@@ -76,21 +76,33 @@ Start the server:
 make grpc
 ```
 
-Run it with an example client:
+or with `docker-compose`:
 
 ```bash
-python3 future/client.py
-```
-
-### Dockerizing
-
-Build and start the image with `docker-compose`:
-
-```
 docker-compose up -d
 ```
 
-## Citations
+## Data transformation and pipelines
+
+Download comments from a video:
+
+```bash
+./scripts/comments --id=GZvSYJDk-us --length=300 --output=data.csv
+```
+
+Fetch algorithm responses:
+
+```bash
+./scripts/algo -f data.csv -o data.csv
+```
+
+Fix them, if required:
+
+```bash
+./scripts/fix -f data.csv
+```
+
+# Citations
 
 ```bibtex
 @inproceedings{felbo2017,
