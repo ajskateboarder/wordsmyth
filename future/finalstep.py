@@ -6,59 +6,72 @@ df = pd.read_csv("./extracts.csv")
 with open("./emojimap.json", "r", encoding="utf-8") as fh:
     em = json.load(fh)
 
-em = {e["repr"]: e for e in em}
-#em[":eyes:"]["sentiment"] = "neg"
 
-texts = df[["text", "emojis", "sentiment"]]
-
-vals = list(texts.to_dict().values())
-
-
-objects = []
-for t, e, s in zip(vals[0].values(), vals[1].values(), vals[2].values()):
-    emojis = e.split(", ")
-
-    classes = [":confused:", ":thumbsup:", ":eyes:"]
-    occurences = [e in emojis for e in classes]
+def find_indices(content, classes):
+    occurences = [e in content for e in classes]
     indices = [i for i, x in enumerate(occurences) if x is True]
 
-    maps = list(emojis.index(classes[i]) for i in indices)
+    return list(content.index(classes[i]) for i in indices)
 
+
+# label emoji map with repr
+em = {e["repr"]: e for e in em}
+
+em[":cry:"]["sentiment"] = "neg"
+em[":grimacing:"]["sentiment"] = "neu"
+
+texts = df[["text", "emojis", "sentiment"]].to_dict("records")
+
+incorrect = []
+correct = []
+fixed = []
+
+# for every value in texts dict array:
+for t in texts:
+    emojis = t["emojis"].split(", ")
+
+    # find positions where specific emojis show up
+    maps = find_indices(emojis, [":confused:", ":thumbsup:", ":eyes:"])
+
+    # if occurences show up once or twice
     if len(maps) == 2 or len(maps) == 1:
         reprr = emojis[min(maps)]
         match = em[reprr]
 
-        if s != match["sentiment"]:
-            obj = {
-                "content": t,
-                "emoji": reprr,
-                "position": min(maps),
-                "sentiment": {"flair": s, "map": match["sentiment"]},
-                "emojis": emojis,
-                "matches": s == match["sentiment"],
-            }
+        obj = {
+            "content": t["text"],
+            "emoji": reprr,
+            "position": min(maps),
+            "sentiment": {"flair": t["sentiment"], "map": match["sentiment"]},
+            "emojis": emojis,
+            "matches": t["sentiment"] == match["sentiment"],
+        }
 
+        # check if flair sentiment doesn't equal emoji sentiment
+        if obj["sentiment"]["flair"] != obj["sentiment"]["map"]:
+            # find emojis that match flair sentiment
             sequence = list(
                 obj["emojis"].index(em[e]["repr"])
                 for e in emojis
-                if em[e]["sentiment"] == s and em[e]["repr"] in obj["emojis"]
+                if em[e]["sentiment"] == t["sentiment"]
+                and em[e]["repr"] in obj["emojis"]
             )
-            print(
-                f"{obj['content']}\n\n"
-                f"TorchMoji gave {reprr}, and Flair gave {s}\n"
-                f"{obj['emojis'][min(sequence)] if len(sequence) > 0 else ''} "
-                "is a nicer option\n\n"
-                f"{[obj['emojis'][s] for s in sequence]}\n\n"
-                "********\n"
+
+            newst = em.get(
+                (obj["emojis"][min(sequence)] if len(sequence) > 0 else ""), {}
             )
-            # print(
-            #     obj["content"],
-            #     "\n",
-            #     reprr,
-            #     s,
-            #     "\n",
-            #     obj["emojis"][min(sequence)] if len(sequence) > 0 else "",
-            #     "\n",
-            # )
-            # pprint(obj)
-            objects.append(obj)
+
+            if t["sentiment"] == newst.get("sentiment"):
+                # print(obj["content"], t["sentiment"], newst.get("sentiment"), "\n")
+                print(obj["content"], newst.get("emoji"), "\n")
+                obj["fixed"] = newst.get("repr")
+                fixed.append(obj)
+            else:
+                # print(obj["content"], newst.get("emoji"), "\n")
+                # print(t["text"], t["sentiment"], newst.get("sentiment"))
+                incorrect.append(obj)
+        else:
+            correct.append(obj)
+
+# with open('fixed.json', 'w') as fh:
+#     json.dump(fixed, fh)
