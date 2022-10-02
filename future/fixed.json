@@ -1,0 +1,600 @@
+[
+    {
+        "content": "I seriously enjoy your teaching method and I am just 10 minutes into this lesson...Awesome",
+        "emoji": ":confused:",
+        "position": 0,
+        "sentiment": {
+            "flair": "pos",
+            "map": "neg"
+        },
+        "emojis": [
+            ":confused:",
+            ":persevere:",
+            ":sweat:",
+            ":neutral_face:",
+            ":disappointed:",
+            ":expressionless:",
+            ":unamused:",
+            ":confounded:",
+            ":pensive:",
+            ":sweat_smile:"
+        ],
+        "matches": false,
+        "fixed": ":sweat_smile:"
+    },
+    {
+        "content": "Watching a video 2yrs later so I am really stuck,the website looks a lot different,tried googling how to go about it and it made it.\n\nPlease I need some help",
+        "emoji": ":thumbsup:",
+        "position": 0,
+        "sentiment": {
+            "flair": "neg",
+            "map": "pos"
+        },
+        "emojis": [
+            ":thumbsup:",
+            ":smile:",
+            ":wink:",
+            ":blush:",
+            ":clap:",
+            ":stuck_out_tongue_winking_eye:",
+            ":grimacing:",
+            ":grin:",
+            ":relaxed:",
+            ":confused:"
+        ],
+        "matches": false,
+        "fixed": ":confused:"
+    },
+    {
+        "content": "Whoa, this exists? Holy cow; I hope this business makes a ton of bank because it looks like stuff you can pay thousands for at bootcamps and universities...",
+        "emoji": ":thumbsup:",
+        "position": 2,
+        "sentiment": {
+            "flair": "neg",
+            "map": "pos"
+        },
+        "emojis": [
+            ":rage:",
+            ":angry:",
+            ":thumbsup:",
+            ":confused:",
+            ":triumph:",
+            ":pray:",
+            ":neutral_face:",
+            ":expressionless:",
+            ":grimacing:",
+            ":blush:"
+        ],
+        "matches": false,
+        "fixed": ":rage:"
+    },
+    {
+        "content": "Amazing!!!!!",
+        "emoji": ":confused:",
+        "position": 0,
+        "sentiment": {
+            "flair": "pos",
+            "map": "neg"
+        },
+        "emojis": [
+            ":confused:",
+            ":grimacing:",
+            ":persevere:",
+            ":neutral_face:",
+            ":sweat:",
+            ":see_no_evil:",
+            ":sweat_smile:",
+            ":confounded:",
+            ":tired_face:",
+            ":expressionless:"
+        ],
+        "matches": false,
+        "fixed": ":see_no_evil:"
+    },
+    {
+        "content": "https://www.youtube.com/watch?v=gFzRnQSH06U&t=129s",
+        "emoji": ":confused:",
+        "position": 6,
+        "sentiment": {
+            "flair": "pos",
+            "map": "neg"
+        },
+        "emojis": [
+            ":sweat:",
+            ":sweat_smile:",
+            ":persevere:",
+            ":disappointed:",
+            ":sleepy:",
+            ":cry:",
+            ":confused:",
+            ":confounded:",
+            ":grimacing:",
+            ":pensive:"
+        ],
+        "matches": false,
+        "fixed": ":sweat_smile:"
+    },
+    {
+        "content": "I have a problem,  I have Key 'To' but the output always says that Phone number is required, but I'd already put my phone number. please help me aSAP",
+        "emoji": ":thumbsup:",
+        "position": 0,
+        "sentiment": {
+            "flair": "neg",
+            "map": "pos"
+        },
+        "emojis": [
+            ":thumbsup:",
+            ":ok_hand:",
+            ":relaxed:",
+            ":blush:",
+            ":relieved:",
+            ":smile:",
+            ":expressionless:",
+            ":facepunch:",
+            ":v:",
+            ":sunglasses:"
+        ],
+        "matches": false,
+        "fixed": ":expressionless:"
+    },
+    {
+        "content": "24:11",
+        "emoji": ":eyes:",
+        "position": 5,
+        "sentiment": {
+            "flair": "pos",
+            "map": "neu"
+        },
+        "emojis": [
+            ":blush:",
+            ":smile:",
+            ":relaxed:",
+            ":sweat_smile:",
+            ":grin:",
+            ":eyes:",
+            ":grimacing:",
+            ":wink:",
+            ":sparkles:",
+            ":sweat:"
+        ],
+        "matches": false,
+        "fixed": ":blush:"
+    },
+    {
+        "content": "1:07:32 how did you inserted emoji ? :O",
+        "emoji": ":thumbsup:",
+        "position": 2,
+        "sentiment": {
+            "flair": "neg",
+            "map": "pos"
+        },
+        "emojis": [
+            ":rage:",
+            ":angry:",
+            ":thumbsup:",
+            ":confused:",
+            ":cry:",
+            ":disappointed:",
+            ":grimacing:",
+            ":triumph:",
+            ":neutral_face:",
+            ":persevere:"
+        ],
+        "matches": false,
+        "fixed": ":rage:"
+    },
+    {
+        "content": "If only my uni professors had your same enthusiasm and teaching skills\u2026",
+        "emoji": ":thumbsup:",
+        "position": 6,
+        "sentiment": {
+            "flair": "neg",
+            "map": "pos"
+        },
+        "emojis": [
+            ":rage:",
+            ":angry:",
+            ":flushed:",
+            ":triumph:",
+            ":facepunch:",
+            ":grimacing:",
+            ":thumbsup:",
+            ":expressionless:",
+            ":confounded:",
+            ":muscle:"
+        ],
+        "matches": false,
+        "fixed": ":rage:"
+    },
+    {
+        "content": "this course is awesome. he knows exactly when to give a small break and refresh the mind. GOOD JOB sir",
+        "emoji": ":confused:",
+        "position": 3,
+        "sentiment": {
+            "flair": "pos",
+            "map": "neg"
+        },
+        "emojis": [
+            ":no_good:",
+            ":persevere:",
+            ":neutral_face:",
+            ":confused:",
+            ":confounded:",
+            ":expressionless:",
+            ":notes:",
+            ":gun:",
+            ":sweat:",
+            ":cry:"
+        ],
+        "matches": false,
+        "fixed": ":notes:"
+    },
+    {
+        "content": "thanks from Costa Rica",
+        "emoji": ":confused:",
+        "position": 1,
+        "sentiment": {
+            "flair": "pos",
+            "map": "neg"
+        },
+        "emojis": [
+            ":neutral_face:",
+            ":confused:",
+            ":expressionless:",
+            ":see_no_evil:",
+            ":flushed:",
+            ":eyes:",
+            ":joy:",
+            ":mask:",
+            ":angry:",
+            ":wink:"
+        ],
+        "matches": false,
+        "fixed": ":see_no_evil:"
+    },
+    {
+        "content": "The best course I've watched in a while - thank you for putting so much hard work into it!",
+        "emoji": ":eyes:",
+        "position": 2,
+        "sentiment": {
+            "flair": "pos",
+            "map": "neu"
+        },
+        "emojis": [
+            ":musical_note:",
+            ":notes:",
+            ":eyes:",
+            ":pray:",
+            ":smile:",
+            ":grin:",
+            ":blue_heart:",
+            ":stuck_out_tongue_winking_eye:",
+            ":grimacing:",
+            ":purple_heart:"
+        ],
+        "matches": false,
+        "fixed": ":musical_note:"
+    },
+    {
+        "content": "Love the low entry, but information density is so low it is hard to keep my attention to it.",
+        "emoji": ":thumbsup:",
+        "position": 1,
+        "sentiment": {
+            "flair": "neg",
+            "map": "pos"
+        },
+        "emojis": [
+            ":ok_hand:",
+            ":thumbsup:",
+            ":clap:",
+            ":gun:",
+            ":neutral_face:",
+            ":expressionless:",
+            ":unamused:",
+            ":sweat_smile:",
+            ":raised_hands:",
+            ":sunglasses:"
+        ],
+        "matches": false,
+        "fixed": ":gun:"
+    },
+    {
+        "content": "1:25:58 somebody please help with the virtual environnment in Windows, it does not accept the command.",
+        "emoji": ":thumbsup:",
+        "position": 0,
+        "sentiment": {
+            "flair": "neg",
+            "map": "pos"
+        },
+        "emojis": [
+            ":thumbsup:",
+            ":clap:",
+            ":heartbeat:",
+            ":yellow_heart:",
+            ":heart:",
+            ":smile:",
+            ":angry:",
+            ":rage:",
+            ":relaxed:",
+            ":blush:"
+        ],
+        "matches": false,
+        "fixed": ":angry:"
+    },
+    {
+        "content": "I laughed so hard at 18.56\ud83e\udd23\ud83e\udd23",
+        "emoji": ":thumbsup:",
+        "position": 6,
+        "sentiment": {
+            "flair": "neg",
+            "map": "pos"
+        },
+        "emojis": [
+            ":see_no_evil:",
+            ":gun:",
+            ":grimacing:",
+            ":sweat_smile:",
+            ":stuck_out_tongue_winking_eye:",
+            ":smile:",
+            ":thumbsup:",
+            ":speak_no_evil:",
+            ":grin:",
+            ":no_good:"
+        ],
+        "matches": false,
+        "fixed": ":gun:"
+    },
+    {
+        "content": "I am confused with the Twlio segment. Wnen I past the code into the terminal, I don't get a code but I get \"[redacted]\" and when I press enter into the terminal, I don't get a text message...",
+        "emoji": ":eyes:",
+        "position": 3,
+        "sentiment": {
+            "flair": "neg",
+            "map": "neu"
+        },
+        "emojis": [
+            ":pray:",
+            ":weary:",
+            ":tired_face:",
+            ":eyes:",
+            ":sweat_smile:",
+            ":sob:",
+            ":grin:",
+            ":grimacing:",
+            ":information_desk_person:",
+            ":confused:"
+        ],
+        "matches": false,
+        "fixed": ":weary:"
+    },
+    {
+        "content": "Am I the only one who noticed that he had a Tile on the back of his remote? \ud83e\udd23",
+        "emoji": ":thumbsup:",
+        "position": 5,
+        "sentiment": {
+            "flair": "neg",
+            "map": "pos"
+        },
+        "emojis": [
+            ":relieved:",
+            ":clap:",
+            ":ok_hand:",
+            ":muscle:",
+            ":100:",
+            ":thumbsup:",
+            ":blush:",
+            ":raised_hands:",
+            ":relaxed:",
+            ":gun:"
+        ],
+        "matches": false,
+        "fixed": ":gun:"
+    },
+    {
+        "content": "Anyone else having zero knowledge about IT and then got an understanding about what is API after seeing  this video ?",
+        "emoji": ":thumbsup:",
+        "position": 5,
+        "sentiment": {
+            "flair": "neg",
+            "map": "pos"
+        },
+        "emojis": [
+            ":relieved:",
+            ":clap:",
+            ":ok_hand:",
+            ":muscle:",
+            ":100:",
+            ":thumbsup:",
+            ":blush:",
+            ":raised_hands:",
+            ":relaxed:",
+            ":gun:"
+        ],
+        "matches": false,
+        "fixed": ":gun:"
+    },
+    {
+        "content": "Learning",
+        "emoji": ":eyes:",
+        "position": 4,
+        "sentiment": {
+            "flair": "pos",
+            "map": "neu"
+        },
+        "emojis": [
+            ":heartbeat:",
+            ":yellow_heart:",
+            ":sparkles:",
+            ":blue_heart:",
+            ":eyes:",
+            ":heart:",
+            ":smile:",
+            ":sunglasses:",
+            ":sparkling_heart:",
+            ":speak_no_evil:"
+        ],
+        "matches": false,
+        "fixed": ":heartbeat:"
+    },
+    {
+        "content": "so I can be more fun at weddings Cha Cha Cha. LOL that was great thanks for bringing all the personality to such an important topic\ud83d\ude4c",
+        "emoji": ":confused:",
+        "position": 7,
+        "sentiment": {
+            "flair": "pos",
+            "map": "neg"
+        },
+        "emojis": [
+            ":angry:",
+            ":rage:",
+            ":expressionless:",
+            ":unamused:",
+            ":triumph:",
+            ":neutral_face:",
+            ":facepunch:",
+            ":confused:",
+            ":hand:",
+            ":sleeping:"
+        ],
+        "matches": false,
+        "fixed": ":facepunch:"
+    },
+    {
+        "content": "Thank you",
+        "emoji": ":confused:",
+        "position": 2,
+        "sentiment": {
+            "flair": "pos",
+            "map": "neg"
+        },
+        "emojis": [
+            ":flushed:",
+            ":neutral_face:",
+            ":confused:",
+            ":joy:",
+            ":eyes:",
+            ":expressionless:",
+            ":see_no_evil:",
+            ":sweat_smile:",
+            ":grimacing:",
+            ":speak_no_evil:"
+        ],
+        "matches": false,
+        "fixed": ":flushed:"
+    },
+    {
+        "content": "Man this dude's course is unbelievable. I've been in the software game for a long time. Seen a bunch of different course.  This one hits!!",
+        "emoji": ":confused:",
+        "position": 1,
+        "sentiment": {
+            "flair": "pos",
+            "map": "neg"
+        },
+        "emojis": [
+            ":neutral_face:",
+            ":confused:",
+            ":eyes:",
+            ":sweat_smile:",
+            ":expressionless:",
+            ":see_no_evil:",
+            ":flushed:",
+            ":grimacing:",
+            ":mask:",
+            ":joy:"
+        ],
+        "matches": false,
+        "fixed": ":sweat_smile:"
+    },
+    {
+        "content": "Great API Course! Excellent pace, content, and thoughtfulness.\n(and 36:42 is exactly why I will not ever use Spotify -- not that I would need to with 1T of music on my Plex music server)",
+        "emoji": ":confused:",
+        "position": 4,
+        "sentiment": {
+            "flair": "pos",
+            "map": "neg"
+        },
+        "emojis": [
+            ":neutral_face:",
+            ":confounded:",
+            ":expressionless:",
+            ":persevere:",
+            ":confused:",
+            ":angry:",
+            ":rage:",
+            ":unamused:",
+            ":sweat:",
+            ":flushed:"
+        ],
+        "matches": false,
+        "fixed": ":flushed:"
+    },
+    {
+        "content": "Thanks a lot!!!",
+        "emoji": ":confused:",
+        "position": 9,
+        "sentiment": {
+            "flair": "pos",
+            "map": "neg"
+        },
+        "emojis": [
+            ":pray:",
+            ":sparkles:",
+            ":broken_heart:",
+            ":persevere:",
+            ":pensive:",
+            ":disappointed:",
+            ":confounded:",
+            ":cry:",
+            ":sweat:",
+            ":confused:"
+        ],
+        "matches": false,
+        "fixed": ":pray:"
+    },
+    {
+        "content": "Pathetic content",
+        "emoji": ":thumbsup:",
+        "position": 6,
+        "sentiment": {
+            "flair": "neg",
+            "map": "pos"
+        },
+        "emojis": [
+            ":joy:",
+            ":sob:",
+            ":clap:",
+            ":smile:",
+            ":skull:",
+            ":sweat_smile:",
+            ":thumbsup:",
+            ":speak_no_evil:",
+            ":blue_heart:",
+            ":heart:"
+        ],
+        "matches": false,
+        "fixed": ":sob:"
+    },
+    {
+        "content": "Fantastic video, its interesting all the way through at and it have a  great way of explaining everything!",
+        "emoji": ":confused:",
+        "position": 0,
+        "sentiment": {
+            "flair": "pos",
+            "map": "neg"
+        },
+        "emojis": [
+            ":confused:",
+            ":neutral_face:",
+            ":persevere:",
+            ":confounded:",
+            ":disappointed:",
+            ":sweat:",
+            ":grimacing:",
+            ":sweat_smile:",
+            ":expressionless:",
+            ":cry:"
+        ],
+        "matches": false,
+        "fixed": ":sweat_smile:"
+    }
+]

@@ -61,6 +61,7 @@ for t in texts:
                 (obj["emojis"][min(sequence)] if len(sequence) > 0 else ""), {}
             )
 
+            print([obj["emojis"][s] for s in sequence])
             if t["sentiment"] == newst.get("sentiment"):
                 # print(obj["content"], t["sentiment"], newst.get("sentiment"), "\n")
                 print(obj["content"], newst.get("emoji"), "\n")
@@ -73,5 +74,5 @@ for t in texts:
         else:
             correct.append(obj)
 
-# with open('fixed.json', 'w') as fh:
-#     json.dump(fixed, fh)
+with open("fixed.json", "w") as fh:
+    json.dump(fixed, fh)

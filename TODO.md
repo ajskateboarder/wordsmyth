@@ -10,3 +10,4 @@
 ## In progress
 
 - Doing real analytics
+- Organize scripts into a tools/ directory

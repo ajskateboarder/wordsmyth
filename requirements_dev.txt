@@ -1,2 +1,4 @@
 pytest
 pytest-grpc
+-r requirements.txt
+monkeytype
