@@ -1,11 +1,9 @@
-uvicorn[standard]
-fastapi
 git+https://github.com/themysticsavages/torchMoji
 youtube-comment-downloader
 requests
-requests-futures
 transformers
 flair
 grpcio
 grpcio_tools
+regex==2022.3.2
 -e .

@@ -1,8 +1,8 @@
-version: '3.9'
+version: '3.7'
 
 services:
   grpc:
-    container_name: grpc_server
+    container_name: ytstars_grpc
     build: .
     ports:
       - 50051:50051

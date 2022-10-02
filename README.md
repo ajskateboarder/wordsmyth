@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="https://github.com/themysticsavages/ytstars/blob/main/media/ytstars_logo.png?raw=1" height=200 width=900>
+<img src="https://github.com/themysticsavages/ytstars/blob/main/media/ytstars_logo.png?raw=1" height=100 width=400>
 
-<i><br><br>Rate YouTube videos based on comments (yes the logo looks draft-y)</i>
+<i><br>Rate YouTube videos based on comments (yes the logo looks draft-y)</i>
 
 ![status](https://img.shields.io/badge/status-alpha-orange)
 </div>
@@ -13,11 +13,7 @@
 
 YTStars was made to make finding videos where overall criticism can be made (tutorials, for example) much easier. It's goal is to obviously give videos a star rating.
 
-The backbone of this project is Hugging Face's [PyTorch implementation](https://github.com/huggingface/torchMoji) of [DeepMoji](https://github.com/bfelbo/DeepMoji), which has a pre-trained model to predict emojis. However, I made some updates to the library to make it Python 3 compatible.
-
-Since I didn't feel like digging into the torchMoji library, I got a usable API to use with the model from this [gist](https://gist.github.com/cw75/57ca89cfa496f10c7c7b888ec5703d7f#file-emojize-py).
-
-Whatever comments the program gets is thanks to [youtube-comment-downloader](https://github.com/egbertbouman/youtube-comment-downloader), a fast and completely free extractor that actually works.
+This project was built on top
 
 ## Structure
 
