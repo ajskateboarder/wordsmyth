@@ -22,7 +22,11 @@ class Request(google.protobuf.message.Message):
     TEXTS_FIELD_NUMBER: builtins.int
     COUNT_FIELD_NUMBER: builtins.int
     @property
-    def texts(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
+    def texts(
+        self,
+    ) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[
+        builtins.str
+    ]: ...
     count: builtins.int
     def __init__(
         self,
@@ -30,7 +34,10 @@ class Request(google.protobuf.message.Message):
         texts: collections.abc.Iterable[builtins.str] | None = ...,
         count: builtins.int = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["count", b"count", "texts", b"texts"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal["count", b"count", "texts", b"texts"],
+    ) -> None: ...
 
 global___Request = Request
 
@@ -40,7 +47,11 @@ class Emoji(google.protobuf.message.Message):
     EMOJIS_FIELD_NUMBER: builtins.int
     TEXT_FIELD_NUMBER: builtins.int
     @property
-    def emojis(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
+    def emojis(
+        self,
+    ) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[
+        builtins.str
+    ]: ...
     text: builtins.str
     def __init__(
         self,
@@ -48,7 +59,10 @@ class Emoji(google.protobuf.message.Message):
         emojis: collections.abc.Iterable[builtins.str] | None = ...,
         text: builtins.str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["emojis", b"emojis", "text", b"text"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal["emojis", b"emojis", "text", b"text"],
+    ) -> None: ...
 
 global___Emoji = Emoji
 
@@ -57,13 +71,19 @@ class Emojis(google.protobuf.message.Message):
 
     RESPONSE_FIELD_NUMBER: builtins.int
     @property
-    def response(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___Emoji]: ...
+    def response(
+        self,
+    ) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[
+        global___Emoji
+    ]: ...
     def __init__(
         self,
         *,
         response: collections.abc.Iterable[global___Emoji] | None = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["response", b"response"]) -> None: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["response", b"response"]
+    ) -> None: ...
 
 global___Emojis = Emojis
 
@@ -80,7 +100,12 @@ class Intensity(google.protobuf.message.Message):
         sentiment: builtins.str = ...,
         score: builtins.float = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["score", b"score", "sentiment", b"sentiment"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "score", b"score", "sentiment", b"sentiment"
+        ],
+    ) -> None: ...
 
 global___Intensity = Intensity
 
@@ -98,8 +123,15 @@ class Sentiment(google.protobuf.message.Message):
         sentiment: global___Intensity | None = ...,
         text: builtins.str = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["sentiment", b"sentiment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["sentiment", b"sentiment", "text", b"text"]) -> None: ...
+    def HasField(
+        self, field_name: typing_extensions.Literal["sentiment", b"sentiment"]
+    ) -> builtins.bool: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "sentiment", b"sentiment", "text", b"text"
+        ],
+    ) -> None: ...
 
 global___Sentiment = Sentiment
 
@@ -108,12 +140,18 @@ class Sentiments(google.protobuf.message.Message):
 
     RESPONSE_FIELD_NUMBER: builtins.int
     @property
-    def response(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___Sentiment]: ...
+    def response(
+        self,
+    ) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[
+        global___Sentiment
+    ]: ...
     def __init__(
         self,
         *,
         response: collections.abc.Iterable[global___Sentiment] | None = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["response", b"response"]) -> None: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["response", b"response"]
+    ) -> None: ...
 
 global___Sentiments = Sentiments
