@@ -10,6 +10,7 @@ from typing import Dict, Union
 
 MUTEX = Lock()
 
+
 class Flair:
     def __init__(self) -> None:
         self.sia = TextClassifier.load("en-sentiment")
@@ -29,5 +30,5 @@ class Flair:
             return {"sentiment": "pos", "score": score}
         if "NEGATIVE" in str(sent):
             return {"sentiment": "neg", "score": score}
-        
+
         return {"sentiment": "neu", "score": score}

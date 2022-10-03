@@ -12,3 +12,4 @@ src/algo/deepmoji/model/*.bin
 src/microv2/server_pb2*.py
 **/*.egg-info
 .vscode/
+.pytest_cache/

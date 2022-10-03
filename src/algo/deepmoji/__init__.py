@@ -44,7 +44,7 @@ class Emojize:
         self.st = SentenceTokenizer(vocabulary, max_sentence_length)
         self.model = torchmoji_emojis(MODEL_WEIGHTS_PATH)
 
-    def predict(self, text: str, top_n: int=5) -> List[str]:
+    def predict(self, text: str, top_n: int = 5) -> List[str]:
         if not isinstance(text, list):
             text = [text]
 
