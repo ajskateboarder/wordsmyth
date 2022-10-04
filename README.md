@@ -20,23 +20,9 @@ Imagine you are looking for how to use and make APIs, some tutorial like:
 
 You aren't really sure what to expect from the tutorial since it's over 2 hours long and covers a slightly specific topic. Sure, reading the first 10 comments may give you a general idea, but it's not necessarily covering all opinions. 
 
-With this tool, all the video comments are aggregated, analyzed.
+With this tool, all the video comments are aggregated, analyzed for sentiment, and displayed in the most simple way - a rating.
 
-## Structure
-
-```text
-media/
-    Github README content
-future/
-    Random stuff because I couldn't put it on a separate branch
-src/
-    algo/
-        Model libraries
-    microv2/
-        GRPC-based API to process data
-tests/
-    Tests for APIs
-```
+Do you want to scavenge all those comments now?
 
 # Usage
 

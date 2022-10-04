@@ -5,7 +5,7 @@ from grpc._channel import _InactiveRpcError
 from google.protobuf.json_format import MessageToDict
 
 from micro.stubs.server_pb2 import Request
-from .classes import Torch
+from ..classes import Torch
 
 
 @pytest.mark.filterwarnings("ignore::UserWarning", "ignore::DeprecationWarning")
