@@ -1,15 +1,15 @@
+#!/usr/bin/env python3
 """
+Emoji map downloader:
 Script to download sentiment information associated
-with every emoji used by TorchMoji
+with every emoji used by TorchMoji.
 http://kt.ijs.si/data/Emoji_sentiment_ranking/index.html
 """
 
 import json
-from typing import Dict, List
 
 import requests
 from bs4 import BeautifulSoup
-from bs4.element import ResultSet
 from emoji import emojize
 
 REPRS = ":joy: :unamused: :weary: :sob: :heart_eyes: \
@@ -32,7 +32,7 @@ EMOJIS = list(emojize(emoji, use_aliases=True) for emoji in REPRS)
 COMBS = dict(zip(EMOJIS, REPRS))
 
 
-def fetch_emojimap() -> ResultSet:
+def fetch_emojimap():
     """Download emoji ranking and scrapes table row elements"""
     req = requests.get(
         "http://kt.ijs.si/data/Emoji_sentiment_ranking/index.html", timeout=20
@@ -42,7 +42,7 @@ def fetch_emojimap() -> ResultSet:
     return soup.find("table").find("tbody").find_all("tr")
 
 
-def convert_trs(trs: ResultSet) -> List[Dict[str, str]]:
+def convert_trs(trs):
     """Converts table rows to objects"""
     groups = [
         {
@@ -64,7 +64,10 @@ def convert_trs(trs: ResultSet) -> List[Dict[str, str]]:
 if __name__ == "__main__":
     import argparse
 
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(
+        description="Download the Emoji Sentiment Ranking list to a JSON document",
+        usage="./tools/dlesr.py ./path/to.json"
+    )
     parser.add_argument(dest="path", help="Path to dump emoji data")
     args = parser.parse_args()
 
