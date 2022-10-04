@@ -11,9 +11,16 @@
 
 ## Overview
 
-YTStars was made to make finding videos where overall criticism can be made (tutorials, for example) much easier. It's goal is to obviously give videos a star rating.
+YTStars was made to ease the pains of manual comment analysis among content creators and viewers to find out how good a video is. 
+Here's it in a more relatable way:
 
-This project was built on top
+Imagine you are looking for how to use and make APIs, some tutorial like:
+
+<a href="https://www.youtube.com/watch?v=GZvSYJDk-us"><img src="https://i.ytimg.com/vi/GZvSYJDk-us/hq720.jpg" height=150></a>
+
+You aren't really sure what to expect from the tutorial since it's over 2 hours long and covers a slightly specific topic. Sure, reading the first 10 comments may give you a general idea, but it's not necessarily covering all opinions. 
+
+With this tool, all the video comments are aggregated, analyzed.
 
 ## Structure
 
