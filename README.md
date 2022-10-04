@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://github.com/themysticsavages/ytstars/blob/main/media/ytstars_logo.png?raw=1" height=100 width=400>
+<img src="https://github.com/themysticsavages/ytstars/blob/main/logo.png?raw=1" height=100 width=400>
 
 <i><br>Rate YouTube videos based on comments (yes the logo looks draft-y)</i>
 
@@ -11,14 +11,14 @@
 
 ## Overview
 
-YTStars was made to ease the pains of manual comment analysis among content creators and viewers to find out how good a video is. 
+YTStars was made to ease the pains of manual comment analysis among content creators and viewers to find out how good a video is.
 Here's it in a more relatable way:
 
 Imagine you are looking for how to use and make APIs, some tutorial like:
 
 <a href="https://www.youtube.com/watch?v=GZvSYJDk-us"><img src="https://i.ytimg.com/vi/GZvSYJDk-us/hq720.jpg" height=150></a>
 
-You aren't really sure what to expect from the tutorial since it's over 2 hours long and covers a slightly specific topic. Sure, reading the first 10 comments may give you a general idea, but it's not necessarily covering all opinions. 
+You aren't really sure what to expect from the tutorial since it's over 2 hours long and covers a slightly specific topic. Sure, reading the first 10 comments may give you a general idea, but it's not necessarily covering all opinions.
 
 With this tool, all the video comments are aggregated, analyzed for sentiment, and displayed in the most simple way - a rating.
 
