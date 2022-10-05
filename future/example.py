@@ -1,13 +1,15 @@
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
+from youtube_comment_downloader import YoutubeCommentDownloader
 import streamlit as st
 import requests
 import grpc
 
-from micro.stubs.server_pb2 import Sentiments, Texts
+from micro.stubs.server_pb2 import Request
 from micro.stubs.server_pb2_grpc import ModelStub
 
-from ytd import get_comments
+
+_yt = YoutubeCommentDownloader()
 
 
 def chunk(lst, n):
@@ -33,7 +35,9 @@ with st.form("form"):
         title = res.json()["title"]
         st.write(f'Downloading comments for "{title}". Please wait...')
 
-        comments = [i for i in get_comments(yt_id, 200) if i["reply"] == False]
+        comments = [
+            i for i in _yt.get_comments(yt_id, sort_by=1) if i["reply"] == False
+        ]
         content = [i["text"] for i in comments]
 
         chunks = list(chunk(content, 100))
@@ -42,7 +46,7 @@ with st.form("form"):
         print("Requesting comments")
 
         with ThreadPoolExecutor() as executor:
-            futures = [executor.submit(fetch, Texts(texts=v)) for v in chunks]
+            futures = [executor.submit(fetch, Request(texts=v)) for v in chunks]
 
         for f in as_completed(futures):
             print("Collected")

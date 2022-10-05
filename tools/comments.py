@@ -49,7 +49,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(
         description="Download a specific number of comments in chunks to a JSON document",
-        usage="./tools/dlcent.py ./path/to.json <youtube video id> <number of comments>",
+        usage="./tools/comments.py <youtube video id> <number of comments>",
     )
     parser.add_argument(dest="video_id", help="YouTube video ID")
     parser.add_argument(dest="limit", help="Number of comments to download", type=int)

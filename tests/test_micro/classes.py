@@ -11,8 +11,3 @@ class Flair(BaseModel):
 class Torch(BaseModel):
     emojis: List[str]
     text: str
-
-
-class TR(BaseModel):
-    emoji: str
-    repr: str

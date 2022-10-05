@@ -74,7 +74,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(
         description="Download the Emoji Sentiment Ranking list to a JSON document",
-        usage="./tools/dlesr.py ./path/to.json",
+        usage="./tools/emojimap.py ./path/to.json",
     )
     parser.add_argument(dest="path", help="Path to dump emoji data")
     args = parser.parse_args()
