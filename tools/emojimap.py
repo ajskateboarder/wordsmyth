@@ -61,18 +61,22 @@ def convert_trs(trs):
     return [g for g in groups if any(emoji in g["emoji"] for emoji in EMOJIS)]
 
 
+def main(path):
+    doc = fetch_emojimap()
+    extracts = convert_trs(doc)
+
+    with open(path, "w", encoding="utf-8") as fh:
+        json.dump(extracts, fh)
+
+
 if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser(
         description="Download the Emoji Sentiment Ranking list to a JSON document",
-        usage="./tools/dlesr.py ./path/to.json"
+        usage="./tools/dlesr.py ./path/to.json",
     )
     parser.add_argument(dest="path", help="Path to dump emoji data")
     args = parser.parse_args()
 
-    doc = fetch_emojimap()
-    extracts = convert_trs(doc)
-
-    with open(args.path, "w", encoding="utf-8") as fh:
-        json.dump(extracts, fh)
+    main(args.path)
