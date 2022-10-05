@@ -71,18 +71,19 @@ or with `docker-compose`:
 docker-compose up -d
 ```
 
-## Data transformation and pipelines
+## Data pipelines
 
-Download comments from a video:
+Download comments from a video with no modifications:
 
 ```bash
-./scripts/comments --id=GZvSYJDk-us --length=300 --output=data.csv
+./tools/comments GZvSYJDk-us 300 > output.json
 ```
 
-Fetch algorithm responses:
+Modify to include algorithm responses:
 
 ```bash
-./scripts/algo -f data.csv -o data.csv
+./tools/comments GZvSYJDk-us 300 | ./pipe/algo -t -f
+# -t runs TorchMoji, -f runs Flair
 ```
 
 Fix them, if required:

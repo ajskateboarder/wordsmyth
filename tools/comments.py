@@ -5,8 +5,6 @@ Script to bulk request comments and dump them to a JSON file as chunks
 """
 
 import sys
-import json
-
 from youtube_comment_downloader import YoutubeCommentDownloader
 
 _yt = YoutubeCommentDownloader()
@@ -17,7 +15,7 @@ def chunks(lst, n):
         yield lst[i : i + n]
 
 
-def download_comments(video_id, limit):
+def download_comments(video_id, limit, asfile=False):
     comments = []
     chunk = []
 
@@ -39,21 +37,22 @@ def download_comments(video_id, limit):
     return comments
 
 
+def main(video_id, limit):
+    # GZvSYJDk-us
+    comments = download_comments(video_id, limit)
+
+    print(comments, end="")
+
+
 if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser(
         description="Download a specific number of comments in chunks to a JSON document",
-        usage="./tools/dlcent.py ./path/to.json <youtube video id> <number of comments>"
+        usage="./tools/dlcent.py ./path/to.json <youtube video id> <number of comments>",
     )
-    parser.add_argument(dest="path", help="Path to dump comments")
     parser.add_argument(dest="video_id", help="YouTube video ID")
     parser.add_argument(dest="limit", help="Number of comments to download", type=int)
     args = parser.parse_args()
 
-    comments = download_comments(args.video_id, args.limit)
-
-    # GZvSYJDk-us
-
-    with open(args.path, "w", encoding="utf-8") as fh:
-        json.dump(comments, fh)
+    main(args.video_id, args.limit)
