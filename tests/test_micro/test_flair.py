@@ -5,6 +5,7 @@ from grpc._channel import _InactiveRpcError
 from google.protobuf.json_format import MessageToDict
 
 from micro.stubs.server_pb2 import Request
+from .classes import Flair
 
 
 @pytest.mark.filterwarnings("ignore::UserWarning", "ignore::DeprecationWarning")
@@ -21,14 +22,19 @@ def test_none(grpc_stub):
 def test_some(grpc_stub, capsys):
     """Test some sample texts"""
 
-    request = Request(texts=["This isn't too bad!", "Nice tutorial"])
+    request = Request(texts=["This sucks!", "Nice tutorial"])
     response = MessageToDict(grpc_stub.flair(request))
 
-    with capsys.disabled():
-        print(response)
+    assert response["response"]
 
-    assert response["response"]
-    assert response["response"]
+    try:
+        objs = [Flair(**item) for item in response["response"]]
+    except Exception as exc:
+        raise Exception(exc) from exc
+
+    assert len(objs) == 2
+    assert objs[0].sentiment == "neg"
+    assert objs[1].sentiment == "pos"
 
 
 @pytest.mark.filterwarnings("ignore::UserWarning", "ignore::DeprecationWarning")
