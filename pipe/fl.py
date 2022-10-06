@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# pylint: disable=import-outside-toplevel
 
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
@@ -21,7 +22,7 @@ def submit_futures(content):
     return as_completed(futures)
 
 
-def main(texts):
+def request(texts):
     data = []
 
     responses = submit_futures(texts)
@@ -34,21 +35,27 @@ def main(texts):
     return data
 
 
-if __name__ == "__main__":
-    from ast import literal_eval
+def main(pretty, stdin):
     from pprint import pprint
-    import argparse
+    from helpers import convert_stdin
     import json
+
+    stdin = convert_stdin(stdin)
+    response = request(stdin)
+
+    if pretty:
+        pprint(response)
+    else:
+        print(json.dumps(response))
+
+
+if __name__ == "__main__":
+    import argparse
     import sys
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--pretty", "-p", action="store_true", help="Format JSON")
-    
-    pretty = parser.parse_args().pretty
-    data = main(literal_eval(list(sys.stdin)[-1]))
-    
-    if pretty:
-        pprint(data)
-    else:
-        print(json.dumps(data))
-    
+
+    args = parser.parse_args()
+    output = list(sys.stdin)[-1]
+    main(args.pretty, output)
