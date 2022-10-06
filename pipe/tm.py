@@ -11,10 +11,11 @@ from micro.stubs.server_pb2_grpc import ModelStub
 
 _channel = grpc.insecure_channel("localhost:50051")
 
+
 def submit_futures(content):
     with ThreadPoolExecutor() as executor:
         futures = [
-            executor.submit(ModelStub(_channel).flair, request=Request(texts=v))
+            executor.submit(ModelStub(_channel).torchmoji, request=Request(texts=v))
             for v in content
         ]
     return as_completed(futures)
