@@ -15,7 +15,7 @@ def chunks(lst, n):
         yield lst[i : i + n]
 
 
-def download_comments(video_id, limit, asfile=False):
+def download_comments(video_id, limit):
     comments = []
     chunk = []
 
