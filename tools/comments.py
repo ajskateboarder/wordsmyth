@@ -29,7 +29,8 @@ def download_comments(video_id, limit):
             comments.append(chunk)
             chunk = []
         else:
-            chunk.append(c["text"])
+            if not c["reply"]:
+                chunk.append(c["text"])
 
     sys.stdout.write("\n\r")
     sys.stdout.flush()
