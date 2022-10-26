@@ -55,7 +55,14 @@ def convert_trs(trs):
         }
         for tr in trs
         if (td := tr.find_all("td"))
-        if (sent := {"neg": td[5].text, "neu": td[6].text, "pos": td[7].text})
+        if (
+            sent := {
+                "neg": td[5].text,
+                "neu": td[6].text,
+                "pos": td[7].text,
+                "score": td[8].text,
+            }
+        )
     ]
 
     return [g for g in groups if any(emoji in g["emoji"] for emoji in EMOJIS)]

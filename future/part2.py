@@ -20,6 +20,7 @@ channel = grpc.insecure_channel("localhost:50051")
 def main():
     df = pd.read_csv("./data.csv")
     text = list(chunks(df["text"].to_list(), 5))
+    print(text)
 
     fetch = ModelStub(channel).torchmoji
 

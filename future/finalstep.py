@@ -20,7 +20,7 @@ em = {e["repr"]: e for e in em}
 em[":cry:"]["sentiment"] = "neg"
 em[":grimacing:"]["sentiment"] = "neu"
 
-texts = df[["text", "emojis", "sentiment"]].to_dict("records")
+texts = df[["text", "emojis", "sentiment", "score"]].to_dict("records")
 
 incorrect = []
 correct = []
@@ -45,6 +45,7 @@ for t in texts:
             "sentiment": {"flair": t["sentiment"], "map": match["sentiment"]},
             "emojis": emojis,
             "matches": t["sentiment"] == match["sentiment"],
+            "score": t["score"],
         }
 
         # check if flair sentiment doesn't equal emoji sentiment
@@ -66,13 +67,16 @@ for t in texts:
                 # print(obj["content"], t["sentiment"], newst.get("sentiment"), "\n")
                 print(obj["content"], newst.get("emoji"), "\n")
                 obj["fixed"] = newst.get("repr")
+                obj["status"] = "fixed"
                 fixed.append(obj)
             else:
                 # print(obj["content"], newst.get("emoji"), "\n")
                 # print(t["text"], t["sentiment"], newst.get("sentiment"))
+                obj["status"] = "incorrect"
                 incorrect.append(obj)
         else:
+            obj["status"] = "correct"
             correct.append(obj)
 
-with open("fixed.json", "w") as fh:
-    json.dump(fixed, fh)
+with open("data.json", "w") as fh:
+    json.dump([*incorrect, *correct, *fixed], fh)
