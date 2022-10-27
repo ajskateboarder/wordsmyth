@@ -7,17 +7,18 @@ with open("emojimap.json", encoding="utf-8") as fh:
 with open("data.json", encoding="utf-8") as fh:
     data = json.load(fh)
 
-# elem = data[-4]
 
 for elem in data:
-    print(elem["content"])
-    picked = [e for e in em if elem["emoji"] == e["repr"]][0]
+    picked = [e for e in em if elem.get("fixed", elem["emoji"]) == e["repr"]][0]
     score = np.mean([float(picked["pos"]), float(picked["neu"]), float(picked["neg"])])
-    print(elem["sentiment"])
 
     if elem["sentiment"]["flair"] == "neg":
         score = (score - 0.2 * float(picked["pos"])) * 2
     if elem["sentiment"]["map"] == "neg":
         score = score - 0.2 * float(picked["neg"])
+    if elem["sentiment"]["map"] == "pos" and elem["sentiment"]["flair"] == "pos":
+        score = score - 0.2
+    if "🤣" in elem["content"]:
+        score = score - 0.2
 
-    print(round(1 - score, 3), "\n")
+    print(elem["content"], f"{round(1 - score, 3):.2%}", "\n")
