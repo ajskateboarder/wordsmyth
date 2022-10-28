@@ -3,11 +3,7 @@
 <img src="https://github.com/themysticsavages/ytstars/blob/main/logo.png?raw=1" height=100 width=400>
 
 <i><br>Rate YouTube videos based on comments (yes the logo looks draft-y)</i>
-
-![status](https://img.shields.io/badge/status-alpha-orange)
 </div>
-
-#
 
 ## Overview
 
@@ -23,6 +19,13 @@ You aren't really sure what to expect from the tutorial since it's over 2 hours 
 With this tool, all the video comments are aggregated, analyzed for sentiment, and displayed in the most simple way - a rating.
 
 Do you want to scavenge all those comments now?
+
+## Status
+
+YTStars is currently in development and all features haven't been implemented (no rating). Currently, we have:
+  - a finished server for handling concurrent requests to algorithms
+  - data pipelines for comments and algos on the said server
+  - a hacky script for making comment ratings (`future/verylast.py`)
 
 # Usage
 
