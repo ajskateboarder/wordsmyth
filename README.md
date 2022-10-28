@@ -7,7 +7,7 @@
 ![status](https://img.shields.io/badge/status-alpha-orange)
 </div>
 
-## Experimental branch, please try to use the main branch
+## Ironically deprecated branch, will soon be removed after pre-development
 #
 
 ## Overview
