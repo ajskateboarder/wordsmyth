@@ -5,6 +5,7 @@ Script to bulk request comments and dump them to a JSON file as chunks
 """
 
 import sys
+import json
 from youtube_comment_downloader import YoutubeCommentDownloader
 
 _yt = YoutubeCommentDownloader()
@@ -22,8 +23,8 @@ def download_comments(video_id, limit):
     for e, (c, _) in enumerate(
         zip(_yt.get_comments(video_id, sort_by=1), range(limit + 1))
     ):
-        sys.stdout.write(f"{e} comments\r")
-        sys.stdout.flush()
+        sys.stderr.write(f"{e} comments\r")
+        sys.stderr.flush()
 
         if len(chunk) == limit / 10:
             comments.append(chunk)
@@ -34,6 +35,7 @@ def download_comments(video_id, limit):
 
     sys.stdout.write("\n\r")
     sys.stdout.flush()
+    sys.stdout.flush()
 
     return comments
 
@@ -42,7 +44,7 @@ def main(video_id, limit):
     # GZvSYJDk-us
     comments = download_comments(video_id, limit)
 
-    print(comments, end="")
+    print(json.dumps(comments), end="")
 
 
 if __name__ == "__main__":
