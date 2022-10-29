@@ -43,38 +43,31 @@ Clone the repository with `--depth=1` because there is a large file in the Git h
 ```bash
 git clone --depth=1 https://github.com/themysticsavages/ytstars
 cd ytstars
+```
+
+Start the server locally:
+
+```bash
 pip install -r requirements.txt
-```
-
-Get the torchMoji model:
-
-```bash
 make dlmodel
-```
-
-If you do not have [wget](https://www.gnu.org/software/wget) installed, get the model from [here](https://dropbox.com/s/q8lax9ary32c7t9/pytorch_model.bin?dl=0) and save it in `src/deepmoji/model/`.
-
-Since the completion of the GRPC microservice, we recommend using it as the original REST API will soon be deprecated.
-
-Create interoperable stubs, if needed:
-
-```bash
-make proto
-```
-
-Start the server:
-
-```bash
 make grpc
 ```
 
-or with `docker-compose`:
+The `make dlmodel` directive uses [wget](https://www.gnu.org/software/wget), so 
+if you don't have wget, get the model from [here](https://dropbox.com/s/q8lax9ary32c7t9/pytorch_model.bin?dl=0) and save it in `src/deepmoji/model/`.
+
+You can also  `docker-compose`:
 
 ```bash
 docker-compose up -d
 ```
 
 ## Data pipelines
+
+Consider sourcing `aliases.sh` for your sanity:
+```bash
+
+```
 
 Download comments from a video with no modifications:
 
@@ -93,28 +86,4 @@ Fix them, if required:
 
 ```bash
 ./scripts/fix -f data.csv
-```
-
-# Citations
-
-```bibtex
-@inproceedings{felbo2017,
-  title={Using millions of emoji occurrences to learn any-domain representations for detecting sentiment, emotion and sarcasm},
-  author={Felbo, Bjarke and Mislove, Alan and S{\o}gaard, Anders and Rahwan, Iyad and Lehmann, Sune},
-  booktitle={Conference on Empirical Methods in Natural Language Processing (EMNLP)},
-  year={2017}
-}
-```
-
-```bibtex
-@article{Kralj2015emojis,
-  author={{Kralj Novak}, Petra and Smailovi{\'c}, Jasmina and Sluban, Borut and Mozeti\v{c}, Igor},
-  title={Sentiment of emojis},
-  journal={PLoS ONE},
-  volume={10},
-  number={12},
-  pages={e0144296},
-  url={http://dx.doi.org/10.1371/journal.pone.0144296},
-  year={2015}
-}
 ```
