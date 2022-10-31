@@ -6,7 +6,7 @@
 #
 --find-links https://download.pytorch.org/whl/torch_stable.html
 
--e file:///home/adijo/Desktop/ytstars
+-e . 
 backports-zoneinfo==0.2.1
 beautifulsoup4==4.11.1
 bpemb==0.3.4
