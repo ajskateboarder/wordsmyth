@@ -1,9 +1,6 @@
-<div align="center">
+<img src="./logo.png" height=100 align=right>
 
-<img src="https://github.com/themysticsavages/ytstars/blob/main/logo.png?raw=1" height=100 width=400>
-
-<i><br>Rate YouTube videos based on comments (yes the logo looks draft-y)</i>
-</div>
+# YTStars
 
 ## Overview
 
