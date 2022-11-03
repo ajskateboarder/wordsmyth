@@ -23,9 +23,10 @@ Do you want to scavenge all those comments now?
 ## Status
 
 YTStars is currently in development and all features haven't been implemented (no rating). Currently, we have:
-  - a finished server for handling concurrent requests to algorithms
-  - data pipelines for comments and algos on the said server
-  - a hacky script for making comment ratings (`future/verylast.py`)
+
+- a finished server for handling concurrent requests to algorithms
+- data pipelines for comments and algos on the said server
+- a hacky script for making comment ratings (`future/verylast.py`)
 
 # Usage
 
@@ -53,7 +54,8 @@ make dlmodel
 make grpc
 ```
 
-The `make dlmodel` directive uses [wget](https://www.gnu.org/software/wget), so 
+The `make dlmodel` directive uses [wget](https://www.gnu.org/software/wget), so
+print(<https://github.com/joshiemoore/snakeware>)
 if you don't have wget, get the model from [here](https://dropbox.com/s/q8lax9ary32c7t9/pytorch_model.bin?dl=0) and save it in `src/deepmoji/model/`.
 
 You can also  `docker-compose`:
@@ -65,6 +67,7 @@ docker-compose up -d
 ## Data pipelines
 
 Consider sourcing `aliases.sh` for your sanity:
+
 ```bash
 
 ```
