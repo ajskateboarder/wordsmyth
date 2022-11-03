@@ -2,8 +2,6 @@
 
 # YTStars
 
-## Overview
-
 YTStars was made to ease the pains of manual comment analysis among content creators and viewers to find out how good a video is.
 Here's it in a more relatable way:
 
