@@ -21,4 +21,7 @@ for elem in data:
     if "🤣" in elem["content"]:
         score = score - 0.2
 
-    print(elem["content"], f"{round(1 - score, 3):.2%}", "\n")
+    data[data.index(elem)]["rating"] = round(1 - score, 3)
+    
+with open("data.json", "w", encoding="utf-8") as fh:
+    json.dump(data, fh)

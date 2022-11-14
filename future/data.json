@@ -21,7 +21,8 @@
         ],
         "matches": false,
         "score": 0.9963069,
-        "status": "incorrect"
+        "status": "incorrect",
+        "rating": 0.787
     },
     {
         "content": "When was thie video made?  The Spotify website changed and the layout is different.  Spotify seems to only have the \"Get\" request in the search API.  Can someone point me to the site that has the \"Request\" version of the API?",
@@ -45,7 +46,8 @@
         ],
         "matches": false,
         "score": 0.9999945,
-        "status": "incorrect"
+        "status": "incorrect",
+        "rating": 0.588
     },
     {
         "content": "Please keep a constant level of volume and pronunciation. You drop off in volume and intelligibility at the end of each sentence, which makes it difficult to understand. If I am the \"only one\" to have pointed it out, it means that I am one of the few who watched long enough, and I am one of the few who actually wanted to understand you ... and, I have higher standards.",
@@ -69,7 +71,8 @@
         ],
         "matches": false,
         "score": 0.99980503,
-        "status": "incorrect"
+        "status": "incorrect",
+        "rating": 0.588
     },
     {
         "content": "https://youtu.be/EBOq1xr0ieo",
@@ -93,7 +96,8 @@
         ],
         "matches": false,
         "score": 0.54784304,
-        "status": "incorrect"
+        "status": "incorrect",
+        "rating": 0.588
     },
     {
         "content": "This guy is so annoying. He knows his stuff and I need the information, and it's well-organized -- however his personality is so weird that I have to constantly rewind because his \"theater\" is so distracting from the information flow.  It absorbs 80% of my brain power just to cancel out the noise of his cringe mannerisms. His \"performance\" is like he's talking to 6 year old children, and he obviously thinks he's cute and entertaining. Hint: you're insulting the intelligence of your audience and I'd think even children would recognize this as b.s. ... Free Code Camp: just know that a rock star is somebody who can focus on delivering the goods, not somebody who thinks he is a Disney princess. You have a lot of great teachers but not this guy; he needs an education about the real world and to unplug from Sesame Street.. Craig: Here's one of many good examples of how to teach purely and simply, just delivering the information without injecting personality quirks. It's by an actual woman, not a guy pretending to be a woman or trying to ingratiate himself with women. Learn from her please.\nhttps://www.youtube.com/watch?v=t8pPdKYpowI",
@@ -117,7 +121,8 @@
         ],
         "matches": false,
         "score": 0.9999839,
-        "status": "incorrect"
+        "status": "incorrect",
+        "rating": 0.588
     },
     {
         "content": "Anyone else having zero knowledge about IT and then got an understanding about what is API after seeing  this video ?",
@@ -141,7 +146,8 @@
         ],
         "matches": false,
         "score": 0.9999491,
-        "status": "incorrect"
+        "status": "incorrect",
+        "rating": 0.588
     },
     {
         "content": "This is just fantastic!!  APIs were so opaque to me.  Now I get it.  A lot clearer. And this is coming from someone who barely knows a line of code.  \n\nHaving said that, is there a crash course I can do that teaches me the bare basics of python needed to access APIs without having to learn the stuff that I won't use \u2013 if I'm just interested in accessing APIs?\n\nThanks again. :)",
@@ -165,7 +171,8 @@
         ],
         "matches": false,
         "score": 0.99854714,
-        "status": "incorrect"
+        "status": "incorrect",
+        "rating": 0.787
     },
     {
         "content": "1:25:58 somebody please help with the virtual environnment in Windows, it does not accept the command.",
@@ -189,7 +196,8 @@
         ],
         "matches": false,
         "score": 0.9998839,
-        "status": "incorrect"
+        "status": "incorrect",
+        "rating": 0.588
     },
     {
         "content": "I laughed so hard at 18.56\ud83e\udd23\ud83e\udd23",
@@ -213,7 +221,8 @@
         ],
         "matches": false,
         "score": 0.95593417,
-        "status": "incorrect"
+        "status": "incorrect",
+        "rating": 0.788
     },
     {
         "content": "When I try to run the explore.js program. It doesn't return my most recently sent message. I just get this: \n\nThe most recent message is ${messages[0].body}\n\nI don't know what's going on.\n\n*EDIT: Nevermind, syntax error was the problem I was using a  '   instead of  `  for the string.",
@@ -237,7 +246,8 @@
         ],
         "matches": false,
         "score": 0.9999902,
-        "status": "incorrect"
+        "status": "incorrect",
+        "rating": 0.588
     },
     {
         "content": "If you go woke you go broke, don't take my word for it you only have to look at what Netflix is doing and what Facebook is doing on the market, Facebook is making a free fall at the moment and Mark Zuckerberg is not on the list of richest people of the world anymore.",
@@ -261,7 +271,8 @@
         ],
         "matches": false,
         "score": 0.9994448,
-        "status": "incorrect"
+        "status": "incorrect",
+        "rating": 0.588
     },
     {
         "content": "Yeah it's in the header where you can put some obscure code that the user doesn't see or has any idea of that it's there, you should know at least the basics of what's happening on the background of the API that you're using so you're able to recognize if the API is safe to use or that the API is giving unauthorized access to the server or the client.\nKeep using API's the way you do and it's a matter of time that it goes horribly wrong, it's not a question of if it happens anymore because nowadays bad things happen to everyone who's doing things online.\nYou have been warned, what you do with this information is totally up to you.\nOne thing that I wouldn't teach or dare to say online is that you can use API's without knowing what happens in the background, that's bad advice so if you read this comment please don't listen to this guy, he may be able to use the API's but he has no idea what the API is capable of and what it can do without you even knowing or seeing anything that the API may be doing to your system or the server making it even more dangerous because if it sits somewhere on the server it can infect many computers, phones etc. and at the time that people finally begin to suspect that there's something wrong with their system it's already too late, who knows what happens if you don't have any knowledge of the inner workings of the API.",
@@ -285,7 +296,8 @@
         ],
         "matches": false,
         "score": 0.99999917,
-        "status": "incorrect"
+        "status": "incorrect",
+        "rating": 0.588
     },
     {
         "content": "That's a very big security risk you're taking if you only use an API and you don't know how the API is working on the background, API's are the new thing that hackers are interested in because of the lack of security of the API's.\nThe first thing that I want to know of any API that I'm going to use is how it works in the background or at least how I can make use of the API in a safe way keeping hackers out.",
@@ -309,7 +321,8 @@
         ],
         "matches": false,
         "score": 0.9981054,
-        "status": "incorrect"
+        "status": "incorrect",
+        "rating": 0.588
     },
     {
         "content": "Nice video",
@@ -333,7 +346,8 @@
         ],
         "matches": false,
         "score": 0.9928888,
-        "status": "incorrect"
+        "status": "incorrect",
+        "rating": 0.787
     },
     {
         "content": "API's are great and you can do pretty much everything you can imagine i just love it",
@@ -357,7 +371,8 @@
         ],
         "matches": true,
         "score": 0.9827787,
-        "status": "correct"
+        "status": "correct",
+        "rating": 0.867
     },
     {
         "content": "this course is awesome. he knows exactly when to give a small break and refresh the mind. GOOD JOB sir",
@@ -381,7 +396,8 @@
         ],
         "matches": true,
         "score": 0.9983242,
-        "status": "correct"
+        "status": "correct",
+        "rating": 0.867
     },
     {
         "content": "Great Video ..... everyone should be learning to Build APIS, the faster the cheaper ....the better",
@@ -405,7 +421,8 @@
         ],
         "matches": true,
         "score": 0.99790096,
-        "status": "correct"
+        "status": "correct",
+        "rating": 0.867
     },
     {
         "content": "thanks from Costa Rica",
@@ -429,7 +446,8 @@
         ],
         "matches": true,
         "score": 0.99465126,
-        "status": "correct"
+        "status": "correct",
+        "rating": 0.867
     },
     {
         "content": "it really really usefull crash course but i feel tiring to contiuan to watch it but it is so intersted for me \nso i desid to finish to from the first time i have try",
@@ -453,7 +471,8 @@
         ],
         "matches": true,
         "score": 0.7876919,
-        "status": "correct"
+        "status": "correct",
+        "rating": 0.867
     },
     {
         "content": "Dissapointed that twilio doesn't work for my country, even you could say about it that there are countries that could test API twoards twilio.",
@@ -477,7 +496,8 @@
         ],
         "matches": true,
         "score": 0.9999838,
-        "status": "correct"
+        "status": "correct",
+        "rating": 0.535
     },
     {
         "content": "P!",
@@ -501,7 +521,8 @@
         ],
         "matches": true,
         "score": 0.9617771,
-        "status": "correct"
+        "status": "correct",
+        "rating": 0.535
     },
     {
         "content": "It is an amazing video. It contains valuable and useful information. It motivates me. Thank you for this nice video",
@@ -525,7 +546,8 @@
         ],
         "matches": true,
         "score": 0.9866094,
-        "status": "correct"
+        "status": "correct",
+        "rating": 0.867
     },
     {
         "content": "I have a problem,  I have Key 'To' but the output always says that Phone number is required, but I'd already put my phone number. please help me aSAP",
@@ -549,7 +571,8 @@
         ],
         "matches": true,
         "score": 0.714908,
-        "status": "correct"
+        "status": "correct",
+        "rating": 0.535
     },
     {
         "content": "Amazing teacher..",
@@ -573,7 +596,8 @@
         ],
         "matches": true,
         "score": 0.98559606,
-        "status": "correct"
+        "status": "correct",
+        "rating": 0.867
     },
     {
         "content": "Am I the only one who noticed that he had a Tile on the back of his remote? \ud83e\udd23",
@@ -597,7 +621,8 @@
         ],
         "matches": true,
         "score": 0.9999788,
-        "status": "correct"
+        "status": "correct",
+        "rating": 0.735
     },
     {
         "content": "I choo choo choose to watch this course just   for the pun lines. JK!\n\nI want to be like Craig Dennis when I Grow up lol \ud83d\ude02\ud83d\ude02\ud83d\ude02\ud83d\ude02",
@@ -621,7 +646,8 @@
         ],
         "matches": true,
         "score": 0.94127184,
-        "status": "correct"
+        "status": "correct",
+        "rating": 0.867
     },
     {
         "content": "\"Thank you for being inclusive. Inclusivity matters.\" -Craig\n\nAgreed! Really great and fun video. I'll be back for more.",
@@ -645,7 +671,8 @@
         ],
         "matches": true,
         "score": 0.9949532,
-        "status": "correct"
+        "status": "correct",
+        "rating": 0.867
     },
     {
         "content": "I completed the whole video and i absolutely loved it!!! thank you so much Craig for making it so much fun!!!!!!",
@@ -669,7 +696,8 @@
         ],
         "matches": true,
         "score": 0.9983583,
-        "status": "correct"
+        "status": "correct",
+        "rating": 0.867
     },
     {
         "content": "I just took a position at work and just started using APIs, this was write on time.  \"B.I.G\" shout out for the Hip Hop reference.",
@@ -693,7 +721,8 @@
         ],
         "matches": true,
         "score": 0.7816884,
-        "status": "correct"
+        "status": "correct",
+        "rating": 0.535
     },
     {
         "content": "Hey, thanks for the tip in 0:35:45",
@@ -717,7 +746,8 @@
         ],
         "matches": true,
         "score": 0.91490734,
-        "status": "correct"
+        "status": "correct",
+        "rating": 0.867
     },
     {
         "content": "Great tutorial, Big Poppa! \ud83d\ude02",
@@ -741,7 +771,8 @@
         ],
         "matches": true,
         "score": 0.99730194,
-        "status": "correct"
+        "status": "correct",
+        "rating": 0.867
     },
     {
         "content": "Get the notes and code for this course here: https://github.com/craigsdennis/intro-to-apis-course/blob/master/course-notes.md",
@@ -765,7 +796,8 @@
         ],
         "matches": true,
         "score": 0.8956985,
-        "status": "correct"
+        "status": "correct",
+        "rating": 0.535
     },
     {
         "content": "Super amazing intro to very useful course\ud83e\udd0d\ud83e\udd0d",
@@ -789,7 +821,8 @@
         ],
         "matches": true,
         "score": 0.98976034,
-        "status": "correct"
+        "status": "correct",
+        "rating": 0.867
     },
     {
         "content": "I love the charisma while learning",
@@ -813,7 +846,8 @@
         ],
         "matches": true,
         "score": 0.99316084,
-        "status": "correct"
+        "status": "correct",
+        "rating": 0.867
     },
     {
         "content": "I love the late Douglas Adams reference",
@@ -837,7 +871,8 @@
         ],
         "matches": true,
         "score": 0.9826751,
-        "status": "correct"
+        "status": "correct",
+        "rating": 0.867
     },
     {
         "content": "WOW!! THIS INSTRUCTOR WAS DIFFERENT FROM OTHER INSTRUCTORS ON FCC !!!   GREAT WORK!!!",
@@ -861,7 +896,8 @@
         ],
         "matches": true,
         "score": 0.99899036,
-        "status": "correct"
+        "status": "correct",
+        "rating": 0.867
     },
     {
         "content": "Outstanding delivery and very informative. Thanks",
@@ -885,7 +921,8 @@
         ],
         "matches": true,
         "score": 0.9894208,
-        "status": "correct"
+        "status": "correct",
+        "rating": 0.867
     },
     {
         "content": "Subscribe for goodluck:)",
@@ -909,7 +946,8 @@
         ],
         "matches": true,
         "score": 0.5200378,
-        "status": "correct"
+        "status": "correct",
+        "rating": 0.867
     },
     {
         "content": "I'm so glad that I found this video, the best explanation about API that I've ever seen",
@@ -933,7 +971,8 @@
         ],
         "matches": true,
         "score": 0.9982638,
-        "status": "correct"
+        "status": "correct",
+        "rating": 0.867
     },
     {
         "content": "WoW what an amazing video! Thank you Craig!",
@@ -957,7 +996,8 @@
         ],
         "matches": true,
         "score": 0.99869174,
-        "status": "correct"
+        "status": "correct",
+        "rating": 0.867
     },
     {
         "content": "Dude, Sense of humor is 10/10. I literally smiled ;) Thanks for KTP- knowledge transfer protocol. :)",
@@ -981,7 +1021,8 @@
         ],
         "matches": true,
         "score": 0.9907205,
-        "status": "correct"
+        "status": "correct",
+        "rating": 0.867
     },
     {
         "content": "Thanks Craig. I learnt sooo much. U r God sent \ud83d\ude4f\ud83c\udffd\ud83d\ude4f\ud83c\udffd\ud83d\ude4f\ud83c\udffd",
@@ -1005,7 +1046,8 @@
         ],
         "matches": true,
         "score": 0.7464488,
-        "status": "correct"
+        "status": "correct",
+        "rating": 0.867
     },
     {
         "content": "50:36 how do I do this in windows? I can't even properly paste the stuff i just copied and nothing is working",
@@ -1029,7 +1071,8 @@
         ],
         "matches": true,
         "score": 0.99856913,
-        "status": "correct"
+        "status": "correct",
+        "rating": 0.535
     },
     {
         "content": "Currently, I cannot use Console part and I am not sure if it is only me",
@@ -1054,7 +1097,8 @@
         "matches": false,
         "score": 0.99969375,
         "fixed": ":gun:",
-        "status": "fixed"
+        "status": "fixed",
+        "rating": 0.453
     },
     {
         "content": "Great sense of humor!!! Subbed",
@@ -1079,7 +1123,8 @@
         "matches": false,
         "score": 0.9976949,
         "fixed": ":flushed:",
-        "status": "fixed"
+        "status": "fixed",
+        "rating": 0.732
     },
     {
         "content": "Hello\nI wonder how to learn api \n\nMy goals :-\nGet data from any web page like facebook or amazon or any other web page \n\nSo if you could help me how to learn and thank u in progress",
@@ -1104,7 +1149,8 @@
         "matches": false,
         "score": 0.8680177,
         "fixed": ":sweat_smile:",
-        "status": "fixed"
+        "status": "fixed",
+        "rating": 0.725
     },
     {
         "content": "The best course I've watched in a while - thank you for putting so much hard work into it!",
@@ -1129,7 +1175,8 @@
         "matches": false,
         "score": 0.9994235,
         "fixed": ":smiling_imp:",
-        "status": "fixed"
+        "status": "fixed",
+        "rating": 0.707
     },
     {
         "content": "Awesome explanation and practical demo! Though it would be nice to carry a demo with an artist that is a little more on a healthy side, that takes up a little less space on the screen...",
@@ -1154,7 +1201,8 @@
         "matches": false,
         "score": 0.9992066,
         "fixed": ":hand:",
-        "status": "fixed"
+        "status": "fixed",
+        "rating": 0.732
     },
     {
         "content": "This is the best course ever!!!",
@@ -1179,7 +1227,8 @@
         "matches": false,
         "score": 0.9991646,
         "fixed": ":thumbsup:",
-        "status": "fixed"
+        "status": "fixed",
+        "rating": 0.69
     },
     {
         "content": "hi Craig, you and the information you gave are awesome..",
@@ -1204,6 +1253,7 @@
         "matches": false,
         "score": 0.9932121,
         "fixed": ":sweat_smile:",
-        "status": "fixed"
+        "status": "fixed",
+        "rating": 0.725
     }
 ]
