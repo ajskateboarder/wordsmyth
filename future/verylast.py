@@ -21,4 +21,4 @@ for elem in data:
     if "🤣" in elem["content"]:
         score = score - 0.2
 
-    print(elem["content"], f"{round(1 - score, 3):.2%}", "\n")
+    print(elem["content"], round(1 - score, 4), "\n")

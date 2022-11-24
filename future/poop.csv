@@ -1,0 +1,83 @@
+,sentiment,score,text,emojis
+0,neg,0.9981054,"That's a very big security risk you're taking if you only use an API and you don't know how the API is working on the background, API's are the new thing that hackers are interested in because of the lack of security of the API's.
+The first thing that I want to know of any API that I'm going to use is how it works in the background or at least how I can make use of the API in a safe way keeping hackers out.",":sweat_smile:,:grimacing:,:confused:,:neutral_face:,:flushed:,:sweat:,:persevere:,:confounded:,:see_no_evil:,:disappointed:"
+1,neg,0.9992368,when you started explaining postman i don't recall an explanation of 'why?'  Certainly not every dev or company uses postman? what are the negatives to using postman?,":thumbsup:,:clap:,:ok_hand:,:blush:,:raised_hands:,:facepunch:,:muscle:,:relaxed:,:smile:,:relieved:"
+2,pos,0.97488153,Really very nice and humbled by attending the class,":thumbsup:,:clap:,:facepunch:,:ok_hand:,:wink:,:muscle:,:smile:,:100:,:sunglasses:,:blush:"
+3,pos,0.82649016,Thank you so much  ,":relaxed:,:kissing_heart:,:thumbsup:,:heartbeat:,:yellow_heart:,:smile:,:blush:,:v:,:raised_hands:,:heart:"
+4,pos,0.9928888,Nice video,":sweat:,:sweat_smile:,:persevere:,:disappointed:,:sleepy:,:cry:,:confused:,:confounded:,:grimacing:,:pensive:"
+5,neg,0.9967385,Lizzo? Non-binary? This dude is a clown.,":wink:,:thumbsup:,:smile:,:blush:,:relaxed:,:stuck_out_tongue_winking_eye:,:grin:,:kissing_heart:,:yellow_heart:,:heart:"
+6,pos,0.99965024,Phenomenal video!,":muscle:,:thumbsup:,:clap:,:blush:,:heart:,:raised_hands:,:relaxed:,:blue_heart:,:purple_heart:,:facepunch:"
+7,pos,0.9963069,Wow. Just Wow and Thank You,":confused:,:persevere:,:sweat:,:neutral_face:,:disappointed:,:expressionless:,:unamused:,:confounded:,:pensive:,:sweat_smile:"
+8,pos,0.9337536,18:23 son of a b...... hahahahahhahahahah,":clap:,:smile:,:thumbsup:,:blush:,:raised_hands:,:heart:,:blue_heart:,:relaxed:,:yellow_heart:,:pray:"
+9,pos,0.9827787,API's are great and you can do pretty much everything you can imagine i just love it,":thumbsup:,:smile:,:wink:,:blush:,:clap:,:stuck_out_tongue_winking_eye:,:grimacing:,:grin:,:relaxed:,:confused:"
+10,pos,0.8680177,"Hello
+I wonder how to learn api 
+
+My goals :-
+Get data from any web page like facebook or amazon or any other web page 
+
+So if you could help me how to learn and thank u in progress",":heartbeat:,:yellow_heart:,:thumbsup:,:heart:,:smile:,:v:,:relaxed:,:purple_heart:,:stuck_out_tongue_winking_eye:,:sparkles:"
+11,pos,0.99899036,WOW!! THIS INSTRUCTOR WAS DIFFERENT FROM OTHER INSTRUCTORS ON FCC !!!   GREAT WORK!!!,":pray:,:thumbsup:,:raised_hands:,:clap:,:blush:,:relaxed:,:smile:,:facepunch:,:wink:,:ok_hand:"
+12,neg,0.9995277,"I adored the video until ,,inclusivity matters"". For evolutions sake, there is no such thing as non-binary. Biology beats ideology.",":pray:,:sparkles:,:broken_heart:,:persevere:,:pensive:,:disappointed:,:confounded:,:cry:,:sweat:,:confused:"
+13,pos,0.9894208,Outstanding delivery and very informative. Thanks,":confused:,:neutral_face:,:persevere:,:confounded:,:disappointed:,:sweat:,:grimacing:,:sweat_smile:,:expressionless:,:cry:"
+14,pos,0.9982638,"I'm so glad that I found this video, the best explanation about API that I've ever seen",":joy:,:expressionless:,:rage:,:skull:,:angry:,:flushed:,:triumph:,:sob:,:neutral_face:,:unamused:"
+15,pos,0.99957365,"Wow i am amazed by such an incredible video, thanks for putting this together  ",":clap:,:heartbeat:,:thumbsup:,:heart_eyes:,:raised_hands:,:yellow_heart:,:smile:,:ok_hand:,:relaxed:,:heart:"
+16,neg,0.9999902,"When I try to run the explore.js program. It doesn't return my most recently sent message. I just get this: 
+
+The most recent message is ${messages[0].body}
+
+I don't know what's going on.
+
+*EDIT: Nevermind, syntax error was the problem I was using a  '   instead of  `  for the string.",":flushed:,:neutral_face:,:confused:,:eyes:,:joy:,:sweat_smile:,:expressionless:,:skull:,:grimacing:,:unamused:"
+17,neg,0.99856913,50:36 how do I do this in windows? I can't even properly paste the stuff i just copied and nothing is working,":neutral_face:,:confused:,:eyes:,:sweat_smile:,:expressionless:,:see_no_evil:,:flushed:,:grimacing:,:mask:,:joy:"
+18,pos,0.9932121,"hi Craig, you and the information you gave are awesome..",":stuck_out_tongue_winking_eye:,:smile:,:sweat_smile:,:joy:,:grin:,:wink:,:information_desk_person:,:grimacing:,:sunglasses:,:speak_no_evil:"
+19,neg,0.9994448,"If you go woke you go broke, don't take my word for it you only have to look at what Netflix is doing and what Facebook is doing on the market, Facebook is making a free fall at the moment and Mark Zuckerberg is not on the list of richest people of the world anymore.",":thumbsup:,:smile:,:blush:,:wink:,:relaxed:,:heart:,:yellow_heart:,:clap:,:v:,:purple_heart:"
+20,neg,0.8956985,Get the notes and code for this course here: https://github.com/craigsdennis/intro-to-apis-course/blob/master/course-notes.md,":thumbsup:,:blush:,:smile:,:pray:,:sparkles:,:wink:,:relaxed:,:grimacing:,:stuck_out_tongue_winking_eye:,:muscle:"
+21,pos,0.86935335,"Please help to program an A.P.I .
+Your someone I wish to believe in someone.
+Your Cool, so far? AMEN ",":clap:,:thumbsup:,:muscle:,:facepunch:,:ok_hand:,:flushed:,:raised_hands:,:smile:,:sunglasses:,:blue_heart:"
+22,pos,0.9960781,Learning here is fun! Understood ever bit of the content,":notes:,:heartbeat:,:musical_note:,:thumbsup:,:smile:,:stuck_out_tongue_winking_eye:,:wink:,:yellow_heart:,:sunglasses:,:sparkles:"
+23,pos,0.9946021,'Education isn't meant to be binged' - since hearing this I have put thought into my brain and am learning way faster than I ever thought possible. I went from learning 1 thing at time in big monolithic chunks that put me to sleep and had me questioning my commitment - to much smaller chunks of video not longer than 10 to 15 minutes and a much larger variety of subjects and speakers to keep me fresh - much more energy using this approach. And it doesn't worry me to on-board a subject - just work it into the daily watch list - if there are too many of them just prioritise the ones you definately want to watch or shorten the daily watch time to fit them all in. So easy.,":thumbsup:,:clap:,:smile:,:ok_hand:,:relaxed:,:blush:,:v:,:facepunch:,:wink:,:sunglasses:"
+24,pos,0.9979983,This guy is great and I liked the challenge of adapting this older version of postman to the new one. ,":clap:,:raised_hands:,:heart:,:heart_eyes:,:blue_heart:,:smile:,:relaxed:,:joy:,:yellow_heart:,:sob:"
+25,neg,0.99998057,"Hi! I can't install the twillio helper library in Glitch I get this message: ""ERROR: Could not find a version that satisfies the requirement twillio (from versions: none)
+ERROR: No matching distribution found for twillio""",":clap:,:heart:,:yellow_heart:,:sparkling_heart:,:thumbsup:,:purple_heart:,:two_hearts:,:raised_hands:,:pray:,:heartbeat:"
+26,pos,0.97842467,Happy Birthday Craig! Love your tutorial,":rage:,:angry:,:expressionless:,:smiling_imp:,:persevere:,:neutral_face:,:sweat:,:triumph:,:confused:,:cry:"
+27,neg,0.9973889,"Interesting how the best new styles of teaching—along with the most talented Teachers—are cropping up in the Development space. Maybe(?) Education’s not dead, just hibernating, waiting for spring of creative learning to warm up out of this (long) winter of teaching platform discontent.",":angry:,:rage:,:tired_face:,:expressionless:,:persevere:,:sweat:,:neutral_face:,:confounded:,:triumph:,:disappointed:"
+28,pos,0.9661736,HTT - PEE got me :D,":thumbsup:,:sunglasses:,:smile:,:v:,:wink:,:stuck_out_tongue_winking_eye:,:blush:,:grin:,:relaxed:,:ok_hand:"
+29,pos,0.6251831,Thx for ur effort and comments. I wish i could have more info how and wnere i can more Knowlegde re api. Thx ever so much again ,":rage:,:angry:,:triumph:,:expressionless:,:unamused:,:neutral_face:,:hand:,:facepunch:,:no_good:,:confused:"
+30,pos,0.9999802,"In case anyone else is having issues using Windows for the demos (SMS I'm looking at you) I updated to PowerShell 7, installed Scoop - from there I had to add backticks between the lines of code in place of the backslash. That worked for me and I'm sharing this as a comment (instead of just a reply) on the suggestion of someone else who it  helped out!",":gun:,:thumbsup:,:muscle:,:grimacing:,:sunglasses:,:information_desk_person:,:v:,:smile:,:grin:,:facepunch:"
+31,pos,0.9883789,:D,":pray:,:raised_hands:,:notes:,:clap:,:heartbeat:,:yellow_heart:,:relaxed:,:thumbsup:,:musical_note:,:v:"
+32,pos,0.5888884,"Dude just straight up used the Nintendo seal of approval outline for his ""1 million views"" icon on his thumbnail.",":relieved:,:smile:,:thumbsup:,:blush:,:relaxed:,:grin:,:ok_hand:,:sunglasses:,:stuck_out_tongue_winking_eye:,:wink:"
+33,pos,0.8120588,"Dam am I had so much respect for him until he said lizzo, be the man in your house hold",":confused:,:disappointed:,:sleeping:,:persevere:,:confounded:,:thumbsup:,:grimacing:,:neutral_face:,:sweat:,:flushed:"
+34,pos,0.9993974,"Highly entertaining, F that recruiter that said I didnt know what a API was",":thumbsup:,:ok_hand:,:clap:,:smile:,:sunglasses:,:wink:,:blush:,:muscle:,:grin:,:raised_hands:"
+35,pos,0.999956,"This is a great course! I had a lot of problems with Glitch... living up to its name? (Importing the repo from GH, getting my app to wake up.) But the concepts were solid and it was easy to see the underpinnings for Craig's app in the video.",":cry:,:stuck_out_tongue_winking_eye:,:angry:,:rage:,:broken_heart:,:wink:,:confused:,:sweat:,:heartbeat:,:smile:"
+36,pos,0.99934,Incredible!,":kissing_heart:,:heart:,:sparkling_heart:,:two_hearts:,:yellow_heart:,:blue_heart:,:purple_heart:,:sparkles:,:smile:,:relaxed:"
+37,pos,0.5974584,z,":thumbsup:,:wink:,:stuck_out_tongue_winking_eye:,:smile:,:sunglasses:,:blush:,:grimacing:,:grin:,:confused:,:relaxed:"
+38,pos,0.9840657,Super amazing intro to very useful course,":heartbeat:,:yellow_heart:,:heart:,:thumbsup:,:ok_hand:,:relaxed:,:purple_heart:,:musical_note:,:blue_heart:,:two_hearts:"
+39,pos,0.99316084,I love the charisma while learning,":thumbsup:,:yellow_heart:,:sparkling_heart:,:heartbeat:,:heart:,:cry:,:blush:,:smile:,:purple_heart:,:kissing_heart:"
+40,pos,0.9907205,"Dude, Sense of humor is 10/10. I literally smiled ;) Thanks for KTP- knowledge transfer protocol. :)",":rage:,:angry:,:confused:,:triumph:,:thumbsup:,:smiling_imp:,:neutral_face:,:expressionless:,:disappointed:,:grimacing:"
+41,pos,0.9664387,Thanks Craig. I learnt sooo much. U r God sent ,":confused:,:neutral_face:,:angry:,:rage:,:expressionless:,:flushed:,:grimacing:,:see_no_evil:,:triumph:,:unamused:"
+42,neg,0.9998839,"1:25:58 somebody please help with the virtual environnment in Windows, it does not accept the command.",":thumbsup:,:relieved:,:blush:,:relaxed:,:clap:,:ok_hand:,:pray:,:raised_hands:,:sparkles:,:smile:"
+43,neg,0.99999547,"I am confused with the Twlio segment. Wnen I past the code into the terminal, I don't get a code but I get ""[redacted]"" and when I press enter into the terminal, I don't get a text message...",":pray:,:relaxed:,:kissing_heart:,:heart:,:raised_hands:,:heartbeat:,:blush:,:yellow_heart:,:clap:,:two_hearts:"
+44,pos,0.99974173,They really cracked how to make an informative and fun video about a daunting topic!,":thumbsup:,:clap:,:ok_hand:,:smirk:,:eyes:,:sunglasses:,:blush:,:relaxed:,:wink:,:smile:"
+45,pos,0.98559606,Amazing teacher..,":joy:,:skull:,:sob:,:hand:,:weary:,:flushed:,:tired_face:,:expressionless:,:neutral_face:,:sweat_smile:"
+46,neg,0.99997246,Am I the only one who noticed that he had a Tile on the back of his remote? ,":clap:,:thumbsup:,:ok_hand:,:raised_hands:,:heart_eyes:,:heart:,:heartbeat:,:yellow_heart:,:blue_heart:,:smile:"
+47,neg,0.9999491,Anyone else having zero knowledge about IT and then got an understanding about what is API after seeing  this video ?,":clap:,:unamused:,:kissing_heart:,:relaxed:,:blush:,:expressionless:,:pray:,:neutral_face:,:relieved:,:raised_hands:"
+48,pos,0.99314994,"I choo choo choose to watch this course just   for the pun lines. JK!
+
+I want to be like Craig Dennis when I Grow up lol ",":blue_heart:,:muscle:,:heartbeat:,:yellow_heart:,:facepunch:,:pray:,:rage:,:purple_heart:,:gun:,:heart:"
+49,pos,0.9949532,"""Thank you for being inclusive. Inclusivity matters."" -Craig
+
+Agreed! Really great and fun video. I'll be back for more.",":heart_eyes:,:relaxed:,:blush:,:heart:,:sparkling_heart:,:purple_heart:,:two_hearts:,:blue_heart:,:yellow_heart:,:smile:"
+50,neg,0.99969375,"Currently, I cannot use Console part and I am not sure if it is only me",":rage:,:angry:,:confused:,:thumbsup:,:grimacing:,:wink:,:stuck_out_tongue_winking_eye:,:triumph:,:smile:,:confounded:"
+51,pos,0.9983242,this course is awesome. he knows exactly when to give a small break and refresh the mind. GOOD JOB sir,":heartbeat:,:yellow_heart:,:thumbsup:,:relaxed:,:sparkles:,:smile:,:musical_note:,:sparkling_heart:,:gun:,:notes:"
+52,pos,0.99790096,"Great Video ..... everyone should be learning to Build APIS, the faster the cheaper ....the better",":skull:,:joy:,:flushed:,:neutral_face:,:expressionless:,:clap:,:sweat_smile:,:sob:,:thumbsup:,:eyes:"
+53,pos,0.99465126,thanks from Costa Rica,":hand:,:rage:,:triumph:,:angry:,:facepunch:,:unamused:,:expressionless:,:flushed:,:neutral_face:,:no_good:"
+54,pos,0.7876919,"it really really usefull crash course but i feel tiring to contiuan to watch it but it is so intersted for me 
+so i desid to finish to from the first time i have try",":joy:,:sweat_smile:,:clap:,:flushed:,:expressionless:,:neutral_face:,:hand:,:unamused:,:thumbsup:,:skull:"
+55,pos,0.9924671,"I loved this course Craig! I called the number, but I wanted to share my thanks here too! Thanks so much! 100% excellent course! I'd recommend it to all beginners.",":thumbsup:,:rage:,:angry:,:smile:,:expressionless:,:neutral_face:,:confused:,:wink:,:stuck_out_tongue_winking_eye:,:persevere:"
+56,pos,0.9994235,The best course I've watched in a while - thank you for putting so much hard work into it!,":clap:,:heartbeat:,:musical_note:,:raised_hands:,:yellow_heart:,:notes:,:heart:,:heart_eyes:,:facepunch:,:smile:"
+57,neg,0.9956678,"Love the low entry, but information density is so low it is hard to keep my attention to it.",":heartbeat:,:sleeping:,:blue_heart:,:yellow_heart:,:broken_heart:,:heart_eyes:,:heart:,:skull:,:purple_heart:,:sparkles:"
+58,pos,0.99869174,WoW what an amazing video! Thank you Craig!,":thumbsup:,:clap:,:ok_hand:,:smile:,:wink:,:blush:,:heart_eyes:,:raised_hands:,:muscle:,:relaxed:"
+59,pos,0.9992066,"Awesome explanation and practical demo! Though it would be nice to carry a demo with an artist that is a little more on a healthy side, that takes up a little less space on the screen...",":relieved:,:ok_hand:,:heart_eyes:,:notes:,:relaxed:,:sparkles:,:blush:,:raised_hands:,:thumbsup:,:musical_note:"
+

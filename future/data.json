@@ -1,30 +1,6 @@
 [
     {
-        "content": "Wow. Just Wow and Thank You",
-        "emoji": ":confused:",
-        "position": 5,
-        "sentiment": {
-            "flair": "pos",
-            "map": "neg"
-        },
-        "emojis": [
-            ":angry:",
-            ":rage:",
-            ":expressionless:",
-            ":neutral_face:",
-            ":confounded:",
-            ":confused:",
-            ":persevere:",
-            ":grimacing:",
-            ":unamused:",
-            ":triumph:"
-        ],
-        "matches": false,
-        "score": 0.9963069,
-        "status": "incorrect"
-    },
-    {
-        "content": "When was thie video made?  The Spotify website changed and the layout is different.  Spotify seems to only have the \"Get\" request in the search API.  Can someone point me to the site that has the \"Request\" version of the API?",
+        "content": "when you started explaining postman i don't recall an explanation of 'why?'  Certainly not every dev or company uses postman? what are the negatives to using postman?",
         "emoji": ":thumbsup:",
         "position": 0,
         "sentiment": {
@@ -33,70 +9,22 @@
         },
         "emojis": [
             ":thumbsup:",
-            ":relieved:",
-            ":blush:",
-            ":relaxed:",
             ":clap:",
             ":ok_hand:",
-            ":pray:",
+            ":blush:",
             ":raised_hands:",
-            ":sparkles:",
-            ":smile:"
-        ],
-        "matches": false,
-        "score": 0.9999945,
-        "status": "incorrect"
-    },
-    {
-        "content": "Please keep a constant level of volume and pronunciation. You drop off in volume and intelligibility at the end of each sentence, which makes it difficult to understand. If I am the \"only one\" to have pointed it out, it means that I am one of the few who watched long enough, and I am one of the few who actually wanted to understand you ... and, I have higher standards.",
-        "emoji": ":thumbsup:",
-        "position": 0,
-        "sentiment": {
-            "flair": "neg",
-            "map": "pos"
-        },
-        "emojis": [
-            ":thumbsup:",
-            ":clap:",
-            ":ok_hand:",
-            ":smirk:",
-            ":eyes:",
-            ":sunglasses:",
-            ":blush:",
+            ":facepunch:",
+            ":muscle:",
             ":relaxed:",
-            ":wink:",
-            ":smile:"
-        ],
-        "matches": false,
-        "score": 0.99980503,
-        "status": "incorrect"
-    },
-    {
-        "content": "https://youtu.be/EBOq1xr0ieo",
-        "emoji": ":thumbsup:",
-        "position": 2,
-        "sentiment": {
-            "flair": "neg",
-            "map": "pos"
-        },
-        "emojis": [
-            ":heartbeat:",
-            ":yellow_heart:",
-            ":thumbsup:",
-            ":heart:",
             ":smile:",
-            ":v:",
-            ":relaxed:",
-            ":purple_heart:",
-            ":stuck_out_tongue_winking_eye:",
-            ":sparkles:"
+            ":relieved:"
         ],
         "matches": false,
-        "score": 0.54784304,
+        "score": 0.9992368,
         "status": "incorrect"
     },
     {
-        "content": "This guy is so annoying. He knows his stuff and I need the information, and it's well-organized -- however his personality is so weird that I have to constantly rewind because his \"theater\" is so distracting from the information flow.  It absorbs 80% of my brain power just to cancel out the noise of his cringe mannerisms. His \"performance\" is like he's talking to 6 year old children, and he obviously thinks he's cute and entertaining. Hint: you're insulting the intelligence of your audience and I'd think even children would recognize this as b.s. ... Free Code Camp: just know that a rock star is somebody who can focus on delivering the goods, not somebody who thinks he is a Disney princess. You have a lot of great teachers but not this guy; he needs an education about the real world and to unplug from Sesame Street.. Craig: Here's one of many good examples of how to teach purely and simply, just delivering the information without injecting personality quirks. It's by an actual woman, not a guy pretending to be a woman or trying to ingratiate himself with women. Learn from her please.\nhttps://www.youtube.com/watch?v=t8pPdKYpowI",
+        "content": "Lizzo? Non-binary? This dude is a clown.",
         "emoji": ":thumbsup:",
         "position": 1,
         "sentiment": {
@@ -104,167 +32,23 @@
             "map": "pos"
         },
         "emojis": [
-            ":pray:",
-            ":thumbsup:",
-            ":clap:",
-            ":raised_hands:",
-            ":smile:",
             ":wink:",
-            ":facepunch:",
-            ":blush:",
-            ":muscle:",
-            ":relaxed:"
-        ],
-        "matches": false,
-        "score": 0.9999839,
-        "status": "incorrect"
-    },
-    {
-        "content": "Anyone else having zero knowledge about IT and then got an understanding about what is API after seeing  this video ?",
-        "emoji": ":thumbsup:",
-        "position": 2,
-        "sentiment": {
-            "flair": "neg",
-            "map": "pos"
-        },
-        "emojis": [
-            ":clap:",
+            ":thumbsup:",
             ":smile:",
-            ":thumbsup:",
             ":blush:",
-            ":raised_hands:",
-            ":heart:",
-            ":blue_heart:",
             ":relaxed:",
-            ":yellow_heart:",
-            ":pray:"
-        ],
-        "matches": false,
-        "score": 0.9999491,
-        "status": "incorrect"
-    },
-    {
-        "content": "This is just fantastic!!  APIs were so opaque to me.  Now I get it.  A lot clearer. And this is coming from someone who barely knows a line of code.  \n\nHaving said that, is there a crash course I can do that teaches me the bare basics of python needed to access APIs without having to learn the stuff that I won't use \u2013 if I'm just interested in accessing APIs?\n\nThanks again. :)",
-        "emoji": ":confused:",
-        "position": 2,
-        "sentiment": {
-            "flair": "pos",
-            "map": "neg"
-        },
-        "emojis": [
-            ":disappointed:",
-            ":cry:",
-            ":confused:",
-            ":pensive:",
-            ":angry:",
-            ":persevere:",
-            ":sweat:",
-            ":rage:",
-            ":broken_heart:",
-            ":sleepy:"
-        ],
-        "matches": false,
-        "score": 0.99854714,
-        "status": "incorrect"
-    },
-    {
-        "content": "1:25:58 somebody please help with the virtual environnment in Windows, it does not accept the command.",
-        "emoji": ":thumbsup:",
-        "position": 0,
-        "sentiment": {
-            "flair": "neg",
-            "map": "pos"
-        },
-        "emojis": [
-            ":thumbsup:",
-            ":clap:",
-            ":smile:",
-            ":ok_hand:",
-            ":relaxed:",
-            ":blush:",
-            ":v:",
-            ":facepunch:",
-            ":wink:",
-            ":sunglasses:"
-        ],
-        "matches": false,
-        "score": 0.9998839,
-        "status": "incorrect"
-    },
-    {
-        "content": "I laughed so hard at 18.56\ud83e\udd23\ud83e\udd23",
-        "emoji": ":thumbsup:",
-        "position": 0,
-        "sentiment": {
-            "flair": "neg",
-            "map": "pos"
-        },
-        "emojis": [
-            ":thumbsup:",
-            ":heartbeat:",
-            ":yellow_heart:",
-            ":blue_heart:",
-            ":purple_heart:",
-            ":heart:",
-            ":muscle:",
+            ":stuck_out_tongue_winking_eye:",
+            ":grin:",
             ":kissing_heart:",
-            ":two_hearts:",
-            ":pray:"
-        ],
-        "matches": false,
-        "score": 0.95593417,
-        "status": "incorrect"
-    },
-    {
-        "content": "When I try to run the explore.js program. It doesn't return my most recently sent message. I just get this: \n\nThe most recent message is ${messages[0].body}\n\nI don't know what's going on.\n\n*EDIT: Nevermind, syntax error was the problem I was using a  '   instead of  `  for the string.",
-        "emoji": ":thumbsup:",
-        "position": 2,
-        "sentiment": {
-            "flair": "neg",
-            "map": "pos"
-        },
-        "emojis": [
-            ":clap:",
-            ":heartbeat:",
-            ":thumbsup:",
-            ":heart_eyes:",
-            ":raised_hands:",
             ":yellow_heart:",
-            ":smile:",
-            ":ok_hand:",
-            ":relaxed:",
             ":heart:"
         ],
         "matches": false,
-        "score": 0.9999902,
+        "score": 0.9967385,
         "status": "incorrect"
     },
     {
         "content": "If you go woke you go broke, don't take my word for it you only have to look at what Netflix is doing and what Facebook is doing on the market, Facebook is making a free fall at the moment and Mark Zuckerberg is not on the list of richest people of the world anymore.",
-        "emoji": ":thumbsup:",
-        "position": 7,
-        "sentiment": {
-            "flair": "neg",
-            "map": "pos"
-        },
-        "emojis": [
-            ":stuck_out_tongue_winking_eye:",
-            ":smile:",
-            ":wink:",
-            ":sweat_smile:",
-            ":grin:",
-            ":joy:",
-            ":sunglasses:",
-            ":thumbsup:",
-            ":information_desk_person:",
-            ":speak_no_evil:"
-        ],
-        "matches": false,
-        "score": 0.9994448,
-        "status": "incorrect"
-    },
-    {
-        "content": "Yeah it's in the header where you can put some obscure code that the user doesn't see or has any idea of that it's there, you should know at least the basics of what's happening on the background of the API that you're using so you're able to recognize if the API is safe to use or that the API is giving unauthorized access to the server or the client.\nKeep using API's the way you do and it's a matter of time that it goes horribly wrong, it's not a question of if it happens anymore because nowadays bad things happen to everyone who's doing things online.\nYou have been warned, what you do with this information is totally up to you.\nOne thing that I wouldn't teach or dare to say online is that you can use API's without knowing what happens in the background, that's bad advice so if you read this comment please don't listen to this guy, he may be able to use the API's but he has no idea what the API is capable of and what it can do without you even knowing or seeing anything that the API may be doing to your system or the server making it even more dangerous because if it sits somewhere on the server it can infect many computers, phones etc. and at the time that people finally begin to suspect that there's something wrong with their system it's already too late, who knows what happens if you don't have any knowledge of the inner workings of the API.",
         "emoji": ":thumbsup:",
         "position": 0,
         "sentiment": {
@@ -284,11 +68,83 @@
             ":purple_heart:"
         ],
         "matches": false,
-        "score": 0.99999917,
+        "score": 0.9994448,
         "status": "incorrect"
     },
     {
-        "content": "That's a very big security risk you're taking if you only use an API and you don't know how the API is working on the background, API's are the new thing that hackers are interested in because of the lack of security of the API's.\nThe first thing that I want to know of any API that I'm going to use is how it works in the background or at least how I can make use of the API in a safe way keeping hackers out.",
+        "content": "Get the notes and code for this course here: https://github.com/craigsdennis/intro-to-apis-course/blob/master/course-notes.md",
+        "emoji": ":thumbsup:",
+        "position": 0,
+        "sentiment": {
+            "flair": "neg",
+            "map": "pos"
+        },
+        "emojis": [
+            ":thumbsup:",
+            ":blush:",
+            ":smile:",
+            ":pray:",
+            ":sparkles:",
+            ":wink:",
+            ":relaxed:",
+            ":grimacing:",
+            ":stuck_out_tongue_winking_eye:",
+            ":muscle:"
+        ],
+        "matches": false,
+        "score": 0.8956985,
+        "status": "incorrect"
+    },
+    {
+        "content": "Hi! I can't install the twillio helper library in Glitch I get this message: \"ERROR: Could not find a version that satisfies the requirement twillio (from versions: none)\nERROR: No matching distribution found for twillio\"",
+        "emoji": ":thumbsup:",
+        "position": 4,
+        "sentiment": {
+            "flair": "neg",
+            "map": "pos"
+        },
+        "emojis": [
+            ":clap:",
+            ":heart:",
+            ":yellow_heart:",
+            ":sparkling_heart:",
+            ":thumbsup:",
+            ":purple_heart:",
+            ":two_hearts:",
+            ":raised_hands:",
+            ":pray:",
+            ":heartbeat:"
+        ],
+        "matches": false,
+        "score": 0.99998057,
+        "status": "incorrect"
+    },
+    {
+        "content": "1:25:58 somebody please help with the virtual environnment in Windows, it does not accept the command.",
+        "emoji": ":thumbsup:",
+        "position": 0,
+        "sentiment": {
+            "flair": "neg",
+            "map": "pos"
+        },
+        "emojis": [
+            ":thumbsup:",
+            ":relieved:",
+            ":blush:",
+            ":relaxed:",
+            ":clap:",
+            ":ok_hand:",
+            ":pray:",
+            ":raised_hands:",
+            ":sparkles:",
+            ":smile:"
+        ],
+        "matches": false,
+        "score": 0.9998839,
+        "status": "incorrect"
+    },
+    {
+        "content": "Am I the only one who noticed that he had a Tile on the back of his remote? ",
         "emoji": ":thumbsup:",
         "position": 1,
         "sentiment": {
@@ -308,443 +164,11 @@
             ":smile:"
         ],
         "matches": false,
-        "score": 0.9981054,
+        "score": 0.99997246,
         "status": "incorrect"
     },
     {
-        "content": "Nice video",
-        "emoji": ":confused:",
-        "position": 7,
-        "sentiment": {
-            "flair": "pos",
-            "map": "neg"
-        },
-        "emojis": [
-            ":sleepy:",
-            ":pensive:",
-            ":disappointed:",
-            ":cry:",
-            ":gun:",
-            ":sweat:",
-            ":tired_face:",
-            ":confused:",
-            ":broken_heart:",
-            ":neutral_face:"
-        ],
-        "matches": false,
-        "score": 0.9928888,
-        "status": "incorrect"
-    },
-    {
-        "content": "API's are great and you can do pretty much everything you can imagine i just love it",
-        "emoji": ":thumbsup:",
-        "position": 0,
-        "sentiment": {
-            "flair": "pos",
-            "map": "pos"
-        },
-        "emojis": [
-            ":thumbsup:",
-            ":blush:",
-            ":relaxed:",
-            ":clap:",
-            ":yellow_heart:",
-            ":heart:",
-            ":sparkling_heart:",
-            ":heartbeat:",
-            ":sparkles:",
-            ":pray:"
-        ],
-        "matches": true,
-        "score": 0.9827787,
-        "status": "correct"
-    },
-    {
-        "content": "this course is awesome. he knows exactly when to give a small break and refresh the mind. GOOD JOB sir",
-        "emoji": ":thumbsup:",
-        "position": 1,
-        "sentiment": {
-            "flair": "pos",
-            "map": "pos"
-        },
-        "emojis": [
-            ":clap:",
-            ":thumbsup:",
-            ":muscle:",
-            ":smile:",
-            ":ok_hand:",
-            ":raised_hands:",
-            ":wink:",
-            ":notes:",
-            ":heart_eyes:",
-            ":blush:"
-        ],
-        "matches": true,
-        "score": 0.9983242,
-        "status": "correct"
-    },
-    {
-        "content": "Great Video ..... everyone should be learning to Build APIS, the faster the cheaper ....the better",
-        "emoji": ":thumbsup:",
-        "position": 8,
-        "sentiment": {
-            "flair": "pos",
-            "map": "pos"
-        },
-        "emojis": [
-            ":relieved:",
-            ":ok_hand:",
-            ":heart_eyes:",
-            ":notes:",
-            ":relaxed:",
-            ":sparkles:",
-            ":blush:",
-            ":raised_hands:",
-            ":thumbsup:",
-            ":musical_note:"
-        ],
-        "matches": true,
-        "score": 0.99790096,
-        "status": "correct"
-    },
-    {
-        "content": "thanks from Costa Rica",
-        "emoji": ":thumbsup:",
-        "position": 3,
-        "sentiment": {
-            "flair": "pos",
-            "map": "pos"
-        },
-        "emojis": [
-            ":heart_eyes:",
-            ":ok_hand:",
-            ":clap:",
-            ":thumbsup:",
-            ":raised_hands:",
-            ":heart:",
-            ":blue_heart:",
-            ":yellow_heart:",
-            ":smile:",
-            ":blush:"
-        ],
-        "matches": true,
-        "score": 0.99465126,
-        "status": "correct"
-    },
-    {
-        "content": "it really really usefull crash course but i feel tiring to contiuan to watch it but it is so intersted for me \nso i desid to finish to from the first time i have try",
-        "emoji": ":thumbsup:",
-        "position": 0,
-        "sentiment": {
-            "flair": "pos",
-            "map": "pos"
-        },
-        "emojis": [
-            ":thumbsup:",
-            ":blush:",
-            ":smile:",
-            ":pray:",
-            ":sparkles:",
-            ":wink:",
-            ":relaxed:",
-            ":grimacing:",
-            ":stuck_out_tongue_winking_eye:",
-            ":muscle:"
-        ],
-        "matches": true,
-        "score": 0.7876919,
-        "status": "correct"
-    },
-    {
-        "content": "Dissapointed that twilio doesn't work for my country, even you could say about it that there are countries that could test API twoards twilio.",
-        "emoji": ":confused:",
-        "position": 2,
-        "sentiment": {
-            "flair": "neg",
-            "map": "neg"
-        },
-        "emojis": [
-            ":rage:",
-            ":angry:",
-            ":confused:",
-            ":triumph:",
-            ":thumbsup:",
-            ":smiling_imp:",
-            ":neutral_face:",
-            ":expressionless:",
-            ":disappointed:",
-            ":grimacing:"
-        ],
-        "matches": true,
-        "score": 0.9999838,
-        "status": "correct"
-    },
-    {
-        "content": "P!",
-        "emoji": ":confused:",
-        "position": 9,
-        "sentiment": {
-            "flair": "neg",
-            "map": "neg"
-        },
-        "emojis": [
-            ":pray:",
-            ":sparkles:",
-            ":broken_heart:",
-            ":persevere:",
-            ":pensive:",
-            ":disappointed:",
-            ":confounded:",
-            ":cry:",
-            ":sweat:",
-            ":confused:"
-        ],
-        "matches": true,
-        "score": 0.9617771,
-        "status": "correct"
-    },
-    {
-        "content": "It is an amazing video. It contains valuable and useful information. It motivates me. Thank you for this nice video",
-        "emoji": ":thumbsup:",
-        "position": 6,
-        "sentiment": {
-            "flair": "pos",
-            "map": "pos"
-        },
-        "emojis": [
-            ":joy:",
-            ":sob:",
-            ":clap:",
-            ":smile:",
-            ":skull:",
-            ":sweat_smile:",
-            ":thumbsup:",
-            ":speak_no_evil:",
-            ":blue_heart:",
-            ":heart:"
-        ],
-        "matches": true,
-        "score": 0.9866094,
-        "status": "correct"
-    },
-    {
-        "content": "I have a problem,  I have Key 'To' but the output always says that Phone number is required, but I'd already put my phone number. please help me aSAP",
-        "emoji": ":confused:",
-        "position": 0,
-        "sentiment": {
-            "flair": "neg",
-            "map": "neg"
-        },
-        "emojis": [
-            ":confused:",
-            ":neutral_face:",
-            ":persevere:",
-            ":confounded:",
-            ":disappointed:",
-            ":sweat:",
-            ":grimacing:",
-            ":sweat_smile:",
-            ":expressionless:",
-            ":cry:"
-        ],
-        "matches": true,
-        "score": 0.714908,
-        "status": "correct"
-    },
-    {
-        "content": "Amazing teacher..",
-        "emoji": ":thumbsup:",
-        "position": 1,
-        "sentiment": {
-            "flair": "pos",
-            "map": "pos"
-        },
-        "emojis": [
-            ":muscle:",
-            ":thumbsup:",
-            ":clap:",
-            ":blush:",
-            ":heart:",
-            ":raised_hands:",
-            ":relaxed:",
-            ":blue_heart:",
-            ":purple_heart:",
-            ":facepunch:"
-        ],
-        "matches": true,
-        "score": 0.98559606,
-        "status": "correct"
-    },
-    {
-        "content": "Am I the only one who noticed that he had a Tile on the back of his remote? \ud83e\udd23",
-        "emoji": ":confused:",
-        "position": 0,
-        "sentiment": {
-            "flair": "neg",
-            "map": "neg"
-        },
-        "emojis": [
-            ":confused:",
-            ":persevere:",
-            ":sweat:",
-            ":neutral_face:",
-            ":disappointed:",
-            ":expressionless:",
-            ":unamused:",
-            ":confounded:",
-            ":pensive:",
-            ":sweat_smile:"
-        ],
-        "matches": true,
-        "score": 0.9999788,
-        "status": "correct"
-    },
-    {
-        "content": "I choo choo choose to watch this course just   for the pun lines. JK!\n\nI want to be like Craig Dennis when I Grow up lol \ud83d\ude02\ud83d\ude02\ud83d\ude02\ud83d\ude02",
-        "emoji": ":thumbsup:",
-        "position": 0,
-        "sentiment": {
-            "flair": "pos",
-            "map": "pos"
-        },
-        "emojis": [
-            ":thumbsup:",
-            ":smile:",
-            ":wink:",
-            ":blush:",
-            ":clap:",
-            ":stuck_out_tongue_winking_eye:",
-            ":grimacing:",
-            ":grin:",
-            ":relaxed:",
-            ":confused:"
-        ],
-        "matches": true,
-        "score": 0.94127184,
-        "status": "correct"
-    },
-    {
-        "content": "\"Thank you for being inclusive. Inclusivity matters.\" -Craig\n\nAgreed! Really great and fun video. I'll be back for more.",
-        "emoji": ":thumbsup:",
-        "position": 8,
-        "sentiment": {
-            "flair": "pos",
-            "map": "pos"
-        },
-        "emojis": [
-            ":heart_eyes:",
-            ":information_desk_person:",
-            ":raised_hands:",
-            ":smile:",
-            ":blue_heart:",
-            ":heart:",
-            ":clap:",
-            ":purple_heart:",
-            ":thumbsup:",
-            ":ok_hand:"
-        ],
-        "matches": true,
-        "score": 0.9949532,
-        "status": "correct"
-    },
-    {
-        "content": "I completed the whole video and i absolutely loved it!!! thank you so much Craig for making it so much fun!!!!!!",
-        "emoji": ":thumbsup:",
-        "position": 0,
-        "sentiment": {
-            "flair": "pos",
-            "map": "pos"
-        },
-        "emojis": [
-            ":thumbsup:",
-            ":clap:",
-            ":smile:",
-            ":ok_hand:",
-            ":blush:",
-            ":raised_hands:",
-            ":relaxed:",
-            ":stuck_out_tongue_winking_eye:",
-            ":wink:",
-            ":expressionless:"
-        ],
-        "matches": true,
-        "score": 0.9983583,
-        "status": "correct"
-    },
-    {
-        "content": "I just took a position at work and just started using APIs, this was write on time.  \"B.I.G\" shout out for the Hip Hop reference.",
-        "emoji": ":confused:",
-        "position": 0,
-        "sentiment": {
-            "flair": "neg",
-            "map": "neg"
-        },
-        "emojis": [
-            ":confused:",
-            ":neutral_face:",
-            ":rage:",
-            ":expressionless:",
-            ":angry:",
-            ":eyes:",
-            ":unamused:",
-            ":triumph:",
-            ":grimacing:",
-            ":disappointed:"
-        ],
-        "matches": true,
-        "score": 0.7816884,
-        "status": "correct"
-    },
-    {
-        "content": "Hey, thanks for the tip in 0:35:45",
-        "emoji": ":thumbsup:",
-        "position": 1,
-        "sentiment": {
-            "flair": "pos",
-            "map": "pos"
-        },
-        "emojis": [
-            ":clap:",
-            ":thumbsup:",
-            ":ok_hand:",
-            ":raised_hands:",
-            ":smile:",
-            ":muscle:",
-            ":relaxed:",
-            ":blush:",
-            ":sparkles:",
-            ":relieved:"
-        ],
-        "matches": true,
-        "score": 0.91490734,
-        "status": "correct"
-    },
-    {
-        "content": "Great tutorial, Big Poppa! \ud83d\ude02",
-        "emoji": ":thumbsup:",
-        "position": 2,
-        "sentiment": {
-            "flair": "pos",
-            "map": "pos"
-        },
-        "emojis": [
-            ":rage:",
-            ":angry:",
-            ":thumbsup:",
-            ":confused:",
-            ":triumph:",
-            ":pray:",
-            ":neutral_face:",
-            ":expressionless:",
-            ":grimacing:",
-            ":blush:"
-        ],
-        "matches": true,
-        "score": 0.99730194,
-        "status": "correct"
-    },
-    {
-        "content": "Get the notes and code for this course here: https://github.com/craigsdennis/intro-to-apis-course/blob/master/course-notes.md",
+        "content": "That's a very big security risk you're taking if you only use an API and you don't know how the API is working on the background, API's are the new thing that hackers are interested in because of the lack of security of the API's.\nThe first thing that I want to know of any API that I'm going to use is how it works in the background or at least how I can make use of the API in a safe way keeping hackers out.",
         "emoji": ":confused:",
         "position": 2,
         "sentiment": {
@@ -764,35 +188,11 @@
             ":disappointed:"
         ],
         "matches": true,
-        "score": 0.8956985,
+        "score": 0.9981054,
         "status": "correct"
     },
     {
-        "content": "Super amazing intro to very useful course\ud83e\udd0d\ud83e\udd0d",
-        "emoji": ":thumbsup:",
-        "position": 0,
-        "sentiment": {
-            "flair": "pos",
-            "map": "pos"
-        },
-        "emojis": [
-            ":thumbsup:",
-            ":clap:",
-            ":ok_hand:",
-            ":blush:",
-            ":raised_hands:",
-            ":facepunch:",
-            ":muscle:",
-            ":relaxed:",
-            ":smile:",
-            ":relieved:"
-        ],
-        "matches": true,
-        "score": 0.98976034,
-        "status": "correct"
-    },
-    {
-        "content": "I love the charisma while learning",
+        "content": "Really very nice and humbled by attending the class",
         "emoji": ":thumbsup:",
         "position": 0,
         "sentiment": {
@@ -812,11 +212,11 @@
             ":blush:"
         ],
         "matches": true,
-        "score": 0.99316084,
+        "score": 0.97488153,
         "status": "correct"
     },
     {
-        "content": "I love the late Douglas Adams reference",
+        "content": "Thank you so much  ",
         "emoji": ":thumbsup:",
         "position": 2,
         "sentiment": {
@@ -836,11 +236,35 @@
             ":heart:"
         ],
         "matches": true,
-        "score": 0.9826751,
+        "score": 0.82649016,
         "status": "correct"
     },
     {
-        "content": "WOW!! THIS INSTRUCTOR WAS DIFFERENT FROM OTHER INSTRUCTORS ON FCC !!!   GREAT WORK!!!",
+        "content": "Phenomenal video!",
+        "emoji": ":thumbsup:",
+        "position": 1,
+        "sentiment": {
+            "flair": "pos",
+            "map": "pos"
+        },
+        "emojis": [
+            ":muscle:",
+            ":thumbsup:",
+            ":clap:",
+            ":blush:",
+            ":heart:",
+            ":raised_hands:",
+            ":relaxed:",
+            ":blue_heart:",
+            ":purple_heart:",
+            ":facepunch:"
+        ],
+        "matches": true,
+        "score": 0.99965024,
+        "status": "correct"
+    },
+    {
+        "content": "18:23 son of a b...... hahahahahhahahahah",
         "emoji": ":thumbsup:",
         "position": 2,
         "sentiment": {
@@ -848,71 +272,119 @@
             "map": "pos"
         },
         "emojis": [
-            ":rage:",
-            ":angry:",
+            ":clap:",
+            ":smile:",
             ":thumbsup:",
-            ":triumph:",
-            ":expressionless:",
-            ":cry:",
-            ":persevere:",
-            ":confounded:",
-            ":neutral_face:",
+            ":blush:",
+            ":raised_hands:",
+            ":heart:",
+            ":blue_heart:",
+            ":relaxed:",
+            ":yellow_heart:",
+            ":pray:"
+        ],
+        "matches": true,
+        "score": 0.9337536,
+        "status": "correct"
+    },
+    {
+        "content": "API's are great and you can do pretty much everything you can imagine i just love it",
+        "emoji": ":thumbsup:",
+        "position": 0,
+        "sentiment": {
+            "flair": "pos",
+            "map": "pos"
+        },
+        "emojis": [
+            ":thumbsup:",
+            ":smile:",
+            ":wink:",
+            ":blush:",
+            ":clap:",
+            ":stuck_out_tongue_winking_eye:",
+            ":grimacing:",
+            ":grin:",
+            ":relaxed:",
             ":confused:"
+        ],
+        "matches": true,
+        "score": 0.9827787,
+        "status": "correct"
+    },
+    {
+        "content": "Hello\nI wonder how to learn api \n\nMy goals :-\nGet data from any web page like facebook or amazon or any other web page \n\nSo if you could help me how to learn and thank u in progress",
+        "emoji": ":thumbsup:",
+        "position": 2,
+        "sentiment": {
+            "flair": "pos",
+            "map": "pos"
+        },
+        "emojis": [
+            ":heartbeat:",
+            ":yellow_heart:",
+            ":thumbsup:",
+            ":heart:",
+            ":smile:",
+            ":v:",
+            ":relaxed:",
+            ":purple_heart:",
+            ":stuck_out_tongue_winking_eye:",
+            ":sparkles:"
+        ],
+        "matches": true,
+        "score": 0.8680177,
+        "status": "correct"
+    },
+    {
+        "content": "WOW!! THIS INSTRUCTOR WAS DIFFERENT FROM OTHER INSTRUCTORS ON FCC !!!   GREAT WORK!!!",
+        "emoji": ":thumbsup:",
+        "position": 1,
+        "sentiment": {
+            "flair": "pos",
+            "map": "pos"
+        },
+        "emojis": [
+            ":pray:",
+            ":thumbsup:",
+            ":raised_hands:",
+            ":clap:",
+            ":blush:",
+            ":relaxed:",
+            ":smile:",
+            ":facepunch:",
+            ":wink:",
+            ":ok_hand:"
         ],
         "matches": true,
         "score": 0.99899036,
         "status": "correct"
     },
     {
-        "content": "Outstanding delivery and very informative. Thanks",
-        "emoji": ":thumbsup:",
-        "position": 0,
+        "content": "I adored the video until ,,inclusivity matters\". For evolutions sake, there is no such thing as non-binary. Biology beats ideology.",
+        "emoji": ":confused:",
+        "position": 9,
         "sentiment": {
-            "flair": "pos",
-            "map": "pos"
+            "flair": "neg",
+            "map": "neg"
         },
         "emojis": [
-            ":thumbsup:",
-            ":clap:",
-            ":sunglasses:",
-            ":raised_hands:",
-            ":ok_hand:",
-            ":expressionless:",
-            ":smile:",
-            ":v:",
-            ":wink:",
-            ":neutral_face:"
-        ],
-        "matches": true,
-        "score": 0.9894208,
-        "status": "correct"
-    },
-    {
-        "content": "Subscribe for goodluck:)",
-        "emoji": ":thumbsup:",
-        "position": 3,
-        "sentiment": {
-            "flair": "pos",
-            "map": "pos"
-        },
-        "emojis": [
-            ":yellow_heart:",
-            ":heartbeat:",
-            ":relaxed:",
-            ":thumbsup:",
-            ":heart:",
-            ":blue_heart:",
-            ":wink:",
-            ":v:",
             ":pray:",
-            ":blush:"
+            ":sparkles:",
+            ":broken_heart:",
+            ":persevere:",
+            ":pensive:",
+            ":disappointed:",
+            ":confounded:",
+            ":cry:",
+            ":sweat:",
+            ":confused:"
         ],
         "matches": true,
-        "score": 0.5200378,
+        "score": 0.9995277,
         "status": "correct"
     },
     {
-        "content": "I'm so glad that I found this video, the best explanation about API that I've ever seen",
+        "content": "Wow i am amazed by such an incredible video, thanks for putting this together  ",
         "emoji": ":thumbsup:",
         "position": 2,
         "sentiment": {
@@ -921,46 +393,70 @@
         },
         "emojis": [
             ":clap:",
-            ":muscle:",
+            ":heartbeat:",
             ":thumbsup:",
-            ":blue_heart:",
+            ":heart_eyes:",
             ":raised_hands:",
+            ":yellow_heart:",
             ":smile:",
-            ":facepunch:",
-            ":sunglasses:",
             ":ok_hand:",
+            ":relaxed:",
             ":heart:"
         ],
         "matches": true,
-        "score": 0.9982638,
+        "score": 0.99957365,
         "status": "correct"
     },
     {
-        "content": "WoW what an amazing video! Thank you Craig!",
-        "emoji": ":thumbsup:",
-        "position": 0,
+        "content": "When I try to run the explore.js program. It doesn't return my most recently sent message. I just get this: \n\nThe most recent message is ${messages[0].body}\n\nI don't know what's going on.\n\n*EDIT: Nevermind, syntax error was the problem I was using a  '   instead of  `  for the string.",
+        "emoji": ":confused:",
+        "position": 2,
         "sentiment": {
-            "flair": "pos",
-            "map": "pos"
+            "flair": "neg",
+            "map": "neg"
         },
         "emojis": [
-            ":thumbsup:",
-            ":sunglasses:",
-            ":smile:",
-            ":v:",
-            ":wink:",
-            ":stuck_out_tongue_winking_eye:",
-            ":blush:",
-            ":grin:",
-            ":relaxed:",
-            ":ok_hand:"
+            ":flushed:",
+            ":neutral_face:",
+            ":confused:",
+            ":eyes:",
+            ":joy:",
+            ":sweat_smile:",
+            ":expressionless:",
+            ":skull:",
+            ":grimacing:",
+            ":unamused:"
         ],
         "matches": true,
-        "score": 0.99869174,
+        "score": 0.9999902,
         "status": "correct"
     },
     {
-        "content": "Dude, Sense of humor is 10/10. I literally smiled ;) Thanks for KTP- knowledge transfer protocol. :)",
+        "content": "50:36 how do I do this in windows? I can't even properly paste the stuff i just copied and nothing is working",
+        "emoji": ":confused:",
+        "position": 1,
+        "sentiment": {
+            "flair": "neg",
+            "map": "neg"
+        },
+        "emojis": [
+            ":neutral_face:",
+            ":confused:",
+            ":eyes:",
+            ":sweat_smile:",
+            ":expressionless:",
+            ":see_no_evil:",
+            ":flushed:",
+            ":grimacing:",
+            ":mask:",
+            ":joy:"
+        ],
+        "matches": true,
+        "score": 0.99856913,
+        "status": "correct"
+    },
+    {
+        "content": "Please help to program an A.P.I .\nYour someone I wish to believe in someone.\nYour Cool, so far? AMEN ",
         "emoji": ":thumbsup:",
         "position": 1,
         "sentiment": {
@@ -980,11 +476,11 @@
             ":blue_heart:"
         ],
         "matches": true,
-        "score": 0.9907205,
+        "score": 0.86935335,
         "status": "correct"
     },
     {
-        "content": "Thanks Craig. I learnt sooo much. U r God sent \ud83d\ude4f\ud83c\udffd\ud83d\ude4f\ud83c\udffd\ud83d\ude4f\ud83c\udffd",
+        "content": "Learning here is fun! Understood ever bit of the content",
         "emoji": ":thumbsup:",
         "position": 3,
         "sentiment": {
@@ -1004,39 +500,63 @@
             ":sparkles:"
         ],
         "matches": true,
-        "score": 0.7464488,
+        "score": 0.9960781,
         "status": "correct"
     },
     {
-        "content": "50:36 how do I do this in windows? I can't even properly paste the stuff i just copied and nothing is working",
-        "emoji": ":confused:",
-        "position": 2,
+        "content": "'Education isn't meant to be binged' - since hearing this I have put thought into my brain and am learning way faster than I ever thought possible. I went from learning 1 thing at time in big monolithic chunks that put me to sleep and had me questioning my commitment - to much smaller chunks of video not longer than 10 to 15 minutes and a much larger variety of subjects and speakers to keep me fresh - much more energy using this approach. And it doesn't worry me to on-board a subject - just work it into the daily watch list - if there are too many of them just prioritise the ones you definately want to watch or shorten the daily watch time to fit them all in. So easy.",
+        "emoji": ":thumbsup:",
+        "position": 0,
         "sentiment": {
-            "flair": "neg",
-            "map": "neg"
+            "flair": "pos",
+            "map": "pos"
         },
         "emojis": [
-            ":flushed:",
-            ":neutral_face:",
-            ":confused:",
-            ":joy:",
-            ":eyes:",
-            ":expressionless:",
-            ":see_no_evil:",
-            ":sweat_smile:",
-            ":grimacing:",
-            ":speak_no_evil:"
+            ":thumbsup:",
+            ":clap:",
+            ":smile:",
+            ":ok_hand:",
+            ":relaxed:",
+            ":blush:",
+            ":v:",
+            ":facepunch:",
+            ":wink:",
+            ":sunglasses:"
         ],
         "matches": true,
-        "score": 0.99856913,
+        "score": 0.9946021,
         "status": "correct"
     },
     {
-        "content": "Currently, I cannot use Console part and I am not sure if it is only me",
+        "content": "HTT - PEE got me :D",
+        "emoji": ":thumbsup:",
+        "position": 0,
+        "sentiment": {
+            "flair": "pos",
+            "map": "pos"
+        },
+        "emojis": [
+            ":thumbsup:",
+            ":sunglasses:",
+            ":smile:",
+            ":v:",
+            ":wink:",
+            ":stuck_out_tongue_winking_eye:",
+            ":blush:",
+            ":grin:",
+            ":relaxed:",
+            ":ok_hand:"
+        ],
+        "matches": true,
+        "score": 0.9661736,
+        "status": "correct"
+    },
+    {
+        "content": "In case anyone else is having issues using Windows for the demos (SMS I'm looking at you) I updated to PowerShell 7, installed Scoop - from there I had to add backticks between the lines of code in place of the backslash. That worked for me and I'm sharing this as a comment (instead of just a reply) on the suggestion of someone else who it  helped out!",
         "emoji": ":thumbsup:",
         "position": 1,
         "sentiment": {
-            "flair": "neg",
+            "flair": "pos",
             "map": "pos"
         },
         "emojis": [
@@ -1051,38 +571,348 @@
             ":grin:",
             ":facepunch:"
         ],
-        "matches": false,
-        "score": 0.99969375,
-        "fixed": ":gun:",
-        "status": "fixed"
+        "matches": true,
+        "score": 0.9999802,
+        "status": "correct"
     },
     {
-        "content": "Great sense of humor!!! Subbed",
-        "emoji": ":confused:",
+        "content": ":D",
+        "emoji": ":thumbsup:",
+        "position": 7,
+        "sentiment": {
+            "flair": "pos",
+            "map": "pos"
+        },
+        "emojis": [
+            ":pray:",
+            ":raised_hands:",
+            ":notes:",
+            ":clap:",
+            ":heartbeat:",
+            ":yellow_heart:",
+            ":relaxed:",
+            ":thumbsup:",
+            ":musical_note:",
+            ":v:"
+        ],
+        "matches": true,
+        "score": 0.9883789,
+        "status": "correct"
+    },
+    {
+        "content": "Dude just straight up used the Nintendo seal of approval outline for his \"1 million views\" icon on his thumbnail.",
+        "emoji": ":thumbsup:",
+        "position": 2,
+        "sentiment": {
+            "flair": "pos",
+            "map": "pos"
+        },
+        "emojis": [
+            ":relieved:",
+            ":smile:",
+            ":thumbsup:",
+            ":blush:",
+            ":relaxed:",
+            ":grin:",
+            ":ok_hand:",
+            ":sunglasses:",
+            ":stuck_out_tongue_winking_eye:",
+            ":wink:"
+        ],
+        "matches": true,
+        "score": 0.5888884,
+        "status": "correct"
+    },
+    {
+        "content": "Highly entertaining, F that recruiter that said I didnt know what a API was",
+        "emoji": ":thumbsup:",
         "position": 0,
         "sentiment": {
             "flair": "pos",
+            "map": "pos"
+        },
+        "emojis": [
+            ":thumbsup:",
+            ":ok_hand:",
+            ":clap:",
+            ":smile:",
+            ":sunglasses:",
+            ":wink:",
+            ":blush:",
+            ":muscle:",
+            ":grin:",
+            ":raised_hands:"
+        ],
+        "matches": true,
+        "score": 0.9993974,
+        "status": "correct"
+    },
+    {
+        "content": "z",
+        "emoji": ":thumbsup:",
+        "position": 0,
+        "sentiment": {
+            "flair": "pos",
+            "map": "pos"
+        },
+        "emojis": [
+            ":thumbsup:",
+            ":wink:",
+            ":stuck_out_tongue_winking_eye:",
+            ":smile:",
+            ":sunglasses:",
+            ":blush:",
+            ":grimacing:",
+            ":grin:",
+            ":confused:",
+            ":relaxed:"
+        ],
+        "matches": true,
+        "score": 0.5974584,
+        "status": "correct"
+    },
+    {
+        "content": "Super amazing intro to very useful course",
+        "emoji": ":thumbsup:",
+        "position": 3,
+        "sentiment": {
+            "flair": "pos",
+            "map": "pos"
+        },
+        "emojis": [
+            ":heartbeat:",
+            ":yellow_heart:",
+            ":heart:",
+            ":thumbsup:",
+            ":ok_hand:",
+            ":relaxed:",
+            ":purple_heart:",
+            ":musical_note:",
+            ":blue_heart:",
+            ":two_hearts:"
+        ],
+        "matches": true,
+        "score": 0.9840657,
+        "status": "correct"
+    },
+    {
+        "content": "I love the charisma while learning",
+        "emoji": ":thumbsup:",
+        "position": 0,
+        "sentiment": {
+            "flair": "pos",
+            "map": "pos"
+        },
+        "emojis": [
+            ":thumbsup:",
+            ":yellow_heart:",
+            ":sparkling_heart:",
+            ":heartbeat:",
+            ":heart:",
+            ":cry:",
+            ":blush:",
+            ":smile:",
+            ":purple_heart:",
+            ":kissing_heart:"
+        ],
+        "matches": true,
+        "score": 0.99316084,
+        "status": "correct"
+    },
+    {
+        "content": "They really cracked how to make an informative and fun video about a daunting topic!",
+        "emoji": ":thumbsup:",
+        "position": 0,
+        "sentiment": {
+            "flair": "pos",
+            "map": "pos"
+        },
+        "emojis": [
+            ":thumbsup:",
+            ":clap:",
+            ":ok_hand:",
+            ":smirk:",
+            ":eyes:",
+            ":sunglasses:",
+            ":blush:",
+            ":relaxed:",
+            ":wink:",
+            ":smile:"
+        ],
+        "matches": true,
+        "score": 0.99974173,
+        "status": "correct"
+    },
+    {
+        "content": "Currently, I cannot use Console part and I am not sure if it is only me",
+        "emoji": ":confused:",
+        "position": 2,
+        "sentiment": {
+            "flair": "neg",
             "map": "neg"
         },
         "emojis": [
-            ":confused:",
-            ":neutral_face:",
-            ":angry:",
             ":rage:",
-            ":expressionless:",
-            ":flushed:",
+            ":angry:",
+            ":confused:",
+            ":thumbsup:",
             ":grimacing:",
-            ":see_no_evil:",
+            ":wink:",
+            ":stuck_out_tongue_winking_eye:",
             ":triumph:",
-            ":unamused:"
+            ":smile:",
+            ":confounded:"
         ],
-        "matches": false,
-        "score": 0.9976949,
-        "fixed": ":flushed:",
-        "status": "fixed"
+        "matches": true,
+        "score": 0.99969375,
+        "status": "correct"
     },
     {
-        "content": "Hello\nI wonder how to learn api \n\nMy goals :-\nGet data from any web page like facebook or amazon or any other web page \n\nSo if you could help me how to learn and thank u in progress",
+        "content": "this course is awesome. he knows exactly when to give a small break and refresh the mind. GOOD JOB sir",
+        "emoji": ":thumbsup:",
+        "position": 2,
+        "sentiment": {
+            "flair": "pos",
+            "map": "pos"
+        },
+        "emojis": [
+            ":heartbeat:",
+            ":yellow_heart:",
+            ":thumbsup:",
+            ":relaxed:",
+            ":sparkles:",
+            ":smile:",
+            ":musical_note:",
+            ":sparkling_heart:",
+            ":gun:",
+            ":notes:"
+        ],
+        "matches": true,
+        "score": 0.9983242,
+        "status": "correct"
+    },
+    {
+        "content": "Great Video ..... everyone should be learning to Build APIS, the faster the cheaper ....the better",
+        "emoji": ":thumbsup:",
+        "position": 8,
+        "sentiment": {
+            "flair": "pos",
+            "map": "pos"
+        },
+        "emojis": [
+            ":skull:",
+            ":joy:",
+            ":flushed:",
+            ":neutral_face:",
+            ":expressionless:",
+            ":clap:",
+            ":sweat_smile:",
+            ":sob:",
+            ":thumbsup:",
+            ":eyes:"
+        ],
+        "matches": true,
+        "score": 0.99790096,
+        "status": "correct"
+    },
+    {
+        "content": "it really really usefull crash course but i feel tiring to contiuan to watch it but it is so intersted for me \nso i desid to finish to from the first time i have try",
+        "emoji": ":thumbsup:",
+        "position": 8,
+        "sentiment": {
+            "flair": "pos",
+            "map": "pos"
+        },
+        "emojis": [
+            ":joy:",
+            ":sweat_smile:",
+            ":clap:",
+            ":flushed:",
+            ":expressionless:",
+            ":neutral_face:",
+            ":hand:",
+            ":unamused:",
+            ":thumbsup:",
+            ":skull:"
+        ],
+        "matches": true,
+        "score": 0.7876919,
+        "status": "correct"
+    },
+    {
+        "content": "I loved this course Craig! I called the number, but I wanted to share my thanks here too! Thanks so much! 100% excellent course! I'd recommend it to all beginners.",
+        "emoji": ":thumbsup:",
+        "position": 0,
+        "sentiment": {
+            "flair": "pos",
+            "map": "pos"
+        },
+        "emojis": [
+            ":thumbsup:",
+            ":rage:",
+            ":angry:",
+            ":smile:",
+            ":expressionless:",
+            ":neutral_face:",
+            ":confused:",
+            ":wink:",
+            ":stuck_out_tongue_winking_eye:",
+            ":persevere:"
+        ],
+        "matches": true,
+        "score": 0.9924671,
+        "status": "correct"
+    },
+    {
+        "content": "WoW what an amazing video! Thank you Craig!",
+        "emoji": ":thumbsup:",
+        "position": 0,
+        "sentiment": {
+            "flair": "pos",
+            "map": "pos"
+        },
+        "emojis": [
+            ":thumbsup:",
+            ":clap:",
+            ":ok_hand:",
+            ":smile:",
+            ":wink:",
+            ":blush:",
+            ":heart_eyes:",
+            ":raised_hands:",
+            ":muscle:",
+            ":relaxed:"
+        ],
+        "matches": true,
+        "score": 0.99869174,
+        "status": "correct"
+    },
+    {
+        "content": "Awesome explanation and practical demo! Though it would be nice to carry a demo with an artist that is a little more on a healthy side, that takes up a little less space on the screen...",
+        "emoji": ":thumbsup:",
+        "position": 8,
+        "sentiment": {
+            "flair": "pos",
+            "map": "pos"
+        },
+        "emojis": [
+            ":relieved:",
+            ":ok_hand:",
+            ":heart_eyes:",
+            ":notes:",
+            ":relaxed:",
+            ":sparkles:",
+            ":blush:",
+            ":raised_hands:",
+            ":thumbsup:",
+            ":musical_note:"
+        ],
+        "matches": true,
+        "score": 0.9992066,
+        "status": "correct"
+    },
+    {
+        "content": "Nice video",
         "emoji": ":confused:",
         "position": 6,
         "sentiment": {
@@ -1102,12 +932,62 @@
             ":pensive:"
         ],
         "matches": false,
-        "score": 0.8680177,
+        "score": 0.9928888,
         "fixed": ":sweat_smile:",
         "status": "fixed"
     },
     {
-        "content": "The best course I've watched in a while - thank you for putting so much hard work into it!",
+        "content": "Wow. Just Wow and Thank You",
+        "emoji": ":confused:",
+        "position": 0,
+        "sentiment": {
+            "flair": "pos",
+            "map": "neg"
+        },
+        "emojis": [
+            ":confused:",
+            ":persevere:",
+            ":sweat:",
+            ":neutral_face:",
+            ":disappointed:",
+            ":expressionless:",
+            ":unamused:",
+            ":confounded:",
+            ":pensive:",
+            ":sweat_smile:"
+        ],
+        "matches": false,
+        "score": 0.9963069,
+        "fixed": ":sweat_smile:",
+        "status": "fixed"
+    },
+    {
+        "content": "Outstanding delivery and very informative. Thanks",
+        "emoji": ":confused:",
+        "position": 0,
+        "sentiment": {
+            "flair": "pos",
+            "map": "neg"
+        },
+        "emojis": [
+            ":confused:",
+            ":neutral_face:",
+            ":persevere:",
+            ":confounded:",
+            ":disappointed:",
+            ":sweat:",
+            ":grimacing:",
+            ":sweat_smile:",
+            ":expressionless:",
+            ":cry:"
+        ],
+        "matches": false,
+        "score": 0.9894208,
+        "fixed": ":sweat_smile:",
+        "status": "fixed"
+    },
+    {
+        "content": "Happy Birthday Craig! Love your tutorial",
         "emoji": ":confused:",
         "position": 8,
         "sentiment": {
@@ -1127,12 +1007,12 @@
             ":cry:"
         ],
         "matches": false,
-        "score": 0.9994235,
+        "score": 0.97842467,
         "fixed": ":smiling_imp:",
         "status": "fixed"
     },
     {
-        "content": "Awesome explanation and practical demo! Though it would be nice to carry a demo with an artist that is a little more on a healthy side, that takes up a little less space on the screen...",
+        "content": "Thx for ur effort and comments. I wish i could have more info how and wnere i can more Knowlegde re api. Thx ever so much again ",
         "emoji": ":confused:",
         "position": 9,
         "sentiment": {
@@ -1152,12 +1032,62 @@
             ":confused:"
         ],
         "matches": false,
-        "score": 0.9992066,
+        "score": 0.6251831,
         "fixed": ":hand:",
         "status": "fixed"
     },
     {
-        "content": "This is the best course ever!!!",
+        "content": "Dam am I had so much respect for him until he said lizzo, be the man in your house hold",
+        "emoji": ":confused:",
+        "position": 0,
+        "sentiment": {
+            "flair": "pos",
+            "map": "neg"
+        },
+        "emojis": [
+            ":confused:",
+            ":disappointed:",
+            ":sleeping:",
+            ":persevere:",
+            ":confounded:",
+            ":thumbsup:",
+            ":grimacing:",
+            ":neutral_face:",
+            ":sweat:",
+            ":flushed:"
+        ],
+        "matches": false,
+        "score": 0.8120588,
+        "fixed": ":thumbsup:",
+        "status": "fixed"
+    },
+    {
+        "content": "This is a great course! I had a lot of problems with Glitch... living up to its name? (Importing the repo from GH, getting my app to wake up.) But the concepts were solid and it was easy to see the underpinnings for Craig's app in the video.",
+        "emoji": ":confused:",
+        "position": 6,
+        "sentiment": {
+            "flair": "pos",
+            "map": "neg"
+        },
+        "emojis": [
+            ":cry:",
+            ":stuck_out_tongue_winking_eye:",
+            ":angry:",
+            ":rage:",
+            ":broken_heart:",
+            ":wink:",
+            ":confused:",
+            ":sweat:",
+            ":heartbeat:",
+            ":smile:"
+        ],
+        "matches": false,
+        "score": 0.999956,
+        "fixed": ":stuck_out_tongue_winking_eye:",
+        "status": "fixed"
+    },
+    {
+        "content": "Dude, Sense of humor is 10/10. I literally smiled ;) Thanks for KTP- knowledge transfer protocol. :)",
         "emoji": ":confused:",
         "position": 2,
         "sentiment": {
@@ -1168,42 +1098,42 @@
             ":rage:",
             ":angry:",
             ":confused:",
-            ":thumbsup:",
             ":triumph:",
+            ":thumbsup:",
+            ":smiling_imp:",
             ":neutral_face:",
             ":expressionless:",
-            ":grimacing:",
-            ":wink:",
-            ":stuck_out_tongue_winking_eye:"
+            ":disappointed:",
+            ":grimacing:"
         ],
         "matches": false,
-        "score": 0.9991646,
+        "score": 0.9907205,
         "fixed": ":thumbsup:",
         "status": "fixed"
     },
     {
-        "content": "hi Craig, you and the information you gave are awesome..",
+        "content": "Thanks Craig. I learnt sooo much. U r God sent ",
         "emoji": ":confused:",
-        "position": 1,
+        "position": 0,
         "sentiment": {
             "flair": "pos",
             "map": "neg"
         },
         "emojis": [
-            ":neutral_face:",
             ":confused:",
-            ":eyes:",
-            ":sweat_smile:",
+            ":neutral_face:",
+            ":angry:",
+            ":rage:",
             ":expressionless:",
-            ":see_no_evil:",
             ":flushed:",
             ":grimacing:",
-            ":mask:",
-            ":joy:"
+            ":see_no_evil:",
+            ":triumph:",
+            ":unamused:"
         ],
         "matches": false,
-        "score": 0.9932121,
-        "fixed": ":sweat_smile:",
+        "score": 0.9664387,
+        "fixed": ":flushed:",
         "status": "fixed"
     }
 ]
