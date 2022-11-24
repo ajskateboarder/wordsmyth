@@ -1,7 +1,7 @@
 import json
 import pandas as pd
 
-df = pd.read_csv("./extracts.csv")
+df = pd.read_csv("./poop.csv")
 
 with open("./emojimap.json", "r", encoding="utf-8") as fh:
     em = json.load(fh)
@@ -19,8 +19,10 @@ em = {e["repr"]: e for e in em}
 
 em[":cry:"]["sentiment"] = "neg"
 em[":grimacing:"]["sentiment"] = "neu"
+print(df.keys())
 
 texts = df[["text", "emojis", "sentiment", "score"]].to_dict("records")
+print(texts)
 
 incorrect = []
 correct = []
@@ -28,10 +30,11 @@ fixed = []
 
 # for every value in texts dict array:
 for t in texts:
-    emojis = t["emojis"].split(", ")
+    emojis = t["emojis"].split(",")
 
     # find positions where specific emojis show up
     maps = find_indices(emojis, [":confused:", ":thumbsup:", ":eyes:"])
+    print(maps)
 
     # if occurences show up once or twice
     if len(maps) == 2 or len(maps) == 1:
@@ -47,6 +50,7 @@ for t in texts:
             "matches": t["sentiment"] == match["sentiment"],
             "score": t["score"],
         }
+        print(obj)
 
         # check if flair sentiment doesn't equal emoji sentiment
         if obj["sentiment"]["flair"] != obj["sentiment"]["map"]:

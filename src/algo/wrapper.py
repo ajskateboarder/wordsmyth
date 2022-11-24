@@ -12,8 +12,8 @@ from google.protobuf.json_format import MessageToDict
 import pandas as pd
 import grpc
 
-from micro.stubs.server_pb2 import Request
-from micro.stubs.server_pb2_grpc import ModelStub
+from interns.stubs.server_pb2 import Request
+from interns.stubs.server_pb2_grpc import ModelStub
 
 
 _channel = grpc.insecure_channel("localhost:50051")
@@ -40,8 +40,7 @@ def request(texts: List[List[str]], api: str, **params: int) -> List[Dict[str, A
             executor.submit(
                 ModelStub(_channel).__dict__[api],
                 request=Request(
-                    texts=[t.encode("utf-8", "replace").decode("utf-8") for t in v],
-                    **params
+                    texts=[e.encode("utf-8", "ignore") for e in v], **params
                 ),
             )
             for v in texts
@@ -58,6 +57,7 @@ def request(texts: List[List[str]], api: str, **params: int) -> List[Dict[str, A
 
 def main(flair: bool, torch: bool, csv: bool, comments: "list[list[str]]"):
     """Fetch algorithm responses and dump data as JSON"""
+    print(comments)
     tmres = request(comments, "torchmoji", count=10) if torch else None
     flres = request(comments, "flair") if flair else None
 
