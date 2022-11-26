@@ -6,7 +6,7 @@ with open("emojimap.json", encoding="utf-8") as fh:
 
 with open("data.json", encoding="utf-8") as fh:
     data = json.load(fh)
-
+finals = []
 
 for elem in data:
     picked = [e for e in em if elem.get("fixed", elem["emoji"]) == e["repr"]][0]
@@ -21,4 +21,7 @@ for elem in data:
     if "🤣" in elem["content"]:
         score = score - 0.2
 
+    finals.append(round(1 - score, 4))
     print(elem["content"], round(1 - score, 4), "\n")
+
+print(np.mean(finals))
