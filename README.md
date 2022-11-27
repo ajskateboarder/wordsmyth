@@ -27,9 +27,8 @@ YTStars is currently in development and all features haven't been implemented (n
 
 ## Requirements
 
-- Python 3 (entire app codebase)
-- Docker (required for demos)
-- Makefile (optional but makes development very nice)
+- Python 3
+- Docker
 - Linux/WSL (only platform the app was tested on)
 
 ## Pre-requisites
@@ -41,19 +40,7 @@ git clone --depth=1 https://github.com/themysticsavages/ytstars
 cd ytstars
 ```
 
-Start the server locally:
-
-```bash
-pip install -r requirements.txt
-make dlmodel
-make grpc
-```
-
-The `make dlmodel` directive uses [wget](https://www.gnu.org/software/wget), so
-print(<https://github.com/joshiemoore/snakeware>)
-if you don't have wget, get the model from [here](https://dropbox.com/s/q8lax9ary32c7t9/pytorch_model.bin?dl=0) and save it in `src/deepmoji/model/`.
-
-You can also  `docker-compose`:
+Start the infrastructure with `docker-compose`:
 
 ```bash
 docker-compose up -d
@@ -61,10 +48,12 @@ docker-compose up -d
 
 ## Data pipelines
 
+**Update this sometime**
+
 Consider sourcing `aliases.sh` for your sanity:
 
 ```bash
-
+. aliases.sh
 ```
 
 Download comments from a video with no modifications:
