@@ -1,12 +1,11 @@
-"""Some random docstrings"""
+"""gRPC algorithm servicers"""
 
 from concurrent.futures import ThreadPoolExecutor
-import random
 
 import grpc
 
-from micro.stubs.server_pb2_grpc import add_ModelServicer_to_server, ModelServicer
-from micro.stubs.server_pb2 import Emoji, Emojis, Sentiment, Sentiments, Intensity
+from interns.stubs.server_pb2_grpc import add_ModelServicer_to_server, ModelServicer
+from interns.stubs.server_pb2 import Emoji, Emojis, Sentiment, Sentiments, Intensity
 
 from algo.deepmoji import Emojize
 from algo.flairnlp import Flair

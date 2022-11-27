@@ -6,12 +6,7 @@ import time
 
 
 connection = pika.BlockingConnection(
-    pika.ConnectionParameters(
-        "localhost",
-        5672,
-        "rabbit",
-        credentials=pika.PlainCredentials("user", "password"),
-    ),
+    pika.ConnectionParameters("localhost"),
 )
 channel = connection.channel()
 
@@ -54,9 +49,10 @@ def ack_message(channel, delivery_tag):
         print("ACK failed")
 
 
-def passer(channel, method, properties, body):
-    time.sleep(2)
-    cb = partial(ack_message, channel, method.delivery_tag)
+def passer(inner_channel, method, _, body):
+    time.sleep(2)  # TODO: replace time.sleep with actual processing
+
+    cb = partial(ack_message, inner_channel, method.delivery_tag)
     connection.add_callback_threadsafe(cb)
     try:
         state.remove(body.decode())
@@ -65,11 +61,11 @@ def passer(channel, method, properties, body):
     print(body, state)
 
 
-def callback(channel, method, properties, body):
+def callback(inner_channel, method, properties, body):
     t = threading.Thread(
         target=passer,
         args=(
-            channel,
+            inner_channel,
             method,
             properties,
             body,
