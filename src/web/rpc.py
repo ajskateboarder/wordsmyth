@@ -11,9 +11,6 @@ class VideoExistsClient:
         self.connection = pika.BlockingConnection(
             pika.ConnectionParameters(
                 "localhost",
-                5672,
-                "rabbit",
-                credentials=pika.PlainCredentials("user", "password"),
             )
         )
 

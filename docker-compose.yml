@@ -2,7 +2,26 @@ version: '3.7'
 
 services:
   grpc:
+    network_mode: host
     container_name: ytstars_grpc
-    build: .
+    build:
+      dockerfile: Dockerfile.interns
+      context: .
     ports:
       - 50051:50051
+  rabbitmq:
+    network_mode: host
+    image: rabbitmq:3-management
+    container_name: ytstars_rmq_indexes
+    ports:
+      - 5672:5672
+      - 15672:15672
+  web:
+    network_mode: host
+    container_name: ytstars_internal_queue
+    command: bash -c "/app/wait.sh --timeout=0 localhost:5672 && python3 /app/src/web/backend.py"
+    depends_on:
+      - rabbitmq
+    build:
+      dockerfile: Dockerfile.web
+      context: .
