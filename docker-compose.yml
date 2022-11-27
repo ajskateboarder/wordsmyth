@@ -5,7 +5,7 @@ services:
     network_mode: host
     container_name: ytstars_grpc
     build:
-      dockerfile: Dockerfile.interns
+      dockerfile: interns.dockerfile
       context: .
     ports:
       - 50051:50051
@@ -23,5 +23,5 @@ services:
     depends_on:
       - rabbitmq
     build:
-      dockerfile: Dockerfile.web
+      dockerfile: web.dockerfile
       context: .
