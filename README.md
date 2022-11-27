@@ -15,15 +15,7 @@ With this tool, all the video comments are aggregated, analyzed for sentiment, a
 
 Do you want to scavenge all those comments now?
 
-## Status
-
-YTStars is currently in development and all features haven't been implemented (no rating). Currently, we have:
-
-- a finished server for handling concurrent requests to algorithms
-- data pipelines for comments and algos on the said server
-- a hacky script for making comment ratings (`future/verylast.py`)
-
-# Usage
+# Setup
 
 ## Requirements
 
@@ -48,29 +40,26 @@ docker-compose up -d
 
 ## Data pipelines
 
-**Update this sometime**
-
-Consider sourcing `aliases.sh` for your sanity:
-
-```bash
-. aliases.sh
-```
+> **Notice**: These pipelines will soon use web APIs which are orchestrated under Docker rather than local APIs. For now, follow this section with `docker-compose` running.
 
 Download comments from a video with no modifications:
 
 ```bash
-./tools/comments GZvSYJDk-us 300 > output.json
+python3 -m utils.comments GZvSYJDk-us 300 > output.json
 ```
 
 Modify to include algorithm responses:
 
 ```bash
-./tools/comments GZvSYJDk-us 300 | ./pipe/algo -t -f
-# -t runs TorchMoji, -f runs Flair
+python3 -m utils.comments GZvSYJDk-us 20 | python3 -m src.algo.wrapper -tf --csv > future/poop.csv
 ```
+
+`-t` runs TorchMoji, `-f` runs Flair, and `--csv` toggles CSV output
 
 Fix them, if required:
 
 ```bash
 ./scripts/fix -f data.csv
 ```
+
+> *This is currently not implemented*
