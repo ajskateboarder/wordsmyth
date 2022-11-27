@@ -1,6 +1,6 @@
 # This is only the requirements for the gRPC server
 -f https://download.pytorch.org/whl/torch_stable.html
-torch==1.9.1+cpu
+torch==1.13.0+cpu 
 git+https://github.com/themysticsavages/torchMoji
 youtube-comment-downloader
 transformers
