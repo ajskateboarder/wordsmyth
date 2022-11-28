@@ -23,6 +23,8 @@ YTStars is currently in development and all features haven't been implemented (n
 - data pipelines for comments and algos on the said server
 - a hacky script for making comment ratings (`future/verylast.py`)
 
+Please read the [TODO.md](./TODO.md) for what still needs to be implemented.
+
 # Usage
 
 ## Requirements
@@ -40,37 +42,44 @@ git clone --depth=1 https://github.com/themysticsavages/ytstars
 cd ytstars
 ```
 
-Start the infrastructure with `docker-compose`:
+Start the infrastructure with `docker compose`:
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
-## Data pipelines
+## Manual data pipelines
+If you don't want to start all of the bulky web infrastructure, you can freely experiment with the data from the command line with these pipelines.
 
-**Update this sometime**
-
-Consider sourcing `aliases.sh` for your sanity:
+Start the gRPC service only:
 
 ```bash
-. aliases.sh
+docker compose start -d ytstars.internal
 ```
 
-Download comments from a video with no modifications:
+Download comments from a video without any modifications (algo responses are required for every other step):
 
 ```bash
-./tools/comments GZvSYJDk-us 300 > output.json
+python3 -m utils.comments GZvSYJDk-us 300 > output.json
 ```
 
-Modify to include algorithm responses:
+Download comments with algorithm responses:
 
 ```bash
-./tools/comments GZvSYJDk-us 300 | ./pipe/algo -t -f
-# -t runs TorchMoji, -f runs Flair
+python3 -m utils.comments GZvSYJDk-us 300 | python3 -m src.algorithms.wrapper -t -f --csv > output
+```
+`-t` includes responses from TorchMoji, `-f` includes responses from Flair, and `--csv` will toggle CSV output for better readability.
+
+> 🛈 The final pipelines are currently not finished so this will change in the future
+
+Fix the responses from the previous data:
+
+```bash
+python3 future/fix.py path/to/previous/data
 ```
 
-Fix them, if required:
+This should build the fixed `data.json` in the `future` directory, which you can generate a star rating from:
 
 ```bash
-./scripts/fix -f data.csv
+python3 future/rate.py
 ```
