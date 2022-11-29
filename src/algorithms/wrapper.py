@@ -12,8 +12,8 @@ from google.protobuf.json_format import MessageToDict
 import pandas as pd
 import grpc
 
-from interns.stubs.server_pb2 import Request
-from interns.stubs.server_pb2_grpc import ModelStub
+from internal.stubs.server_pb2 import Request
+from internal.stubs.server_pb2_grpc import ModelStub
 
 
 _channel = grpc.insecure_channel("localhost:50051")

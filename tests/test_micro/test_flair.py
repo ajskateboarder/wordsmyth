@@ -4,7 +4,7 @@ import pytest
 from grpc._channel import _InactiveRpcError
 from google.protobuf.json_format import MessageToDict
 
-from interns.stubs.server_pb2 import Request
+from internal.stubs.server_pb2 import Request
 from .classes import Flair
 
 

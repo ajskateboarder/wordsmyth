@@ -2,16 +2,16 @@ version: '3.7'
 
 services:
   # model servicers
-  interns:
+  yts.internal:
     network_mode: host
-    container_name: ytstars_interns
+    container_name: ytstars_internal
     build:
-      dockerfile: interns.dockerfile
+      dockerfile: internal.dockerfile
       context: .
     ports:
       - 50051:50051
   # store video queues
-  rabbitmq:
+  yts.rabbitmq:
     network_mode: host
     image: rabbitmq:3-management
     container_name: ytstars_rmq_indexes
@@ -19,7 +19,7 @@ services:
       - 5672:5672
       - 15672:15672
   # host the web api
-  web:
+  yts.web:
     network_mode: host
     container_name: ytstars_web
     command: bash -c "/app/wait.sh --timeout=0 localhost:5672; python3 /app/src/web/backend.py"

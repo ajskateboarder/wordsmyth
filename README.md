@@ -38,6 +38,8 @@ Start the infrastructure with `docker-compose`:
 docker-compose up -d
 ```
 
+> Currently, the intern
+
 ## Data pipelines
 
 > **Notice**: These pipelines will soon use web APIs which are orchestrated under Docker rather than local APIs. For now, follow this section with `docker-compose` running.

@@ -4,11 +4,11 @@ from concurrent.futures import ThreadPoolExecutor
 
 import grpc
 
-from interns.stubs.server_pb2_grpc import add_ModelServicer_to_server, ModelServicer
-from interns.stubs.server_pb2 import Emoji, Emojis, Sentiment, Sentiments, Intensity
+from internal.stubs.server_pb2_grpc import add_ModelServicer_to_server, ModelServicer
+from internal.stubs.server_pb2 import Emoji, Emojis, Sentiment, Sentiments, Intensity
 
-from algo.deepmoji import Emojize
-from algo.flairnlp import Flair
+from algorithms.deepmoji import Emojize
+from algorithms.flairnlp import Flair
 
 
 deepmoji = Emojize()
