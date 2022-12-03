@@ -10,4 +10,4 @@ RUN pip install pika
 RUN wget https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh -O /app/wait.sh
 RUN chmod +x /app/wait.sh
 
-CMD ["python3", "src/web/backend.py"]
+CMD ["python3", "src/web/queue/backend.py"]

@@ -6,7 +6,7 @@ services:
     network_mode: host
     container_name: ytstars_internal
     build:
-      dockerfile: internal.dockerfile
+      dockerfile: src/internal/Dockerfile
       context: .
     ports:
       - 50051:50051
@@ -18,13 +18,13 @@ services:
     ports:
       - 5672:5672
       - 15672:15672
-  # host the web api
+  # host the queuing api
   yts.web:
     network_mode: host
     container_name: ytstars_web
-    command: bash -c "/app/wait.sh --timeout=0 localhost:5672; python3 /app/src/web/backend.py"
+    command: bash -c "/app/wait.sh --timeout=0 localhost:5672; python3 /app/src/web/queue/backend.py"
     depends_on:
-      - rabbitmq
+      - yts.rabbitmq
     build:
-      dockerfile: web.dockerfile
+      dockerfile: src/web/queue/Dockerfile
       context: .
