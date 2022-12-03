@@ -1,9 +1,9 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 import requests
 
-from .rpc import VideoExistsClient
+from .queue.rpc import VideoProcessingState
 
-rpc = VideoExistsClient()
+rpc = VideoProcessingState()
 app = FastAPI()
 
 
@@ -15,8 +15,9 @@ def id_exists(video):
     return req.status_code == 200
 
 
-@app.get("/submit")
-def root(video_id: str):
+@app.post("/submit")
+async def submit(request: Request):
+    video_id = (await request.json())["video_id"]
     if not id_exists(video_id):
         return {"status": "reject", "message": "Video does not exist"}
     response = rpc.call(video_id).decode()
@@ -27,5 +28,5 @@ def root(video_id: str):
         }
     return {
         "status": "success",
-        "message": "Please wait while processing is done...",
+        "message": "Video is now in the submission queue",
     }

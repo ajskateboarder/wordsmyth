@@ -13,11 +13,11 @@ channel = connection.channel()
 state = []
 
 
-def add(n):
+def add(video):
     """Add video the global state to indicate that processing is in progress"""
-    if n in state:
+    if video in state:
         return "exists"
-    state.append(n)
+    state.append(video)
     return "added"
 
 
@@ -42,9 +42,9 @@ def check_existing(ch, method, props, body):
     ch.basic_ack(delivery_tag=method.delivery_tag)
 
 
-def ack_message(channel, delivery_tag):
-    if channel.is_open:
-        channel.basic_ack(delivery_tag)
+def ack_message(inner_channel, delivery_tag):
+    if inner_channel.is_open:
+        inner_channel.basic_ack(delivery_tag)
     else:
         print("ACK failed")
 
