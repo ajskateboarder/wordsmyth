@@ -1,8 +1,10 @@
 """Backend indexing work which runs in the background"""
-import pika
 import threading
 from functools import partial
+from collections import deque
 import time
+import json
+import pika
 
 
 connection = pika.BlockingConnection(
@@ -10,23 +12,22 @@ connection = pika.BlockingConnection(
 )
 channel = connection.channel()
 
-state = []
+state = deque([])
 
 
 def add(video):
     """Add video the global state to indicate that processing is in progress"""
     if video in state:
-        return "exists"
+        return {"status": "exists", "state": state}
     state.append(video)
-    return "added"
+    return {"status": "added", "state": state}
 
 
 def check_existing(ch, method, props, body):
     """RPC to check if a video is currently in the state"""
 
-    print(f" [.] add({body})")
     response = add(body.decode())
-    if response == "added":
+    if response["status"] == "added":
         ch.basic_publish(
             exchange="",
             routing_key="to_index",
@@ -37,7 +38,7 @@ def check_existing(ch, method, props, body):
         exchange="",
         routing_key=props.reply_to,
         properties=pika.BasicProperties(correlation_id=props.correlation_id),
-        body=str(response),
+        body=json.dumps(response),
     )
     ch.basic_ack(delivery_tag=method.delivery_tag)
 

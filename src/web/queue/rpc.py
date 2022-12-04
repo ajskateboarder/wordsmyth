@@ -4,6 +4,7 @@ Most of this code is boilerplate from the RabbitMQ docs XD
 """
 import uuid
 import pika
+import json
 
 
 class VideoProcessingState:
