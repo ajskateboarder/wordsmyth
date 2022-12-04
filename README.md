@@ -33,7 +33,7 @@ Please read the [`TODO.md`](./TODO.md) for what still needs to be implemented.
 - Docker
 - Linux/WSL (only platform the app was tested on)
 
-## Pre-requisites
+## Getting started
 
 Clone the repository with `--depth=1` because there is a large file in the Git history and it would take way too long to clone without the flag.
 
@@ -42,11 +42,7 @@ git clone --depth=1 https://github.com/themysticsavages/ytstars
 cd ytstars
 ```
 
-Start the infrastructure with `docker compose`:
-
-```bash
-docker compose up -d
-```
+## Running
 
 ### Manual data pipelines
 
@@ -54,6 +50,6 @@ Please read [`CLI.md`](./CLI.md) for how to use the data pipelines without all o
 
 ### Web API (experimental)
 
-Please read [`WEB.md`](./WEB.md) for creating a web server and do other operations with the API.
+Please read [`WEB.md`](./WEB.md) for creating a web server and do other operations with the API (requires all infra to be started)
 
 Most of the documentation for the web API mentions features which don't exist as of now.
