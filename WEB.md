@@ -56,4 +56,4 @@ docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate \
     -o /local/client
 ```
 
-Replace &lt;language&gt;
+Replace `<language>` with a supported language of your choice, such as `typescript-node` or `go`.
