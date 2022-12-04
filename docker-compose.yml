@@ -22,7 +22,7 @@ services:
   yts.web:
     network_mode: host
     container_name: ytstars_web
-    command: bash -c "/app/wait.sh --timeout=0 localhost:5672; python3 /app/src/web/queue/backend.py"
+    command: bash -c "/app/wait.sh --timeout=0 localhost:5672; python3 -u /app/src/web/queue/backend.py"
     depends_on:
       - yts.rabbitmq
     build:
