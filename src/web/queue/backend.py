@@ -6,6 +6,7 @@ import json
 import pika
 
 from utils.comments_v3 import download_comments
+from algorithms.wrapper import request
 
 connection = pika.BlockingConnection(
     pika.ConnectionParameters("localhost"),
@@ -52,8 +53,9 @@ def ack_message(inner_channel, delivery_tag):
 
 def passer(inner_channel, method, _, body):
     # TODO: logic goes below vvv
-    comments = download_comments("gnupOrSEikQ", 300)
-    print("COMMENTS: ", comments[:10])
+    comments = download_comments("gnupOrSEikQ", 10)
+    response = request(comments, "torchmoji")
+    print(response[:10])
 
     cb = partial(ack_message, inner_channel, method.delivery_tag)
     connection.add_callback_threadsafe(cb)
