@@ -6,6 +6,11 @@ import requests
 KEY = "AIzaSyAyYPux1VOpcbKk2V_FKt3nPxfz6lu437k"
 
 
+def chunks(l, n):
+    for i in range(0, n):
+        yield l[i::n]
+
+
 def download_comments(video_id, limit):
     req = requests.get(
         "https://www.googleapis.com/youtube/v3/commentThreads",
@@ -18,7 +23,12 @@ def download_comments(video_id, limit):
         },
         headers={"Referer": "https://youtubecommentsdownloader.com"},
     )
-    return [
-        item["snippet"]["topLevelComment"]["snippet"]["textOriginal"]
-        for item in req.json()["items"]
-    ]
+    return list(
+        chunks(
+            [
+                item["snippet"]["topLevelComment"]["snippet"]["textOriginal"]
+                for item in req.json()["items"]
+            ],
+            10,
+        )
+    )
