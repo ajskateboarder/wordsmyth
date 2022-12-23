@@ -1,4 +1,4 @@
-<img src="./logo.png" height=100 align=right>
+<img src="./media/logo.png" height=100 align=right>
 
 # YTStars
 
@@ -17,11 +17,7 @@ Do you want to scavenge all those comments now?
 
 ## Status
 
-YTStars is currently in development and all features haven't been implemented (no rating). Currently, we have:
-
-- a finished server for handling concurrent requests to algorithms
-- data pipelines for comments and algos on the said server
-- a hacky script for making comment ratings (`future/verylast.py`)
+YTStars is currently in development, although most features have been finished.
 
 Please read the [`TODO.md`](./TODO.md) for what still needs to be implemented.
 
@@ -46,10 +42,10 @@ cd ytstars
 
 ### Manual data pipelines
 
-Please read [`CLI.md`](./CLI.md) for how to use the data pipelines without all of the Docker infrastructure.
+Please read [`CLI.md`](./CLI.md) for how to use the data pipelines without much of the Docker infrastructure.
 
 ### Web API (experimental)
 
 Please read [`WEB.md`](./WEB.md) for creating a web server and do other operations with the API (requires all infra to be started)
 
-Most of the documentation for the web API mentions features which don't exist as of now.
+Most of the documentation for the web API is not finished.
