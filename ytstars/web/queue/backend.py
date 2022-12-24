@@ -2,6 +2,8 @@
 import threading
 from functools import partial
 from collections import deque
+from uuid import uuid4
+import requests
 import json
 import pika
 
@@ -21,7 +23,18 @@ def add(video):
     if video in state:
         return {"status": "exists", "state": list(state)}
     state.append(video)
-    return {"status": "added", "state": list(state)}
+    return {
+        "status": "added",
+        "state": list(state),
+        "listener": f"/queue/{str(uuid4())}",
+    }
+
+
+def ack_message(inner_channel, delivery_tag):
+    if inner_channel.is_open:
+        inner_channel.basic_ack(delivery_tag)
+    else:
+        print("ACK failed")
 
 
 def check_existing(ch, method, props, body):
@@ -29,10 +42,11 @@ def check_existing(ch, method, props, body):
 
     response = add(body.decode())
     if response["status"] == "added":
+        # Send video id and queue route to the passer function
         ch.basic_publish(
             exchange="",
             routing_key="to_index",
-            body=body.decode(),
+            body=json.dumps({"video": body.decode(), "listener": response["listener"]}),
         )
 
     ch.basic_publish(
@@ -44,23 +58,47 @@ def check_existing(ch, method, props, body):
     ch.basic_ack(delivery_tag=method.delivery_tag)
 
 
-def ack_message(inner_channel, delivery_tag):
-    if inner_channel.is_open:
-        inner_channel.basic_ack(delivery_tag)
-    else:
-        print("ACK failed")
-
-
 def passer(inner_channel, method, _, body):
-    # TODO: logic goes below vvv
-    comments = download_comments("gnupOrSEikQ", 10)
-    response = request(comments, "torchmoji")
-    print(response[:10])
+    """Index queue consumer which generates data from a video ID"""
+    body = json.loads(body.decode())
+    comments = download_comments(body["video"], 10)
+    requests.get(
+        f"http://localhost:8081{body['listener']}/send",
+        headers={"Status": "1"},
+        timeout=10,
+    )
+    tmres = request(comments, "torchmoji", count=10)
+    requests.get(
+        f"http://localhost:8081{body['listener']}/send",
+        headers={"Status": "1>done"},
+        timeout=10,
+    )
+
+    requests.get(
+        f"http://localhost:8081{body['listener']}/send",
+        headers={"Status": "2"},
+        timeout=10,
+    )
+    flres = request(comments, "flair")
+    requests.get(
+        f"http://localhost:8081{body['listener']}/send",
+        headers={"Status": "2>done"},
+        timeout=10,
+    )
+
+    comb = [dict(t, **f) for t, f in zip(tmres, flres)]
+    requests.get(
+        f"http://localhost:8081{body['listener']}/send",
+        headers={"Status": "0"},
+        timeout=10,
+    )
+
+    print(comb[0])
 
     cb = partial(ack_message, inner_channel, method.delivery_tag)
     connection.add_callback_threadsafe(cb)
     try:
-        state.remove(body.decode())
+        state.remove(body["video"])
     except IndexError:
         pass
 

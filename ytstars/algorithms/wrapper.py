@@ -57,7 +57,6 @@ def request(texts: List[List[str]], api: str, **params: int) -> List[Dict[str, A
 
 def main(flair: bool, torch: bool, csv: bool, comments: "list[list[str]]"):
     """Fetch algorithm responses and dump data as JSON"""
-    print(comments)
     tmres = request(comments, "torchmoji", count=10) if torch else None
     flres = request(comments, "flair") if flair else None
 
@@ -83,7 +82,11 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    stdin = list(sys.stdin)[1]
+    stdin = list(sys.stdin)
+    try:
+        stdin = stdin[1]
+    except IndexError:
+        stdin = stdin[0]
     stdin = literal_eval(stdin)
 
     main(args.flair, args.torch, args.csv, stdin)

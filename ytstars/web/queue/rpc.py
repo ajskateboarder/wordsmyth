@@ -1,13 +1,11 @@
 """
 RPC Client to check the state of video processing on the server
-Most of this code is boilerplate from the RabbitMQ docs XD
 """
 import uuid
 import pika
-import json
 
 
-class VideoProcessingState:
+class ProcessRPC:
     def __init__(self):
         self.connection = pika.BlockingConnection(
             pika.ConnectionParameters(
