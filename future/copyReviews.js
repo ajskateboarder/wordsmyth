@@ -13,48 +13,63 @@
 // ==/UserScript==
 
 (async function () {
-  document.querySelector("#cm_cr-view_opt_search").innerHTML +=
-    "<button id='doSomethingCool'>Collect reviews</button>";
+  var params = new URLSearchParams(window.location.search);
+  var chunked = true;
 
-  document.querySelector("#doSomethingCool").onclick = async () => {
-    var chunk = (arr, len) => {
-      var chunks = [],
-        i = 0,
-        n = arr.length;
-
-      while (i < n) {
-        chunks.push(arr.slice(i, (i += len)));
-      }
-      return chunks;
-    };
-
-    var elements = [];
-
-    document
-      .querySelectorAll("span[data-hook='review-body']")
-      .forEach((element) =>
-        elements.push(element.textContent.replace(/(\r\n|\n|\r)/gm, "").trim())
-      );
-
-    var added = [...(await GM_getValue("elements")), elements];
-    await GM_setValue("elements", added);
-
-    var pageNumber = parseInt(
-      new URLSearchParams(window.location.search).get("pageNumber").toString()
+  if (params.get("pageNumber") === null) {
+    throw new Error(
+      "ARC: Page number not specified, define a page start and page end with ?pageNumber=2&pageMacro=5"
     );
-    if (pageNumber === 10) {
-      document.body.innerHTML = JSON.stringify(
-        // this is for optimal performance when using with the algorithms
-        chunk((await GM_getValue("elements")).flat(Infinity), 5)
-      );
-      await GM_setValue("elements", []);
-      throw new Error("Hello world");
+  }
+  if (params.get("pageMacro") === null) {
+    throw new Error(
+      "ARC: Pages to index were not specified, define a page start and page end with ?pageNumber=2&pageMacro=5"
+    );
+  }
+  if (params.get("noChunk") !== null) {
+    console.log("ARC: Chunking is disabled by ?noChunk");
+    chunked = false;
+  } else
+    console.log("ARC: Chunking is enabled. This can be disabled with ?noChunk");
+
+  var chunk = (arr, len) => {
+    var chunks = [],
+      i = 0,
+      n = arr.length;
+
+    while (i < n) {
+      chunks.push(arr.slice(i, (i += len)));
     }
-    setTimeout(
-      () =>
-        (window.location =
-          window.location.href.slice(0, -1) + (pageNumber + 1)),
-      1000
-    );
+    return chunks;
   };
+
+  var elements = [];
+
+  document
+    .querySelectorAll("span[data-hook='review-body']")
+    .forEach((element) =>
+      elements.push(element.textContent.replace(/(\r\n|\n|\r)/gm, "").trim())
+    );
+
+  var added = [...(await GM_getValue("elements")), elements];
+  await GM_setValue("elements", added);
+
+  var pageNumber = parseInt(params.get("pageNumber"));
+  if (pageNumber === parseInt(params.get("pageMacro"))) {
+    document.body.innerHTML = JSON.stringify(
+      chunked
+        ? chunk((await GM_getValue("elements")).flat(Infinity), 5)
+        : (await GM_getValue("elements")).flat(Infinity)
+    );
+    await GM_setValue("elements", []);
+    throw new Error("Hello world");
+  }
+  params.set("pageNumber", pageNumber + 1);
+  setTimeout(
+    () =>
+      (window.location = `${location.protocol}//${location.host}${
+        location.pathname
+      }?${params.toString()}`),
+    1000
+  );
 })();

@@ -1,6 +1,6 @@
 # Web API
 
-A queue-based RESTful API which abstracts the complex data collection and processing logic YTStars uses.
+A queue-based RESTful API which abstracts the complex data collection and processing logic Rateboat uses.
 
 Start the infrastructure with `docker compose`:
 
@@ -21,7 +21,7 @@ This should be available in the browser at [http://localhost:8000](http://localh
 
 The API is compliant with the OpenAPI spec, so you can use a client generator like [`openapi-generator`](https://github.com/OpenAPITools/openapi-generator).
 
-A queue-based RESTful API which abstracts the complex data collection and processing logic YTStars uses.
+A queue-based RESTful API which abstracts the complex data collection and processing logic rateboat uses.
 
 ## Explanation
 

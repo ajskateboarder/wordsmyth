@@ -9,7 +9,6 @@ import json
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from google.protobuf.json_format import MessageToDict
-import pandas as pd
 import grpc
 
 from internal.stubs.server_pb2 import Request
@@ -21,6 +20,8 @@ _channel = grpc.insecure_channel("localhost:50051")
 
 def dump_csv(data: List[Dict[str, Any]]):
     """Simple wrapper around generating csv from JSON"""
+    import pandas as pd
+
     df = pd.DataFrame()
 
     df["sentiment"] = [m["sentiment"]["sentiment"] for m in data]

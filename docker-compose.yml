@@ -1,30 +1,21 @@
-version: '3.7'
+version: "3.7"
 
 services:
   # model servicers
-  yts.internal:
+  rateboat.internal:
     network_mode: host
-    container_name: ytstars_internal
+    container_name: rateboat.internal
     build:
-      dockerfile: ytstars/internal/Dockerfile
+      dockerfile: rateboat/internal/Dockerfile
       context: .
     ports:
       - 50051:50051
-  # store video queues
-  yts.rabbitmq:
-    network_mode: host
-    image: rabbitmq:3-management
-    container_name: ytstars_rmq_indexes
-    ports:
-      - 5672:5672
-      - 15672:15672
   # host the queuing api
-  yts.web:
+  rateboat.store:
     network_mode: host
-    container_name: ytstars_web
-    command: bash -c "/app/wait.sh --timeout=0 localhost:5672; python3 -u /app/ytstars/web/queue/backend.py"
-    depends_on:
-      - yts.rabbitmq
+    container_name: rateboat.store
     build:
-      dockerfile: ytstars/web/queue/Dockerfile
+      dockerfile: rateboat/web/store/Dockerfile
       context: .
+    ports:
+      - 50056:50056

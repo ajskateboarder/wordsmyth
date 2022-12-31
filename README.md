@@ -1,8 +1,8 @@
 <img src="./media/logo.png" height=100 align=right>
 
-# YTStars
+# Rateboat
 
-YTStars was made to ease the pains of manual comment analysis among content creators and viewers to find out how good a video is.
+Rateboat was made to ease the pains of manual comment analysis among content creators and viewers to find out how good a video is.
 Here's it in a more relatable way:
 
 Imagine you are looking for how to use and make APIs, some tutorial like:
@@ -17,7 +17,7 @@ Do you want to scavenge all those comments now?
 
 ## Status
 
-YTStars is currently in development, although most features have been finished. To see the full application flow, check out the diagram [here](./media/flowchart.png) or interactively in <a href="https://excalidraw.com/#json=KY63wSiOkoHpO5PFXKbhB,0PPMgCaAo_QuiP13jcNXTg" target="blank">Excalidraw</a>
+Rateboat is currently in development, although most features have been finished. To see the full application flow, check out the diagram [here](./media/flowchart.png) or interactively in <a href="https://excalidraw.com/#json=KY63wSiOkoHpO5PFXKbhB,0PPMgCaAo_QuiP13jcNXTg" target="blank">Excalidraw</a>
 
 Please read the [`TODO.md`](./TODO.md) for what still needs to be implemented.
 
@@ -34,8 +34,8 @@ Please read the [`TODO.md`](./TODO.md) for what still needs to be implemented.
 Clone the repository with `--depth=1` because there is a large file in the Git history and it would take way too long to clone without the flag.
 
 ```bash
-git clone --depth=1 https://github.com/themysticsavages/ytstars
-cd ytstars
+git clone --depth=1 https://github.com/themysticsavages/rateboat
+cd rateboat
 ```
 
 ## Running
