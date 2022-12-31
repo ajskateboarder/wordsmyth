@@ -1,19 +1,15 @@
-"""Statically analyze the compiled JSON and generate a rating as a decimal"""
+"""Statically analyze the compiled JSON and compile an HTML page with the results"""
 import json
 import numpy as np
-
-from rich.panel import Panel
-from rich.console import Console
-from rich.columns import Columns
 
 with open("emojimap.json", encoding="utf-8") as fh:
     em = json.load(fh)
 
 with open("data.json", encoding="utf-8") as fh:
     data = json.load(fh)
-finals = []
 
-renderables = []
+finals = []
+elements = []
 
 for elem in data:
     picked = [e for e in em if elem.get("fixed", elem["emoji"]) == e["repr"]][0]
@@ -36,14 +32,13 @@ for elem in data:
     finals.append(round(1 - score, 4))
     rating = round(1 - score, 4) / 2
 
-    renderables.append(
-        Panel(
-            f"{elem['content']}\n{''.join(['★' for _ in range(round(rating * 10))]+['☆' for _ in range(5 - round(rating * 10))])} ({rating})\n{','.join(elem['emojis'])}",
-            expand=True,
-        )
+    elements.append(
+        # Panel(
+        #     f"{elem['content']}\n{''.join(['★' for _ in range(round(rating * 10))]+['☆' for _ in range(5 - round(rating * 10))])} ({rating})\n{','.join(elem['emojis'])}",
+        #     expand=True,
+        # )
+        f"<p>{elem['content']}<br>{''.join(['★' for _ in range(round(rating * 10))]+['☆' for _ in range(5 - round(rating * 10))])} ({rating})<br>{','.join(elem['emojis'])}</p>"
     )
 
-console = Console()
-console.print(Columns(renderables))
-
-print(np.mean(finals))
+final = np.mean(finals)
+print("\n".join(elements))
