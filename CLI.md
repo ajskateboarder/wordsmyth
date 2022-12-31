@@ -17,7 +17,7 @@ python3 -m utils.comments GZvSYJDk-us 300 > output.json
 Download comments with algorithm responses:
 
 ```bash
-python3 -m utils.comments GZvSYJDk-us 300 | python3 -m src.algorithms.wrapper -t -f --csv > output
+python3 -m utils.comments GZvSYJDk-us 300 | python3 -m algorithms.wrapper -t -f --csv > output
 ```
 
 `-t` includes responses from TorchMoji, `-f` includes responses from Flair, and `--csv` will toggle CSV output for better readability.
@@ -53,4 +53,8 @@ You can install it with [Tampermonkey](https://www.tampermonkey.net/) and use it
 - `pageMacro` - part of the script - defines which page to stop scraping at
 - `noChunk` also exists to stop the reviews from being chunked into groups of 5 (just in case)
 
-Once finished, it will write all the reviews to the body so you can copy it.
+Once finished, it will write all the reviews to the body so you can copy it. You should put this output in a text file so it can be easily passed to the algorithm wrapper.
+
+```bash
+python3 -m algorithms.wrapper -tf --csv < content.txt > ./future/output.csv
+```
