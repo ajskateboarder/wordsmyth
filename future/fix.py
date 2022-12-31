@@ -1,7 +1,7 @@
 import json
 import pandas as pd
 
-df = pd.read_csv("./poop.csv")
+df = pd.read_csv("./dumb.csv")
 
 with open("./emojimap.json", "r", encoding="utf-8") as fh:
     em = json.load(fh)
