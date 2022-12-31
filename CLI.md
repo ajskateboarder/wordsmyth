@@ -5,7 +5,7 @@ If you don't want to start all of the bulky web infrastructure, you can freely e
 Start the gRPC service only:
 
 ```bash
-docker compose start -d ytstars.internal
+docker compose start -d rateboat.internal
 ```
 
 Download comments from a video without any modifications (algo responses are required for every other step):
@@ -35,3 +35,7 @@ This should build the fixed `data.json` in the `future` directory, which you can
 ```bash
 python3 future/rate.py
 ```
+
+## Testing usage
+
+This program uses Amazon product reviews as a method of testing the algorithms. Since you and I are probably too lazy to copy each review to use with RateBoat

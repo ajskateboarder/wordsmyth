@@ -5,7 +5,6 @@ from pydantic import BaseModel, Field
 class Queue:
     class Output(BaseModel):
         class Data(BaseModel):
-            queue: Optional[List[str]]
             message: str = Field(title="Extended description of what happened")
             listener: Optional[str] = Field(title="Websocket URL to receive status")
 

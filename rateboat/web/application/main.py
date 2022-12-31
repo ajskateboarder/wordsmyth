@@ -3,20 +3,26 @@ import io
 import json
 
 import yaml
+
+import grpc
+from google.protobuf.json_format import MessageToDict
+
 from fastapi import FastAPI, Response, Request
 from fastapi.middleware.cors import CORSMiddleware
 from sse_starlette.sse import EventSourceResponse
 import requests
 
-from ytstars.web.queue.rpc import ProcessRPC
-from ytstars.web.application.models import Queue
-from ytstars.web.application.sse import SSE
+from web.store.stubs.queue_pb2 import Request as QueueReq
+from web.store.stubs.queue_pb2_grpc import QueueStub
 
-rpc = ProcessRPC()
+from web.application.models import Queue
+from web.application.sse import SSE
+
 announcer = SSE()
+channel = grpc.insecure_channel("localhost:50056")
 
 app = FastAPI(
-    title="YTStars API",
+    title="Rateboat API",
     description=(
         "This API provides easy support to queue videos of your choice to get them automatically rated. "
         "You can generate a typesafe client with the provided OpenAPI schema or use the tRPC client if you use TypeScript"
@@ -29,6 +35,12 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+def request(video_id):
+    return MessageToDict(
+        QueueStub(channel).check_queue(request=QueueReq(video_id=video_id))
+    )
 
 
 def id_exists(video):
@@ -54,10 +66,10 @@ def stream():
         msg = messages.get()
         yield msg
         if msg == "0":
-            break
+            return
 
 
-async def cool_route(request: Request):
+async def sse_route():
     """Server-sent-events template route to be dynamically registered"""
     status_generator = stream()
     return EventSourceResponse(status_generator)
@@ -99,27 +111,25 @@ async def post_submit(response: Response, video: Queue.Input):
         response.status_code = 404
         return {"status": "fail", "data": {"message": "Video does not exist"}}
 
-    queue = json.loads(rpc.call(video_id).decode())
-    print(queue)
-    app.add_api_route(queue["listener"], cool_route)
-    app.add_api_route(f"{queue['listener']}/send", send_status)
+    queue = request(video_id)
 
     if queue["status"] == "exists":
         response.status_code = 400
         return {
             "status": "fail",
             "data": {
-                "queue": queue["state"],
                 "message": "Video already exists in queue. Please check back later",
             },
         }
+
+    app.add_api_route(queue["listener"], sse_route)
+    app.add_api_route(f"{queue['listener']}/send", send_status)
 
     return {
         "status": "success",
         "queue": queue,
         "data": {
             "message": "Video is now in the submission queue.",
-            "queue": queue["state"],
             "listener": queue["listener"],
         },
     }
