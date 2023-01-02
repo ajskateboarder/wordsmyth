@@ -1,15 +1,26 @@
--- Mock functions for sandbox testing
+-- Mock functions for sandbox testing --
 
+-- Element mocks
+local element = {}
+
+function element:text()
+    return tostring(12)
+end
+
+-- Response mocks
+local response = {}
+
+function response:select_all(text)
+    return {element, element, element, element}
+end
+
+function response:select_one(text)
+    return element
+end
+
+-- Request mocks
 local request = {}
 
 function request:go(method, url, body)
-    return nil
-end
-
-function request:select_all(body, selector)
-    return nil
-end
-
-function request:select_one(body, selector)
-    return nil
+    return response
 end

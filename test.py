@@ -3,7 +3,7 @@ import requests
 from lupa import LuaRuntime
 from luaparser import ast
 from bs4 import BeautifulSoup
-
+from bs4.element import Tag
 
 lua = LuaRuntime()
 sandbox = lua.require("sandbox")[0]
@@ -35,19 +35,36 @@ try:
 except Exception as e:
     raise Exception(e) from None
 
+class Element:
+    """Element with some simple methods"""
+    def __init__(self, element: Tag):
+        self.element = element
+    def text(self):
+        return self.element.text.encode("latin-1", errors="replace")
+
+class Window:
+    """Window object which is sent back with requests"""
+    def __init__(self, soup: BeautifulSoup):
+        self.soup = soup
+
+    def select_all(self, selector):
+        """Find all elements with a query selector"""
+        return lua.table(*(Element(element) for element in self.soup.select(selector)))
+
+    def select_one(self, selector):
+        """Find one element with a query selector"""
+        return Element(self.soup.select_one(selector))
 
 class Request:
     """The Window object emulated from within Lua"""
-
     def wrap_(self, req, html):
         """Private function to convert request to either JSON or HTML"""
         if html == True:
-            return BeautifulSoup(req.text, "html.parser")
+            return Window(BeautifulSoup(req.text, "html.parser"))
         return req.json()
 
     def go(self, method, url, body=None, html=False):
         """Wrapper to request a URL"""
-        print(html)
         if method != "GET":
             if body is not None:
                 body = dict(map(lambda i, j: (i, j), body.keys(), body.values()))
@@ -56,15 +73,6 @@ class Request:
 
         res = requests.request(method, url, timeout=10)
         return self.wrap_(res, html)
-
-    def select_all(self, body: BeautifulSoup, selector):
-        """Find all elements with a query selector"""
-        return body.select(selector)
-
-    def select_one(self, body: BeautifulSoup, selector):
-        """Find one element with a query selector"""
-        return body.select_one(selector)
-
 
 request = Request()
 response = lua.execute(
