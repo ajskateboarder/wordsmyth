@@ -23,7 +23,7 @@ All links from google.com with the CSS selector `a.gb4` should be printed to sta
 
 ## Todo
 
-### Unfinished
+### ❌ Unfinished
 
 - Modularize the code
 - Support a web API
