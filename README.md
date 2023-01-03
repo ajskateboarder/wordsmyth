@@ -29,7 +29,7 @@ All links from google.com with the CSS selector `a.gb4` should be printed to sta
 - Support a web API
 - Support fetching on primarily JS pages
 
-### Finished
+### ✅ Finished
 
 - Most HTTP methods
 - POSTing with a body
