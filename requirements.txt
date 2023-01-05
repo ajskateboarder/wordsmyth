@@ -1,0 +1,5 @@
+antlr4-python3-runtime==4.7.2
+beautifulsoup4==4.11.1
+luaparser==3.1.1
+lupa==1.14.1
+soupsieve==2.3.2.post1
