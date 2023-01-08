@@ -3,7 +3,7 @@ Comment collection wrapper built with a stolen YT Data API key
 """
 import requests
 
-KEY = "AIzaSyAyYPux1VOpcbKk2V_FKt3nPxfz6lu437k"
+KEY = "AIzaSyDfaS4lcSHVwbZ_p3NhTqT3tQNAfeaKQtk"
 
 
 def chunks(l, n):

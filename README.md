@@ -17,9 +17,9 @@ Do you want to scavenge all those comments now?
 
 ## Status
 
-Rateboat is currently in development, although most features have been finished. To see the full application flow, check out the diagram [here](./media/flowchart.png) or interactively in <a href="https://excalidraw.com/#json=KY63wSiOkoHpO5PFXKbhB,0PPMgCaAo_QuiP13jcNXTg" target="blank">Excalidraw</a>
+Rateboat is currently in development and doesn't have a public API or a frontend, but it is stable for local use.
 
-Please read the [`TODO.md`](./TODO.md) for what still needs to be implemented.
+Please read the [`TODO.md`](./TODO.md) specific things that still need to be implemented.
 
 # Usage
 

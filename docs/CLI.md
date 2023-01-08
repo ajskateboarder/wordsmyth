@@ -40,7 +40,7 @@ python3 future/rate.py
 
 Rateboat uses Amazon product reviews as a method of testing the algorithms.
 
-Before you start screaming in pain about copy and pasting all these reviews, you can use a userscript I made [here](./future/copyReviews.js). It essentially functions as a macro to copy every review on a page for a number of pages.
+Before you start asking how you are supposed to easily fetch them, you can use a userscript I made [here](./future/copyReviews.js). It essentially functions as a macro to copy every review on a page for a number of pages.
 
 You can install it with [Tampermonkey](https://www.tampermonkey.net/) and use it on a product review page like [this one](https://www.amazon.com/Samsung-Galaxy-G973U-128GB-T-Mobile/product-reviews/B07T8CN8WZ). Just make sure these URL parameters exist:
 
@@ -58,3 +58,5 @@ Once finished, it will write all the reviews to the body so you can copy it. You
 ```bash
 python3 -m algorithms.wrapper -tf --csv < content.txt > ./future/output.csv
 ```
+
+Since Amazon reviews are generally very wordy, this will defintely take a while.
