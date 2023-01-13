@@ -1,0 +1,9 @@
+regex==2022.3.2
+grpcio
+grpcio_tools
+transformers
+flair
+-f https://download.pytorch.org/whl/torch_stable.html
+torch==1.13.0+cpu 
+git+https://github.com/themysticsavages/torchMoji
+-e .
