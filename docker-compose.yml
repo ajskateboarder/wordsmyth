@@ -19,3 +19,12 @@ services:
       context: .
     ports:
       - 50056:50056
+  # host the public-facing web api
+  rateboat.web:
+    network_mode: host
+    container_name: rateboat.web
+    build:
+      dockerfile: rateboat/web/application/Dockerfile
+      context: .
+    ports:
+      - 8081:8081
