@@ -14,3 +14,6 @@ src/microv2/server_pb2*.py
 .vscode/
 .pytest_cache/
 pyrightconfig.json
+
+# stupid gitpod
+.gitpod.yml
