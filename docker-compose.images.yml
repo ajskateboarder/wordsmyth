@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+  # model servicers
+  rateboat.internal:
+    network_mode: host
+    container_name: rateboat.internal
+    image: ghcr.io/themysticsavages/rateboat.internal:latest
+    ports:
+      - 50051:50051
+  # host the queuing api
+  rateboat.store:
+    network_mode: host
+    container_name: rateboat.store
+    image: ghcr.io/themysticsavages/rateboat.store:latest
+    ports:
+      - 50056:50056
+  # host the public-facing web api
+  rateboat.web:
+    network_mode: host
+    container_name: rateboat.web
+    image: ghcr.io/themysticsavages/rateboat.web:latest
+    ports:
+      - 8081:8081

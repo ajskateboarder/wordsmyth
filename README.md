@@ -7,7 +7,7 @@ Here's it in a more relatable way:
 
 Imagine you are looking for how to use and make APIs, some tutorial like:
 
-<a href="https://www.youtube.com/watch?v=GZvSYJDk-us"><img src="https://i.ytimg.com/vi/GZvSYJDk-us/hq720.jpg" height=150></a>
+<a href="https://www.youtube.com/watch?v=GZvSYJDk-us"><img src="https://i.ytimg.com/vi/GZvSYJDk-us/hq720.jpg" height=150 width=250></a>
 
 You aren't really sure what to expect from the tutorial since it's over 2 hours long and covers a slightly specific topic. Sure, reading the first 10 comments may give you a general idea, but it's not necessarily covering all opinions.
 
@@ -26,26 +26,19 @@ Please read the [`TODO.md`](./TODO.md) specific things that still need to be imp
 ## Requirements
 
 - Python 3
-- Docker
+- Docker (recommended, but not required)
 - Linux/WSL (only platform the app was tested on)
 
 ## Getting started
 
-Clone the repository with `--depth=1` because there is a large file in the Git history and it would take way too long to clone without the flag.
+You can spawn all the infrastructure with Docker and the prebuilt images on `ghcr.io`:
 
 ```bash
-git clone --depth=1 https://github.com/themysticsavages/rateboat
-cd rateboat
+docker-compose -f docker-compose.images.yml up -d
 ```
 
-## Running
+or build the images from source:
 
-### Manual data pipelines
-
-Please read [`CLI.md`](./CLI.md) for how to use the data pipelines without much of the Docker infrastructure.
-
-### Web API (experimental)
-
-Please read [`WEB.md`](./WEB.md) for creating a web server and do other operations with the API (requires all infra to be started)
-
-Most of the documentation for the web API is not finished.
+```bash
+docker-compose up -d
+```
