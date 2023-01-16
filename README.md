@@ -1,4 +1,4 @@
-<img src="./media/new.svg" height=100 align=right>
+<img src="./media/logo.svg" height=100 align=right>
 
 # Rateboat
 
