@@ -31,14 +31,18 @@ Please read the [`TODO.md`](./TODO.md) specific things that still need to be imp
 
 ## Getting started
 
-You can spawn all the infrastructure with Docker and the prebuilt images on `ghcr.io`:
+You can spawn all the infrastructure with the prebuilt images on `ghcr.io` without cloning anything:
 
 ```bash
-docker-compose -f docker-compose.images.yml up -d
+curl https://raw.githubusercontent.com/themysticsavages/rateboat/\
+     main/docker-compose.images.yml
+docker-compose up -f docker-compose.images.yml -d
 ```
 
-or build the images from source:
+or build and run it yourself:
 
 ```bash
+git clone https://github.com/themysticsavages/rateboat --depth=1
+cd rateboat
 docker-compose up -d
 ```
