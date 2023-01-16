@@ -1,3 +1,3 @@
 # Architecture
 
-![image](./thing.svg)
+![image](./arch.svg)
