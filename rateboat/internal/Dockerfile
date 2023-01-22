@@ -12,4 +12,4 @@ RUN pip install -f https://download.pytorch.org/whl/torch_stable.html torch==1.1
     && cat rateboat/internal/requirements.txt | xargs --max-args=1 --max-procs=4 pip install -U --no-cache-dir || true
 
 ENV PORT 50051
-CMD ["python3", "rateboat/internal/server.py"]
+CMD ["python3", "rateboat.internal.server"]
