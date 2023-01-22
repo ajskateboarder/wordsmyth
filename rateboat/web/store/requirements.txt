@@ -1,4 +1,0 @@
-grpcio
-grpcio_tools
-requests
--e .
