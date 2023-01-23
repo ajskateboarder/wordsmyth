@@ -2,7 +2,8 @@
 Comment collection wrapper built with a stolen YT Data API key
 """
 import requests
-from utils import config
+
+KEY = "AIzaSyDfaS4lcSHVwbZ_p3NhTqT3tQNAfeaKQtk"
 
 
 def chunks(l, n):
@@ -15,7 +16,7 @@ def download_comments(video_id, limit):
         "https://www.googleapis.com/youtube/v3/commentThreads",
         timeout=10,
         params={
-            "key": config.YTD_KEY,
+            "key": KEY,
             "part": "snippet",
             "maxResults": limit,
             "videoId": video_id,
