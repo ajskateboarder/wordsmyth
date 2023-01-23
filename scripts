@@ -1,22 +1,23 @@
 #!/bin/bash
-PROTOC="python3 -m grpc_tools.protoc"
+
 PY="python3"
+PROTOC="python3 -m grpc_tools.protoc"
 
 set -e
 
 function model {
+    echo "This will download a ~2GB model file locally. Continue?"; read dummy
     $PY -c \
-		'from torchmoji.dl_utils import execute_download; \
-		execute_download("./src/algo/deepmoji/model/pytorch_model.bin")'
+        'from torchmoji.dl_utils import execute_download; \
+        execute_download("./rateboat/algorithms/deepmoji/model/pytorch_model.bin")'
 }
 
-function build {
-    rm -rf $1
-	mkdir $1
-	$PROTOC -I $1 \
-		--python_out=$1/stubs \
-		--grpc_python_out=$1/stubs queue.proto \
-		--mypy_out=$1/stubs
+function stubs {
+    $PROTOC -I ./rateboat/web/store \
+		--python_out=./rateboat/web/store/stubs \
+		--grpc_python_out=./rateboat/web/store/stubs queue.proto \
+		--mypy_out=./rateboat/web/store/stubs
+    sed -i -e 's/queue_pb2/web.store.stubs.queue_pb2/g' ./rateboat/web/store/stubs/queue_pb2_grpc.py
 }
 
 TIMEFORMAT="Task completed in %3lR"
