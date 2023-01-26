@@ -31,7 +31,7 @@ app.add_middleware(
 )
 
 
-def id_exists(video):
+def id_exists(video: str) -> bool:
     req = requests.get(
         f"https://youtube.com/oembed?url=https://youtube.com/watch?v={video}",
         timeout=10,
