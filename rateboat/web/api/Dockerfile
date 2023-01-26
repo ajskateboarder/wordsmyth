@@ -4,12 +4,11 @@ WORKDIR /app
 
 RUN apk update && apk add python3-dev git
 
-COPY ./requirements/api.txt /app/requirements.txt
-RUN pip install --no-cache-dir -U -r /app/requirements.txt
-
 COPY ./rateboat /app/rateboat
 COPY ./setup.py /app/setup.py
 COPY ./setup.cfg /app/setup.cfg
+COPY ./requirements/api.txt /app/requirements.txt
+RUN pip install --no-cache-dir -U -r /app/requirements.txt
 
 ENV PORT 8081
-CMD ["uvicorn", "rateboat.web.application.main:app", "--port", "8081"]
+CMD ["uvicorn", "rateboat.web.api.main:app", "--port", "8081"]

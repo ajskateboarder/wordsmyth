@@ -2,10 +2,9 @@ version: "3.7"
 
 services:
   # model servicers
-  rateboat.internal:
+  internal:
     network_mode: host
     stop_grace_period: 1s
-    container_name: rateboat.internal
     build:
       dockerfile: rateboat/internal/Dockerfile
       context: .
@@ -14,7 +13,6 @@ services:
   # host the queuing api
   rateboat.store:
     network_mode: host
-    container_name: rateboat.store
     build:
       dockerfile: rateboat/web/store/Dockerfile
       context: .
@@ -23,9 +21,8 @@ services:
   # host the public-facing web api
   rateboat.api:
     network_mode: host
-    container_name: rateboat.web
     build:
-      dockerfile: rateboat/web/application/Dockerfile
+      dockerfile: rateboat/web/api/Dockerfile
       context: .
     ports:
       - 8081:8081
