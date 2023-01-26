@@ -21,15 +21,9 @@ Rateboat is currently in development and doesn't have a public API or a frontend
 
 Please read the [`TODO.md`](./TODO.md) specific things that still need to be implemented.
 
-# Usage
+# Hosting
 
-## Requirements
-
-- Python 3
-- Docker (recommended, but not required)
-- Linux/WSL (only platform the app was tested on)
-
-## Getting started
+## Docker
 
 You can spawn all the infrastructure with the prebuilt images on `ghcr.io` without cloning anything:
 
