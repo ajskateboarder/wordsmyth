@@ -16,9 +16,9 @@ services:
     ports:
       - 50056:50056
   # host the public-facing web api
-  rateboat.web:
+  rateboat.api:
     network_mode: host
-    container_name: rateboat.web
-    image: ghcr.io/themysticsavages/rateboat.web:latest
+    container_name: rateboat.api
+    image: ghcr.io/themysticsavages/rateboat.api:latest
     ports:
       - 8081:8081
