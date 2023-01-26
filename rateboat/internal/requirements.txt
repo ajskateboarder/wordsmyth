@@ -1,7 +1,0 @@
-
-flair 
-regex==2022.3.2 
-grpcio 
-grpcio_tools 
-git+https://github.com/themysticsavages/torchMoji
-transformers

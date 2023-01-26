@@ -1,0 +1,5 @@
+flair 
+grpcio
+grpcio_tools
+regex==2022.3.2 
+transformers
