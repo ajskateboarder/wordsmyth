@@ -1,8 +1,11 @@
-<img src="./media/logo.svg" height=100 align=right>
+<h1 align="center">
+<img src="./media/logo_name.svg" height=200 width=500>
+</h1>
 
-# Rateboat
+[![CI status](https://github.com/themysticsavages/rateboat/workflows/publish/badge.svg)](https://github.com/themysticsavages/rateboat/actions/)
 
-Rateboat was made to ease the pains of manual comment analysis among content creators and viewers to find out how good a video is.
+Rateboat is a free and open source tool to ease the pains of manual comment analysis among content creators and viewers.
+
 Here's it in a more relatable way:
 
 Imagine you are looking for how to use and make APIs, some tutorial like:
@@ -19,7 +22,7 @@ Do you want to scavenge all those comments now?
 
 Rateboat is currently in development and doesn't have a public API or a frontend, but it is stable for local use.
 
-Please read the [`TODO.md`](./TODO.md) specific things that still need to be implemented.
+Please read the [`TODO.md`](./TODO.md) for specific things that still need to be implemented.
 
 # Hosting
 
