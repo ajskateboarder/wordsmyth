@@ -1,8 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" viewBox="-0.18 157.99 500.56 184.03">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" viewBox="1.04 157.99 498.21 198.18">
 <desc>Created with Fabric.js 4.6.0</desc>
 <defs>
 </defs>
-<g transform="matrix(0.66 0 0 0.66 91.27 250)" id="pud68DwrwquKZS0tKdKfq">
+<g transform="matrix(1 0 0 0.12 250.15 326.27)" id="PBKxIcjhVtqIArtbZpv3X">
+<path style="stroke: rgb(192,235,241); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(223,223,223); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke" transform=" translate(0, 0)" d="M -249.10714 -249.10714 L 249.10714 -249.10714 L 249.10714 249.10714 L -249.10714 249.10714 z" stroke-linecap="round"/>
+</g>
+<g transform="matrix(0.66 0 0 0.66 110.92 250)" id="pud68DwrwquKZS0tKdKfq">
 <g style="" vector-effect="non-scaling-stroke">
 		<g transform="matrix(1 0 0 1 0 0)" id="iKRjBe0MnqdgqXKal6WVv">
 <linearGradient id="SVGID_11" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 -138.56 -139.42)" x1="0" y1="139.41504999999995" x2="277.1100199999999" y2="139.41504999999995">
@@ -43,13 +46,13 @@
 </g>
 </g>
 </g>
-<g transform="matrix(1 0 0 1 411.69 307)" style="" id="ntENMEaSbKrNu8C8X2Ypt">
-<linearGradient id="SVGID_33" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 -149.2 -56.5)" x1="0" y1="56.5" x2="298.39447380065917" y2="56.5">
-<stop offset="0%" style="stop-color:#657DC4;stop-opacity: 1"/>
+<g transform="matrix(1 0 0 1 388.98 318.45)" style="" id="ntENMEaSbKrNu8C8X2Ypt">
+<linearGradient id="SVGID_42" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 -149.19 -56.5)" x1="0" y1="56.5" x2="298.39" y2="56.5">
+<stop offset="0%" style="stop-color:#5A71B8;stop-opacity: 1"/>
 <stop offset="50%" style="stop-color:#7e7e7e;stop-opacity: 1"/>
 <stop offset="100%" style="stop-color:#000000;stop-opacity: 1"/>
 </linearGradient>
-		<text xml:space="preserve" font-family="Fira Sans" font-size="57" font-style="normal" font-weight="600" line-height="1" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: url(#SVGID_33); fill-rule: nonzero; opacity: 1; white-space: pre;"><tspan x="-149.2" y="-6.39">Rateboat</tspan></text>
+		<text xml:space="preserve" font-family="Fira Sans" font-size="57" font-style="normal" font-weight="600" line-height="1" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: url(#SVGID_42); fill-rule: nonzero; opacity: 1; white-space: pre;"><tspan x="-149.19" y="-6.39">Rateboat</tspan></text>
 <style>
           @font-face {
           font-family: "Fira Sans";
