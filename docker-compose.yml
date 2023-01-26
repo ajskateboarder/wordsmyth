@@ -4,6 +4,7 @@ services:
   # model servicers
   rateboat.internal:
     network_mode: host
+    stop_grace_period: 1s
     container_name: rateboat.internal
     build:
       dockerfile: rateboat/internal/Dockerfile
@@ -20,7 +21,7 @@ services:
     ports:
       - 50056:50056
   # host the public-facing web api
-  rateboat.web:
+  rateboat.api:
     network_mode: host
     container_name: rateboat.web
     build:
@@ -28,3 +29,9 @@ services:
       context: .
     ports:
       - 8081:8081
+  cache:
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - 6379:6379
+    command: redis-server

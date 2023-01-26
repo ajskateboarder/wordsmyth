@@ -24,11 +24,13 @@ def download_comments(video_id, limit):
         headers={"Referer": "https://youtubecommentsdownloader.com"},
     )
     return list(
-        chunks(
+        item
+        for item in chunks(
             [
                 item["snippet"]["topLevelComment"]["snippet"]["textOriginal"]
                 for item in req.json()["items"]
             ],
             10,
         )
+        if item != []
     )
