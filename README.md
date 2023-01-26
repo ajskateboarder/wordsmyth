@@ -44,5 +44,14 @@ or build and run it yourself:
 ```bash
 git clone https://github.com/themysticsavages/rateboat --depth=1
 cd rateboat
-docker-compose up -d
+docker compose up -d --build
+```
+
+You should be able to queue an endpoint from the web API:
+
+```bash
+$ curl -X POST http://localhost:8081/youtube/queue \
+     -H "Content-Type: application/json" \
+     --data '{"video_id": "Rg8-9nc-y-U"}'
+{"status": "success"}
 ```
