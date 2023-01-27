@@ -2,7 +2,7 @@
 
 # Rateboat
 
-[![Docker build status](https://github.com/themysticsavages/rateboat/workflows/publish/badge.svg)](https://github.com/themysticsavages/rateboat/actions/)
+[![Docker build status](https://github.com/themysticsavages/rateboat/workflows/Docker%20build/badge.svg)](https://github.com/themysticsavages/rateboat/actions/)
 
 Rateboat is a free and open source tool to ease the pains of manual comment analysis among content creators and viewers.
 
