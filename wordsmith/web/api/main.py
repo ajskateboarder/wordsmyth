@@ -13,7 +13,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import create_model
 
 app = FastAPI(
-    title="Wordsmith API",
+    title="Wordsmyth API",
     description=(
         "This API provides easy support to queue content of your choice to get them automatically rated. "
         "You can generate a typesafe client with the provided OpenAPI schema"
@@ -63,6 +63,6 @@ async def post_submit(
         response.status_code = 404
         return {"status": "fail", "data": {"message": "Video does not exist"}}
 
-    result = q.enqueue("wordsmith.web.store.queue_youtube", "G6STB2nC5Lg")
+    result = q.enqueue("wordsmyth.web.store.queue_youtube", "G6STB2nC5Lg")
 
     return {"status": "success"}
