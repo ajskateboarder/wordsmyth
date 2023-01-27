@@ -1,8 +1,8 @@
-<h1 align="center">
-<img src="./media/logo_name.svg" height=200 width=500>
-</h1>
+<img src="./media/logo.svg" width=100 align=right>
 
-[![CI status](https://github.com/themysticsavages/rateboat/workflows/publish/badge.svg)](https://github.com/themysticsavages/rateboat/actions/)
+# Rateboat
+
+[![Docker build status](https://github.com/themysticsavages/rateboat/workflows/publish/badge.svg)](https://github.com/themysticsavages/rateboat/actions/)
 
 Rateboat is a free and open source tool to ease the pains of manual comment analysis among content creators and viewers.
 
