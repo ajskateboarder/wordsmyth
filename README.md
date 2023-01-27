@@ -1,46 +1,46 @@
-<img src="./media/logo.svg" width=100 align=right>
+<img src="./media/logo.svg" width=100 align=right />
 
-# Rateboat
+# Wordsmith
 
-[![Docker build status](https://github.com/themysticsavages/rateboat/workflows/Docker%20build/badge.svg)](https://github.com/themysticsavages/rateboat/actions/)
+[![Docker build status](https://github.com/themysticsavages/wordsmith/workflows/Docker%20build/badge.svg)](https://github.com/themysticsavages/wordsmith/actions/)
 
-Rateboat is a free and open source tool to ease the pains of manual comment analysis among content creators and viewers.
+Wordsmith is a free and open-source tool to ease the pains of manual comment analysis among content creators and users.
 
-Here's it in a more relatable way:
+Instead of relying on star ratings given by the user, WordSmith **generates them** based on the **text sentiment** using a pair of models and well-tested output finetuning.
 
-Imagine you are looking for how to use and make APIs, some tutorial like:
+<img src="https://img.shields.io/badge/%20-Get%20for%20Chrome-grey?&logo=google-chrome" height=25> <img src="https://img.shields.io/badge/%20-Get%20for%20Firefox-grey?&logo=firefox" height=25>
 
-<a href="https://www.youtube.com/watch?v=GZvSYJDk-us"><img src="https://i.ytimg.com/vi/GZvSYJDk-us/hq720.jpg" height=150 width=250></a>
+## Highlights
 
-You aren't really sure what to expect from the tutorial since it's over 2 hours long and covers a slightly specific topic. Sure, reading the first 10 comments may give you a general idea, but it's not necessarily covering all opinions.
-
-With this tool, all the video comments are aggregated, analyzed for sentiment, and displayed in the most simple way - a rating.
-
-Do you want to scavenge all those comments now?
+- Works on almost any platform and very easy to extend
+- 85-100% accuracy (tested against Amazon reviews)
+- Accessible to anybody (browser extension, web dashboard, API, and command line)
 
 ## Status
 
-Rateboat is currently in development and doesn't have a public API or a frontend, but it is stable for local use.
+Wordsmith is currently in development and doesn't have a public API or a frontend, but it is stable for local use.
 
 Please read the [`TODO.md`](./TODO.md) for specific things that still need to be implemented.
 
-# Hosting
+# Usage
 
-## Docker
+Wordsmith is available as a browser extension, self-hostable web API, and a command line application. Every quickstart except for the extensions use Docker, and you might want to install it!
+
+## Web API
 
 You can spawn all the infrastructure with the prebuilt images on `ghcr.io` without cloning anything:
 
 ```bash
-curl https://raw.githubusercontent.com/themysticsavages/rateboat/\
+curl https://raw.githubusercontent.com/themysticsavages/wordsmith/\
      main/docker-compose.images.yml
-docker-compose up -f docker-compose.images.yml -d
+docker compose up -f docker-compose.images.yml -d --build
 ```
 
 or build and run it yourself:
 
 ```bash
-git clone https://github.com/themysticsavages/rateboat --depth=1
-cd rateboat
+git clone https://github.com/themysticsavages/wordsmith --depth=1
+cd wordsmith
 docker compose up -d --build
 ```
 
@@ -52,3 +52,5 @@ $ curl -X POST http://localhost:8081/youtube/queue \
      --data '{"video_id": "Rg8-9nc-y-U"}'
 {"status": "success"}
 ```
+
+## Command line

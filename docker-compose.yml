@@ -6,23 +6,23 @@ services:
     network_mode: host
     stop_grace_period: 1s
     build:
-      dockerfile: rateboat/internal/Dockerfile
+      dockerfile: wordsmith/internal/Dockerfile
       context: .
     ports:
       - 50051:50051
   # host the queuing api
-  rateboat.store:
+  wordsmith.store:
     network_mode: host
     build:
-      dockerfile: rateboat/web/store/Dockerfile
+      dockerfile: wordsmith/web/store/Dockerfile
       context: .
     ports:
       - 50056:50056
   # host the public-facing web api
-  rateboat.api:
+  wordsmith.api:
     network_mode: host
     build:
-      dockerfile: rateboat/web/api/Dockerfile
+      dockerfile: wordsmith/web/api/Dockerfile
       context: .
     ports:
       - 8081:8081

@@ -5,7 +5,7 @@ WORKDIR /app
 
 RUN apk update && apk add --no-cache git
 
-COPY ./rateboat /app/rateboat
+COPY ./wordsmith /app/wordsmith
 COPY ./setup.py /app/setup.py
 COPY ./setup.cfg /app/setup.cfg
 COPY ./requirements/store.txt /app/requirements.txt

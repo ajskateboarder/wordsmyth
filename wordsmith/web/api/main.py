@@ -13,7 +13,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import create_model
 
 app = FastAPI(
-    title="Rateboat API",
+    title="Wordsmith API",
     description=(
         "This API provides easy support to queue content of your choice to get them automatically rated. "
         "You can generate a typesafe client with the provided OpenAPI schema"
@@ -58,16 +58,11 @@ async def post_submit(
     response: Response, video: create_model("Input", video_id=(str, ...))
 ):
     """Queue a YouTube video ID for processing"""
-    try:
-        video_id = video.video_id
-    except json.decoder.JSONDecodeError:
-        response.status_code = 404
-        return {"status": "fail", "data": {"message": "Video ID not supplied"}}
 
-    if not id_exists(video_id):
+    if not id_exists(video.video_id):
         response.status_code = 404
         return {"status": "fail", "data": {"message": "Video does not exist"}}
 
-    result = q.enqueue("rateboat.web.store.queue_youtube", "G6STB2nC5Lg")
+    result = q.enqueue("wordsmith.web.store.queue_youtube", "G6STB2nC5Lg")
 
     return {"status": "success"}
