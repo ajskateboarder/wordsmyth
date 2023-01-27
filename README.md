@@ -1,4 +1,4 @@
-<img src="./media/logo.svg" width=100 align=right />
+<img src="./media/logo.svg" width=150 align=right />
 
 # Wordsmyth
 
@@ -8,7 +8,7 @@ Wordsmyth is a free and open-source tool to ease the pains of manual comment ana
 
 Instead of relying on star ratings given by the user, Wordsmyth **generates them** based on the **text sentiment** using a pair of models and well-tested output finetuning.
 
-<img src="https://img.shields.io/badge/%20-Get%20for%20Chrome-grey?&logo=google-chrome" height=25> <img src="https://img.shields.io/badge/%20-Get%20for%20Firefox-grey?&logo=firefox" height=25>
+<img src="https://img.shields.io/static/v1?message=Get for Chrome&logo=google-chrome&labelColor=5c5c5c&color=red&logoColor=white&label=%20" height=23> <img src="https://img.shields.io/static/v1?message=Get for Firefox&logo=firefox&labelColor=5c5c5c&color=orange&label=%20" height=23>
 
 ## Highlights
 
