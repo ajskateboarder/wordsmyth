@@ -7,8 +7,8 @@
 
 ## Done
 
-- [x] Use Redis-Queue for queuing instead of gRPC in `rateboat/web/store`
+- [x] Use Redis-Queue for queuing instead of gRPC in `wordsmith/web/store`
 - [x] Dockerize the web API
-- [x] **Change name from YTStars to Rateboat**
+- [x] **Change name from YTStars to Rateboat (now Wordsmith)**
 - [x] Implement actions on messages queues
 - [x] **Migrate from RabbitMQ to gRPC for processing queue**

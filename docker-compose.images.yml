@@ -2,23 +2,23 @@ version: "3.7"
 
 services:
   # model servicers
-  rateboat.internal:
+  wordsmith.internal:
     network_mode: host
-    container_name: rateboat.internal
-    image: ghcr.io/themysticsavages/rateboat.internal:latest
+    container_name: wordsmith.internal
+    image: ghcr.io/themysticsavages/wordsmith.internal:latest
     ports:
       - 50051:50051
   # host the queuing api
-  rateboat.store:
+  wordsmith.store:
     network_mode: host
-    container_name: rateboat.store
-    image: ghcr.io/themysticsavages/rateboat.store:latest
+    container_name: wordsmith.store
+    image: ghcr.io/themysticsavages/wordsmith.store:latest
     ports:
       - 50056:50056
   # host the public-facing web api
-  rateboat.api:
+  wordsmith.api:
     network_mode: host
-    container_name: rateboat.api
-    image: ghcr.io/themysticsavages/rateboat.api:latest
+    container_name: wordsmith.api
+    image: ghcr.io/themysticsavages/wordsmith.api:latest
     ports:
       - 8081:8081
