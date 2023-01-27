@@ -5,7 +5,7 @@ If you don't want to start all of the bulky web infrastructure, you can freely e
 Start the gRPC service only:
 
 ```bash
-docker compose start -d wordsmith.internal
+docker compose start -d wordsmyth.internal
 ```
 
 Download comments from a video without any modifications (algo responses are required for every other step):
@@ -38,7 +38,7 @@ python3 future/rate.py
 
 ## Testing
 
-Wordsmith uses Amazon product reviews as a method of testing the algorithms.
+Wordsmyth uses Amazon product reviews as a method of testing the algorithms.
 
 Before you start asking how you are supposed to easily fetch them, you can use a userscript I made [here](./future/copyReviews.js). It essentially functions as a macro to copy every review on a page for a number of pages.
 

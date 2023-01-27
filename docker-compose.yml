@@ -6,23 +6,23 @@ services:
     network_mode: host
     stop_grace_period: 1s
     build:
-      dockerfile: wordsmith/internal/Dockerfile
+      dockerfile: wordsmyth/internal/Dockerfile
       context: .
     ports:
       - 50051:50051
   # host the queuing api
-  wordsmith.store:
+  wordsmyth.store:
     network_mode: host
     build:
-      dockerfile: wordsmith/web/store/Dockerfile
+      dockerfile: wordsmyth/web/store/Dockerfile
       context: .
     ports:
       - 50056:50056
   # host the public-facing web api
-  wordsmith.api:
+  wordsmyth.api:
     network_mode: host
     build:
-      dockerfile: wordsmith/web/api/Dockerfile
+      dockerfile: wordsmyth/web/api/Dockerfile
       context: .
     ports:
       - 8081:8081

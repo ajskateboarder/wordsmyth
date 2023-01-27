@@ -9,15 +9,15 @@ function model {
     echo "This will download a ~2GB model file locally. Continue?"; read dummy
     $PY -c \
         'from torchmoji.dl_utils import execute_download; \
-        execute_download("./wordsmith/algorithms/deepmoji/model/pytorch_model.bin")'
+        execute_download("./wordsmyth/algorithms/deepmoji/model/pytorch_model.bin")'
 }
 
 function stubs {
-    $PROTOC -I ./wordsmith/web/store \
-		--python_out=./wordsmith/web/store/stubs \
-		--grpc_python_out=./wordsmith/web/store/stubs queue.proto \
-		--mypy_out=./wordsmith/web/store/stubs
-    sed -i -e 's/queue_pb2/web.store.stubs.queue_pb2/g' ./wordsmith/web/store/stubs/queue_pb2_grpc.py
+    $PROTOC -I ./wordsmyth/web/store \
+		--python_out=./wordsmyth/web/store/stubs \
+		--grpc_python_out=./wordsmyth/web/store/stubs queue.proto \
+		--mypy_out=./wordsmyth/web/store/stubs
+    sed -i -e 's/queue_pb2/web.store.stubs.queue_pb2/g' ./wordsmyth/web/store/stubs/queue_pb2_grpc.py
 }
 
 TIMEFORMAT="Task completed in %3lR"

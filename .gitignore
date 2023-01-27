@@ -9,7 +9,7 @@ ENV/
 env.bak/
 venv.bak/
 **/*.bin
-wordsmith/internal/stubs/*
+wordsmyth/internal/stubs/*
 **/*.egg-info
 .vscode/
 .pytest_cache/

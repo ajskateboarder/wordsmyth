@@ -1,6 +1,6 @@
 # Web API
 
-A queue-based RESTful API which abstracts the complex data collection and processing logic Wordsmith uses.
+A queue-based RESTful API which abstracts the complex data collection and processing logic Wordsmyth uses.
 
 Start the infrastructure with `docker compose`:
 

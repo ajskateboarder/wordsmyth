@@ -11,11 +11,11 @@ RUN cat /app/requirements.txt | xargs --max-args=1 --max-procs=4 pip install -U 
 
 COPY ./setup.py /app/setup.py
 COPY ./setup.cfg /app/setup.cfg
-COPY ./wordsmith /app/wordsmith
+COPY ./wordsmyth /app/wordsmyth
 RUN pip install -e .
 
-RUN wget https://www.dropbox.com/s/q8lax9ary32c7t9/pytorch_model.bin?dl=0# -O /app/wordsmith/algorithms/deepmoji/model/pytorch_model.bin
+RUN wget https://www.dropbox.com/s/q8lax9ary32c7t9/pytorch_model.bin?dl=0# -O /app/wordsmyth/algorithms/deepmoji/model/pytorch_model.bin
 
 ENV PORT 50051
 
-CMD ["python3", "wordsmith/internal/server.py"]
+CMD ["python3", "wordsmyth/internal/server.py"]

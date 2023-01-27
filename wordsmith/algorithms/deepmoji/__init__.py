@@ -26,8 +26,8 @@ EMOJIS = ":joy: :unamused: :weary: :sob: :heart_eyes: \
     " "
 )
 
-VOCAB_FILE_PATH = "wordsmith/algorithms/deepmoji/model/vocabulary.json"
-MODEL_WEIGHTS_PATH = "wordsmith/algorithms/deepmoji/model/pytorch_model.bin"
+VOCAB_FILE_PATH = "wordsmyth/algorithms/deepmoji/model/vocabulary.json"
+MODEL_WEIGHTS_PATH = "wordsmyth/algorithms/deepmoji/model/pytorch_model.bin"
 
 
 def top_elements(array: np.ndarray, k: int) -> np.ndarray:
