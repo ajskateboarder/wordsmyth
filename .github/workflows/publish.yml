@@ -45,7 +45,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - if: steps.internal_changes.outputs.internal == 'true'
+      - if: steps.store_changes.outputs.store == 'true'
         name: Build store image
         run: |
           docker build . -f ./wordsmyth/web/store/Dockerfile --tag ghcr.io/themysticsavages/wordsmyth.store:latest
