@@ -12,7 +12,7 @@ jobs:
         with:
           filters: |
             internal:
-              - 'rateboat/internal/**'
+              - 'wordsmyth/internal/**'
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v1
@@ -24,8 +24,8 @@ jobs:
       - if: steps.internal_changes.outputs.internal == 'true'
         name: Build all Docker images
         run: |
-          docker build . -f ./rateboat/internal/Dockerfile --tag ghcr.io/themysticsavages/rateboat.internal:latest
-          docker push ghcr.io/themysticsavages/rateboat.internal:latest
+          docker build . -f ./wordsmyth/internal/Dockerfile --tag ghcr.io/themysticsavages/wordsmyth.internal:latest
+          docker push ghcr.io/themysticsavages/wordsmyth.internal:latest
 
   build-store:
     runs-on: ubuntu-latest
@@ -37,7 +37,7 @@ jobs:
         with:
           filters: |
             store:
-              - 'rateboat/web/store/**'
+              - 'wordsmyth/web/store/**'
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v1
@@ -48,8 +48,8 @@ jobs:
       - if: steps.internal_changes.outputs.internal == 'true'
         name: Build store image
         run: |
-          docker build . -f ./rateboat/web/store/Dockerfile --tag ghcr.io/themysticsavages/rateboat.store:latest
-          docker push ghcr.io/themysticsavages/rateboat.store:latest
+          docker build . -f ./wordsmyth/web/store/Dockerfile --tag ghcr.io/themysticsavages/wordsmyth.store:latest
+          docker push ghcr.io/themysticsavages/wordsmyth.store:latest
 
   build-api:
     runs-on: ubuntu-latest
@@ -61,7 +61,7 @@ jobs:
         with:
           filters: |
             api:
-              - 'rateboat/web/api/**'
+              - 'wordsmyth/web/api/**'
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v1
@@ -73,5 +73,5 @@ jobs:
       - if: steps.web_changes.outputs.api == 'true'
         name: Build web API image
         run: |
-          docker build . -f ./rateboat/web/api/Dockerfile --tag ghcr.io/themysticsavages/rateboat.api:latest
-          docker push ghcr.io/themysticsavages/rateboat.api:latest
+          docker build . -f ./wordsmyth/web/api/Dockerfile --tag ghcr.io/themysticsavages/wordsmyth.api:latest
+          docker push ghcr.io/themysticsavages/wordsmyth.api:latest
