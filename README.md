@@ -1,14 +1,15 @@
-<img src="./media/logo.svg" width=150 align=right />
+<img src="./media/logo.svg" width=130 align=right />
 
 # Wordsmyth
 
 [![Docker build status](https://github.com/themysticsavages/wordsmyth/workflows/Docker%20build/badge.svg)](https://github.com/themysticsavages/wordsmyth/actions/)
 
+![Get for Chrome](https://img.shields.io/static/v1?message=Get%20for%20Chrome&logo=google-chrome&labelColor=5c5c5c&color=5c5c5c&logoColor=white&label=%20)
+![Get for Firefox](https://img.shields.io/static/v1?message=Get%20for%20Firefox&logo=firefox&labelColor=5c5c5c&color=5c5c5c&label=%20&logoColor=white)
+
 Wordsmyth is a free and open-source tool to ease the pains of manual comment analysis among content creators and users.
 
 Instead of relying on star ratings given by the user, Wordsmyth **generates them** based on the **text sentiment** using a pair of models and well-tested output finetuning.
-
-<img src="https://img.shields.io/static/v1?message=Get for Chrome&logo=google-chrome&labelColor=5c5c5c&color=red&logoColor=white&label=%20" height=23> <img src="https://img.shields.io/static/v1?message=Get for Firefox&logo=firefox&labelColor=5c5c5c&color=orange&label=%20" height=23>
 
 ## Highlights
 
@@ -24,11 +25,11 @@ Please read the [`TODO.md`](./TODO.md) for specific things that still need to be
 
 # Usage
 
-Wordsmyth is available as a browser extension, self-hostable web API, and a command line application. Every quickstart except for the extensions use Docker, and you might want to install it!
+This section is for self-hosting the services to do your own indexing. Every quickstart uses Docker, and you should [install it](https://docs.docker.com/engine/install/) for consistent behavior.
 
 ## Web API
 
-You can spawn all the infrastructure with the prebuilt images on `ghcr.io` without cloning anything:
+You can spawn all the infrastructure with prebuilt images from GHCR without cloning anything:
 
 ```bash
 curl https://raw.githubusercontent.com/themysticsavages/wordsmyth/\
@@ -44,7 +45,7 @@ cd wordsmyth
 docker compose up -d --build
 ```
 
-You should be able to queue an endpoint from the web API:
+You should be able to queue an endpoint from the web API with either method:
 
 ```bash
 $ curl -X POST http://localhost:8081/youtube/queue \
@@ -54,3 +55,10 @@ $ curl -X POST http://localhost:8081/youtube/queue \
 ```
 
 ## Command line
+
+Pull the command line image from GHCR:
+
+```bash
+alias ws="docker run ghcr.io/themysticsavages/wordsmyth.cli:latest"
+ws --help
+```
