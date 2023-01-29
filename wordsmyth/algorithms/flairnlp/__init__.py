@@ -3,10 +3,10 @@ Simple docstring example
 """
 
 from threading import Lock
+from typing import Dict, Union
 
 from flair.models import TextClassifier
 from flair.data import Sentence
-from typing import Dict, Union
 
 MUTEX = Lock()
 
@@ -16,6 +16,8 @@ class Flair:
         self.sia = TextClassifier.load("en-sentiment")
 
     def predict(self, text: str) -> Dict[str, Union[str, float]]:
+        """Sentiment prediction with some mutex stuff"""
+
         MUTEX.acquire()
         try:
             sentence = Sentence(text)

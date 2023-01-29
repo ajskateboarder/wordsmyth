@@ -4,7 +4,7 @@ https://gist.github.com/cw75/57ca89cfa496f10c7c7b888ec5703d7f#file-emojize-py
 """
 
 import json
-from typing import List
+from typing import List, Union
 
 import numpy as np
 from torchmoji.sentence_tokenizer import SentenceTokenizer
@@ -37,14 +37,16 @@ def top_elements(array: np.ndarray, k: int) -> np.ndarray:
 
 class Emojize:
     def __init__(self) -> None:
-        with open(VOCAB_FILE_PATH, encoding="utf-8") as f:
-            vocabulary = json.load(f)
+        with open(VOCAB_FILE_PATH, encoding="utf-8") as fh:
+            vocabulary = json.load(fh)
 
         max_sentence_length = 100
         self.st = SentenceTokenizer(vocabulary, max_sentence_length)
         self.model = torchmoji_emojis(MODEL_WEIGHTS_PATH)
 
-    def predict(self, text: str, top_n: int = 5) -> List[str]:
+    def predict(self, text: Union[str, list], top_n: int = 5) -> List[str]:
+        """Emoji prediction"""
+
         if not isinstance(text, list):
             text = [text]
 

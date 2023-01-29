@@ -1,10 +1,13 @@
 """
-Comment collection wrapper built with a stolen YT Data API key
+Youtube comment collection plugin
 """
 from typing import List, Generator, Any
+from dotenv import dotenv_values
+
 import requests
 
-KEY = "AIzaSyDfaS4lcSHVwbZ_p3NhTqT3tQNAfeaKQtk"
+config = dotenv_values(".env")
+KEY = config["YT_KEY"]
 
 
 def chunks(lis: List[Any], number: int) -> Generator[List[Any], None, None]:

@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-# mypy: ignore-errors
-# pylint: skip-file
 
 """
 Comment downloader:
