@@ -32,18 +32,13 @@ EMOJIS = list(emojize(emoji, use_aliases=True) for emoji in REPRS)
 COMBS = dict(zip(EMOJIS, REPRS))
 
 
-def fetch_emojimap():
-    """Download emoji ranking and scrapes table row elements"""
+def main(path: str) -> None:
     req = requests.get(
         "http://kt.ijs.si/data/Emoji_sentiment_ranking/index.html", timeout=20
     )
     soup = BeautifulSoup(req.text, "html.parser")
 
-    return soup.find("table").find("tbody").find_all("tr")
-
-
-def convert_trs(trs):
-    """Converts table rows to objects"""
+    trs = soup.find("table").find("tbody").find_all("tr")
     groups = [
         {
             "emoji": td[0].text,
@@ -65,12 +60,7 @@ def convert_trs(trs):
         )
     ]
 
-    return [g for g in groups if any(emoji in g["emoji"] for emoji in EMOJIS)]
-
-
-def main(path):
-    doc = fetch_emojimap()
-    extracts = convert_trs(doc)
+    extracts = [g for g in groups if any(emoji in g["emoji"] for emoji in EMOJIS)]
 
     with open(path, "w", encoding="utf-8") as fh:
         json.dump(extracts, fh)

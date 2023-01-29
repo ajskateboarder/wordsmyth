@@ -1,6 +1,5 @@
 from functools import lru_cache
 import io
-import json
 
 import yaml
 import requests
@@ -55,7 +54,8 @@ def read_openapi_yaml() -> Response:
     tags=["queue"],
 )
 async def post_submit(
-    response: Response, video: create_model("Input", video_id=(str, ...))
+    response: Response,
+    video: create_model("Input", video_id=(str, ...)),
 ):
     """Queue a YouTube video ID for processing"""
 
