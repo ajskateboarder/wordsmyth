@@ -58,15 +58,20 @@ $ curl -X POST http://localhost:8081/youtube/queue \
 
 ## Command line
 
-Start the algorithm service from source:
+> **Note**
+> This will be Dockerized soon.
+
+Start the algorithm service from source and install required dependencies:
 
 ```bash
 docker compose up -d --build wordsmyth.internal
+pip install -e . grpcio grpcio_tools
 ```
 
 Then use an existing plugin in conjunction with `wordsmyth.algorithms.wrapper`. Here's an example with YouTube:
 
 ```bash
+# C418 - Minecraft - Minecraft Volume Alpha
 python3 -m wordsmyth.utils.comments qq-RGFyaq0U 10
 ```
 
@@ -100,5 +105,3 @@ pos,0.88585466,"I kind of wish for this song to be deleted, not because I hate i
 neg,0.9959791,The fact that I just learned to play this without support made myself think that I'm a real OG,":broken_heart:,:cry:,:sob:,:sleepy:,:notes:,:pensive:,:sweat:,:disappointed:,:musical_note:,:persevere:"
 pos,0.986511,"I didnt crie because of this music, i cried because of those memories behind the music",":musical_note:,:notes:,:raised_hands:,:sunglasses:,:smiling_imp:,:muscle:,:pray:,:ok_hand:,:100:,:sparkles:"
 ```
-
-This will be Dockerized soon.
