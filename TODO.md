@@ -2,6 +2,8 @@
 
 ## To be done
 
+- [ ] **Dockerize `wordsmith.algorithms.wrapper`**
+- [ ] Move `wordsmyth/utils` somewhere else
 - [ ] Bring back all demo scripts for experimental purposes
 - [ ] Finish the web API
 

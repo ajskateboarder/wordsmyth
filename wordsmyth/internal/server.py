@@ -1,11 +1,19 @@
-"""gRPC algorithm servicers"""
+"""gRPC algorithm servicer"""
 
 from concurrent.futures import ThreadPoolExecutor
+from typing import Any
 
 import grpc
 
 from internal.stubs.server_pb2_grpc import add_ModelServicer_to_server, ModelServicer
-from internal.stubs.server_pb2 import Emoji, Emojis, Sentiment, Sentiments, Intensity
+from internal.stubs.server_pb2 import (
+    Emoji,
+    Emojis,
+    Sentiment,
+    Sentiments,
+    Intensity,
+    Request,
+)
 
 from algorithms.deepmoji import Emojize
 from algorithms.flairnlp import Flair
@@ -16,14 +24,16 @@ flair = Flair()
 
 
 class Model(ModelServicer):
-    def torchmoji(self, request, _):
+    """Runs the algorithms as gRPC methods"""
+
+    def torchmoji(self, request: Request, _: Any) -> Emojis:
         response = [
             Emoji(emojis=deepmoji.predict(text, request.count), text=text)
             for text in request.texts
         ]
         return Emojis(response=response)
 
-    def flair(self, request, _):
+    def flair(self, request: Request, _: Any) -> Sentiments:
         response = [
             Sentiment(sentiment=Intensity(**flair.predict(text)), text=text)
             for text in request.texts
@@ -31,7 +41,9 @@ class Model(ModelServicer):
         return Sentiments(response=response)
 
 
-def main():
+def main() -> None:
+    """Server entrypoint"""
+
     server = grpc.server(ThreadPoolExecutor(max_workers=10))
     add_ModelServicer_to_server(Model(), server)
     server.add_insecure_port("[::]:50051")

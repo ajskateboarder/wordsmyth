@@ -11,7 +11,7 @@ services:
     ports:
       - 50051:50051
   # host the queuing api
-  wordsmyth.store:
+  store:
     network_mode: host
     build:
       dockerfile: wordsmyth/web/store/Dockerfile
@@ -19,7 +19,7 @@ services:
     ports:
       - 50056:50056
   # host the public-facing web api
-  wordsmyth.api:
+  api:
     network_mode: host
     build:
       dockerfile: wordsmyth/web/api/Dockerfile

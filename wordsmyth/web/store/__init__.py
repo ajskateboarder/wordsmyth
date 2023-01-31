@@ -1,13 +1,12 @@
 """Content queuing with RQ workers"""
 
 import time
-import requests
 
-from utils.comments_v3 import download_comments
-from algorithms.wrapper import request
+from wordsmyth.algorithms.wrapper import request
+from wordsmyth.plugins.youtube import download_comments
 
 
-def queue_youtube(video_id):
+def queue_youtube(video_id: str) -> dict:
     """Queue a YouTube video with its ID"""
 
     start = time.time()
