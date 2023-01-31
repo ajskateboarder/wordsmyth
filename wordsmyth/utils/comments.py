@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
+# mypy: ignore-errors
+# pylint: skip-file
+
 """
 Comment downloader:
 Script to bulk request comments and dump them to a JSON file as chunks
 """
+# NOTE: Move to a scripts folder
 
 import sys
 import json
