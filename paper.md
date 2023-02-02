@@ -2,14 +2,16 @@
 
 ## Rationale
 
-A user review allows a consumer to publish their experience with a product or content. Reviews are usually accompanied by a star rating. These exist to summarize a user's writing into a simple star rating. The star ratings of each review of a product can then be averaged into a general star rating, which makes it even easier for users looking at many different products.
+A user review allows a consumer to publish their experience with a product or content. Reviews are usually accompanied by a star rating. These exist to summarize a user's writing into a simple star rating. The star ratings of each review of a product can then be averaged into a general star rating, which makes it even easier for potential consumers looking at many different products.
 
-However, there are many occurences where star ratings are either:
+However, there are many occurences where star ratings are:
 
-- inconsistent with the sentiment of the text, like [Amazon](https://amazon.com)
+- inconsistent with the sentiment of the text, like [Amazon](https://amazon.com).
 - not applied, such as [YouTube](https://youtube.com) or [SoundCloud](https://soundcloud.com).
 
-This tool fixes the issues by generating a rating based off the **text content** itself with the help of natural language models. 
+Enter [natural language processing](https://en.wikipedia.org/wiki/Natural_language_processing), or NLP, a subset of artificial intelligence concerned with extracting data from unstructured text into a proper format.
+
+Wordsmyth fixes the issues by generating a rating based on the **text content** itself. This is done using Flair and [TorchMoji](https://github.com/huggingface/torchMoji) (PyTorch variant of [DeepMoji](https://github.com/bfelbo/DeepMoji)).
 
 ## Goals
 
