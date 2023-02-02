@@ -3,7 +3,7 @@ message: "If you use this software for analyzing your own data or supporting new
 authors:
 - family-names: "themysticsavages"
   given-names: "themysticsavages"
-title: "wordsmyth"
+title: "Wordsmyth - Applying NLP to user reviews to generate star ratings"
 version: 1.0.0
 date-released: 2023-02-02
 url: "https://github.com/themysticsavages/wordsmyth"
