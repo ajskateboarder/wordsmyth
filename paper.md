@@ -13,9 +13,15 @@ Enter [natural language processing](https://en.wikipedia.org/wiki/Natural_langua
 
 Wordsmyth fixes the issues by generating a rating based on the **text content** itself. This is done using [Flair](https://github.com/flairNLP/flair) and [TorchMoji](https://github.com/huggingface/torchMoji) (PyTorch variant of [DeepMoji](https://github.com/bfelbo/DeepMoji)).
 
-## Goals
+Wordsmyth also functions as a framework which allows developers to write data collection logic for their favorite platform and simply pipe it to its general algorithms.
 
-Bruh
+## Research Questions
+
+- Can you apply NLP models to user reviews to create accurate star ratings?
+- Could this tool remove the need for implementing a star rating system?
+- Is this tool easy to integrate with different platforms?
+
+This tool attempts to solve all these issues.
 
 ## Citations
 
