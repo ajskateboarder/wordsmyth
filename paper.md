@@ -11,9 +11,9 @@ However, there are many occurences where star ratings are:
 
 Enter [natural language processing](https://en.wikipedia.org/wiki/Natural_language_processing), or NLP, a subset of artificial intelligence concerned with extracting data from unstructured text into a proper format.
 
-Wordsmyth fixes the issues by generating a rating based on the **text content** itself. This is done using [Flair](https://github.com/flairNLP/flair) and [TorchMoji](https://github.com/huggingface/torchMoji) (PyTorch variant of [DeepMoji](https://github.com/bfelbo/DeepMoji)).
+WordSmyth uses [Flair](https://github.com/flairNLP/flair) and [TorchMoji](https://github.com/huggingface/torchMoji) (PyTorch variant of [DeepMoji](https://github.com/bfelbo/DeepMoji)), both of which are NLP models which output sentiment information.
 
-Wordsmyth also functions as a framework which allows developers to write data collection logic for their favorite platform and simply pipe it to its general algorithms.
+Wordsmyth fixes the issues by generating a rating based on the **review content** using these models. This functions as a framework which allows developers to write data collection logic for their favorite platform and pipe it to the general algorithms.
 
 ## Research Questions
 
@@ -21,38 +21,30 @@ Wordsmyth also functions as a framework which allows developers to write data co
 - Could this tool remove the need for implementing a star rating system?
 - Is this tool easy to integrate with different platforms?
 
-This tool attempts to solve all these issues.
+This tool attempts to solve above mentioned issues with the traditional star rating system.
+
+## Procedure
+
+With a single comment:
+
+1. Download comment/review data.
+2. Pass comments through Flair and TorchMoji for processing.
+3. Finetune the combined output of the algorithms.
+4. Convert TorchMoji's emoji output into refinedsentiment data - positive, neutral, and negative percentages - using the Emoji Sentiment Ranking.
+5. Analyze the combined data and generate a star rating from conditions found in the comment.
+
+## Data
+
+Wordsmyth uses:
+
+- review data from online platforms, like YouTube comments
+- the output from TorchMoji and Flair as well
+- the [Emoji Sentiment Ranking](https://kt.ijs.si/data/Emoji_sentiment_ranking/) for converting TorchMoji data
 
 ## Citations
 
-```bibtex
-@inproceedings{felbo2017,
-  title={Using millions of emoji occurrences to learn any-domain representations for detecting sentiment, emotion and sarcasm},
-  author={Felbo, Bjarke and Mislove, Alan and S{\o}gaard, Anders and Rahwan, Iyad and Lehmann, Sune},
-  booktitle={Conference on Empirical Methods in Natural Language Processing (EMNLP)},
-  year={2017}
-}
-```
+Felbo, B., Mislove, A., Søgaard, A., Rahwan, I., & Lehmann, S. (2017). Using millions of emoji occurrences to learn any-domain representations for detecting sentiment, emotion and sarcasm. In Conference on Empirical Methods in Natural Language Processing (EMNLP). ([paper](http://dx.doi.org/10.1371/journal.pone.0144296))
 
-```bibtex
-@inproceedings{akbik2019flair,
-  title={{FLAIR}: An easy-to-use framework for state-of-the-art {NLP}},
-  author={Akbik, Alan and Bergmann, Tanja and Blythe, Duncan and Rasul, Kashif and Schweter, Stefan and Vollgraf, Roland},
-  booktitle={{NAACL} 2019, 2019 Annual Conference of the North American Chapter of the Association for Computational Linguistics (Demonstrations)},
-  pages={54--59},
-  year={2019}
-}
-```
+Akbik, A., Bergmann, T., Blythe, D., Rasul, K., Schweter, S., & Vollgraf, R. (2019). FLAIR: An easy-to-use framework for state-of-the-art NLP. In NAACL 2019, 2019 Annual Conference of the North American Chapter of the Association for Computational Linguistics (Demonstrations) (pp. 54–59). ([paper](https://www.aclweb.org/anthology/papers/N/N19/N19-4010/))
 
-```bibtex
-@article{Kralj2015emojis,
-  author={{Kralj Novak}, Petra and Smailovi{\'c}, Jasmina and Sluban, Borut and Mozeti\v{c}, Igor},
-  title={Sentiment of emojis},
-  journal={PLoS ONE},
-  volume={10},
-  number={12},
-  pages={e0144296},
-  url={http://dx.doi.org/10.1371/journal.pone.0144296},
-  year={2015}
-}
-```
+Kralj Novak, P., Smailovic, J., Sluban, B., & Mozetič, I. (2015). Sentiment of emojis. PLoS ONE, 10(12), e0144296.
