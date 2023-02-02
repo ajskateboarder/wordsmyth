@@ -11,11 +11,11 @@ However, there are many occurences where star ratings are:
 
 Enter [natural language processing](https://en.wikipedia.org/wiki/Natural_language_processing), or NLP, a subset of artificial intelligence concerned with extracting data from unstructured text into a proper format.
 
-Wordsmyth fixes the issues by generating a rating based on the **text content** itself. This is done using Flair and [TorchMoji](https://github.com/huggingface/torchMoji) (PyTorch variant of [DeepMoji](https://github.com/bfelbo/DeepMoji)).
+Wordsmyth fixes the issues by generating a rating based on the **text content** itself. This is done using [Flair](https://github.com/flairNLP/flair) and [TorchMoji](https://github.com/huggingface/torchMoji) (PyTorch variant of [DeepMoji](https://github.com/bfelbo/DeepMoji)).
 
 ## Goals
 
-
+Bruh
 
 ## Citations
 
