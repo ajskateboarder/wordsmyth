@@ -2,7 +2,7 @@
 
 ## Rationale
 
-A user review allows a consumer to publish their experience with a product or content. Reviews are usually accompanied by a star rating. These exist to summarize a user's writing into a simple star rating. The star ratings of each review of a product can then be averaged into a general star rating, which makes it even easier for potential consumers looking at many different products.
+A user review allows a consumer to publish their experience with a product or content. Reviews are usually accompanied by a star rating. These exist to summarize a user's writing into a simple star rating. The star ratings of each review of a product can then be averaged into a general star rating, which makes it even easier for potential consumers looking at many different products. Star ratings also drive marketing and competing businesses on e-commerce websites.
 
 However, there are many occurences where star ratings are:
 
@@ -11,9 +11,13 @@ However, there are many occurences where star ratings are:
 
 Enter [natural language processing](https://en.wikipedia.org/wiki/Natural_language_processing), or NLP, a subset of artificial intelligence concerned with extracting data from unstructured text into a proper format.
 
-WordSmyth uses [Flair](https://github.com/flairNLP/flair) and [TorchMoji](https://github.com/huggingface/torchMoji) (PyTorch variant of [DeepMoji](https://github.com/bfelbo/DeepMoji)), both of which are NLP models which output sentiment information.
+WordSmyth uses [Flair](https://github.com/flairNLP/flair) and [TorchMoji](https://github.com/huggingface/torchMoji) (PyTorch variant of [DeepMoji](https://github.com/bfelbo/DeepMoji)), both of which are NLP models which output sentiment information. It also uses the [Emoji Sentiment Ranking](https://kt.ijs.si/data/Emoji_sentiment_ranking/) for translating TorchMoji emoji output into a decimal sentiment score.
 
 Wordsmyth fixes the issues by generating a rating based on the **review content** using these models. This functions as a framework which allows developers to write data collection logic for their favorite platform and pipe it to the general algorithms.
+
+This tool helps consumers discover quality content on platforms without pre-existing star ratings. For example, if a consumer is looking for a video tutorial on YouTube, the star rating can guide them to find the best one. This is especially useful in this case because of YouTube's [removal of the dislike button](https://www.youtube.com/watch?v=kxOuG8jMIgI).
+
+It also helps businesses boost their marketing research since the value of some content is easily summarized. 
 
 ## Research Questions
 
@@ -39,7 +43,7 @@ Wordsmyth uses:
 
 - review data from online platforms, like YouTube comments
 - the output from TorchMoji and Flair as well
-- the [Emoji Sentiment Ranking](https://kt.ijs.si/data/Emoji_sentiment_ranking/) for converting TorchMoji data
+- the Emoji Sentiment Ranking for converting TorchMoji data
 
 ## Citations
 
