@@ -18,7 +18,6 @@ from internal.stubs.server_pb2 import (
 from algorithms.deepmoji import Emojize
 from algorithms.flairnlp import Flair
 
-
 deepmoji = Emojize()
 flair = Flair()
 
@@ -27,17 +26,17 @@ class Model(ModelServicer):
     """Runs the algorithms as gRPC methods"""
 
     def torchmoji(self, request: Request, _: Any) -> Emojis:
-        response = [
-            Emoji(emojis=deepmoji.predict(text, request.count), text=text)
-            for text in request.texts
-        ]
+        response = []
+        for text in request.texts:
+            print(text)
+            response.append(Emoji(emojis=deepmoji.predict(text, request.count), text=text))
         return Emojis(response=response)
 
     def flair(self, request: Request, _: Any) -> Sentiments:
-        response = [
-            Sentiment(sentiment=Intensity(**flair.predict(text)), text=text)
-            for text in request.texts
-        ]
+        response = []
+        for text in request.texts:
+            print(text)
+            response.append(Sentiment(sentiment=Intensity(**flair.predict(text)), text=text))
         return Sentiments(response=response)
 
 
