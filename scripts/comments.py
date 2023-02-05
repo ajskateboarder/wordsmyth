@@ -28,7 +28,7 @@ def download_comments(video_id, limit):
         sys.stderr.write(f"{e} comments\r")
         sys.stderr.flush()
 
-        if len(chunk) == limit / 10:
+        if len(chunk) == int(limit / 10):
             comments.append(chunk)
             chunk = []
         else:
