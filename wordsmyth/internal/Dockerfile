@@ -1,4 +1,5 @@
 FROM python:3.9-slim
+ENV PYTHONUNBUFFERED true
 
 WORKDIR /app
 

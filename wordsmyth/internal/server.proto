@@ -12,10 +12,6 @@ message Emoji {
     string text = 2;
 }
 
-message Emojis {
-    repeated Emoji response = 1;
-}
-
 message Intensity {
     string sentiment = 1;
     float score = 2;
@@ -26,11 +22,7 @@ message Sentiment {
     string text = 2;
 }
 
-message Sentiments {
-    repeated Sentiment response = 1;
-}
-
 service Model {
-    rpc torchmoji(Request) returns (Emojis) {};
-    rpc flair(Request) returns (Sentiments) {};
+    rpc torchmoji(stream Request) returns (stream Emoji) {};
+    rpc flair(stream Request) returns (stream Sentiment) {};
 }
