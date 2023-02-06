@@ -13,11 +13,11 @@ function model {
 }
 
 function stubs {
-    $PROTOC -I ./wordsmyth/web/store \
-		--python_out=./wordsmyth/web/store/stubs \
-		--grpc_python_out=./wordsmyth/web/store/stubs queue.proto \
-		--mypy_out=./wordsmyth/web/store/stubs
-    sed -i -e 's/queue_pb2/web.store.stubs.queue_pb2/g' ./wordsmyth/web/store/stubs/queue_pb2_grpc.py
+    $PROTOC -I ./wordsmyth/internal \
+		--python_out=./wordsmyth/internal/stubs \
+		--grpc_python_out=./wordsmyth/internal/stubs server.proto \
+		--mypy_out=./wordsmyth/internal/stubs
+    sed -i -e 's/server_pb2/internal.stubs.queue_pb2/g' ./wordsmyth/internal/stubs/server_pb2_grpc.py
 }
 
 TIMEFORMAT="Task completed in %3lR"

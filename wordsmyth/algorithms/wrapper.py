@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from ast import literal_eval
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Union
 import argparse
 import sys
 import json
@@ -18,7 +18,7 @@ from internal.stubs.server_pb2_grpc import ModelStub
 _channel = grpc.insecure_channel("localhost:50051")
 
 
-def dump_csv(data: List[Dict[str, Any]]):
+def dump_csv(data: List[Dict[str, Any]]) -> str:
     """Simple wrapper around generating csv from JSON"""
     import pandas as pd
 
@@ -37,15 +37,14 @@ def request(texts: List[List[str]], api: str, **params: int) -> List[Dict[str, A
     data: List[Dict[str, str]] = []
 
     with ThreadPoolExecutor() as executor:
-        futures = [
-            executor.submit(
+        futures = []
+        for v in texts:
+            futures.append(executor.submit(
                 ModelStub(_channel).__dict__[api],
                 request=Request(
                     texts=[e.encode("utf-8", "ignore") for e in v], **params
                 ),
-            )
-            for v in texts
-        ]
+            ))
 
     responses = as_completed(futures)
     for f in responses:
@@ -56,7 +55,12 @@ def request(texts: List[List[str]], api: str, **params: int) -> List[Dict[str, A
     return data
 
 
-def main(flair: bool, torch: bool, csv: bool, comments: "list[list[str]]"):
+def main(
+    flair: bool,
+    torch: bool,
+    csv: bool,
+    comments: List[List[str]],
+) -> None:
     """Fetch algorithm responses and dump data as JSON"""
     tmres = request(comments, "torchmoji", count=10) if torch else None
     flres = request(comments, "flair") if flair else None
@@ -83,11 +87,11 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    stdin = list(sys.stdin)
+    stdin: Union[List[str], str] = list(sys.stdin)
     try:
         stdin = stdin[1]
     except IndexError:
         stdin = stdin[0]
     stdin = literal_eval(stdin)
 
-    main(args.flair, args.torch, args.csv, stdin)
+    main(args.flair, args.torch, args.csv, stdin)  # type: ignore

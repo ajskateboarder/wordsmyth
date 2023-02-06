@@ -1,16 +1,14 @@
 """gRPC algorithm servicer"""
 
 from concurrent.futures import ThreadPoolExecutor
-from typing import Any
+from typing import Any, Iterator
 
 import grpc
 
 from internal.stubs.server_pb2_grpc import add_ModelServicer_to_server, ModelServicer
 from internal.stubs.server_pb2 import (
     Emoji,
-    Emojis,
     Sentiment,
-    Sentiments,
     Intensity,
     Request,
 )
@@ -26,19 +24,20 @@ flair = Flair()
 class Model(ModelServicer):
     """Runs the algorithms as gRPC methods"""
 
-    def torchmoji(self, request: Request, _: Any) -> Emojis:
-        response = [
-            Emoji(emojis=deepmoji.predict(text, request.count), text=text)
-            for text in request.texts
-        ]
-        return Emojis(response=response)
+    def torchmoji(self, request_iterator: Request, _: Any) -> Iterator[Emoji]:
+        for request in request_iterator:
+            for text in request.texts:
+                print(f"Completing: {text}")
+                yield Emoji(
+                    emojis=deepmoji.predict(text, request.count),
+                    text=text,
+                )
 
-    def flair(self, request: Request, _: Any) -> Sentiments:
-        response = [
-            Sentiment(sentiment=Intensity(**flair.predict(text)), text=text)
-            for text in request.texts
-        ]
-        return Sentiments(response=response)
+    def flair(self, request_iterator: Request, _: Any) -> Sentiment:
+        for request in request_iterator:
+            for text in request.texts:
+                print(f"Completing: {text}")
+                yield Sentiment(sentiment=Intensity(**flair.predict(text)), text=text)
 
 
 def main() -> None:

@@ -10,31 +10,32 @@ class ModelStub(object):
 
     def __init__(self, channel):
         """Constructor.
+
         Args:
             channel: A grpc.Channel.
         """
-        self.torchmoji = channel.unary_unary(
+        self.torchmoji = channel.stream_stream(
             "/models.Model/torchmoji",
             request_serializer=server__pb2.Request.SerializeToString,
-            response_deserializer=server__pb2.Emojis.FromString,
+            response_deserializer=server__pb2.Emoji.FromString,
         )
-        self.flair = channel.unary_unary(
+        self.flair = channel.stream_stream(
             "/models.Model/flair",
             request_serializer=server__pb2.Request.SerializeToString,
-            response_deserializer=server__pb2.Sentiments.FromString,
+            response_deserializer=server__pb2.Sentiment.FromString,
         )
 
 
 class ModelServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def torchmoji(self, request, context):
+    def torchmoji(self, request_iterator, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
-    def flair(self, request, context):
+    def flair(self, request_iterator, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
@@ -43,15 +44,15 @@ class ModelServicer(object):
 
 def add_ModelServicer_to_server(servicer, server):
     rpc_method_handlers = {
-        "torchmoji": grpc.unary_unary_rpc_method_handler(
+        "torchmoji": grpc.stream_stream_rpc_method_handler(
             servicer.torchmoji,
             request_deserializer=server__pb2.Request.FromString,
-            response_serializer=server__pb2.Emojis.SerializeToString,
+            response_serializer=server__pb2.Emoji.SerializeToString,
         ),
-        "flair": grpc.unary_unary_rpc_method_handler(
+        "flair": grpc.stream_stream_rpc_method_handler(
             servicer.flair,
             request_deserializer=server__pb2.Request.FromString,
-            response_serializer=server__pb2.Sentiments.SerializeToString,
+            response_serializer=server__pb2.Sentiment.SerializeToString,
         ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -66,7 +67,7 @@ class Model(object):
 
     @staticmethod
     def torchmoji(
-        request,
+        request_iterator,
         target,
         options=(),
         channel_credentials=None,
@@ -77,12 +78,12 @@ class Model(object):
         timeout=None,
         metadata=None,
     ):
-        return grpc.experimental.unary_unary(
-            request,
+        return grpc.experimental.stream_stream(
+            request_iterator,
             target,
             "/models.Model/torchmoji",
             server__pb2.Request.SerializeToString,
-            server__pb2.Emojis.FromString,
+            server__pb2.Emoji.FromString,
             options,
             channel_credentials,
             insecure,
@@ -95,7 +96,7 @@ class Model(object):
 
     @staticmethod
     def flair(
-        request,
+        request_iterator,
         target,
         options=(),
         channel_credentials=None,
@@ -106,12 +107,12 @@ class Model(object):
         timeout=None,
         metadata=None,
     ):
-        return grpc.experimental.unary_unary(
-            request,
+        return grpc.experimental.stream_stream(
+            request_iterator,
             target,
             "/models.Model/flair",
             server__pb2.Request.SerializeToString,
-            server__pb2.Sentiments.FromString,
+            server__pb2.Sentiment.FromString,
             options,
             channel_credentials,
             insecure,
