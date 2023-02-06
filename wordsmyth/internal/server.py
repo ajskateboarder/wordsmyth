@@ -16,7 +16,6 @@ from internal.stubs.server_pb2 import (
 from algorithms.deepmoji import Emojize
 from algorithms.flairnlp import Flair
 
-
 deepmoji = Emojize()
 flair = Flair()
 
