@@ -2,61 +2,56 @@
 
 If you don't want to start all of the bulky web infrastructure, you can freely experiment with the data from the command line with these pipelines.
 
-Start the gRPC service only:
+> **Note**
+> The pipeline CLI might be Dockerized in the future.
+
+Start the algorithm service from source and install required dependencies:
 
 ```bash
-docker compose start -d wordsmyth.internal
+docker compose up -d --build wordsmyth.internal
+pip install -e . grpcio grpcio_tools
 ```
 
-Download comments from a video without any modifications (algo responses are required for every other step):
+Then use an existing plugin in conjunction with `wordsmyth.algorithms.wrapper`. Here's an example with YouTube:
 
 ```bash
-python3 -m utils.comments GZvSYJDk-us 300 > output.json
+# C418 - Minecraft - Minecraft Volume Alpha
+python3 -m wordsmyth.utils.comments qq-RGFyaq0U 10
 ```
 
-Download comments with algorithm responses:
-
 ```bash
-python3 -m utils.comments GZvSYJDk-us 300 | python3 -m algorithms.wrapper -t -f --csv > output
+10 comments
+[["legendary"], 
+["The fact that I just learned to play this without support made myself think that I'm a real OG"], 
+["I didnt crie because of this music, i cried because of those memories behind the music"], 
+["I kind of wish for this song to be deleted, not because I hate it. But because it makes me tear up so much from the good memories"], 
+["I want to cry when I hear it..."]]
 ```
 
-`-t` includes responses from TorchMoji, `-f` includes responses from Flair, and `--csv` will toggle CSV output for better readability.
-
-> ℹ️ The final pipelines are currently not finished so this will change in the future.
-
-Fix the responses from the previous data:
+Now pipe this into the algorithm wrapper.
 
 ```bash
-python3 future/fix.py path/to/previous/data
+python3 -m wordsmyth.utils.comments qq-RGFyaq0U 10 | \
+ python3 -m wordsmyth.algorithms.wrapper --flair --torch --csv
 ```
 
-This should build the fixed `data.json` in the `future` directory, which you can generate a star rating from:
+| Flag  | Description |
+| :---: | ----- |
+| `--flair`  | Toggles Flair processing  |
+| `--torch`  | Toggles TorchMoji processing  |
+| `--csv`  | Toggles CSV conversion. The data is otherwise JSON  |
 
-```bash
-python3 future/rate.py
+```csv
+sentiment,score,text,emojis
+pos,0.9964135,legendary,":100:,:muscle:,:sunglasses:,:relieved:,:ok_hand:,:smiling_imp:,:sweat_smile:,:raised_hands:,:information_desk_person:,:smirk:"
+neg,0.8435976,I want to cry when I hear it...,":cry:,:broken_heart:,:pensive:,:sleepy:,:disappointed:,:sweat:,:sob:,:persevere:,:confused:,:notes:"
+pos,0.88585466,"I kind of wish for this song to be deleted, not because I hate it. But because it makes me tear up so much from the good memories",":cry:,:broken_heart:,:sob:,:sleepy:,:sweat:,:confounded:,:tired_face:,:pensive:,:disappointed:,:persevere:"
+neg,0.9959791,The fact that I just learned to play this without support made myself think that I'm a real OG,":broken_heart:,:cry:,:sob:,:sleepy:,:notes:,:pensive:,:sweat:,:disappointed:,:musical_note:,:persevere:"
+pos,0.986511,"I didnt crie because of this music, i cried because of those memories behind the music",":musical_note:,:notes:,:raised_hands:,:sunglasses:,:smiling_imp:,:muscle:,:pray:,:ok_hand:,:100:,:sparkles:"
 ```
 
 ## Testing
 
-Wordsmyth uses Amazon product reviews as a method of testing the algorithms.
+Wordsmyth uses Amazon product reviews as a method of testing the non-ML algorithms. The data we use in particular is the 5-core subsets from the [2018 Amazon reviews](https://nijianmo.github.io/amazon/#subsets).
 
-Before you start asking how you are supposed to easily fetch them, you can use a userscript I made [here](./future/copyReviews.js). It essentially functions as a macro to copy every review on a page for a number of pages.
-
-You can install it with [Tampermonkey](https://www.tampermonkey.net/) and use it on a product review page like [this one](https://www.amazon.com/Samsung-Galaxy-G973U-128GB-T-Mobile/product-reviews/B07T8CN8WZ). Just make sure these URL parameters exist:
-
-```text
-?ie=UTF8&reviewerType=all_reviews&pageNumber=1&pageMacro=3 (&noChunk)
-```
-
-- `reviewerType` defines which reviews with ratings to collect
-- `pageNumber` defines which page to start at
-- `pageMacro` - part of the script - defines which page to stop scraping at
-- `noChunk` also exists to stop the reviews from being chunked into groups of 5 (just in case)
-
-Once finished, it will write all the reviews to the body so you can copy it. You should put this output in a text file so it can be easily passed to the algorithm wrapper.
-
-```bash
-python3 -m algorithms.wrapper -tf --csv < content.txt > ./future/output.csv
-```
-
-Since Amazon reviews are generally very wordy, this will defintely take a while.
+Applying Flair and Torch over reviews takes a long time (47 min on ~2.2k reviews), so the static output data is recommended.
