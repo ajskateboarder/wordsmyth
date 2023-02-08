@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from functools import lru_cache
 import io
 
@@ -7,7 +9,7 @@ import requests
 from redis import Redis
 from rq import Queue
 
-from fastapi import FastAPI, Response, Request
+from fastapi import FastAPI, Response
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import create_model
 
@@ -47,6 +49,9 @@ def read_openapi_yaml() -> Response:
     return Response(content=yaml_s.getvalue(), media_type="text/yaml")
 
 
+Input = create_model("Input", video_id=(str, ...))
+
+
 @app.post(
     "/youtube/queue",
     name="Submission queue",
@@ -55,14 +60,14 @@ def read_openapi_yaml() -> Response:
 )
 async def post_submit(
     response: Response,
-    video: create_model("Input", video_id=(str, ...)),
-):
+    video: Input,
+) -> dict[str, Any]:
     """Queue a YouTube video ID for processing"""
 
     if not id_exists(video.video_id):
         response.status_code = 404
         return {"status": "fail", "data": {"message": "Video does not exist"}}
 
-    result = q.enqueue("wordsmyth.web.store.queue_youtube", "G6STB2nC5Lg")
+    q.enqueue("wordsmyth.web.store.queue_youtube", "G6STB2nC5Lg")
 
     return {"status": "success"}
