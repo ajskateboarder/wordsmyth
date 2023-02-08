@@ -1,24 +1,68 @@
 #!/usr/bin/env python3
 
+from __future__ import annotations
 from ast import literal_eval
-from typing import List, Dict, Any, Union
+from typing import Any, Generator
 import argparse
 import sys
 import json
 
-from concurrent.futures import ThreadPoolExecutor, as_completed
-
 from google.protobuf.json_format import MessageToDict
+import pandas as pd
 import grpc
 
 from internal.stubs.server_pb2 import Request
 from internal.stubs.server_pb2_grpc import ModelStub
 
 
-_channel = grpc.insecure_channel("localhost:50051")
+class AlgorithmWrapper:
+    """Algorithm gRPC client as a class-based API"""
+
+    def __init__(self, url: str = "localhost:50051") -> None:
+        _channel = grpc.insecure_channel(url)
+        self._stub = ModelStub(channel=_channel)
+
+    @staticmethod
+    def _flair_iterator(text: list[list[str]]) -> Generator[Request, None, None]:
+        for chunk in text:
+            entry_request = Request(texts=chunk)
+            yield entry_request
+
+    @staticmethod
+    def _torch_iterator(
+        text: list[list[str]], count: int
+    ) -> Generator[Request, None, None]:
+        for chunk in text:
+            entry_request = Request(texts=chunk, count=count)
+            yield entry_request
+
+    def request(
+        self, text: list[list[str]], emojis: int
+    ) -> Generator[dict[str, Any], None, None]:
+        """Request both Flair and TorchMoji with multiple chunks of text"""
+
+        for (
+            flair,
+            torch,
+        ) in zip(self.flair(text), self.torch(text, emojis)):
+            yield dict(torch, **flair)
+
+    def flair(self, text: list[list[str]]) -> Generator[dict[str, Any], None, None]:
+        """Request the Flair service with multiple chunks of text"""
+
+        for flair in self._stub.flair(self._flair_iterator(text)):
+            yield MessageToDict(flair)
+
+    def torch(
+        self, text: list[list[str]], emojis: int
+    ) -> Generator[dict[str, Any], None, None]:
+        """Request the TorchMoji service with multiple chunks of text"""
+
+        for torch in self._stub.torchmoji(self._torch_iterator(text, emojis)):
+            yield MessageToDict(torch)
 
 
-def dump_csv(data: List[Dict[str, Any]]) -> str:
+def dump_csv(data: "list[dict[str, Any]]") -> pd.DataFrame:
     """Simple wrapper around generating csv from JSON"""
     import pandas as pd
 
@@ -32,19 +76,21 @@ def dump_csv(data: List[Dict[str, Any]]) -> str:
     return df.to_csv()
 
 
-def request(texts: List[List[str]], api: str, **params: int) -> List[Dict[str, Any]]:
+def request(texts: list[list[str]], api: str, **params: int) -> "list[dict[str, Any]]":
     """Make parallel requests to a gRPC api"""
-    data: List[Dict[str, str]] = []
+    data = []
 
     with ThreadPoolExecutor() as executor:
         futures = []
         for v in texts:
-            futures.append(executor.submit(
-                ModelStub(_channel).__dict__[api],
-                request=Request(
-                    texts=[e.encode("utf-8", "ignore") for e in v], **params
-                ),
-            ))
+            futures.append(
+                executor.submit(
+                    ModelStub(_channel).__dict__[api],
+                    request=Request(
+                        texts=[e.encode("utf-8", "ignore") for e in v], **params
+                    ),
+                )
+            )
 
     responses = as_completed(futures)
     for f in responses:
@@ -59,7 +105,7 @@ def main(
     flair: bool,
     torch: bool,
     csv: bool,
-    comments: List[List[str]],
+    comments: list[list[str]],
 ) -> None:
     """Fetch algorithm responses and dump data as JSON"""
     tmres = request(comments, "torchmoji", count=10) if torch else None
@@ -87,7 +133,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    stdin: Union[List[str], str] = list(sys.stdin)
+    stdin: "list[str] | str" = list(sys.stdin)
     try:
         stdin = stdin[1]
     except IndexError:
