@@ -13,8 +13,10 @@ with open("data.json", encoding="utf-8") as fh:
     data = json.load(fh)
 finals = []
 
+
 def mse(actual, predicted):
     return np.square(np.subtract(np.array(actual), np.array(predicted))).mean()
+
 
 renderables = []
 negative_emojis = [e["repr"] for e in em if e["sentiment"] == "neg"]
