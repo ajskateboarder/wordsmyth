@@ -2,10 +2,7 @@
 
 # Wordsmyth
 
-[![Docker build status](https://github.com/themysticsavages/wordsmyth/workflows/Docker%20build/badge.svg)](https://github.com/themysticsavages/wordsmyth/actions/)
-
-![Get for Chrome](https://img.shields.io/static/v1?message=Get%20for%20Chrome&logo=google-chrome&labelColor=5c5c5c&color=5c5c5c&logoColor=white&label=%20)
-![Get for Firefox](https://img.shields.io/static/v1?message=Get%20for%20Firefox&logo=firefox&labelColor=5c5c5c&color=5c5c5c&label=%20&logoColor=white)
+![Get for Chrome](https://img.shields.io/static/v1?message=Get%20for%20Chrome&logo=google-chrome&labelColor=5c5c5c&color=5c5c5c&logoColor=white&label=%20) ![Get for Firefox](https://img.shields.io/static/v1?message=Get%20for%20Firefox&logo=firefox&labelColor=5c5c5c&color=5c5c5c&label=%20&logoColor=white) [![Docker build status](https://github.com/lemystic/wordsmyth/workflows/Docker%20build/badge.svg)](https://github.com/lemystic/wordsmyth/actions/)
 
 Wordsmyth is a free and open-source tool to ease the pains of manual comment analysis among content creators and users.
 
@@ -61,4 +58,14 @@ $ curl -X POST http://localhost:8081/youtube/queue \
 > **Note:**
 > The newer pipelines are completely brand new. If you would like a less bleeding-edge method, please refer to the stable CLI documentation [here](./docs/cli.md).
 
-You can use the in-progress pipeline to simplify the process. Download comments with this userscript
+You can use the in-progress pipeline to simplify the process (at `future/pipeline/`).
+
+Any data source is allowed for testing, but Amazon reviews are recommended since they are much more serious and detailed. You can install the userscript for collecting reviews at `media/copyReviews.js`, then go to a product page like [this one](https://www.amazon.com/Samsung-Galaxy-G973U-128GB-T-Mobile/product-reviews/B07T8CN8WZ?ie=UTF8&reviewerType=all_reviews&pageNumber=1). Trigger the userscript by appending `&pageMacro=<end_page>`. You should expect a dialog like below:
+
+![Amazon review scraper dialog](./media/dialog.png)
+
+Go to `future/pipeline`, paste the scraped reviews into a `comments.json`, then run the pipeline:
+
+```bash
+python3 evaluate_comments.py --local-scheduler PrintComments
+```
