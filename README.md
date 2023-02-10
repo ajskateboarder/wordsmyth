@@ -11,12 +11,12 @@ Instead of relying on star ratings given by the user, Wordsmyth **generates them
 ## Highlights
 
 - Works on almost any platform and very easy to extend
-- 85-100% accuracy (tested against Amazon reviews)
-- Accessible to anybody (browser extension, web dashboard, API, and command line)
+- 85-100% accuracy (tested against Amazon reviews) and sometimes more accurate than user ratings
+- Accessible to anybody (planned browser extension, web dashboard, API, and command line)
 
 ## Status
 
-Wordsmyth is currently in development and doesn't have a public API or a frontend, but it is stable for local use.
+Wordsmyth is under active development and somewhat close to stable use.
 
 Please read the [`TODO.md`](./TODO.md) for specific things that still need to be implemented.
 
@@ -31,15 +31,14 @@ Make sure you have a `.env` file in the same directory with API keys for the res
 You can spawn all the infrastructure with prebuilt images from GHCR without cloning anything:
 
 ```bash
-curl "https://raw.githubusercontent.com/themysticsavages/wordsmyth/ \
-     main/docker-compose.images.yml" > docker-compose.yml
+curl "https://raw.githubusercontent.com/lemystic/wordsmyth/main/docker-compose.images.yml" > docker-compose.yml
 docker compose up -d --build
 ```
 
 or build and run it yourself:
 
 ```bash
-git clone https://github.com/themysticsavages/wordsmyth --depth=1
+git clone https://github.com/lemystic/wordsmyth --depth=1
 cd wordsmyth
 docker compose up -d --build
 ```
