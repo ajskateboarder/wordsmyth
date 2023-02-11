@@ -2,7 +2,7 @@
 
 # Wordsmyth
 
-![Get for Chrome](https://img.shields.io/static/v1?message=Get%20for%20Chrome&logo=google-chrome&labelColor=5c5c5c&color=5c5c5c&logoColor=white&label=%20) ![Get for Firefox](https://img.shields.io/static/v1?message=Get%20for%20Firefox&logo=firefox&labelColor=5c5c5c&color=5c5c5c&label=%20&logoColor=white) [![Docker build status](https://github.com/lemystic/wordsmyth/workflows/Docker%20build/badge.svg)](https://github.com/lemystic/wordsmyth/actions/)
+![Get for Chrome](https://img.shields.io/static/v1?message=Get%20for%20Chrome&logo=google-chrome&labelColor=black&color=white&logoColor=white&label=%20) ![Get for Firefox](https://img.shields.io/static/v1?message=Get%20for%20Firefox&logo=firefox&labelColor=black&color=white&logoColor=white&label=%20) [![Docker build status](https://github.com/lemystic/wordsmyth/workflows/Docker%20build/badge.svg)](https://github.com/lemystic/wordsmyth/actions/)
 
 Wordsmyth is a free and open-source tool to ease the pains of manual comment analysis among content creators and users.
 
