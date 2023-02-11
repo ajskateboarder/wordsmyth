@@ -4,15 +4,18 @@
 
 ![Get for Chrome](https://img.shields.io/static/v1?message=Get%20for%20Chrome&logo=google-chrome&labelColor=black&color=white&logoColor=white&label=%20) ![Get for Firefox](https://img.shields.io/static/v1?message=Get%20for%20Firefox&logo=firefox&labelColor=black&color=white&logoColor=white&label=%20) [![Docker build status](https://github.com/lemystic/wordsmyth/workflows/Docker%20build/badge.svg)](https://github.com/lemystic/wordsmyth/actions/)
 
+> **Warning**:
+> **This is a future branch with unfinished features, use with caution!**
+
 Wordsmyth is a free and open-source tool to ease the pains of manual comment analysis among content creators and users.
 
 Instead of relying on star ratings given by the user, Wordsmyth **generates them** based on the **text sentiment** using a pair of models and well-tested output finetuning.
 
 ## Highlights
 
-- Works on almost any platform and very easy to extend
-- 85-100% accuracy (tested against Amazon reviews) and sometimes more accurate than user ratings
-- Accessible to anybody (planned browser extension, web dashboard, API, and command line)
+- **Accurate**: Reaches 85-100% accuracy on Amazon reviews and often more accurate than user ratings
+- **Extensible**: Works on almost any platform and very easy to extend
+- **Accessible**: Supported through a browser extension, web dashboard, API, and command line
 
 ## Status
 
