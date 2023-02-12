@@ -6,9 +6,11 @@ from .torchmoji import TorchMoji
 flair = Flair()
 torch = TorchMoji()
 
+
 def predict_flair(texts: list[str]):
     for text in texts:
         yield {"sentiment": flair.predict(text), "text": text}
+
 
 def predict_torchmoji(texts: list[str], emojis: int):
     for text in texts:

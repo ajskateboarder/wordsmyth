@@ -4,13 +4,13 @@ import numpy as np
 
 from .items import Item
 
+
 def find_indices(content, classes):
     """Helper function to find all indices of a list using another list"""
     occurences = [e in content for e in classes]
     indices = [i for i, x in enumerate(occurences) if x is True]
 
     return list(content.index(classes[i]) for i in indices)
-
 
 
 def fix_content(text: dict, emojimap: dict) -> Item:
@@ -61,29 +61,27 @@ def fix_content(text: dict, emojimap: dict) -> Item:
         return Item(**obj)
 
 
-def rate(text: dict, emojimap: list) -> Union[int, float]:
+def rate(text: Item, emojimap: list) -> Union[int, float]:
     positive_emojis = [e for e in emojimap if e["sentiment"] == "pos"]
 
-    picked = [e for e in emojimap if text.get("fixed", text["emoji"]) == e["repr"]][0]
+    picked = [e for e in emojimap if (text.fixed or text.emoji) == e["repr"]][0]
     score = np.mean([float(picked["pos"]), float(picked["neu"]), float(picked["neg"])])
-    em_mean = np.mean(
-        [float(e["score"]) for e in emojimap if e["repr"] in text["emojis"]]
-    )
+    em_mean = np.mean([float(e["score"]) for e in emojimap if e["repr"] in text.emojis])
 
-    if text["sentiment"]["flair"] == "neg":
+    if text.sentiment.flair == "neg":
         score = (score - 0.2 * float(picked["pos"])) * 2
-    if text["sentiment"]["map"] == "neg":
+    if text.sentiment.map == "neg":
         score = score - 0.2 * float(picked["neg"])
-    if text["sentiment"]["map"] == "pos" and text["sentiment"]["flair"] == "pos":
+    if text.sentiment.map == "pos" and text.sentiment.flair == "pos":
         score = score - 0.2
-    if "🤣" in text["content"]:
+    if "🤣" in text.content:
         score = score - 0.2
-    if any(e["repr"] in text["emojis"] for e in positive_emojis):
+    if any(e["repr"] in text.emojis for e in positive_emojis):
         score = score - 0.2
-    if text["sentiment"]["map"] == "neg" and text["sentiment"]["flair"] == "neg":
+    if text.sentiment.map == "neg" and text.sentiment.flair == "neg":
         score = score + 0.5
-    if round(1 - score, 4) < 0.8667:
-        score = score - abs(em_mean)
+    # if round(1 - score, 4) < 0.8667:
+    #     score = score - abs(em_mean)
 
     rating = round(1 - score, 4) / 2
     return rating

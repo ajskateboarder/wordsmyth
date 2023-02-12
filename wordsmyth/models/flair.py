@@ -8,6 +8,7 @@ from flair.data import Sentence
 
 MUTEX = Lock()
 
+
 class Flair:
     def __init__(self) -> None:
         self.sia = TextClassifier.load("en-sentiment")

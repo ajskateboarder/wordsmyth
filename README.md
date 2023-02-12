@@ -32,10 +32,16 @@ pip install -r requirements.txt
 ./helper model
 ```
 
-Assuming you have a list of comments stored somewhere as JSON, run the pipeline:
+You can now download some comments to test the pipeline. For instance, with the provided YouTube comment script:
+
+```bash
+python3 scripts/comments.py | jq > comments.json
+```
+
+Then pass the comments into the rating pipeline:
 
 ```bash
 python3 evaluate_comments.py RateComments --comments example.json
 ```
 
-You should have the ratings of your comments printed to your terminal.
+You should have the ratings printed to your terminal.

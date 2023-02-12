@@ -7,5 +7,10 @@ function model {
   wordsmyth/models/pytorch_model.bin
 }
 
+function pipeline {
+  rm comments.pkl pipeline.log
+  python3 evaluate_comments.py Final --local-scheduler --comments $1
+}
+
 TIMEFORMAT="Task completed in %3lR"
 time ${@:-default}
