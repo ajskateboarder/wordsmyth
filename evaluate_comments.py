@@ -26,7 +26,7 @@ class CommentSource(luigi.Task):
 
 
 @requires(CommentSource)
-class PrintComments(luigi.Task):
+class RateComments(luigi.Task):
     def run(self):
         with self.input().open("r") as infile:
             comments = json.load(infile)
@@ -35,6 +35,7 @@ class PrintComments(luigi.Task):
             df = json_normalize(comment).assign(**comment["sentiment"])
             text = df[["text", "emojis", "sentiment", "score"]].to_dict("records")[0]
             fixed = fix_content(text, em)
+            
             if fixed is not None:
                 print(
                     "[*]",

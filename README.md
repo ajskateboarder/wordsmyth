@@ -14,3 +14,22 @@ Instead of relying on star ratings given by the user, Wordsmyth **generates them
 - Works on almost any platform and very easy to extend
 - 85-100% accuracy (tested against Amazon reviews) and sometimes more accurate than user ratings
 - Accessible to anybody (planned browser extension, web dashboard, API, and command line)
+
+## Usage
+
+Wordsmyth is available as a pipeline to load comments from a data source and output star ratings.
+
+Install the pre-requisites:
+
+```bash
+python3 -m venv venv
+. venv/bin/activate
+pip install -r requirements.txt
+./helper model
+```
+
+Assuming you have a list of comments stored somewhere as JSON, run the pipeline:
+
+```bash
+python3 evaluate_comments.py RateComments --comments example.json
+```

@@ -1,30 +1,33 @@
 """Post-processing utilities for algorithm data"""
+from typing import Union
 import numpy as np
 
+from .items import Item
 
 def find_indices(content, classes):
+    """Helper function to find all indices of a list using another list"""
     occurences = [e in content for e in classes]
     indices = [i for i, x in enumerate(occurences) if x is True]
 
     return list(content.index(classes[i]) for i in indices)
 
 
-def mse(actual, predicted):
-    return np.square(np.subtract(np.array(actual), np.array(predicted))).mean()
 
+def fix_content(text: dict, emojimap: dict) -> Item:
+    """Assign a more accurate emoji to a text given TorchMoji and Flair output"""
 
-def fix_content(text: dict, emojimap: dict):
+    # These emojis often show up in TorchMoji responses, so these are checked
     emojis = text["emojis"]
-
     maps = find_indices(emojis, [":confused:", ":thumbsup:", ":eyes:"])
 
     if len(maps) == 2 or len(maps) == 1:
-        reprr = emojis[min(maps)]
-        match = emojimap[reprr]
+        # Emojis closer to the front are often more accurate
+        first = emojis[min(maps)]
+        match = emojimap[first]
 
         obj = {
             "content": text["text"],
-            "emoji": reprr,
+            "emoji": first,
             "position": min(maps),
             "sentiment": {"flair": text["sentiment"], "map": match["sentiment"]},
             "emojis": emojis,
@@ -33,28 +36,32 @@ def fix_content(text: dict, emojimap: dict):
         }
 
         if obj["sentiment"]["flair"] != obj["sentiment"]["map"]:
-            sequence = list(
+            # Find emojis that match the text sentiment and in text emojis
+            # then pick the emoji closest to the front
+            sequence = [
                 obj["emojis"].index(emojimap[e]["repr"])
                 for e in emojis
                 if emojimap[e]["sentiment"] == text["sentiment"]
                 and emojimap[e]["repr"] in obj["emojis"]
-            )
+            ]
 
-            newst = emojimap.get(
+            fixed = emojimap.get(
                 (obj["emojis"][min(sequence)] if len(sequence) > 0 else ""), {}
             )
 
-            if text["sentiment"] == newst.get("sentiment"):
-                obj["fixed"] = newst.get("repr")
+            if text["sentiment"] == fixed.get("sentiment"):
+                obj["fixed"] = fixed.get("repr")
                 obj["status"] = "fixed"
-                return obj
+                return Item(**obj)
+
             obj["status"] = "incorrect"
-            return obj
+            return Item(**obj)
+
         obj["status"] = "correct"
-        return obj
+        return Item(**obj)
 
 
-def rate(text: dict, emojimap: list):
+def rate(text: dict, emojimap: list) -> Union[int, float]:
     positive_emojis = [e for e in emojimap if e["sentiment"] == "pos"]
 
     picked = [e for e in emojimap if text.get("fixed", text["emoji"]) == e["repr"]][0]
