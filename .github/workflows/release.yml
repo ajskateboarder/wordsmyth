@@ -1,22 +1,14 @@
-name: semantic-release
-
-on: [push]
+on: 
+  push:
+    branches:
+      - minimal
 
 jobs:
-  semantic-release:
-    
+  release-on-push:
     runs-on: ubuntu-latest
-
-    container:
-      image: docker://cclorg/semantic-release
-
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-    - uses: actions/checkout@v1
-
-    - name: Install dependencies
-      run: npm install @semantic-release/github -D
-
-    - name: Launch semantic
-      run: npx semantic-release -p
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: rymndhng/release-on-push-action@master
+        with:
+          bump_version_scheme: minor
