@@ -1,3 +1,4 @@
+"""Post-processing utilities for algorithm data"""
 import numpy as np
 
 
