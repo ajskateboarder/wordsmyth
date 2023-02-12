@@ -1,8 +1,0 @@
-grpcio
-grpcio_tools
-requests
-rq
-fastapi
-uvicorn[standard]
-sse_starlette
--e .

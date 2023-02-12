@@ -1,5 +1,0 @@
-rq
-requests
-grpcio
-grpcio_tools
--e .

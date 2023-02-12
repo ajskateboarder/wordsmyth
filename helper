@@ -1,23 +1,10 @@
 #!/bin/bash
 
-PY="python3"
-PROTOC="python3 -m grpc_tools.protoc"
-
 set -e
 
 function model {
-    echo "This will download a ~2GB model file locally. Continue?"; read dummy
-    $PY -c \
-        'from torchmoji.dl_utils import execute_download; \
-        execute_download("./wordsmyth/algorithms/deepmoji/model/pytorch_model.bin")'
-}
-
-function stubs {
-    $PROTOC -I ./wordsmyth/internal \
-		--python_out=./wordsmyth/internal/stubs \
-		--grpc_python_out=./wordsmyth/internal/stubs server.proto \
-		--mypy_out=./wordsmyth/internal/stubs
-    sed -i -e 's/server_pb2/internal.stubs.queue_pb2/g' ./wordsmyth/internal/stubs/server_pb2_grpc.py
+  wget https://www.dropbox.com/s/q8lax9ary32c7t9/pytorch_model.bin?dl=0# -O \
+  algorithms/pytorch_model.bin
 }
 
 TIMEFORMAT="Task completed in %3lR"
