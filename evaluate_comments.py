@@ -3,21 +3,21 @@ import logging
 
 warnings.filterwarnings("ignore")
 
-logging.basicConfig(filename="pipeline.log")
-logger = logging.getLogger()
-
 import json
 from io import StringIO
 import pickle
 
 import pandas as pd
-import matplotlib.pyplot as plt
+import plotly.express as px
 from luigi.util import requires
 from luigi.format import Nop
 import luigi
 
 from wordsmyth.models import predict_flair, predict_torchmoji
 from wordsmyth.post import fix_content, rate
+
+logging.basicConfig(filename="pipeline.log")
+logger = logging.getLogger()
 
 with open("emojimap.json", encoding="utf-8") as fh:
     em = {e["repr"]: e for e in json.load(fh)}
@@ -44,7 +44,7 @@ class RateComments(luigi.Task):
         with self.input().open("r") as infile:
             comments = pd.read_json(StringIO(infile.read()))[
                 ["reviewText", "overall"]
-            ].head(50)
+            ].head(100)
         outputs = []
 
         for flair, torch, actual_rating in zip(
@@ -53,6 +53,7 @@ class RateComments(luigi.Task):
             comments["overall"],
         ):
             comment = dict(torch, **flair)
+            print(": Comment fetched :")
             df = pd.json_normalize(comment).assign(**comment["sentiment"])
 
             text = df[["text", "emojis", "sentiment", "score"]]
@@ -70,14 +71,20 @@ class RateComments(luigi.Task):
 
 
 @requires(RateComments)
-class Final(luigi.Task):
+class RatePlot(luigi.Task):
+    output_path = luigi.Parameter(default="output.html")
+
     def run(self):
         with self.input().open("rb") as infile:
             data: pd.DataFrame = pickle.load(infile)
 
         data = data.loc[data.astype(str).drop_duplicates().index]
-        plt.scatter(data["rating"], data["overall"])
-        plt.savefig("cool.png")
+
+        fig = px.scatter(
+            data, x='overall', y='rating', opacity=0.65,
+            trendline='ols', trendline_color_override='darkblue'
+        )
+        fig.write_image(self.output_path)
 
 
 if __name__ == "__main__":
