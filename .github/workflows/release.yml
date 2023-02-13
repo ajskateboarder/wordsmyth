@@ -2,6 +2,7 @@ on:
   push:
     branches:
       - minimal
+  workflow_dispatch
 
 jobs:
   release-on-push:
@@ -9,6 +10,11 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
+    - id: get-commit-level
+      run: |
+        commit=$(echo ${{ github.event.head_commit.message }} | grep -P '\[.*?\]')
+        echo "::set-output name=commit::$commit"
+      - run: echo "${{steps.get-commit-level.outputs.commit}}"
       if: contains(${{ github.event.head_commit.message }}, '[patch]')
         - uses: rymndhng/release-on-push-action@master
           with:
