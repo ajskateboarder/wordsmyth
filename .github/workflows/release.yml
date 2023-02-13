@@ -9,6 +9,11 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: rymndhng/release-on-push-action@master
-        with:
-          bump_version_scheme: patch
+      if: contains(${{ github.event.head_commit.message }}, '[patch]')
+        - uses: rymndhng/release-on-push-action@master
+          with:
+            bump_version_scheme: patch
+      if: contains(${{ github.event.head_commit.message }}, '[minor]')
+        - uses: rymndhng/release-on-push-action@master
+          with:
+            bump_version_scheme: minor
