@@ -19,6 +19,6 @@ jobs:
     steps:
       - id: get-commit-level
         run: |
-          commit=$(echo ${{ github.event.head_commit.message }} | grep -P '\[.*?\]')
+          commit=$(echo ${{ github.event.head_commit.message }} | grep -P '\[\K[^]]*')
           echo "::set-output name=commit::$commit"
           echo "${{steps.get-commit-level.outputs.commit}}"
