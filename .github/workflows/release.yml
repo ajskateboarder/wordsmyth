@@ -22,6 +22,7 @@ jobs:
         run: |
           commit=$(echo ${{ github.event.head_commit.message }} | grep -Po '\[\K[^]]*')
           echo "::set-output name=commit::$commit"
+      - name: Push version
       - uses: rymndhng/release-on-push-action@master
         with:
           bump_version_scheme: ${{steps.get-commit-level.outputs.commit}}
