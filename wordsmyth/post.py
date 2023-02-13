@@ -80,8 +80,8 @@ def rate(text: Item, emojimap: list) -> Union[int, float]:
         score = score - 0.2
     if text.sentiment.map == "neg" and text.sentiment.flair == "neg":
         score = score + 0.5
-    # if round(1 - score, 4) < 0.8667:
-    #     score = score - abs(em_mean)
+    if round(1 - score, 4) < 0.8667:
+        score = score - abs(em_mean)
 
     rating = round(1 - score, 4) / 2
-    return rating
+    return min(5, rating)
