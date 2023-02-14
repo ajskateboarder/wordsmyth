@@ -14,7 +14,7 @@ import logging
 warnings.filterwarnings("ignore")
 
 
-logging.basicConfig(filename="pipeline.log")
+logging.basicConfig(filename="data/pipeline.log")
 logger = logging.getLogger()
 
 with open("emojimap.json", encoding="utf-8") as fh:
@@ -36,13 +36,17 @@ class CommentSource(luigi.Task):
 @requires(CommentSource)
 class ModelEval(luigi.Task):
     def output(self):
-        return luigi.LocalTarget("comments.pkl", format=Nop)
+        return luigi.LocalTarget("data/comments.pkl", format=Nop)
 
     def run(self):
         with self.input().open("r") as infile:
-            comments = pd.read_json(StringIO(infile.read()))[
-                ["reviewText", "overall"]
-            ].head(50)
+            comments = (
+                pd.read_json(StringIO(infile.read()))[["reviewText", "overall"]]
+                .head(300)
+                .drop_duplicates(["reviewText"])
+                .reset_index(drop=True)
+            )
+            print(len(comments))
         outputs = []
 
         for flair, torch, actual_rating in zip(
@@ -50,6 +54,7 @@ class ModelEval(luigi.Task):
             predict_torchmoji(comments.reviewText, emojis=10),
             comments["overall"],
         ):
+            print(flair, torch)
             comment = dict(torch, **flair)
             df = pd.json_normalize(comment).assign(**comment["sentiment"])
 
@@ -70,7 +75,7 @@ class ModelEval(luigi.Task):
 @requires(ModelEval)
 class Rate(luigi.Task):
     def output(self):
-        return luigi.LocalTarget("reviews.pkl", format=Nop)
+        return luigi.LocalTarget("data/reviews.pkl", format=Nop)
 
     def run(self):
         with self.input().open("rb") as infile:
@@ -78,34 +83,46 @@ class Rate(luigi.Task):
         ratings = []
         for item in data.itertuples():
             # NOTE: This can most likely be replaced by a dot-access method
-            itemdict = {key: getattr(item, key) for key in item.__match_args__}
-            fixed = {k: v for k, v in itemdict.items() if not k in ("count", "Index", "index")}["fixed"]
+            itemdict = {key: getattr(item, key) for key in dir(item) if not "_" in key}
+            fixed = {
+                k: v
+                for k, v in itemdict.items()
+                if not k in ("count", "Index", "index")
+            }["fixed"]
             ratings.append(round(rate(fixed, rateem) * 10, 4))
         data["rating"] = ratings
         with self.output().open("wb") as outfile:
             pickle.dump(data, outfile)
+
 
 @requires(Rate)
 class RateTable(luigi.Task):
     def run(self):
         with self.input().open("rb") as infile:
             data: pd.DataFrame = pickle.load(infile)
-        
-        print(data[["overall", "rating", "text"]])
+        data = data.drop_duplicates(["text"]).reset_index(drop=True)
+
+        print(data[["overall", "rating", "text", "score"]])
+        print(data.describe())
+
 
 @requires(Rate)
 class RatePlot(luigi.Task):
-    output_path = luigi.Parameter(default="output.html")
+    output_path = luigi.Parameter(default="data/output.html")
 
     def run(self):
         with self.input().open("rb") as infile:
             data: pd.DataFrame = pickle.load(infile)
 
-        data = data.loc[data.astype(str).drop_duplicates().index]
+        data = data.drop_duplicates(["text"]).reset_index(drop=True)
 
         fig = px.scatter(
-            data, x='overall', y='rating', opacity=0.65,
-            trendline='ols', trendline_color_override='darkblue'
+            data,
+            x="overall",
+            y="rating",
+            opacity=0.65,
+            trendline="ols",
+            trendline_color_override="darkblue",
         )
         fig.write_html(self.output_path)
 

@@ -14,3 +14,5 @@ venv.bak/
 .pytest_cache/
 pyrightconfig.json
 .mypy_cache/
+data/*.pkl
+data/*.log
