@@ -2,9 +2,6 @@
 
 # Wordsmyth
 
-> **Note**:
-> This is a minimal rewrite of Wordsmyth's main branch to make it less complex. Please visit branch `main` to see the current source code.
-
 Wordsmyth is a free and open-source tool to ease the pains of manual comment analysis among content creators and users.
 
 Instead of relying on star ratings given by the user, Wordsmyth **generates them** based on the **text sentiment** using a pair of models and well-tested output finetuning.
@@ -38,10 +35,16 @@ You can now download some comments to test the pipeline. For instance, with the 
 python3 scripts/comments.py | jq > comments.json
 ```
 
-Then pass the comments into the rating pipeline:
+Then pass the comments into either the `RateTable` or `RatePlot` pipeline:
 
 ```bash
-python3 evaluate_comments.py RateComments --comments example.json
+python3 evaluate_comments.py RateTable --comments example.json
 ```
 
-You should have the ratings printed to your terminal.
+`RateTable` prints the head and tail of the evaluated reviews and prints a summary of the data. `RatePlot` generates an interactive plot of the evaluated reviews like below:
+
+<div align=center>
+    <img src="./media/review_plot.png" alt="Review plot">
+</div><br>
+
+Both of these pipelines use [Pickle](https://docs.python.org/3/library/pickle.html) files to persist the output data to be cached easily.
