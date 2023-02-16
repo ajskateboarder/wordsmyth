@@ -62,24 +62,24 @@ def fix_content(text: dict, emojimap: dict) -> Item:
 
 
 def rate(text: Item, emojimap: list) -> Union[int, float]:
-    pos_emojis = [e for e in emojimap if e["sentiment"] == "pos"]
+    positive_emojis = [e for e in emojimap if e["sentiment"] == "pos"]
 
     picked = [e for e in emojimap if (text.fixed or text.emoji) == e["repr"]][0]
     score = np.mean([float(picked["pos"]), float(picked["neu"]), float(picked["neg"])])
     em_mean = np.mean([float(e["score"]) for e in emojimap if e["repr"] in text.emojis])
-    
-    if elem["sentiment"]["flair"] == "neg":
-        score = (score - 0.2 * float(picked["pos"])) * 2.5
-    if elem["sentiment"]["map"] == "neg":
-        score = score - 0.2 * float(picked["neg"])
-    if elem["sentiment"]["map"] == "pos" and elem["sentiment"]["flair"] == "pos":
-        score = score - 0.2
-    if "🤣" in elem["content"]:
-        score = score - 0.2
-        
-    if any(e["repr"] in elem["emojis"] for e in pos_emojis):
-        score = score - 0.2
 
+    if text.sentiment.flair == "neg":
+        score = (score - 0.2 * float(picked["pos"])) * 2
+    if text.sentiment.map == "neg":
+        score = score - 0.2 * float(picked["neg"])
+    if text.sentiment.map == "pos" and text.sentiment.flair == "pos":
+        score = score - 0.2
+    if "🤣" in text.content:
+        score = score - 0.2
+    if any(e["repr"] in text.emojis for e in positive_emojis):
+        score = score - 0.2
+    if text.sentiment.map == "neg" and text.sentiment.flair == "neg":
+        score = score + 0.5
     if round(1 - score, 4) < 0.8667:
         score = score - abs(em_mean)
 
