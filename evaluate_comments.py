@@ -104,6 +104,7 @@ class RateTable(luigi.Task):
 
         print(data[["overall", "rating", "text", "score"]])
         print(data.describe())
+        print(data["rating"].mean())
 
 
 @requires(Rate)

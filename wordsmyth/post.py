@@ -1,11 +1,13 @@
 """Post-processing utilities for algorithm data"""
+from __future__ import annotations
+
 from typing import Union
 import numpy as np
 
-from .items import Item
+from .types import Item
 
 
-def find_indices(content, classes):
+def find_indices(content: list[str], classes: list[str]) -> list[int]:
     """Helper function to find all indices of a list using another list"""
     occurences = [e in content for e in classes]
     indices = [i for i, x in enumerate(occurences) if x is True]
@@ -13,7 +15,7 @@ def find_indices(content, classes):
     return list(content.index(classes[i]) for i in indices)
 
 
-def fix_content(text: dict, emojimap: dict) -> Item:
+def fix_content(text: dict, emojimap: dict) -> Union[Item, None]:
     """Assign a more accurate emoji to a text given TorchMoji and Flair output"""
 
     # These emojis often show up in TorchMoji responses, so these are checked
@@ -59,6 +61,7 @@ def fix_content(text: dict, emojimap: dict) -> Item:
 
         obj["status"] = "correct"
         return Item(**obj)
+    return None
 
 
 def rate(text: Item, emojimap: list) -> Union[int, float]:
@@ -83,5 +86,5 @@ def rate(text: Item, emojimap: list) -> Union[int, float]:
     if round(1 - score, 4) < 0.8667:
         score = score - abs(em_mean)
 
-    rating = round(1 - score, 4) / 2
-    return min(5, rating)
+    rating = min(5, (round(1 - score, 4) / 2))  # type: ignore
+    return rating  # type: ignore
