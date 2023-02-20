@@ -28,16 +28,12 @@ pip install -r requirements.txt
 ./helper model
 ```
 
-You can now download some comments to test the pipeline. For instance, with the provided YouTube comment script:
-
-```bash
-python3 scripts/comments.py | jq > comments.json
-```
+You can now download some comments to test the pipeline. For instance, with the provided fetching scripts in `scripts/`
 
 Then pass the comments into either the `RateTable` or `RatePlot` pipeline:
 
 ```bash
-python3 evaluate_comments.py RateTable --comments example.json
+luigi --module wordsmyth.pipeline RateTable --comments example.json --local-scheduler
 ```
 
 `RateTable` prints the head and tail of the evaluated reviews and prints a summary of the data. `RatePlot` generates an interactive plot of the evaluated reviews like below:

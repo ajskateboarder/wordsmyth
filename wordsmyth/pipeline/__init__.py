@@ -1,15 +1,17 @@
-from wordsmyth.post import fix_content, rate
-from wordsmyth.models import predict_flair, predict_torchmoji
+import json
+import logging
+import pickle
+import warnings
+from io import StringIO
+
 import luigi
+import pandas as pd
 from luigi.format import Nop
 from luigi.util import requires
-import plotly.express as px
-import pandas as pd
-import pickle
-from io import StringIO
-import json
-import warnings
-import logging
+
+from wordsmyth.models import predict_flair, predict_torchmoji
+from wordsmyth.post import fix_content, rate
+from wordsmyth.pipeline.plot import scatter_comments
 
 warnings.filterwarnings("ignore")
 
@@ -19,8 +21,8 @@ logger = logging.getLogger()
 
 with open("emojimap.json", encoding="utf-8") as fh:
     em = {e["repr"]: e for e in json.load(fh)}
-    em[":cry:"]["sentiment"] = "neg"
-    em[":grimacing:"]["sentiment"] = "neu"
+    # em[":cry:"]["sentiment"] = "neg"
+    # em[":grimacing:"]["sentiment"] = "neu"
 
 with open("emojimap.json", encoding="utf-8") as fh:
     rateem = json.load(fh)
@@ -114,18 +116,8 @@ class RatePlot(luigi.Task):
     def run(self):
         with self.input().open("rb") as infile:
             data: pd.DataFrame = pickle.load(infile)
-
-        data = data.drop_duplicates(["text"]).reset_index(drop=True)
-
-        fig = px.scatter(
-            data,
-            x="overall",
-            y="rating",
-            opacity=0.65,
-            trendline="ols",
-            trendline_color_override="darkblue",
-        )
-        fig.write_html(self.output_path)
+        plot = scatter_comments(data)
+        plot.write_html(self.output_path)
 
 
 if __name__ == "__main__":

@@ -5,8 +5,9 @@ Comment downloader:
 Script to bulk request comments and dump them to a JSON file as chunks
 """
 
-import sys
 import json
+import sys
+
 from youtube_comment_downloader import YoutubeCommentDownloader
 
 _yt = YoutubeCommentDownloader()

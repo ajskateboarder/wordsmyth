@@ -7,8 +7,8 @@ import json
 from typing import List, Union
 
 import numpy as np
-from torchmoji.sentence_tokenizer import SentenceTokenizer
 from torchmoji.model_def import torchmoji_emojis
+from torchmoji.sentence_tokenizer import SentenceTokenizer
 
 EMOJIS = ":joy: :unamused: :weary: :sob: :heart_eyes: \
 :pensive: :ok_hand: :blush: :heart: :smirk: \
