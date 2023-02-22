@@ -1,11 +1,9 @@
 """Post-processing utilities for algorithm data"""
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Any
 
 import numpy as np
-
-from .types import Item
 
 
 def find_indices(content: list[str], classes: list[str]) -> list[int]:
@@ -16,7 +14,7 @@ def find_indices(content: list[str], classes: list[str]) -> list[int]:
     return list(content.index(classes[i]) for i in indices)
 
 
-def fix_content(text: dict, emojimap: dict) -> Union[Item, None]:
+def fix_content(text: dict, emojimap: dict) -> Union[dict[str, Any], None]:
     """Assign a more accurate emoji to a text given TorchMoji and Flair output"""
 
     # These emojis often show up in TorchMoji responses, so these are checked
@@ -55,34 +53,34 @@ def fix_content(text: dict, emojimap: dict) -> Union[Item, None]:
             if text["sentiment"] == fixed.get("sentiment"):
                 obj["fixed"] = fixed.get("repr")
                 obj["status"] = "fixed"
-                return Item(**obj)
+                return obj
 
             obj["status"] = "incorrect"
-            return Item(**obj)
+            return obj
 
         obj["status"] = "correct"
-        return Item(**obj)
+        return obj
     return None
 
 
-def rate(text: Item, emojimap: list) -> Union[int, float]:
+def rate(text: dict[str, Any], emojimap: list) -> Union[int, float]:
     positive_emojis = [e for e in emojimap if e["sentiment"] == "pos"]
 
-    picked = [e for e in emojimap if (text.fixed or text.emoji) == e["repr"]][0]
+    picked = [e for e in emojimap if (text["fixed"] or text["emoji"]) == e["repr"]][0]
     score = np.mean([float(picked["pos"]), float(picked["neu"]), float(picked["neg"])])
-    em_mean = np.mean([float(e["score"]) for e in emojimap if e["repr"] in text.emojis])
+    em_mean = np.mean([float(e["score"]) for e in emojimap if e["repr"] in text["emojis"]])
 
-    if text.sentiment.flair == "neg":
+    if text["sentiment"]["flair"] == "neg":
         score = (score - 0.2 * float(picked["pos"])) * 2
-    if text.sentiment.map == "neg":
+    if text["sentiment"]["map"] == "neg":
         score = score - 0.2 * float(picked["neg"])
-    if text.sentiment.map == "pos" and text.sentiment.flair == "pos":
+    if text["sentiment"]["map"] == "pos" and text["sentiment"]["flair"] == "pos":
         score = score - 0.2
-    if "🤣" in text.content:
+    if "🤣" in text["content"]:
         score = score - 0.2
-    if any(e["repr"] in text.emojis for e in positive_emojis):
+    if any(e["repr"] in text["emojis"] for e in positive_emojis):
         score = score - 0.2
-    if text.sentiment.map == "neg" and text.sentiment.flair == "neg":
+    if text["sentiment"]["map"] == "neg" and text["sentiment"]["flair"] == "neg":
         score = score + 0.5
     if round(1 - score, 4) < 0.8667:
         score = score - abs(em_mean)

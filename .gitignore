@@ -16,3 +16,4 @@ pyrightconfig.json
 .mypy_cache/
 data/*.pkl
 data/*.log
+.coverage
