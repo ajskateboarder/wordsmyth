@@ -1,5 +1,6 @@
-import seaborn as sns
 from pandas import DataFrame
+
+import seaborn as sns
 from seaborn.axisgrid import FacetGrid
 
 DARK_PLOT = {

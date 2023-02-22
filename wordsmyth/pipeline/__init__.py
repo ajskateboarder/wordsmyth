@@ -10,11 +10,10 @@ from luigi.format import Nop
 from luigi.util import requires
 
 from wordsmyth.models import predict_flair, predict_torchmoji
-from wordsmyth.post import fix_content, rate
-from wordsmyth.pipeline.plot import scatter_comments
+from wordsmyth.pipeline.plot import catplot_comments
+from wordsmyth.rate import fix_content, rate
 
 warnings.filterwarnings("ignore")
-
 
 logging.basicConfig(filename="data/pipeline.log")
 logger = logging.getLogger()
@@ -23,9 +22,7 @@ with open("emojimap.json", encoding="utf-8") as fh:
     em = {e["repr"]: e for e in json.load(fh)}
     # em[":cry:"]["sentiment"] = "neg"
     # em[":grimacing:"]["sentiment"] = "neu"
-
-with open("emojimap.json", encoding="utf-8") as fh:
-    rateem = json.load(fh)
+    pem = json.load(fh)
 
 
 class CommentSource(luigi.Task):
@@ -48,7 +45,7 @@ class ModelEval(luigi.Task):
                 .drop_duplicates(["reviewText"])
                 .reset_index(drop=True)
             )
-            print(len(comments))
+
         outputs = []
 
         for flair, torch, actual_rating in zip(
@@ -91,7 +88,7 @@ class Rate(luigi.Task):
                 for k, v in itemdict.items()
                 if not k in ("count", "Index", "index")
             }["fixed"]
-            ratings.append(round(rate(fixed, rateem) * 10, 4))
+            ratings.append(round(rate(fixed, pem) * 10, 4))
         data["rating"] = ratings
         with self.output().open("wb") as outfile:
             pickle.dump(data, outfile)
@@ -111,13 +108,15 @@ class RateTable(luigi.Task):
 
 @requires(Rate)
 class RatePlot(luigi.Task):
-    output_path = luigi.Parameter(default="data/output.html")
+    output_path = luigi.Parameter(default="data/output.png")
+    dark = luigi.BoolParameter()
 
     def run(self):
         with self.input().open("rb") as infile:
             data: pd.DataFrame = pickle.load(infile)
-        plot = scatter_comments(data)
-        plot.write_html(self.output_path)
+
+        plot = catplot_comments(data, self.dark)
+        plot.savefig(self.output_path)
 
 
 if __name__ == "__main__":
