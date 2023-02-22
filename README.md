@@ -36,17 +36,19 @@ Then pass the comments into either the `RateTable` or `RatePlot` pipeline:
 luigi --module wordsmyth.pipeline RateTable --comments example.json --local-scheduler
 ```
 
-`RateTable` prints the head and tail of the evaluated reviews and prints a summary of the data. `RatePlot` generates an interactive plot of the evaluated reviews like below:
+`RateTable` prints information about the output data. `RatePlot` generates an categorical plot of the evaluated reviews like below:
 
 <div align=center>
-    <img src="./media/review_plot.png" alt="Review plot">
+    <img src="./media/catplot.png" alt="Review plot">
 </div><br>
+
+Light mode is the default, but dark mode can be enabled like above by passing in `--dark`.
 
 Both of these pipelines use [Pickle](https://docs.python.org/3/library/pickle.html) files to persist the output data to be cached easily.
 
 ## Caveats
 
-These are some imperfections with this algorithm, but these can possibly be fixed in the future.
+Slight issues with the algorithm which can possibly be fixed in the future.
 
 ### Vague comments
 

@@ -1,19 +1,26 @@
+import seaborn as sns
 from pandas import DataFrame
+from seaborn.axisgrid import FacetGrid
 
-import plotly.express as px
-from plotly.graph_objs._figure import Figure
+DARK_PLOT = {
+    "axes.facecolor": "black",
+    "figure.facecolor": "black",
+    "xtick.color": "white",
+    "ytick.color": "white",
+    "grid.color": "#303030",
+}
 
 
-def scatter_comments(data: DataFrame) -> Figure:
+def catplot_comments(data: DataFrame, dark: bool = False) -> FacetGrid:
+    """Create a categorical plot of the complete data"""
+
     data = data.drop_duplicates(["text"]).reset_index(drop=True)
 
-    fig = px.density_heatmap(
-        data,
-        x="overall",
-        y="rating",
-        text_auto=True,
-    )
-    fig.update_yaxes(range=[1, 5])
-    fig.update_xaxes(range=[1, 5])
+    if dark:
+        sns.set(rc=DARK_PLOT)
 
-    return fig
+    return (
+        sns.catplot(data, x="overall", y="rating", palette="pastel", hue="overall")
+        .set_axis_labels("Actual rating", "Predicted rating")
+        .set(xlim=(-1, 5), ylim=(0, 6))
+    )
