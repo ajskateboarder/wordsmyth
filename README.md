@@ -1,6 +1,6 @@
 <picture>
 <source media="(prefers-color-scheme: dark)" srcset="./media/logo_dark.svg" width=130 align=right />
-<img alt="The Wordsmyth logo" src="./media/logo.svg" align="right">
+<img alt="The Wordsmyth logo" src="./media/logo.svg" align="right" width=130>
 </picture>
 
 # Wordsmyth
