@@ -9,7 +9,7 @@ import pandas as pd
 from luigi.format import Nop
 from luigi.util import requires
 
-from wordsmyth.models import predict_flair, predict_torchmoji
+from wordsmyth import Wordsmyth
 from wordsmyth.pipeline.plot import catplot_comments
 from wordsmyth.rate import fix_content, rate
 
@@ -34,10 +34,10 @@ class CommentSource(luigi.Task):
 
 @requires(CommentSource)
 class ModelEval(luigi.Task):
-    def output(self):
+    def output(self) -> luigi.LocalTarget:
         return luigi.LocalTarget("data/comments.pkl", format=Nop)
 
-    def run(self):
+    def run(self) -> None:
         with self.input().open("r") as infile:
             comments = (
                 pd.read_json(StringIO(infile.read()))[["reviewText", "overall"]]

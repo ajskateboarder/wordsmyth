@@ -1,0 +1,34 @@
+[
+    {
+        "reviewText": "\nnot much to say about it it does what is advertised and is pretty stable\n",
+        "overall": 5
+    },
+    {
+        "reviewText": "\nHad planned on some VOIP applications and found that software developers had not yet properly developed and tested with this SBC.\n",
+        "overall": 2
+    },
+    {
+        "reviewText": "\nFor the price, you get exactly everything you need for a headless server - memory, ethernet, a microSD slot, low power consumption, and even a USB port in case you want to connect to a wifi network or provide a serial console to another machine. Performance is excellent and power is almost never more than 1/2 an amp.If someone made a PCI bracket mount for this, I'd install these in all of my colocated servers.\n",
+        "overall": 5
+    },
+    {
+        "reviewText": "\nNote that I received a NanoPi Neo v1.3, not a v1.4 as shown in the photos.Very happy with it.\n",
+        "overall": 5
+    },
+    {
+        "reviewText": "\nNot as advertised. Sending back.\n",
+        "overall": 1
+    },
+    {
+        "reviewText": "\nThe UART implementation on these is garbage, it might work well enough for some other stuff but using UART to control or communicate is not turned on by default and is an enormous hastle to turn on, and even after that it isn't working well at all. I've used and own several SBCs, these were attractive due to their size - this one doesn't work for me (all the others do) though so it is useless despite the convenient size.\n",
+        "overall": 2
+    },
+    {
+        "reviewText": "\nNice pi with ethernet. Perfect for a dns server.\n",
+        "overall": 5
+    },
+    {
+        "reviewText": "\nfor a lot less money than a RaspberryPi, this will handle many of the same tasks.If all you need is a headless system (no screen) this will work great. I was able to install Armbian very easily, and then got this setup and running as a Pi-hole server in about 20 minutes. would also work great for a simple NAS, print server or webserver.\n",
+        "overall": 5
+    }
+]

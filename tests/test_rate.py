@@ -1,4 +1,4 @@
 """Tests for rating ML-content in `wordsmyth/rate.py`"""
 import pytest
 
-from wordsmyth.rate import rate, fix_content
+from wordsmyth.utils import rate, fix_content

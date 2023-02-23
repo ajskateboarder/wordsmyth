@@ -6,7 +6,7 @@ from typing import Dict, Union
 from flair.data import Sentence
 from flair.models import TextClassifier
 
-MUTEX = Lock()
+LOCK = Lock()
 
 
 class Flair:
@@ -16,15 +16,12 @@ class Flair:
     def predict(self, text: str) -> Dict[str, Union[str, float]]:
         """Sentiment prediction with some mutex stuff"""
 
-        MUTEX.acquire()
-        try:
+        with LOCK:
             sentence = Sentence(text)
             self.sia.predict(sentence)
 
             sent = sentence.labels[0]
             score = sentence.score
-        finally:
-            MUTEX.release()
 
         if "POSITIVE" in str(sent):
             return {"sentiment": "pos", "score": score}
