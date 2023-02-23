@@ -16,16 +16,15 @@ class Wordsmyth:
 
     def model_eval(self, texts: list[list[str]]):
         """Evaluate multiple chunks of text through both Flair and TorchMoji"""
-        with Pool(processes=len(texts)) as pool:
-            for flair, torch in zip(pool.map(self.flair, texts)):
+        with Pool() as pool:
+            for flair, torch in zip(pool.map(self.flair, texts), pool.map(self.torchmoji, texts)):
                 print(list(flair), list(torch))
 
     def flair(self, text: InputType) -> Generator[dict[str, Union[str, float]], None, None]:
         """Evaluate a single text or a list of texts through Flair's `en-sentiment` model"""
         if isinstance(text, str):
             text = [text]
-        for sentence in text:
-            yield self._flair.predict(sentence)
+        return [self._flair.predict(sentence) for sentence in text]
 
     def torchmoji(
         self, text: InputType, top_n: int
@@ -33,5 +32,4 @@ class Wordsmyth:
         """Evaluate a single text or a list of texts through the TorchMoji model"""
         if isinstance(text, str):
             text = [text]
-        for sentence in text:
-            yield self._torchmoji.predict(sentence, top_n=top_n)
+        return [self._torchmoji.predict(sentence, top_n=top_n) for sentence in text]
