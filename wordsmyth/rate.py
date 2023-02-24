@@ -1,6 +1,7 @@
 from __future__ import annotations
 from typing import Union, Generator
-from multiprocessing import Pool
+from itertools import repeat
+from pathos.multiprocessing import Pool
 
 from .rate_utils import fix_content, rate
 
@@ -14,11 +15,11 @@ class Wordsmyth:
         self._flair = Flair()
         self._torchmoji = TorchMoji()
 
-    def model_eval(self, texts: list[list[str]]):
+    def model_eval(self, texts: list[list[str]], emojis: int) -> None:
         """Evaluate multiple chunks of text through both Flair and TorchMoji"""
         with Pool() as pool:
-            for flair, torch in zip(pool.map(self.flair, texts), pool.map(self.torchmoji, texts)):
-                print(list(flair), list(torch))
+            for flair, torch in zip(pool.map(self.flair, texts), pool.map(self.torchmoji, texts, repeat(emojis))):
+                pass
 
     def flair(self, text: InputType) -> Generator[dict[str, Union[str, float]], None, None]:
         """Evaluate a single text or a list of texts through Flair's `en-sentiment` model"""

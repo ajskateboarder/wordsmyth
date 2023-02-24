@@ -3,10 +3,14 @@ import time
 
 from bs4 import BeautifulSoup
 from selenium.webdriver import Firefox
+from selenium.webdriver import FirefoxOptions
 
 
 def get_sources(pages):
-    browser = Firefox()
+    options = FirefoxOptions()
+    options.add_argument("--headless")
+    browser = Firefox(options=options)
+
     for page in range(pages):
         browser.get(
             f"https://www.amazon.com/Innate-vitality-Magnesium-Glycinate-500mg/product-reviews/B07K5WDLBG/?ie=UTF8&reviewerType=all_reviews&pageNumber={page}"
