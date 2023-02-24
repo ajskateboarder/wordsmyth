@@ -17,3 +17,4 @@ pyrightconfig.json
 data/*.pkl
 data/*.log
 .coverage
+scripts/geckodriver.log

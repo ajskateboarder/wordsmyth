@@ -424,3 +424,180 @@ Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
 Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
 console.error: "Error during quit-application-granted: [Exception... \"File error: Not found\"  nsresult: \"0x80520012 (NS_ERROR_FILE_NOT_FOUND)\"  location: \"JS frame :: resource:///modules/BrowserGlue.jsm :: _onQuitApplicationGranted/tasks< :: line 2006\"  data: no]"
 JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+1677273504535	geckodriver	INFO	Listening on 127.0.0.1:56431
+1677273505039	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "39765" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilecdYV4s"
+*** You are running in headless mode.
+1677273506123	Marionette	INFO	Marionette enabled
+1677273506132	Marionette	INFO	Listening on port 39925
+WebDriver BiDi listening on ws://localhost:39765
+Read port: 39925
+1677273506398	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilecdYV4s/search.json.mozlz4", (void 0)))
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+DevTools listening on ws://localhost:39765/devtools/browser/e9e69229-671d-4c25-b622-f5c9ab9f6813
+JavaScript warning: https://www.amazon.com/product-reviews/B072X7L7RJ/?ie=UTF8&reviewerType=all_reviews&pageNumber=1 line 3211 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://www.amazon.com/product-reviews/B072X7L7RJ/?ie=UTF8&reviewerType=all_reviews&pageNumber=2 line 2919 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://www.amazon.com/product-reviews/B072X7L7RJ/?ie=UTF8&reviewerType=all_reviews&pageNumber=3 line 2919 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://www.amazon.com/product-reviews/B072X7L7RJ/?ie=UTF8&reviewerType=all_reviews&pageNumber=4 line 2932 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+1677273514896	Marionette	INFO	Stopped listening on port 39925
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+console.error: "Error during quit-application-granted: [Exception... \"File error: Not found\"  nsresult: \"0x80520012 (NS_ERROR_FILE_NOT_FOUND)\"  location: \"JS frame :: resource:///modules/BrowserGlue.jsm :: _onQuitApplicationGranted/tasks< :: line 2006\"  data: no]"
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+1677273548719	geckodriver	INFO	Listening on 127.0.0.1:48745
+1677273548725	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "59827" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileOqekoo"
+*** You are running in headless mode.
+1677273549221	Marionette	INFO	Marionette enabled
+1677273549228	Marionette	INFO	Listening on port 39801
+Read port: 39801
+WebDriver BiDi listening on ws://localhost:59827
+1677273549374	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileOqekoo/search.json.mozlz4", (void 0)))
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+DevTools listening on ws://localhost:59827/devtools/browser/eaf9ded1-4b90-4775-ac75-41e21b206806
+JavaScript warning: https://www.amazon.com/product-reviews/B072X7L7RJ/?ie=UTF8&reviewerType=all_reviews&pageNumber=1 line 3211 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://www.amazon.com/product-reviews/B072X7L7RJ/?ie=UTF8&reviewerType=all_reviews&pageNumber=2 line 2919 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://www.amazon.com/product-reviews/B072X7L7RJ/?ie=UTF8&reviewerType=all_reviews&pageNumber=3 line 2919 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://www.amazon.com/product-reviews/B072X7L7RJ/?ie=UTF8&reviewerType=all_reviews&pageNumber=4 line 2919 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+1677273558601	Marionette	INFO	Stopped listening on port 39801
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+console.error: "Error during quit-application-granted: [Exception... \"File error: Not found\"  nsresult: \"0x80520012 (NS_ERROR_FILE_NOT_FOUND)\"  location: \"JS frame :: resource:///modules/BrowserGlue.jsm :: _onQuitApplicationGranted/tasks< :: line 2006\"  data: no]"
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+1677273583729	geckodriver	INFO	Listening on 127.0.0.1:39367
+1677273583733	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "43441" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilehokKd4"
+1677273584229	Marionette	INFO	Marionette enabled
+1677273584233	Marionette	INFO	Listening on port 34303
+Read port: 34303
+WebDriver BiDi listening on ws://localhost:43441
+1677273584347	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilehokKd4/search.json.mozlz4", (void 0)))
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+DevTools listening on ws://localhost:43441/devtools/browser/2238cebf-6953-425a-ab68-7537b87e868e
+ATTENTION: default value of option mesa_glthread overridden by environment.
+JavaScript warning: https://www.amazon.com/product-reviews/B072X7L7RJ/?ie=UTF8&reviewerType=all_reviews&pageNumber=1 line 3088 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://www.amazon.com/product-reviews/B072X7L7RJ/?ie=UTF8&reviewerType=all_reviews&pageNumber=2 line 2796 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://www.amazon.com/product-reviews/B072X7L7RJ/?ie=UTF8&reviewerType=all_reviews&pageNumber=3 line 2796 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://www.amazon.com/product-reviews/B072X7L7RJ/?ie=UTF8&reviewerType=all_reviews&pageNumber=4 line 2796 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+1677273592551	Marionette	INFO	Stopped listening on port 34303
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+console.error: "Error during quit-application-granted: [Exception... \"File error: Not found\"  nsresult: \"0x80520012 (NS_ERROR_FILE_NOT_FOUND)\"  location: \"JS frame :: resource:///modules/BrowserGlue.jsm :: _onQuitApplicationGranted/tasks< :: line 2006\"  data: no]"
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+1677273776896	geckodriver	INFO	Listening on 127.0.0.1:35307
+1677273776900	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "59991" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofile2wrR8X"
+1677273777369	Marionette	INFO	Marionette enabled
+1677273777373	Marionette	INFO	Listening on port 36165
+WebDriver BiDi listening on ws://localhost:59991
+Read port: 36165
+1677273777501	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile2wrR8X/search.json.mozlz4", (void 0)))
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+DevTools listening on ws://localhost:59991/devtools/browser/aafd53d4-460f-4945-9d6d-1debb0afd306
+ATTENTION: default value of option mesa_glthread overridden by environment.
+JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=1 line 3431 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+console.error: "Error during quit-application-granted: [Exception... \"File error: Not found\"  nsresult: \"0x80520012 (NS_ERROR_FILE_NOT_FOUND)\"  location: \"JS frame :: resource:///modules/BrowserGlue.jsm :: _onQuitApplicationGranted/tasks< :: line 2006\"  data: no]"
+1677273780251	Marionette	INFO	Stopped listening on port 36165
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+JavaScript error: resource://gre/modules/TerminatorTelemetry.jsm, line 69: AbortError: IOUtils: Shutting down and refusing additional I/O tasks
+1677273781252	geckodriver::marionette	ERROR	Failed to close browser connection: Socket not connected (os error 107)
+1677273787530	geckodriver	INFO	Listening on 127.0.0.1:50511
+1677273787535	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "52511" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofile1AMxd3"
+*** You are running in headless mode.
+1677273787792	Marionette	INFO	Marionette enabled
+1677273787795	Marionette	INFO	Listening on port 35113
+WebDriver BiDi listening on ws://localhost:52511
+Read port: 35113
+1677273787886	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile1AMxd3/search.json.mozlz4", (void 0)))
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+DevTools listening on ws://localhost:52511/devtools/browser/347c16bf-005d-4409-b05e-968bb327b85e
+JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=1 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=2 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=3 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=4 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1677273795515	Marionette	INFO	Stopped listening on port 35113
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+console.error: "Error during quit-application-granted: [Exception... \"File error: Not found\"  nsresult: \"0x80520012 (NS_ERROR_FILE_NOT_FOUND)\"  location: \"JS frame :: resource:///modules/BrowserGlue.jsm :: _onQuitApplicationGranted/tasks< :: line 2006\"  data: no]"
+1677273862388	geckodriver	INFO	Listening on 127.0.0.1:36185
+1677273862392	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "49523" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofile2N9Hg4"
+*** You are running in headless mode.
+1677273862652	Marionette	INFO	Marionette enabled
+1677273862656	Marionette	INFO	Listening on port 41603
+WebDriver BiDi listening on ws://localhost:49523
+Read port: 41603
+1677273862749	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile2N9Hg4/search.json.mozlz4", (void 0)))
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+DevTools listening on ws://localhost:49523/devtools/browser/319783e9-a27e-490f-910c-fe1acb6c2bfa
+JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=1 line 3412 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=2 line 3293 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=3 line 3280 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+Exiting due to channel error.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+1677273916702	geckodriver	INFO	Listening on 127.0.0.1:34891
+1677273916707	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "50305" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofile4i3O3b"
+*** You are running in headless mode.
+1677273916989	Marionette	INFO	Marionette enabled
+1677273916993	Marionette	INFO	Listening on port 45685
+WebDriver BiDi listening on ws://localhost:50305
+Read port: 45685
+1677273917093	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile4i3O3b/search.json.mozlz4", (void 0)))
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+DevTools listening on ws://localhost:50305/devtools/browser/e553856c-505b-4ea0-9e09-ab385c68104f
+JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=1 line 3281 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=2 line 3175 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1677273929657	geckodriver	INFO	Listening on 127.0.0.1:56285
+1677273929662	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "34865" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofile5LuYIG"
+*** You are running in headless mode.
+1677273929940	Marionette	INFO	Marionette enabled
+1677273929944	Marionette	INFO	Listening on port 36627
+WebDriver BiDi listening on ws://localhost:34865
+Read port: 36627
+1677273930043	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile5LuYIG/search.json.mozlz4", (void 0)))
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+DevTools listening on ws://localhost:34865/devtools/browser/e2a0ed68-8c2c-49e9-8e91-ce7a0f46dea7
+JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=1 line 3289 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=2 line 3170 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=3 line 3157 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=4 line 3299 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1677273938628	Marionette	INFO	Stopped listening on port 36627
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+console.error: "Error during quit-application-granted: [Exception... \"File error: Not found\"  nsresult: \"0x80520012 (NS_ERROR_FILE_NOT_FOUND)\"  location: \"JS frame :: resource:///modules/BrowserGlue.jsm :: _onQuitApplicationGranted/tasks< :: line 2006\"  data: no]"
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.

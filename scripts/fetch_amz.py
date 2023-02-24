@@ -19,8 +19,7 @@ def get_sources(
 
     browser = Firefox(options=opt)
 
-    for page in range(1, pages + 1):
-        print(page)
+    for page in tqdm(range(1, pages + 1)):
         browser.get(
             f"https://www.amazon.com/product-reviews/{product}/"
             f"?ie=UTF8&reviewerType=all_reviews&pageNumber={page}"
@@ -41,7 +40,6 @@ def main(product: str, pages: int, headless: bool) -> None:
         content = soup.select("div[data-hook='review']")
         for review in content:
             row = review.select_one(".a-row")
-            print(row.text)
             if row is not None:
                 rating = int(
                     row.select_one("i[data-hook='review-star-rating']").text.split(".")[
@@ -64,7 +62,11 @@ if __name__ == "__main__":
     )
     parser.add_argument(dest="product_id", help="Amazon product ID")
     parser.add_argument(dest="pages", help="Number of pages to scrape", type=int)
-    parser.add_argument("--headless", action="store_true")
+    parser.add_argument(
+        "--headful",
+        help="Opens the browser as a GUI for debugging purposes",
+        action="store_true",
+    )
     args = parser.parse_args()
 
-    main(args.product_id, args.pages, not args.headless)
+    main(args.product_id, args.pages, not args.headful)
