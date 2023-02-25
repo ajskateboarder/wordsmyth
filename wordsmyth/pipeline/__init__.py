@@ -51,7 +51,9 @@ class ModelEval(luigi.Task):
             )
 
         outputs = []
-        review_texts = [e.replace("\n", "") for e in comments["reviewText"].to_list()]
+        # Remove weird artifacts left in Amazon review data... hopefully no-one
+        # literally puts "The media could not be loaded" in their review :/
+        review_texts = [e.strip().replace("The media could not be loaded.", "") for e in comments["reviewText"].to_list()]
 
         for comment, actual_rating in zip(
             ws.model_eval(review_texts, emojis=10),
@@ -83,9 +85,8 @@ class Rate(luigi.Task):
             data: pd.DataFrame = pickle.load(infile)
         ratings = []
         for item in data.itertuples():
-            # NOTE: This can most likely be replaced by a dot-access method
             fixed = json.loads(item[-1])
-            ratings.append(round(rate(fixed, pem) * 10, 4))
+            ratings.append(min(round(rate(fixed, pem) * 10, 4), 5))
         data["rating"] = ratings
         with self.output().open("wb") as outfile:
             pickle.dump(data, outfile)
