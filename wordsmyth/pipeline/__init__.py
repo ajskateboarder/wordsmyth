@@ -6,12 +6,13 @@ from io import StringIO
 
 import luigi
 import pandas as pd
+import numpy as np
 from luigi.format import Nop
 from luigi.util import requires
 
 from wordsmyth import Wordsmyth
+from wordsmyth.utils import fix_content, rate
 from wordsmyth.pipeline.plot import catplot_comments
-from wordsmyth.rate import fix_content, rate
 
 warnings.filterwarnings("ignore")
 
@@ -19,10 +20,11 @@ logging.basicConfig(filename="data/pipeline.log")
 logger = logging.getLogger()
 
 with open("emojimap.json", encoding="utf-8") as fh:
-    em = {e["repr"]: e for e in json.load(fh)}
-    # em[":cry:"]["sentiment"] = "neg"
-    # em[":grimacing:"]["sentiment"] = "neu"
     pem = json.load(fh)
+    em = {e["repr"]: e for e in pem}
+    # These sentiments were objectively incorrect so they are adjusted
+    em[":cry:"]["sentiment"] = "neg"
+    em[":grimacing:"]["sentiment"] = "neu"
 
 
 class CommentSource(luigi.Task):
@@ -38,6 +40,8 @@ class ModelEval(luigi.Task):
         return luigi.LocalTarget("data/comments.pkl", format=Nop)
 
     def run(self) -> None:
+        ws = Wordsmyth()
+
         with self.input().open("r") as infile:
             comments = (
                 pd.read_json(StringIO(infile.read()))[["reviewText", "overall"]]
@@ -47,14 +51,12 @@ class ModelEval(luigi.Task):
             )
 
         outputs = []
+        review_texts = [e.replace("\n", "") for e in comments["reviewText"].to_list()]
 
-        for flair, torch, actual_rating in zip(
-            predict_flair(comments.reviewText),
-            predict_torchmoji(comments.reviewText, emojis=10),
+        for comment, actual_rating in zip(
+            ws.model_eval(review_texts, emojis=10),
             comments["overall"],
         ):
-            print(flair, torch)
-            comment = dict(torch, **flair)
             df = pd.json_normalize(comment).assign(**comment["sentiment"])
 
             text = df[["text", "emojis", "sentiment", "score"]]
@@ -62,9 +64,9 @@ class ModelEval(luigi.Task):
 
             if fixed is not None:
                 text["flair"] = df["sentiment.sentiment"]
-                text["map"] = fixed.sentiment.map
+                text["map"] = fixed["sentiment"]["map"]
                 text["overall"] = actual_rating
-                text["fixed"] = fixed
+                text["fixed"] = json.dumps(fixed)
                 outputs.append(text)
 
         with self.output().open("wb") as outfile:
@@ -82,12 +84,7 @@ class Rate(luigi.Task):
         ratings = []
         for item in data.itertuples():
             # NOTE: This can most likely be replaced by a dot-access method
-            itemdict = {key: getattr(item, key) for key in dir(item) if not "_" in key}
-            fixed = {
-                k: v
-                for k, v in itemdict.items()
-                if not k in ("count", "Index", "index")
-            }["fixed"]
+            fixed = json.loads(item[-1])
             ratings.append(round(rate(fixed, pem) * 10, 4))
         data["rating"] = ratings
         with self.output().open("wb") as outfile:

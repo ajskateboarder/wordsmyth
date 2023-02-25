@@ -20,7 +20,6 @@ def fix_content(text: dict, emojimap: dict) -> Union[dict[str, Any], None]:
     # These emojis often show up in TorchMoji responses, so these are checked
     emojis = text["emojis"]
     maps = find_indices(emojis, [":confused:", ":thumbsup:", ":eyes:"])
-
     if len(maps) == 2 or len(maps) == 1:
         # Emojis closer to the front are often more accurate
         first = emojis[min(maps)]
@@ -66,7 +65,9 @@ def fix_content(text: dict, emojimap: dict) -> Union[dict[str, Any], None]:
 def rate(text: dict[str, Any], emojimap: list) -> Union[int, float]:
     positive_emojis = [e for e in emojimap if e["sentiment"] == "pos"]
 
-    picked = [e for e in emojimap if (text["fixed"] or text["emoji"]) == e["repr"]][0]
+    picked = [
+        e for e in emojimap if (text.get("fixed") or text.get("emoji")) == e["repr"]
+    ][0]
     score = np.mean([float(picked["pos"]), float(picked["neu"]), float(picked["neg"])])
     em_mean = np.mean(
         [float(e["score"]) for e in emojimap if e["repr"] in text["emojis"]]
