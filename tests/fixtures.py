@@ -1,9 +1,10 @@
 """Fixtures for mocked Flair and TorchMoji"""
 from __future__ import annotations
+
 from typing import Any
 
-from pytest_mock import MockerFixture
 import pytest
+from pytest_mock import MockerFixture
 
 from wordsmyth.models.flair import Flair
 from wordsmyth.models.torchmoji import TorchMoji

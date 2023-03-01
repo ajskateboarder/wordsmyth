@@ -1,0 +1,42 @@
+chore: delete archive/
+feat: completed async model eval
+chore: remove geckodriver
+feat: possible pool prediction [patch]
+feat: add rate module and remove tests [patch]
+Merge branch 'minimal' of https://github.com/lemystic/wordsmyth into minimal
+feat: add tests (i'm playing the coverage game now) [minor]
+chore: AAAAAAAAAAA
+chore: add dark and light mode logo
+chore: tweak logo AGAIN
+chore: remove extra json and tweak logo
+chore: ignore ipynb, tweak logo, module name change [patch]
+chore: ignore ipynb and rename some modules
+feat: fix notebook [patch]
+fix: delete output.html
+fix: revert rating system [patch]
+docs: add caveats [patch]
+fix: improve accuracy of `rate()` [minor]
+docs: add pipeline info and a plot [patch]
+ci: fix commit levels [patch]
+ci: test commit levels [patch]
+ci: test commit levels [patch]
+ci: test commit levels [patch]
+ci: test commit levels [patch]
+ci: test commit levels [patch]
+ci: test commit levels [patch]
+ci: test commit levels [patch]
+ci: test commit levels [patch]
+ci: test commit levels [patch]
+ci: test patch scheme [patch]
+ci: add dynamic bumping [patch]
+ci: switch to patch for `bump_version_scheme`
+feat: split algorithm step
+feat: output plotly figure
+docs: add status section
+ci: add automatic version bump
+feat: add types to helpers
+chore: move utilities to source folder
+docs(readme): add unstable branch warn
+docs: add todo items and fix instructions
+docs: fix warning block
+docs: document amazon scraper and new pipelinesrefactor!: move future directory to other branch

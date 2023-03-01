@@ -1,7 +1,8 @@
 """Tests for model output generators in `wordsmyth/models/__init__.py`"""
 import pytest
 
-from wordsmyth.models import predict_flair, predict_torchmoji
+from wordsmyth.models import predict_flair
+from wordsmyth.models import predict_torchmoji
 
 
 @pytest.mark.usefixtures("mock_torchmoji")

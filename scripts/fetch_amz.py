@@ -1,12 +1,12 @@
 """A small debug script for downloading Amazon reviews locally"""
-from typing import Generator
 import json
 import time
+from typing import Generator
 
-from tqdm import tqdm
 from bs4 import BeautifulSoup
 from selenium.webdriver import Firefox
 from selenium.webdriver.firefox.options import Options
+from tqdm import tqdm
 
 
 def get_sources(

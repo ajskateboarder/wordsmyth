@@ -2,13 +2,15 @@
 Abstracted library to make emoji processing nicer, mostly from this gist
 https://gist.github.com/cw75/57ca89cfa496f10c7c7b888ec5703d7f#file-emojize-py
 """
-
 import json
-from typing import List, Union
+from typing import List
+from typing import Union
 
 import numpy as np
 from torchmoji.model_def import torchmoji_emojis
 from torchmoji.sentence_tokenizer import SentenceTokenizer
+
+from wordsmyth.constants import DIR_PATH
 
 EMOJIS = ":joy: :unamused: :weary: :sob: :heart_eyes: \
 :pensive: :ok_hand: :blush: :heart: :smirk: \
@@ -26,8 +28,8 @@ EMOJIS = ":joy: :unamused: :weary: :sob: :heart_eyes: \
     " "
 )
 
-VOCAB_FILE_PATH = "./wordsmyth/models/vocabulary.json"
-MODEL_WEIGHTS_PATH = "./wordsmyth/models/pytorch_model.bin"
+VOCAB_FILE_PATH = f"{DIR_PATH}/resources/vocabulary.json"
+MODEL_WEIGHTS_PATH = f"{DIR_PATH}/resources/pytorch_model.bin"
 
 
 def top_elements(array: np.ndarray, k: int) -> np.ndarray:

@@ -5,14 +5,15 @@ import warnings
 from io import StringIO
 
 import luigi
-import pandas as pd
 import numpy as np
+import pandas as pd
 from luigi.format import Nop
 from luigi.util import requires
 
 from wordsmyth import Wordsmyth
-from wordsmyth.utils import fix_content, rate
 from wordsmyth.pipeline.plot import catplot_comments
+from wordsmyth.utils import fix_content
+from wordsmyth.utils import rate
 
 warnings.filterwarnings("ignore")
 
@@ -53,7 +54,10 @@ class ModelEval(luigi.Task):
         outputs = []
         # Remove weird artifacts left in Amazon review data... hopefully no-one
         # literally puts "The media could not be loaded" in their review :/
-        review_texts = [e.strip().replace("The media could not be loaded.", "") for e in comments["reviewText"].to_list()]
+        review_texts = [
+            e.strip().replace("The media could not be loaded.", "")
+            for e in comments["reviewText"].to_list()
+        ]
 
         for comment, actual_rating in zip(
             ws.model_eval(review_texts, emojis=10),

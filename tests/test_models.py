@@ -1,5 +1,6 @@
 """Tests for model output generators in `wordsmyth/models/__init__.py`"""
-from wordsmyth.models import predict_flair, predict_torchmoji
+from wordsmyth.models import predict_flair
+from wordsmyth.models import predict_torchmoji
 
 
 def test_predict_torchmoji() -> None:

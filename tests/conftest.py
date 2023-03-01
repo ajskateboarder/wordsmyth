@@ -1,2 +1,3 @@
 import pytest
-from fixtures import mock_flair, mock_torchmoji
+from fixtures import mock_flair
+from fixtures import mock_torchmoji

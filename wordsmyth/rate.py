@@ -1,10 +1,16 @@
 from __future__ import annotations
 
 import warnings
-from itertools import repeat
 from concurrent.futures import ThreadPoolExecutor
-from typing import Any, Generator, Union
+from itertools import repeat
+from typing import Generator
+from typing import Union
+import json
 
+import attrs
+
+from .constants import DIR_PATH
+from .utils import fix_content, rate
 from .models.flair import Flair
 from .models.torchmoji import TorchMoji
 
@@ -16,24 +22,58 @@ def divide_list(l: list, n: int) -> Generator[list, None, None]:
         yield l[i : i + n]
 
 
+@attrs.define
+class Sentiment:
+    sentiment: str
+    score: float
+
+
+@attrs.define
+class Output:
+    sentiment: Sentiment
+    emojis: list[str]
+    text: str
+
+    def rate(self):
+        with open(f"{DIR_PATH}/resources/emojimap.json", encoding="utf-8") as emojimap:
+            rate_map = json.load(emojimap)
+        fixed = self._fix_content()
+        return rate(fixed, rate_map)
+
+    def _fix_content(self):
+        with open(f"{DIR_PATH}/resources/emojimap.json", encoding="utf-8") as emojimap:
+            fix_map = {e["repr"]: e for e in json.load(emojimap)}
+            fix_map[":cry:"]["sentiment"] = "neg"
+            fix_map[":grimacing:"]["sentiment"] = "neu"
+        return fix_content(attrs.asdict(self), fix_map)
+
+
+
 class Wordsmyth:
     def __init__(self) -> None:
         warnings.filterwarnings("ignore")
         self._flair = Flair()
         self._torchmoji = TorchMoji()
 
-    def model_eval(
-        self, texts: list[str], emojis: int
-    ) -> Generator[dict[str, Any], None, None]:
-        """Evaluate multiple chunks of text through both Flair and TorchMoji"""
-        texts = list(divide_list(texts, 5))
-        with ThreadPoolExecutor(len(texts)) as pool:
-            with ThreadPoolExecutor(len(texts)) as pool:
-                flair = pool.map(self.flair, texts)
-                torchmoji = pool.map(self.torchmoji, texts, repeat(emojis))
-                for resf_, rest_, text_ in zip(flair, torchmoji, texts):
-                    for resf, rest, text in zip(resf_, rest_, text_):
-                        yield {"sentiment": resf, "emojis": rest, "text": text}
+    def eval(self, text: Union[list[str], str], emojis: int) -> Generator[Output, None, None]:
+        """Evaluate a text/list of text through both Flair and TorchMoji"""
+        if isinstance(text, str):
+            text = [text]
+
+        text = list(divide_list(text, 5))
+        with ThreadPoolExecutor(len(text)) as pool:
+            with ThreadPoolExecutor(len(text)) as pool:
+                flair = pool.map(self.flair, text)
+                torchmoji = pool.map(self.torchmoji, text, repeat(emojis))
+                for resf_, rest_, text_ in zip(flair, torchmoji, text):
+                    for fl_result, tm_result, input_text in zip(resf_, rest_, text_):
+                        yield Output(
+                            **{
+                                "sentiment": Sentiment(**fl_result),
+                                "emojis": tm_result,
+                                "text": input_text,
+                            }
+                        )
 
     def flair(self, text: InputType) -> list[dict[str, Union[str, float]]]:
         """Evaluate a single text or a list of texts through Flair's `en-sentiment` model"""

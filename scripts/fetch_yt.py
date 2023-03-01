@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
-
 """
 Comment downloader:
 Script to bulk request comments and dump them to a JSON file as chunks
 """
-
 import json
 import sys
 
