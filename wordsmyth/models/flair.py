@@ -1,7 +1,6 @@
 """Wrappers over Flair and TorchMoji to simplify model prediction"""
 from threading import Lock
-from typing import Dict
-from typing import Union
+from typing import Dict, Union
 
 from flair.data import Sentence
 from flair.models import TextClassifier

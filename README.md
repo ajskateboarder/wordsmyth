@@ -5,9 +5,9 @@
 
 # Wordsmyth
 
-Wordsmyth is a free and open-source tool to ease the pains of manual comment analysis among content creators and users.
+Wordsmyth eases the pains of manual comment analysis among content creators and users.
 
-Instead of relying on star ratings given by the user, Wordsmyth **generates them** based on the **text sentiment** using a pair of models and well-tested output finetuning.
+Instead of relying on star ratings given by the user, Wordsmyth *generates them* based on the text sentiment by applying a pair of models to hardcoded rule-based analysis.
 
 ## Highlights
 
@@ -34,6 +34,8 @@ pip install -r requirements.txt
 You can now download some comments to test the pipeline. For instance, with the provided fetching scripts in `scripts/`
 
 Then pass the comments into either the `RateTable` or `RatePlot` pipeline:
+
+(flair = neg)\rightarrow -0.2*picked_{pos}*2 \\\\
 
 ```bash
 luigi --module wordsmyth.pipeline RateTable --comments example.json --local-scheduler

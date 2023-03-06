@@ -1,18 +1,17 @@
 from __future__ import annotations
 
+import json
 import warnings
 from concurrent.futures import ThreadPoolExecutor
 from itertools import repeat
-from typing import Generator
-from typing import Union
-import json
+from typing import Generator, Union
 
 import attrs
 
 from .constants import DIR_PATH
-from .utils import fix_content, rate
 from .models.flair import Flair
 from .models.torchmoji import TorchMoji
+from .utils import fix_content, rate
 
 InputType = Union[str, "list[str]"]
 

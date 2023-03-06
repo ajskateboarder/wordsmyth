@@ -12,8 +12,7 @@ from luigi.util import requires
 
 from wordsmyth import Wordsmyth
 from wordsmyth.pipeline.plot import catplot_comments
-from wordsmyth.utils import fix_content
-from wordsmyth.utils import rate
+from wordsmyth.utils import fix_content, rate
 
 warnings.filterwarnings("ignore")
 
