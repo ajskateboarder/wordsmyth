@@ -1,3 +1,5 @@
+## Development has moved to branch [minimal](https://github.com/lemystic/wordsmyth)
+
 <img src="./media/logo.svg" width=130 align=right />
 
 # Wordsmyth
