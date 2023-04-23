@@ -6,7 +6,24 @@ from typing import Generator
 from bs4 import BeautifulSoup
 from selenium.webdriver import Firefox
 from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.common.by import By
 from tqdm import tqdm
+
+
+def get_product_links() -> None:
+    browser = Firefox()
+    browser.get("https://www.amazon.com/gp/bestsellers/")
+    links = 0
+    for _ in range(5):
+        for link in browser.find_elements(By.CSS_SELECTOR, "a.a-link-normal"):
+            try:
+                if "product-reviews" in link.get_attribute("href"):
+                    print(link.get_attribute("href"))
+                    links += 1
+            except Exception:
+                break
+        browser.execute_script("window.scrollBy(0,1000)")
+    print(f"{links} LINKS :D")
 
 
 def get_sources(
@@ -55,6 +72,8 @@ def main(product: str, pages: int, headless: bool) -> None:
 
 if __name__ == "__main__":
     import argparse
+
+    get_product_links()
 
     parser = argparse.ArgumentParser(
         description="A small debug script for downloading Amazon reviews locally",

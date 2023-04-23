@@ -1,412 +1,177 @@
-1677348473441	geckodriver	INFO	Listening on 127.0.0.1:41029
-1677348473446	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "48349" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileBRHbIS"
-*** You are running in headless mode.
-1677348473704	Marionette	INFO	Marionette enabled
-1677348473708	Marionette	INFO	Listening on port 46085
-WebDriver BiDi listening on ws://localhost:48349
-Read port: 46085
-1677348473804	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
-[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileBRHbIS/search.json.mozlz4", (void 0)))
+1682264223909	geckodriver	INFO	Listening on 127.0.0.1:34785
+1682264224407	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "37035" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileyt8HMt"
+1682264224933	Marionette	INFO	Marionette enabled
+1682264224946	Marionette	INFO	Listening on port 46863
+WebDriver BiDi listening on ws://localhost:37035
+Read port: 46863
+1682264225118	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileyt8HMt/search.json.mozlz4", (void 0)))
 Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
 Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
-DevTools listening on ws://localhost:48349/devtools/browser/67753858-369c-4588-aacc-24e54db1d53b
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=1 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=2 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=3 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=4 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=5 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=6 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=7 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=8 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=9 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=10 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=11 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=12 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=13 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=14 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=15 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-1677348499480	Marionette	INFO	Stopped listening on port 46085
+DevTools listening on ws://localhost:37035/devtools/browser/dd272ba5-430e-474f-a603-4e9df73ee024
+ATTENTION: default value of option mesa_glthread overridden by environment.
+JavaScript warning: https://www.amazon.com/gp/bestsellers/ line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://m.media-amazon.com/images/I/51EIwpasq4L.js?AUIClients/CardJsRuntimeBuzzCopyBuild, line 32: TypeError: b.cardModuleFactory is not a function
+JavaScript error: https://m.media-amazon.com/images/I/51EIwpasq4L.js?AUIClients/CardJsRuntimeBuzzCopyBuild, line 32: TypeError: b.cardModuleFactory is not a function
+JavaScript error: https://m.media-amazon.com/images/I/51EIwpasq4L.js?AUIClients/CardJsRuntimeBuzzCopyBuild, line 32: TypeError: b.cardModuleFactory is not a function
+JavaScript error: https://m.media-amazon.com/images/I/51EIwpasq4L.js?AUIClients/CardJsRuntimeBuzzCopyBuild, line 32: TypeError: b.cardModuleFactory is not a function
 Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
 Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
 console.error: "Error during quit-application-granted: [Exception... \"File error: Not found\"  nsresult: \"0x80520012 (NS_ERROR_FILE_NOT_FOUND)\"  location: \"JS frame :: resource:///modules/BrowserGlue.jsm :: _onQuitApplicationGranted/tasks< :: line 2006\"  data: no]"
-1677348973056	geckodriver	INFO	Listening on 127.0.0.1:53481
-1677348973060	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "51695" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilecYWDa9"
-*** You are running in headless mode.
-1677348973343	Marionette	INFO	Marionette enabled
-1677348973347	Marionette	INFO	Listening on port 39443
-WebDriver BiDi listening on ws://localhost:51695
-Read port: 39443
-1677348973448	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
-[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilecYWDa9/search.json.mozlz4", (void 0)))
+1682264234968	Marionette	INFO	Stopped listening on port 46863
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1682264263067	geckodriver	INFO	Listening on 127.0.0.1:34207
+1682264263570	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "60341" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileiNh7VZ"
+1682264264073	Marionette	INFO	Marionette enabled
+1682264264078	Marionette	INFO	Listening on port 42973
+WebDriver BiDi listening on ws://localhost:60341
+Read port: 42973
+1682264264276	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileiNh7VZ/search.json.mozlz4", (void 0)))
 Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
 Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
-DevTools listening on ws://localhost:51695/devtools/browser/570e568a-c99f-47a0-baa6-48b88fb8ec25
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=1 line 3299 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=2 line 3303 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=3 line 3297 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=4 line 3284 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=5 line 3284 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=6 line 3297 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=7 line 3284 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=8 line 3284 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=9 line 3297 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=10 line 3284 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=11 line 3379 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=12 line 3392 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=13 line 3276 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-1677349012686	geckodriver	INFO	Listening on 127.0.0.1:49695
-1677349012691	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "39865" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilejC1GjF"
-*** You are running in headless mode.
-1677349012951	Marionette	INFO	Marionette enabled
-1677349012955	Marionette	INFO	Listening on port 45521
-WebDriver BiDi listening on ws://localhost:39865
-Read port: 45521
-1677349013048	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
-[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilejC1GjF/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:60341/devtools/browser/3e05a103-4f88-4e01-b232-5ed6fcc8df22
+ATTENTION: default value of option mesa_glthread overridden by environment.
+JavaScript warning: https://www.amazon.com/gp/bestsellers/ line 2487 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://m.media-amazon.com/images/I/51EIwpasq4L.js?AUIClients/CardJsRuntimeBuzzCopyBuild, line 32: TypeError: b.cardModuleFactory is not a function
+JavaScript error: https://m.media-amazon.com/images/I/51EIwpasq4L.js?AUIClients/CardJsRuntimeBuzzCopyBuild, line 32: TypeError: b.cardModuleFactory is not a function
+JavaScript error: https://m.media-amazon.com/images/I/51EIwpasq4L.js?AUIClients/CardJsRuntimeBuzzCopyBuild, line 32: TypeError: b.cardModuleFactory is not a function
+JavaScript error: https://m.media-amazon.com/images/I/51EIwpasq4L.js?AUIClients/CardJsRuntimeBuzzCopyBuild, line 32: TypeError: b.cardModuleFactory is not a function
+1682264284063	geckodriver	INFO	Listening on 127.0.0.1:40011
+1682264284068	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "49143" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilebkmuDS"
+1682264284659	Marionette	INFO	Marionette enabled
+1682264284666	Marionette	INFO	Listening on port 40215
+Read port: 40215
+WebDriver BiDi listening on ws://localhost:49143
+1682264284826	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilebkmuDS/search.json.mozlz4", (void 0)))
 Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
 Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
-DevTools listening on ws://localhost:39865/devtools/browser/e9f8d056-7bfc-4c0a-b0bd-53c3e0cf2465
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=1 line 3297 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=2 line 3301 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=3 line 3308 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=4 line 3282 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=5 line 3282 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=6 line 3282 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=7 line 3282 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=8 line 3282 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=9 line 3282 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=10 line 3282 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=11 line 3377 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=12 line 3390 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=13 line 3274 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-1677349061832	geckodriver	INFO	Listening on 127.0.0.1:44115
-1677349061836	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "53351" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileeuSxYK"
-*** You are running in headless mode.
-1677349062152	Marionette	INFO	Marionette enabled
-1677349062156	Marionette	INFO	Listening on port 45703
-WebDriver BiDi listening on ws://localhost:53351
-Read port: 45703
-1677349062363	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
-[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileeuSxYK/search.json.mozlz4", (void 0)))
-Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
-Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
-DevTools listening on ws://localhost:53351/devtools/browser/4abbfdcf-1bc5-44c5-bbc1-30073a986a92
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=1 line 3166 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=2 line 3170 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=3 line 3177 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=4 line 3151 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=5 line 3151 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=6 line 3151 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=7 line 3151 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=8 line 3151 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=9 line 3151 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=10 line 3151 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=11 line 3246 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=12 line 3259 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=13 line 3143 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-1677349109732	geckodriver	INFO	Listening on 127.0.0.1:32867
-1677349109737	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "37917" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilel7j9iE"
-*** You are running in headless mode.
-1677349110023	Marionette	INFO	Marionette enabled
-1677349110027	Marionette	INFO	Listening on port 42495
-WebDriver BiDi listening on ws://localhost:37917
-Read port: 42495
-1677349110142	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
-[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilel7j9iE/search.json.mozlz4", (void 0)))
-Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
-Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
-DevTools listening on ws://localhost:37917/devtools/browser/612ee98e-8bc6-43b0-aa6b-27c392bcf235
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=1 line 3299 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=2 line 3303 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=3 line 3297 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=4 line 3284 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=5 line 3284 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=6 line 3284 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=7 line 3284 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=8 line 3284 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=9 line 3284 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=10 line 3284 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=11 line 3379 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=12 line 3392 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=13 line 3289 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-1677349176005	geckodriver	INFO	Listening on 127.0.0.1:40789
-1677349176010	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "59831" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilefcSjgd"
-*** You are running in headless mode.
-1677349176316	Marionette	INFO	Marionette enabled
-1677349176320	Marionette	INFO	Listening on port 37491
-WebDriver BiDi listening on ws://localhost:59831
-Read port: 37491
-1677349176667	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
-[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilefcSjgd/search.json.mozlz4", (void 0)))
-Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
-Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
-DevTools listening on ws://localhost:59831/devtools/browser/4fae3557-bfad-4d82-873d-b5036c7364ef
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=1 line 3310 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=2 line 3301 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=3 line 3295 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=4 line 3282 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=5 line 3295 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=6 line 3282 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=7 line 3282 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=8 line 3282 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=9 line 3282 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=10 line 3282 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=11 line 3377 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=12 line 3390 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=13 line 3274 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-1677349391202	geckodriver	INFO	Listening on 127.0.0.1:58517
-1677349391206	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "57397" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileMDf34S"
-*** You are running in headless mode.
-1677349391522	Marionette	INFO	Marionette enabled
-1677349391526	Marionette	INFO	Listening on port 45197
-WebDriver BiDi listening on ws://localhost:57397
-Read port: 45197
-1677349391781	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
-[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileMDf34S/search.json.mozlz4", (void 0)))
-Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
-Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
-DevTools listening on ws://localhost:57397/devtools/browser/67cecbfd-fead-4911-98a7-79b6e8cf6962
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=1 line 3166 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=2 line 3170 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=3 line 3164 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=4 line 3151 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=5 line 3151 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=6 line 3151 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=7 line 3164 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=8 line 3151 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=9 line 3151 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=10 line 3151 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=11 line 3246 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=12 line 3259 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=13 line 3143 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-1677349426782	geckodriver	INFO	Listening on 127.0.0.1:43109
-1677349426786	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "53671" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileU2dPgQ"
-*** You are running in headless mode.
-1677349427084	Marionette	INFO	Marionette enabled
-1677349427088	Marionette	INFO	Listening on port 35023
-WebDriver BiDi listening on ws://localhost:53671
-Read port: 35023
-1677349427350	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
-[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileU2dPgQ/search.json.mozlz4", (void 0)))
-Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
-Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
-DevTools listening on ws://localhost:53671/devtools/browser/6e3639ac-84a8-4f2c-8ce7-80aca743ddc1
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=1 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-Exiting due to channel error.
-Exiting due to channel error.
-Exiting due to channel error.
-1677349436048	geckodriver	INFO	Listening on 127.0.0.1:35913
-1677349436551	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "54163" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofile6w9P3i"
-*** You are running in headless mode.
-1677349436836	Marionette	INFO	Marionette enabled
-1677349436840	Marionette	INFO	Listening on port 35717
-WebDriver BiDi listening on ws://localhost:54163
-Read port: 35717
-1677349436940	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
-[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile6w9P3i/search.json.mozlz4", (void 0)))
-Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
-Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
-DevTools listening on ws://localhost:54163/devtools/browser/af55861e-36e1-411e-b17b-c1d8e72321b7
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=1 line 3311 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=2 line 3315 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=3 line 3322 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=4 line 3296 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=5 line 3296 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=6 line 3309 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=7 line 3296 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=8 line 3296 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=9 line 3296 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=10 line 3296 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=11 line 3391 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=12 line 3404 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=13 line 3288 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=14 line 2935 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=15 line 2935 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-1677349462764	Marionette	INFO	Stopped listening on port 35717
 Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
 Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
 console.error: "Error during quit-application-granted: [Exception... \"File error: Not found\"  nsresult: \"0x80520012 (NS_ERROR_FILE_NOT_FOUND)\"  location: \"JS frame :: resource:///modules/BrowserGlue.jsm :: _onQuitApplicationGranted/tasks< :: line 2006\"  data: no]"
-1677418433656	geckodriver	INFO	Listening on 127.0.0.1:50653
-1677418434153	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "47643" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofiled64YCa"
-*** You are running in headless mode.
-1677418435194	Marionette	INFO	Marionette enabled
-1677418435200	Marionette	INFO	Listening on port 39147
-WebDriver BiDi listening on ws://localhost:47643
-Read port: 39147
-1677418435405	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
-[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofiled64YCa/search.json.mozlz4", (void 0)))
-Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
-Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
-DevTools listening on ws://localhost:47643/devtools/browser/3e045f1a-ab25-4d2c-8526-78c428683a9c
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=1 line 3230 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=2 line 3222 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=3 line 3234 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=4 line 3228 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=5 line 3222 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=6 line 3222 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=7 line 3235 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=8 line 3222 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=9 line 3222 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=10 line 3222 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=11 line 3222 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=12 line 3336 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=13 line 3222 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=14 line 3222 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=15 line 3222 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=16 line 3222 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=17 line 3222 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=18 line 3222 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=19 line 3222 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=20 line 3222 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=21 line 3222 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=22 line 3222 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=23 line 3319 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=24 line 3222 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=25 line 3222 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=26 line 3235 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=27 line 3222 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=28 line 3222 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=29 line 3222 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=30 line 3222 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=31 line 3222 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=32 line 3222 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
-JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=33 line 3222 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=34 line 3222 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=35 line 3222 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=36 line 3222 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=37 line 3222 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=38 line 3235 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=39 line 3222 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B09B1BZMNV/?ie=UTF8&reviewerType=all_reviews&pageNumber=40 line 3222 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-1677418502128	Marionette	INFO	Stopped listening on port 39147
+1682264287046	Marionette	INFO	Stopped listening on port 42973
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+DevTools listening on ws://localhost:49143/devtools/browser/3e0a2158-594d-42cb-857b-bfdf70eb065a
+ATTENTION: default value of option mesa_glthread overridden by environment.
+JavaScript warning: https://www.amazon.com/gp/bestsellers/ line 2487 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://m.media-amazon.com/images/I/51EIwpasq4L.js?AUIClients/CardJsRuntimeBuzzCopyBuild, line 32: TypeError: b.cardModuleFactory is not a function
+JavaScript error: https://m.media-amazon.com/images/I/51EIwpasq4L.js?AUIClients/CardJsRuntimeBuzzCopyBuild, line 32: TypeError: b.cardModuleFactory is not a function
+JavaScript error: https://m.media-amazon.com/images/I/51EIwpasq4L.js?AUIClients/CardJsRuntimeBuzzCopyBuild, line 32: TypeError: b.cardModuleFactory is not a function
+JavaScript error: https://m.media-amazon.com/images/I/51EIwpasq4L.js?AUIClients/CardJsRuntimeBuzzCopyBuild, line 32: TypeError: b.cardModuleFactory is not a function
+1682264395333	geckodriver	INFO	Listening on 127.0.0.1:47405
+1682264395337	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "44121" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileTF8g3t"
+1682264395937	Marionette	INFO	Marionette enabled
+1682264395941	Marionette	INFO	Listening on port 33725
+WebDriver BiDi listening on ws://localhost:44121
+Read port: 33725
+1682264396246	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
 Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
 Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
 console.error: "Error during quit-application-granted: [Exception... \"File error: Not found\"  nsresult: \"0x80520012 (NS_ERROR_FILE_NOT_FOUND)\"  location: \"JS frame :: resource:///modules/BrowserGlue.jsm :: _onQuitApplicationGranted/tasks< :: line 2006\"  data: no]"
-1677418903559	geckodriver	INFO	Listening on 127.0.0.1:47631
-1677418903564	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "44027" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileSlAFIi"
-*** You are running in headless mode.
-1677418903829	Marionette	INFO	Marionette enabled
-1677418903832	Marionette	INFO	Listening on port 36257
-WebDriver BiDi listening on ws://localhost:44027
-Read port: 36257
-1677418903928	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
-[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileSlAFIi/search.json.mozlz4", (void 0)))
+1682264396314	Marionette	INFO	Stopped listening on port 40215
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileTF8g3t/search.json.mozlz4", (void 0)))
 Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
 Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
-DevTools listening on ws://localhost:44027/devtools/browser/ce706f6f-0207-45de-b050-4d51a02bd758
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=1 line 3297 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=2 line 3301 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=3 line 3295 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=4 line 3282 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=5 line 3282 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=6 line 3282 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=7 line 3282 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=8 line 3282 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=9 line 3282 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=10 line 3282 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=11 line 3377 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=12 line 3390 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=13 line 3274 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=14 line 2921 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=15 line 2921 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=16 line 2921 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=17 line 2921 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=18 line 2921 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=19 line 2921 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=20 line 2921 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=21 line 2921 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=22 line 2921 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=23 line 2934 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=24 line 2921 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=25 line 2921 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=26 line 2921 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=27 line 2921 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=28 line 2921 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=29 line 2921 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=30 line 2934 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=31 line 2921 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=32 line 2921 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=33 line 2921 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=34 line 2921 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=35 line 2710 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=36 line 2934 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=37 line 2921 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=38 line 2921 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=39 line 2921 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B01DGIKAY8/?ie=UTF8&reviewerType=all_reviews&pageNumber=40 line 2921 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-1677418964950	Marionette	INFO	Stopped listening on port 36257
+DevTools listening on ws://localhost:44121/devtools/browser/da41c33d-d0c9-4049-9a84-fae0f5c08c01
+ATTENTION: default value of option mesa_glthread overridden by environment.
+JavaScript warning: https://www.amazon.com/gp/bestsellers/ line 2487 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://m.media-amazon.com/images/I/51EIwpasq4L.js?AUIClients/CardJsRuntimeBuzzCopyBuild, line 32: TypeError: b.cardModuleFactory is not a function
+JavaScript error: https://m.media-amazon.com/images/I/51EIwpasq4L.js?AUIClients/CardJsRuntimeBuzzCopyBuild, line 32: TypeError: b.cardModuleFactory is not a function
+JavaScript error: https://m.media-amazon.com/images/I/51EIwpasq4L.js?AUIClients/CardJsRuntimeBuzzCopyBuild, line 32: TypeError: b.cardModuleFactory is not a function
+JavaScript error: https://m.media-amazon.com/images/I/51EIwpasq4L.js?AUIClients/CardJsRuntimeBuzzCopyBuild, line 32: TypeError: b.cardModuleFactory is not a function
+1682264559577	geckodriver	INFO	Listening on 127.0.0.1:39317
+1682264559581	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "40217" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofile8TMuBL"
+1682264560081	Marionette	INFO	Marionette enabled
+1682264560085	Marionette	INFO	Listening on port 46773
+WebDriver BiDi listening on ws://localhost:40217
+Read port: 46773
+1682264560362	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile8TMuBL/search.json.mozlz4", (void 0)))
 Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
 Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
 console.error: "Error during quit-application-granted: [Exception... \"File error: Not found\"  nsresult: \"0x80520012 (NS_ERROR_FILE_NOT_FOUND)\"  location: \"JS frame :: resource:///modules/BrowserGlue.jsm :: _onQuitApplicationGranted/tasks< :: line 2006\"  data: no]"
-1677419228351	geckodriver	INFO	Listening on 127.0.0.1:52741
-1677419228355	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "39777" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileJxeZbb"
-*** You are running in headless mode.
-1677419228612	Marionette	INFO	Marionette enabled
-1677419228616	Marionette	INFO	Listening on port 38267
-WebDriver BiDi listening on ws://localhost:39777
-Read port: 38267
-1677419228709	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
-[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileJxeZbb/search.json.mozlz4", (void 0)))
+1682264561673	Marionette	INFO	Stopped listening on port 33725
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
 Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
 Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
-DevTools listening on ws://localhost:39777/devtools/browser/2dc30e40-4774-47d0-925e-dd6106473df8
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=1 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=2 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=3 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=4 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=5 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=6 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=7 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=8 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=9 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=10 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=11 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=12 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=13 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=14 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=15 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=16 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=17 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=18 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=19 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=20 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=21 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=22 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=23 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=24 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=25 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=26 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=27 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=28 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=29 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=30 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=31 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=32 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
-JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=33 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=34 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=35 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=36 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=37 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=38 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=39 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-JavaScript warning: https://www.amazon.com/product-reviews/B07T8CN8WZ/?ie=UTF8&reviewerType=all_reviews&pageNumber=40 line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
-1677419298470	Marionette	INFO	Stopped listening on port 38267
+DevTools listening on ws://localhost:40217/devtools/browser/3aadfa8c-f31c-455f-9b18-ad306ba6d197
+ATTENTION: default value of option mesa_glthread overridden by environment.
+JavaScript warning: https://www.amazon.com/gp/bestsellers/ line 2488 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://m.media-amazon.com/images/I/51EIwpasq4L.js?AUIClients/CardJsRuntimeBuzzCopyBuild, line 32: TypeError: b.cardModuleFactory is not a function
+JavaScript error: https://m.media-amazon.com/images/I/51EIwpasq4L.js?AUIClients/CardJsRuntimeBuzzCopyBuild, line 32: TypeError: b.cardModuleFactory is not a function
+JavaScript error: https://m.media-amazon.com/images/I/51EIwpasq4L.js?AUIClients/CardJsRuntimeBuzzCopyBuild, line 32: TypeError: b.cardModuleFactory is not a function
+JavaScript error: https://m.media-amazon.com/images/I/51EIwpasq4L.js?AUIClients/CardJsRuntimeBuzzCopyBuild, line 32: TypeError: b.cardModuleFactory is not a function
+ATTENTION: default value of option mesa_glthread overridden by environment.
+JavaScript warning: https://www.amazon.com/Cleaning-Universal-Detailing-Automotive-Interior/dp/B081T7N948/ref=zg-bs_automotive_sccl_2/145-0256979-8794648?pd_rd_w=lLFs7&content-id=amzn1.sym.309d45c5-3eba-4f62-9bb2-0acdcf0662e7&pf_rd_p=309d45c5-3eba-4f62-9bb2-0acdcf0662e7&pf_rd_r=QTKTGRAXAT5BEE70PF0D&pd_rd_wg=ZYmTO&pd_rd_r=aca36de3-7305-480a-9d5c-6b0e81596a6c&pd_rd_i=B081T7N948&psc=1 line 11227 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
 Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
 Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
 console.error: "Error during quit-application-granted: [Exception... \"File error: Not found\"  nsresult: \"0x80520012 (NS_ERROR_FILE_NOT_FOUND)\"  location: \"JS frame :: resource:///modules/BrowserGlue.jsm :: _onQuitApplicationGranted/tasks< :: line 2006\"  data: no]"
+1682264648244	Marionette	INFO	Stopped listening on port 46773
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1682264649541	geckodriver	INFO	Listening on 127.0.0.1:59955
+1682264649546	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "36479" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilevc6AYM"
+1682264650023	Marionette	INFO	Marionette enabled
+1682264650028	Marionette	INFO	Listening on port 34003
+WebDriver BiDi listening on ws://localhost:36479
+Read port: 34003
+1682264650151	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilevc6AYM/search.json.mozlz4", (void 0)))
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+DevTools listening on ws://localhost:36479/devtools/browser/0ca07dc6-2529-4056-b941-f19f8cfeecb6
+ATTENTION: default value of option mesa_glthread overridden by environment.
+JavaScript warning: https://www.amazon.com/gp/bestsellers/ line 7 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://m.media-amazon.com/images/I/51EIwpasq4L.js?AUIClients/CardJsRuntimeBuzzCopyBuild, line 32: TypeError: b.cardModuleFactory is not a function
+JavaScript error: https://m.media-amazon.com/images/I/51EIwpasq4L.js?AUIClients/CardJsRuntimeBuzzCopyBuild, line 32: TypeError: b.cardModuleFactory is not a function
+JavaScript error: https://m.media-amazon.com/images/I/51EIwpasq4L.js?AUIClients/CardJsRuntimeBuzzCopyBuild, line 32: TypeError: b.cardModuleFactory is not a function
+JavaScript error: https://m.media-amazon.com/images/I/51EIwpasq4L.js?AUIClients/CardJsRuntimeBuzzCopyBuild, line 32: TypeError: b.cardModuleFactory is not a function
+1682264682818	geckodriver	INFO	Listening on 127.0.0.1:45681
+1682264682822	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "50267" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofile7nn0BC"
+1682264683361	Marionette	INFO	Marionette enabled
+1682264683366	Marionette	INFO	Listening on port 33693
+WebDriver BiDi listening on ws://localhost:50267
+Read port: 33693
+1682264683498	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+console.error: "Error during quit-application-granted: [Exception... \"File error: Not found\"  nsresult: \"0x80520012 (NS_ERROR_FILE_NOT_FOUND)\"  location: \"JS frame :: resource:///modules/BrowserGlue.jsm :: _onQuitApplicationGranted/tasks< :: line 2006\"  data: no]"
+1682264683904	Marionette	INFO	Stopped listening on port 34003
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile7nn0BC/search.json.mozlz4", (void 0)))
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+DevTools listening on ws://localhost:50267/devtools/browser/a88dd8fd-5703-441e-8ae9-eb15a09310d4
+ATTENTION: default value of option mesa_glthread overridden by environment.
+JavaScript warning: https://www.amazon.com/gp/bestsellers/ line 2495 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://m.media-amazon.com/images/I/51EIwpasq4L.js?AUIClients/CardJsRuntimeBuzzCopyBuild, line 32: TypeError: b.cardModuleFactory is not a function
+JavaScript error: https://m.media-amazon.com/images/I/51EIwpasq4L.js?AUIClients/CardJsRuntimeBuzzCopyBuild, line 32: TypeError: b.cardModuleFactory is not a function
+JavaScript error: https://m.media-amazon.com/images/I/51EIwpasq4L.js?AUIClients/CardJsRuntimeBuzzCopyBuild, line 32: TypeError: b.cardModuleFactory is not a function
+JavaScript error: https://m.media-amazon.com/images/I/51EIwpasq4L.js?AUIClients/CardJsRuntimeBuzzCopyBuild, line 32: TypeError: b.cardModuleFactory is not a function
+ATTENTION: default value of option mesa_glthread overridden by environment.
+JavaScript warning: https://m.media-amazon.com/images/I/812yegilDEL.js?AUIClients/FWCIMAssets, line 298: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1682264738308	geckodriver	INFO	Listening on 127.0.0.1:59749
+1682264738314	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "53503" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilemS8yPl"
+1682264738837	Marionette	INFO	Marionette enabled
+1682264738842	Marionette	INFO	Listening on port 36769
+WebDriver BiDi listening on ws://localhost:53503
+Read port: 36769
+1682264739135	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilemS8yPl/search.json.mozlz4", (void 0)))
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+console.error: "Error during quit-application-granted: [Exception... \"File error: Not found\"  nsresult: \"0x80520012 (NS_ERROR_FILE_NOT_FOUND)\"  location: \"JS frame :: resource:///modules/BrowserGlue.jsm :: _onQuitApplicationGranted/tasks< :: line 2006\"  data: no]"
+1682264740733	Marionette	INFO	Stopped listening on port 33693
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+DevTools listening on ws://localhost:53503/devtools/browser/5f51c76c-8823-4390-90cd-d2055726f990
+ATTENTION: default value of option mesa_glthread overridden by environment.
+JavaScript warning: https://www.amazon.com/gp/bestsellers/ line 2501 > injectedScript, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://m.media-amazon.com/images/I/51EIwpasq4L.js?AUIClients/CardJsRuntimeBuzzCopyBuild, line 32: TypeError: b.cardModuleFactory is not a function
+JavaScript error: https://m.media-amazon.com/images/I/51EIwpasq4L.js?AUIClients/CardJsRuntimeBuzzCopyBuild, line 32: TypeError: b.cardModuleFactory is not a function
+JavaScript error: https://m.media-amazon.com/images/I/51EIwpasq4L.js?AUIClients/CardJsRuntimeBuzzCopyBuild, line 32: TypeError: b.cardModuleFactory is not a function
+JavaScript error: https://m.media-amazon.com/images/I/51EIwpasq4L.js?AUIClients/CardJsRuntimeBuzzCopyBuild, line 32: TypeError: b.cardModuleFactory is not a function
+ATTENTION: default value of option mesa_glthread overridden by environment.
+JavaScript warning: https://m.media-amazon.com/images/I/812yegilDEL.js?AUIClients/FWCIMAssets, line 298: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.

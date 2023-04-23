@@ -35,8 +35,6 @@ You can now download some comments to test the pipeline. For instance, with the 
 
 Then pass the comments into either the `RateTable` or `RatePlot` pipeline:
 
-(flair = neg)\rightarrow -0.2*picked_{pos}*2 \\\\
-
 ```bash
 luigi --module wordsmyth.pipeline RateTable --comments example.json --local-scheduler
 ```

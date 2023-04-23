@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import json
-from typing import Literal, Any, Optional
+from typing import Literal, Any, Optional, Union, Dict
 
 import attrs
 
@@ -21,7 +21,7 @@ class Output:
     emojis: list[str]
     text: str
 
-    def rate(self):
+    def rate(self) -> Union[int, float]:
         with open(f"{DIR_PATH}/resources/emojimap.json", encoding="utf-8") as emojimap:
             rate_map = json.load(emojimap)
         fixed = self._fix_content()
