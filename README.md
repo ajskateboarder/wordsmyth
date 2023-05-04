@@ -7,12 +7,9 @@
 
 Wordsmyth eases the pains of manual comment analysis among content creators and users.
 
-Instead of relying on star ratings given by the user, Wordsmyth *generates them* based on the text sentiment by applying a pair of models to hardcoded rule-based analysis.
+Instead of relying on star ratings given by the user, Wordsmyth *generates them* based on the text sentiment by applying pre-trained neural network results to hardcoded rule-based analysis, a process known as transfer learning. This combination of data analysis results in high-accuracy rating prediction that handles sarcasm. (for the most part)
 
-## Highlights
-
-- Works on almost any platform and very easy to extend
-- 85-100% accuracy on Amazon reviews and sometimes more accurate than provided ratings (see [the caveats](#caveats))
+Wordsmyth functions as a modular pipeline with a focus on being easy to maintain and extend.
 
 ## Usage with Python
 

@@ -21,16 +21,17 @@ class AmazonScraper:
 
     `fake_display` creates a virtual display for non-window systems.
     This requires `xvfb`"""
+
     def __init__(
-        self, fake_display=False, location: str = "/usr/bin/firefox-esr"
+        self, fake_display: bool = False, location: str = "/usr/bin/firefox-esr"
     ) -> None:
         if fake_display:
             from pyvirtualdisplay import Display
 
-            display = Display(visible=0, size=(800, 600))
+            display = Display(visible=False, size=(800, 600))
             display.start()
         opt = Options()
-        opt.add_argument("--headless")
+        # opt.add_argument("--headless")
         self.browser = Firefox(options=opt, firefox_binary=location)
 
     def get_bestselling(self) -> Generator[str, None, None]:
@@ -41,7 +42,6 @@ class AmazonScraper:
                 try:
                     if "product-reviews" in link.get_attribute("href"):
                         yield urlparse(link.get_attribute("href")).path.split("/")[2]
-                        links += 1
                 except Exception:
                     break
             try:

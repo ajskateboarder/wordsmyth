@@ -25,7 +25,7 @@ class Output:
         with open(f"{DIR_PATH}/data/emojimap.json", encoding="utf-8") as emojimap:
             rate_map = json.load(emojimap)
         fixed = self._fix_content()
-        return rate(fixed, rate_map)
+        return rate(fixed, rate_map)  # type: ignore
 
     def _fix_content(self) -> Optional[dict[str, Any]]:
         with open(f"{DIR_PATH}/data/emojimap.json", encoding="utf-8") as emojimap:

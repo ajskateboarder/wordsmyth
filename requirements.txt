@@ -4,3 +4,4 @@ regex==2022.3.2
 torch==1.13.1+cpu
 transformers
 flair
+-e .
