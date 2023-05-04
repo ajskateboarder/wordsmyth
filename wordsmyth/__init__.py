@@ -1,1 +1,1 @@
-from .rate import Wordsmyth
+from .core import Pipeline

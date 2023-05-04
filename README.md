@@ -14,13 +14,7 @@ Instead of relying on star ratings given by the user, Wordsmyth *generates them*
 - Works on almost any platform and very easy to extend
 - 85-100% accuracy on Amazon reviews and sometimes more accurate than provided ratings (see [the caveats](#caveats))
 
-## Status
-
-Wordsmyth recently had a refactor to simplify the codebase and may continue to refactor, so expect changes to the documentation. Technically it is feature complete, but not production-ready.
-
-## Usage
-
-Wordsmyth is currently available as a pipeline to load comments from a data source and output star ratings.
+## Usage with Python
 
 Install the pre-requisites:
 
@@ -28,26 +22,18 @@ Install the pre-requisites:
 python3 -m venv venv
 . venv/bin/activate
 pip install -r requirements.txt
-./helper model
+./helper model # downloads the TorchMoji model locally
 ```
 
-You can now download some comments to test the pipeline. For instance, with the provided fetching scripts in `scripts/`
+and use the module like so:
 
-Then pass the comments into either the `RateTable` or `RatePlot` pipeline:
+```py
+import wordsmyth
 
-```bash
-luigi --module wordsmyth.pipeline RateTable --comments example.json --local-scheduler
+pipe = wordsmyth.Pipeline()
+content = pipe.eval("LOL")
+print(content.rating()) # 0.5
 ```
-
-`RateTable` prints information about the output data. `RatePlot` generates an categorical plot of the evaluated reviews like below:
-
-<div align=center>
-    <img src="./media/catplot.png" alt="Review plot">
-</div><br>
-
-Light mode is the default, but dark mode can be enabled like above by passing in `--dark`.
-
-Both of these pipelines use [Pickle](https://docs.python.org/3/library/pickle.html) files to persist the output data to be cached easily.
 
 ## Caveats
 

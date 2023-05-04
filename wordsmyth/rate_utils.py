@@ -49,6 +49,7 @@ def fix_content(text: dict, emojimap: dict) -> Optional[dict[str, Any]]:
         # If the matched sentiment does not match the text sentiment, try to find a better match
         if obj["sentiment"]["flair"] != obj["sentiment"]["map"]:
             # Find emojis that match the text sentiment and are in the text emojis
+            print(text["sentiment"])
             matching_emojis = [
                 e
                 for e in emojis

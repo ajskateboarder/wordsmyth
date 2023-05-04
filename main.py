@@ -1,14 +1,15 @@
-from wordsmyth import Wordsmyth
-import json
+import gradio as gr
+from wordsmyth import Pipeline
+from wordsmyth.core import Output
 
-with open("comments.json", encoding="utf-8") as fh:
-    comments = json.load(fh)
 
-ws = Wordsmyth()
-comments = ws.eval(comments, 10)
+def predict(text):
+    output: Output = list(model.eval(text, 10))[0]
+    rating = round(output.rating() * 10)
+    return "⭐" * rating
 
-for comment in comments:
-    try:
-        print(comment.text, comment.rate())
-    except AttributeError:
-        pass
+
+model = Pipeline()
+demo = gr.Interface(fn=predict, inputs="text", outputs="text")
+
+demo.launch()

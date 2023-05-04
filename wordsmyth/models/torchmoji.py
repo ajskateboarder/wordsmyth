@@ -27,8 +27,8 @@ EMOJIS = ":joy: :unamused: :weary: :sob: :heart_eyes: \
     " "
 )
 
-VOCAB_FILE_PATH = f"{DIR_PATH}/resources/vocabulary.json"
-MODEL_WEIGHTS_PATH = f"{DIR_PATH}/resources/pytorch_model.bin"
+VOCAB_FILE_PATH = f"{DIR_PATH}/data/vocabulary.json"
+MODEL_WEIGHTS_PATH = f"{DIR_PATH}/data/pytorch_model.bin"
 
 
 def top_elements(array: np.ndarray, k: int) -> np.ndarray:
