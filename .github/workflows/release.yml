@@ -26,8 +26,14 @@ jobs:
         uses: rymndhng/release-on-push-action@master
         with:
           bump_version_scheme: ${{steps.get-commit-level.outputs.commit}}
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
       - name: Build wheel
         run: |
+          cd ..
           python3 -m pip install build
           python3 -m build
       - uses: shogo82148/actions-upload-release-asset@v1
