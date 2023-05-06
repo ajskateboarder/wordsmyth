@@ -14,15 +14,17 @@ on:
 jobs:
   release-on-push:
     runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - name: Bump version
-        id: get-commit-level
+      - uses: actions/checkout@v3
+      - name: "Build package"
         run: |
-          commit=$(echo ${{ github.event.head_commit.message }} | grep -Po '\[\K[^]]*')
-          echo "::set-output name=commit::$commit"
-      - name: Push version
-        uses: rymndhng/release-on-push-action@master
+          python3 -m pip install -U build
+          python3 -m build
+      - uses: xresloader/upload-to-github-release@v1
+        name: "Upload archives to GitHub release"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          bump_version_scheme: ${{steps.get-commit-level.outputs.commit}}
+          file: "dist/*"
+          tags: true
+          draft: true
