@@ -1,54 +1,21 @@
 from __future__ import annotations
 
-import json
 import warnings
 from concurrent.futures import ThreadPoolExecutor
 from itertools import repeat
 from typing import Generator, Union
 
-import attrs
-
-from .constants import DIR_PATH
 from .models.flair import Flair
 from .models.torchmoji import TorchMoji
-from .rate_utils import fix_content, rate
+from .items import Sentiment, Output
 
 InputType = Union[str, "list[str]"]
 
 
-def divide_list(l: list, n: int) -> Generator[list, None, None]:
-    for i in range(0, len(l), n):
-        yield l[i : i + n]
-
-
-@attrs.define
-class Sentiment:
-    """Represents Flair sentiment output"""
-    sentiment: str
-    score: float
-
-
-@attrs.define
-class Output:
-    """Represents output from Pipeline.eval"""
-    sentiment: Sentiment
-    emojis: list[str]
-    text: str
-
-    def rating(self):
-        """Rate text using data from Flair `en-sentiment` and TorchMoji"""
-        with open(f"{DIR_PATH}/data/emojimap.json", encoding="utf-8") as emojimap:
-            rate_map = json.load(emojimap)
-        fixed = self._fix_content()
-        return rate(fixed, rate_map)
-
-    def _fix_content(self):
-        with open(f"{DIR_PATH}/data/emojimap.json", encoding="utf-8") as emojimap:
-            fix_map = {e["repr"]: e for e in json.load(emojimap)}
-            fix_map[":cry:"]["sentiment"] = "neg"
-            fix_map[":grimacing:"]["sentiment"] = "neu"
-        return fix_content(attrs.asdict(self), fix_map)
-
+def divide_list(array: list, num: int) -> Generator[list, None, None]:
+    """Divide a list into even chunks"""
+    for i in range(0, len(array), num):
+        yield array[i : i + num]
 
 class Pipeline:
     """Efficient Wordsmyth text rating pipeline
