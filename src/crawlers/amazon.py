@@ -4,16 +4,27 @@
 AmazonScraper().fetch_reviews(10)
 ```
 """
+import argparse
+import sys
+import json
+import itertools
+import logging
+
 import time
 from typing import Generator
 from urllib.parse import urlparse
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from bs4 import BeautifulSoup
+from pyvirtualdisplay import Display
 
 from selenium.webdriver import Firefox
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.by import By
+
+
+class NoLinksFoundError(Exception):
+    """Raised when no links are found on a page"""
 
 
 class AmazonScraper:
@@ -23,15 +34,13 @@ class AmazonScraper:
     This requires `xvfb`"""
 
     def __init__(
-        self, fake_display: bool = False, location: str = "/usr/bin/firefox-esr"
+        self, fake_display: bool = True, location: str = "/usr/bin/firefox-esr"
     ) -> None:
         if fake_display:
-            from pyvirtualdisplay import Display
-
             display = Display(visible=False, size=(800, 600))
             display.start()
         opt = Options()
-        # opt.add_argument("--headless")
+        opt.add_argument("--headless")
         self.browser = Firefox(options=opt, firefox_binary=location)
 
     def get_bestselling(self) -> Generator[str, None, None]:
@@ -85,10 +94,21 @@ class AmazonScraper:
                 yield item
 
     def fetch_reviews(
-        self, pages: int
+        self, pages: int, limit: int = None, **log
     ) -> Generator[Generator[dict, None, None], None, None]:
         """Launch a thread pool to scrape reviews."""
-        items = list(self.get_bestselling())
+        if limit:
+            items = list(itertools.islice(self.get_bestselling(), limit))
+        else:
+            items = list(self.get_bestselling())
+        if len(items) == 0:
+            raise NoLinksFoundError()
+        if log["log"]:
+            logging.info(
+                "Fetching %s pages of reviews from %s products. Press Ctrl+C to stop at any time",
+                pages,
+                len(items),
+            )
         with ThreadPoolExecutor(max_workers=len(items)) as executor:
             futures = [
                 executor.submit(self._fetch_reviews, product, pages)
@@ -96,3 +116,48 @@ class AmazonScraper:
             ]
             for future in as_completed(futures):
                 yield future.result()
+
+
+def main():
+    """Entrypoint to command line"""
+    logging.basicConfig(
+        stream=sys.stderr,
+        level=logging.INFO,
+        format="[%(asctime)s] {%(filename)s:%(lineno)d} %(levelname)s - %(message)s",
+    )
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "pages", type=int, help="Number of pages to scrape from each product"
+    )
+    parser.add_argument(
+        "--no-fake-display",
+        action="store_false",
+        help="Disables fake display for usage on non-window systems."
+        "Enabled by default because it is compatible with window systems",
+    )
+    parser.add_argument(
+        "--limit",
+        type=int,
+        help="Limits the number of bestseller products to scrape from.",
+    )
+
+    args = parser.parse_args()
+
+    scraper = AmazonScraper(args.no_fake_display)
+
+    def _try_scrape():
+        for product in scraper.fetch_reviews(args.pages, args.limit, log=True):
+            for review in product:
+                print(json.dumps(review))
+
+    logging.info("Scraping product links on https://amazon.com/gp/bestsellers")
+    try:
+        _try_scrape()
+    except NoLinksFoundError:
+        logging.warning("Product link scraping failed. Retrying...")
+        _try_scrape()
+
+
+if __name__ == "__main__":
+    main()

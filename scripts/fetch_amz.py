@@ -1,4 +1,4 @@
-from wordsmyth.spiders.amazon import AmazonScraper
+from crawlers.amazon import AmazonScraper
 
 scraper = AmazonScraper(True, "/usr/bin/firefox")
 for product in scraper.fetch_reviews(2):

@@ -5,17 +5,17 @@ from typing import Dict, Union
 from flair.data import Sentence
 from flair.models import TextClassifier
 
-LOCK = Lock()
-
 
 class Flair:
+    """Abstracted Flair `en-sentiment` sentiment classifier"""
     def __init__(self) -> None:
         self.sia = TextClassifier.load("en-sentiment")
+        self.lock = Lock()
 
     def predict(self, text: str) -> Dict[str, Union[str, float]]:
-        """Sentiment prediction with some mutex stuff"""
+        """Predict text sentiment in a thread-safe manner"""
 
-        with LOCK:
+        with self.lock:
             sentence = Sentence(text)
             self.sia.predict(sentence)
 

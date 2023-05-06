@@ -32,17 +32,19 @@ MODEL_WEIGHTS_PATH = f"{DIR_PATH}/data/pytorch_model.bin"
 
 
 def top_elements(array: np.ndarray, k: int) -> np.ndarray:
+    """Select maximum elements from Numpy array"""
     ind = np.argpartition(array, -k)[-k:]
     return ind[np.argsort(array[ind])][::-1]
 
 
 class TorchMoji:
+    """Abstracted TorchMoji model"""
     def __init__(self) -> None:
         with open(VOCAB_FILE_PATH, encoding="utf-8") as fh:
             vocabulary = json.load(fh)
 
         max_sentence_length = 100
-        self.st = SentenceTokenizer(vocabulary, max_sentence_length)
+        self.tokenizer = SentenceTokenizer(vocabulary, max_sentence_length)
         self.model = torchmoji_emojis(MODEL_WEIGHTS_PATH)
 
     def predict(self, text: Union[str, list], top_n: int = 5) -> List[str]:
@@ -51,7 +53,7 @@ class TorchMoji:
         if not isinstance(text, list):
             text = [text]
 
-        tokenized, _, _ = self.st.tokenize_sentences(text)
+        tokenized, _, _ = self.tokenizer.tokenize_sentences(text)
         prob = self.model(tokenized)[0]
 
         emoji_ids = top_elements(prob, top_n)

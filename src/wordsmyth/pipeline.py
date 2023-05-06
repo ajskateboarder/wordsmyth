@@ -23,17 +23,20 @@ def divide_list(l: list, n: int) -> Generator[list, None, None]:
 
 @attrs.define
 class Sentiment:
+    """Represents Flair sentiment output"""
     sentiment: str
     score: float
 
 
 @attrs.define
 class Output:
+    """Represents output from Pipeline.eval"""
     sentiment: Sentiment
     emojis: list[str]
     text: str
 
     def rating(self):
+        """Rate text using data from Flair `en-sentiment` and TorchMoji"""
         with open(f"{DIR_PATH}/data/emojimap.json", encoding="utf-8") as emojimap:
             rate_map = json.load(emojimap)
         fixed = self._fix_content()
@@ -48,23 +51,31 @@ class Output:
 
 
 class Pipeline:
+    """Efficient Wordsmyth text rating pipeline
+    ```
+    >>> from wordsmyth import Pipeline
+    >>> Pipeline().eval("LOL").rating()
+    0.5
+    ```
+    ```
+    >>> from wordsmyth import Pipeline
+    >>> [e.rating() for e in Pipeline().eval(["Not as great", "LOL"])]
+    [0.1, 0.5]
+    ```
+    """
     def __init__(self) -> None:
         warnings.filterwarnings("ignore")
         self._flair = Flair()
         self._torchmoji = TorchMoji()
 
     def eval(
-        self, text: Union[list[str], str], emojis: int
+        self, text: Union[list[str], str], emojis: int = 10
     ) -> Union[Generator[Output, None, None], Output]:
         """Evaluate a text/list of text through both Flair and TorchMoji"""
         if isinstance(text, str):
             torchmoji = self._torchmoji.predict(text)
             flair = self._flair.predict(text)
-            return Output(
-                sentiment=Sentiment(**flair),
-                emojis=torchmoji,
-                text=text
-            )
+            return Output(sentiment=Sentiment(**flair), emojis=torchmoji, text=text)
 
         text = list(divide_list(text, 5))
         with ThreadPoolExecutor(len(text)) as pool:
@@ -72,7 +83,11 @@ class Pipeline:
             torchmoji = pool.map(self.torchmoji, text, repeat(emojis))
             for resf_, rest_, text_ in zip(flair, torchmoji, text):
                 return (
-                    Output(sentiment=Sentiment(**fl_result), emojis=tm_result, text=input_text)
+                    Output(
+                        sentiment=Sentiment(**fl_result),
+                        emojis=tm_result,
+                        text=input_text,
+                    )
                     for fl_result, tm_result, input_text in zip(resf_, rest_, text_)
                 )
 
