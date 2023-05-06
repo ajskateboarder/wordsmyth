@@ -23,3 +23,4 @@ archive/
 *.json
 *.jsonl
 **/*.log
+amazon.py
