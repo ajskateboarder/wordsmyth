@@ -39,6 +39,7 @@ def top_elements(array: np.ndarray, k: int) -> np.ndarray:
 
 class TorchMoji:
     """Abstracted TorchMoji model"""
+
     def __init__(self) -> None:
         with open(VOCAB_FILE_PATH, encoding="utf-8") as fh:
             vocabulary = json.load(fh)

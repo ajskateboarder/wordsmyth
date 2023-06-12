@@ -32,6 +32,8 @@ content = pipe.eval("LOL")
 print(content.rating()) # 0.5
 ```
 
+There are also scripts to download reviews and benchmark this algorithm in `scripts/`.
+
 ## Caveats
 
 Slight issues with the algorithm which can possibly be fixed in the future.

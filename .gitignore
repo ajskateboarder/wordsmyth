@@ -20,7 +20,5 @@ data/*.log
 scripts/geckodriver.log
 # This contains a bunch of saved reviews
 archive/
-*.json
-*.jsonl
 **/*.log
-amazon.py
+scripts/*.json

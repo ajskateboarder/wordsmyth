@@ -1,7 +1,9 @@
 """
 Comment downloader:
 Script to bulk request comments and dump them to a JSON file as chunks
+TODO: deprecate soon
 """
+
 import json
 import sys
 

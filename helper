@@ -4,12 +4,7 @@ set -e
 
 function model {
   wget https://www.dropbox.com/s/q8lax9ary32c7t9/pytorch_model.bin?dl=0# -O \
-  wordsmyth/models/pytorch_model.bin
-}
-
-function pipeline {
-  rm comments.pkl pipeline.log
-  python3 evaluate_comments.py Final --local-scheduler --comments $1
+  src/wordsmyth/data/pytorch_model.bin
 }
 
 TIMEFORMAT="Task completed in %3lR"
