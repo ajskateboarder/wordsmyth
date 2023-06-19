@@ -4,8 +4,8 @@ There's lots of strangely written logic and I don't expect anyone to understand 
 from __future__ import annotations
 
 from typing import Any, Optional, Union
-
 import numpy as np
+import wordsmyth.items
 
 
 def find_indices(content: list[str], classes: list[str]) -> list[int]:
@@ -16,8 +16,21 @@ def find_indices(content: list[str], classes: list[str]) -> list[int]:
     return [content.index(classes[i]) for i in indices]
 
 
-def fix_content(text: dict, emojimap: dict) -> Optional[dict[str, Any]]:
-    """Assign a more accurate emoji to a text given TorchMoji and Flair output"""
+def fix_content(
+    text: wordsmyth.items.Output, emojimap: dict
+) -> Optional[dict[str, Any]]:
+    """Assign a more accurate emoji to some text from TorchMoji output given Flair predictions.
+
+    `text` is a combination of predictions from TorchMoji and Flair results. This function uses
+    data from this object to better adjust the results from TorchMoji to something more accurate.
+
+    `emojimap` is a mapping of emojis to their floating-point sentiment values in negativity,
+    neutrality, and positivity. We use this additional information to locate emojis which fit
+    Flair's text predictions, as we have found this model to have a higher accuracy for detecting
+    base sentiment.
+
+    The mentioned data is from [here](https://kt.ijs.si/data/Emoji_sentiment_ranking/index.html)
+    """
 
     # These emojis often show up in TorchMoji responses, so these are checked
     emojis = text["emojis"]
@@ -78,8 +91,10 @@ def fix_content(text: dict, emojimap: dict) -> Optional[dict[str, Any]]:
 
 
 def rate(text: dict[str, Any], emojimap: list) -> Union[int, float]:
+    """Rate"""
+
     positive_emojis = [e for e in emojimap if e["sentiment"] == "pos"]
-    emoji_repr = text.get("fixed") or text.get("emoji")
+    emoji_repr = text.get("fixed") or text.get("emoji") or text["emojis"][0]
     picked_emojis = [e for e in emojimap if e["repr"] == emoji_repr]
 
     picked = picked_emojis[0]

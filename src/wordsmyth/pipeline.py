@@ -1,15 +1,15 @@
 from __future__ import annotations
 
 import warnings
-from concurrent.futures import ThreadPoolExecutor
-from itertools import repeat
-from typing import Generator, Union
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from typing import Generator, Union, Optional, Any
 
 from .models.flair import Flair
 from .models.torchmoji import TorchMoji
 from .items import Sentiment, Output
 
-InputType = Union[str, "list[str]"]
+
+Rating = Optional[Union[int, float]]
 
 
 def divide_list(array: list, num: int) -> Generator[list, None, None]:
@@ -19,26 +19,32 @@ def divide_list(array: list, num: int) -> Generator[list, None, None]:
 
 
 class Pipeline:
-    """Efficient Wordsmyth text rating pipeline
-    ```
-    >>> from wordsmyth import Pipeline
-    >>> Pipeline().eval("LOL").rating()
-    0.5
-    ```
-    ```
-    >>> from wordsmyth import Pipeline
-    >>> [e.rating() for e in Pipeline().eval(["Not as great", "LOL"])]
-    [0.1, 0.5]
-    ```
-    """
+    """Efficient Wordsmyth text rating pipeline"""
 
     def __init__(self) -> None:
         warnings.filterwarnings("ignore")
+
         self._flair = Flair()
         self._torchmoji = TorchMoji()
 
-    def eval(self, text: str, emojis: int = 10) -> Output:
-        """Evaluate a text/list of text through both Flair and TorchMoji"""
+    def predict(
+        self, text: str, emojis: int = 10, as_object: bool = False
+    ) -> Union[Output, Rating]:
+        """Predict the star rating for a single content"""
         torchmoji = self._torchmoji.predict(text, emojis)
         flair = self._flair.predict(text)
-        return Output(sentiment=Sentiment(**flair), emojis=torchmoji, text=text)
+        output = Output(sentiment=Sentiment(**flair), emojis=torchmoji, text=text)  # type: ignore
+        return output if as_object else output.rating()
+
+    def predict_parallel(self, texts: list[str], emojis: int = 10) -> Any:
+        """Predict star ratings for multiple contents.
+        - This uses concurrent.futures.ThreadPoolExecutor.
+        - This only returns data objects to make it easier to track which content was rated
+        """
+        with ThreadPoolExecutor() as pool:
+            futures = [
+                pool.submit(self.predict, text, emojis, as_object=True)
+                for text in texts
+            ]
+            for future in as_completed(futures):
+                yield future.result()

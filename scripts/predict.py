@@ -31,17 +31,9 @@ def evaluate_text(sentence):
 with ThreadPoolExecutor() as pool:
     results = pool.map(evaluate_text, text[:200])
     for result in results:
-        try:
-            print_obj = {
-                "reviewText": result.text,
-                # This can possibly error
-                "predicted": result.rating(),
-                "actual": text_rate_map[result.text],
-            }
-        except AttributeError:
-            print_obj = {
-                "reviewText": result.text,
-                "predicted": None,
-                "actual": text_rate_map[result.text],
-            }
+        print_obj = {
+            "reviewText": result.text,
+            "predicted": result.rating(),
+            "actual": text_rate_map[result.text],
+        }
         print(json.dumps(print_obj))

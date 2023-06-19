@@ -1,1 +1,1 @@
-from .pipeline import Pipeline
+from wordsmyth.pipeline import Pipeline

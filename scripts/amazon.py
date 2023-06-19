@@ -89,10 +89,10 @@ class AmazonScraper:
 
             content = soup.select("div[data-hook='review']")
             for item in self.select_reviews(content):
-                yield item
+                yield {**item, "productId": product}
 
     def fetch_reviews(
-        self, pages: int, limit: Optional[int] = None, **log: dict
+        self, pages: int, limit: Optional[int] = None, *, log: bool = False
     ) -> Generator[Generator[dict, None, None], None, None]:
         """Launch a thread pool to scrape reviews."""
         if limit:
@@ -101,7 +101,7 @@ class AmazonScraper:
             items = list(self.get_bestselling())
         if len(items) == 0:
             raise NoLinksFoundError()
-        if log["log"]:
+        if log:
             logging.info(
                 "Fetching %s pages of reviews from %s products (%s). Press Ctrl+C to stop at any time",
                 pages,
