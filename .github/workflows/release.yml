@@ -20,7 +20,7 @@ jobs:
       - name: Bump version
         id: get-commit-level
         run: |
-          commit=$(echo ${{ github.event.head_commit.message }} | grep -Po '\/\K[^]*')
+          commit=$(echo ${{ github.event.head_commit.message }} | grep -Po ' /.*' | cut -d '/' -f 2)
           echo "::set-output name=commit::$commit"
       - name: Push version
         uses: rymndhng/release-on-push-action@master
