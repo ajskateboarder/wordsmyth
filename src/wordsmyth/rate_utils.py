@@ -19,44 +19,40 @@ def find_indices(content: list[str], classes: list[str]) -> list[int]:
 def fix_content(
     text: wordsmyth.items.Output, emojimap: dict
 ) -> Optional[dict[str, Any]]:
-    """Assign a more accurate emoji to some text from TorchMoji output given Flair predictions.
+    """Assign a more accurate emoji to some text from TorchMoji output given Flair predictions and an emojimap."""
+    # `text` is a combination of predictions from TorchMoji and Flair results. This function uses
+    # data from this object to better adjust the results from TorchMoji to something more accurate.
 
-    `text` is a combination of predictions from TorchMoji and Flair results. This function uses
-    data from this object to better adjust the results from TorchMoji to something more accurate.
+    # `emojimap` is a mapping of emojis to their floating-point sentiment values in negativity,
+    # neutrality, and positivity. We use this additional information to locate emojis which fit
+    # Flair's text predictions, as we have found this model to have a higher accuracy for detecting
+    # base sentiment.
 
-    `emojimap` is a mapping of emojis to their floating-point sentiment values in negativity,
-    neutrality, and positivity. We use this additional information to locate emojis which fit
-    Flair's text predictions, as we have found this model to have a higher accuracy for detecting
-    base sentiment.
-
-    The mentioned data is from [here](https://kt.ijs.si/data/Emoji_sentiment_ranking/index.html)
-    """
+    # The mentioned data is from https://kt.ijs.si/data/Emoji_sentiment_ranking/index.html
 
     # These emojis often show up in TorchMoji responses, so these are checked
-    emojis = text["emojis"]
     target_emojis = [":confused:", ":thumbsup:", ":eyes:", ":smile:"]
-    emoji_indices = find_indices(emojis, target_emojis)
+    emoji_indices = find_indices(text.emojis, target_emojis)
     num_matches = len(emoji_indices)
 
     if num_matches in (1, 2):
         # Find the first emoji that matches one of the target emojis
         # Emojis closer to index 0 are often more accurate
         first_index = min(emoji_indices)
-        first_emoji = emojis[first_index]
+        first_emoji = text.emojis[first_index]
         match = emojimap[first_emoji]
 
-        # Build the output object
         obj = {
-            "content": text["text"],
+            "content": text.text,
             "emoji": first_emoji,
             "position": first_index,
             "sentiment": {
-                "flair": text["sentiment"]["sentiment"],
+                "flair": text.sentiment.sentiment,
                 "map": match["sentiment"],
             },
-            "emojis": emojis,
-            "matches": text["sentiment"]["sentiment"] == match["sentiment"],
-            "score": text["sentiment"]["score"],
+            "emojis": text.emojis,
+            "matches": text.sentiment.sentiment == match["sentiment"],
+            "score": text.sentiment.score,
         }
 
         # If the matched sentiment does not match the text sentiment, try to find a better match
@@ -64,22 +60,22 @@ def fix_content(
             # Find emojis that match the text sentiment and are in the text emojis
             matching_emojis = [
                 e
-                for e in emojis
-                if emojimap[e]["sentiment"] == text["sentiment"]
-                and emojimap[e]["repr"] in emojis
+                for e in text.emojis
+                if emojimap[e]["sentiment"] == text.sentiment
+                and emojimap[e]["repr"] in text.emojis
             ]
 
             # Find the index of the closest match
-            sequence = [emojis.index(emojimap[e]["repr"]) for e in matching_emojis]
+            sequence = [text.emojis.index(emojimap[e]["repr"]) for e in matching_emojis]
             closest_index = min(sequence) if sequence else None
             fixed = (
-                emojimap.get(emojis[closest_index], {})
+                emojimap.get(text.emojis[closest_index], {})
                 if closest_index is not None
                 else {}
             )
 
             # If the closest match has the same sentiment as the text, use it as the fixed emoji
-            if text["sentiment"] == fixed.get("sentiment"):
+            if text.sentiment == fixed.get("sentiment"):
                 obj["fixed"] = fixed.get("repr")
                 return {**obj, "status": "fixed"}
 

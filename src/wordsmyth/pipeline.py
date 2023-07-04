@@ -19,7 +19,7 @@ def divide_list(array: list, num: int) -> Generator[list, None, None]:
 
 
 class Pipeline:
-    """Efficient Wordsmyth text rating pipeline"""
+    """Wordsmyth text rating pipeline"""
 
     def __init__(self) -> None:
         warnings.filterwarnings("ignore")
@@ -36,10 +36,12 @@ class Pipeline:
         output = Output(sentiment=Sentiment(**flair), emojis=torchmoji, text=text)  # type: ignore
         return output if as_object else output.rating()
 
-    def predict_parallel(self, texts: list[str], emojis: int = 10) -> Any:
+    def predict_parallel(
+        self, texts: list[str], emojis: int = 10
+    ) -> Generator[Output, None, None]:
         """Predict star ratings for multiple contents.
         - This uses concurrent.futures.ThreadPoolExecutor.
-        - This only returns data objects to make it easier to track which content was rated
+        - This only returns data objects which makes it easier to track which content was rated
         """
         with ThreadPoolExecutor() as pool:
             futures = [

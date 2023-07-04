@@ -38,7 +38,7 @@ class AmazonScraper:
             display = Display(visible=False, size=(800, 600))
             display.start()
         opt = Options()
-        opt.add_argument("--headless")  # type: ignore
+        # opt.add_argument("--headless")  # type: ignore
         self.browser = Firefox(options=opt, firefox_binary=location)
 
     def get_bestselling(self) -> Generator[str, None, None]:
