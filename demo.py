@@ -4,7 +4,8 @@ from typing import no_type_check
 from statistics import mean
 
 import streamlit as st
-from scripts.amazon import AmazonScraper
+from streamlit.runtime.scriptrunner import get_script_run_ctx
+from scripts.amazon_more import AmazonScraper
 
 
 @no_type_check
@@ -102,7 +103,9 @@ The following bar shows the actual ratings of each Amazon product review:
         f"""{PLACEHOLDER_LEGEND.format(" style='margin-top: 30px'", "")}""",
         unsafe_allow_html=True,
     )
-    st.markdown("And this bar shows the predicted star ratings from those reviews:")
+    st.markdown(
+        "And this bar shows the predicted star ratings using the emojis expressed in those reviews:"
+    )
     prediction_bar = st.markdown(
         "<div style='background-color: #d8d8d8; width: 100%; height: 20px; position: relative;'></div>",
         unsafe_allow_html=True,
@@ -117,13 +120,16 @@ The following bar shows the actual ratings of each Amazon product review:
 with data_collection:
     st.markdown(
         """### Amazon reviews
-This downloads a max of 100 written reviews from an Amazon product,
-as Amazon caps reviews at 10 pages on the frontend."""
+This downloads 500 written reviews from an Amazon product.
+An Amazon email and password is required for review-specific operations,
+and is only used once."""
     )
     actual_results = []
     prediction_results = []
 
     with st.form("data_collection_form"):
+        username = st.text_input("Email/Phone number")
+        password = st.text_input("Password", type="password")
         product = st.text_input(
             "Amazon product URL",
             "https://www.amazon.com/Samsung-Factory-Unlocked-Warranty-Renewed/dp/B07PB77Z4J",
@@ -131,9 +137,11 @@ as Amazon caps reviews at 10 pages on the frontend."""
 
         submitted = st.form_submit_button("Download")
         if submitted:
-            scraper = AmazonScraper(location="/usr/bin/firefox")
+            scraper = AmazonScraper(False)
+            scraper.login(username, password)
 
-            for review in scraper._fetch_reviews(product.split("/")[-1], 10):
+            def process_review(review: dict) -> None:
+                get_script_run_ctx()
                 prediction_results.append(model.predict(review["reviewText"]))
 
                 actual_results.append(review["overall"])
@@ -173,3 +181,5 @@ as Amazon caps reviews at 10 pages on the frontend."""
                     actual_legend.markdown(
                         legend(actuals, False), unsafe_allow_html=True
                     )
+
+            scraper.scrape("B07PB77Z4J", process_review)

@@ -9,7 +9,7 @@ import itertools
 import logging
 
 import time
-from typing import Generator, Optional
+from typing import Generator, Optional, Any, AsyncGenerator
 from urllib.parse import urlparse
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
@@ -17,12 +17,15 @@ from bs4 import BeautifulSoup
 from pyvirtualdisplay import Display
 
 from selenium.webdriver import Firefox
-from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.by import By
 
 
-class NoLinksFoundError(Exception):
-    """Raised when no links are found on a page"""
+class NoLinksFound(Exception):
+    """No links were found on a page"""
+
+
+class BotDetected(Exception):
+    """Detected by Amazon and requires a CAPTCHA to proceed"""
 
 
 class AmazonScraper:
@@ -37,9 +40,44 @@ class AmazonScraper:
         if fake_display:
             display = Display(visible=False, size=(800, 600))
             display.start()
-        opt = Options()
-        # opt.add_argument("--headless")  # type: ignore
-        self.browser = Firefox(options=opt, firefox_binary=location)
+
+        try:
+            self.browser = Firefox(firefox_binary=location)
+        except TypeError:
+            # unexpected keyword argument 'firefox_binary'
+            self.browser = Firefox()
+
+    def login(self, email: str, password: str) -> bool:
+        """Log the scraper into Amazon with a username and password
+        so reviews can be filtered
+
+        Amazon will likely detect the bot after a couple of scrapes,
+        so you will have to launch the script in headful mode to solve CAPTCHAs.
+        From there, Amazon will trust your public IP.
+        """
+        self.browser.get("https://amazon.com")
+        time.sleep(0.3)
+        try:
+            self.browser.find_element(By.ID, "nav-link-accountList").click()
+            time.sleep(0.3)
+            self.browser.find_element(By.ID, "ap_email").send_keys(email)
+            self.browser.find_element(By.ID, "continue").click()
+            time.sleep(0.3)
+            self.browser.find_element(By.ID, "ap_password").send_keys(password)
+            self.browser.find_element(By.ID, "signInSubmit").click()
+            time.sleep(0.3)
+        except Exception:
+            self.login(email, password)
+
+        if (
+            "ap/cvf/request" in self.browser.current_url
+            or self.browser.current_url == "https://www.amazon.com/ap/signin"
+        ):
+            raise BotDetected(
+                "Solve the CAPTCHA manually by running AmazonScraper with fake_display=False"
+            )
+
+        return True
 
     def get_bestselling(self) -> Generator[str, None, None]:
         """Fetch product IDs from Amazon's Bestsellers page"""
@@ -52,25 +90,32 @@ class AmazonScraper:
                 except Exception:
                     break
             try:
-                self.browser.execute_script("window.scrollBy(0,1000)")
+                self.browser.execute_script("window.scrollBy(0, 1000)")  # type: ignore
             except Exception:
                 pass
 
-    def select_product_source(
-        self, product: str, pages: int, delay: int = 1
+    def get_product_source(
+        self, asin: str, pages: int, sort_by: int, delay: float = 0.5
     ) -> Generator[str, None, None]:
         """Fetch n pages of reviews by product ID"""
+        map_star = {
+            1: "one_star",
+            2: "two_star",
+            3: "three_star",
+            4: "four_star",
+            5: "five_star",
+        }
         for page in range(1, pages + 1):
             self.browser.get(
-                f"https://www.amazon.com/product-reviews/{product}/"
-                f"?ie=UTF8&reviewerType=all_reviews&pageNumber={page}"
+                f"https://www.amazon.com/product-reviews/{asin}/"
+                f"?ie=UTF8&reviewerType=all_reviews&pageNumber={page}&filterByStar={map_star[sort_by]}"
             )
             time.sleep(delay)
             source = self.browser.page_source
             yield source
 
     @staticmethod
-    def select_reviews(content) -> Generator[dict, None, None]:
+    def select_reviews(content: Any) -> Generator[dict, None, None]:
         """Select reviews from a Amazon page source"""
         for review in content:
             row = review.select_one(".a-row")
@@ -83,24 +128,45 @@ class AmazonScraper:
                 body = row.select_one("span[data-hook='review-body']").text
                 yield {"reviewText": body, "overall": rating}
 
-    def _fetch_reviews(self, product: str, pages: int):
-        for page in self.select_product_source(product, pages):
+    def fetch_product_reviews(
+        self, asin: str, sort_by: int, pages: int = 10
+    ) -> Generator[dict, None, None]:
+        """Fetch reviews from a single product ASIN"""
+        for page in self.get_product_source(asin, pages, sort_by):
             soup = BeautifulSoup(page, "html.parser")
 
             content = soup.select("div[data-hook='review']")
             for item in self.select_reviews(content):
-                yield {**item, "productId": product}
+                yield {**item, "productId": asin}
 
-    def fetch_reviews(
+    async def thread_fetch_reviews(
+        self, asin: str, pages: int = 10
+    ) -> AsyncGenerator[dict, None]:
+        """Scrape reviews available on an Amazon product (max: 500)
+
+        `pages` is a maximum of 10 since reviews beyond page 11 are not accessible"""
+        if pages > 10:
+            raise Exception("pages beyond 10 are not allowed by Amazon")
+
+        with ThreadPoolExecutor() as executor:
+            futures = [
+                executor.submit(self.fetch_product_reviews, asin, i, pages)
+                for i in range(1, 6)
+            ]
+            for future in as_completed(futures):
+                for result in future.result():
+                    yield result
+
+    def fetch_bestselling_reviews(
         self, pages: int, limit: Optional[int] = None, *, log: bool = False
     ) -> Generator[Generator[dict, None, None], None, None]:
-        """Launch a thread pool to scrape reviews."""
+        """Launch a thread pool to scrape reviews from 'Best Sellers'"""
         if limit:
             items = list(itertools.islice(self.get_bestselling(), limit))
         else:
             items = list(self.get_bestselling())
         if len(items) == 0:
-            raise NoLinksFoundError()
+            raise NoLinksFound()
         if log:
             logging.info(
                 "Fetching %s pages of reviews from %s products (%s). Press Ctrl+C to stop at any time",
@@ -110,7 +176,7 @@ class AmazonScraper:
             )
         with ThreadPoolExecutor(max_workers=len(items)) as executor:
             futures = [
-                executor.submit(self._fetch_reviews, product, pages)
+                executor.submit(self.fetch_product_reviews, product, pages)
                 for product in items
             ]
             for future in as_completed(futures):
@@ -164,7 +230,7 @@ def main() -> None:
     logging.info("Scraping product links on https://amazon.com/gp/bestsellers")
     try:
         _try_scrape()
-    except NoLinksFoundError:
+    except NoLinksFound:
         logging.warning("Product link scraping failed. Retrying...")
         _try_scrape()
 
