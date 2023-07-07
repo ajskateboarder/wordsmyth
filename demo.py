@@ -5,15 +5,19 @@ from statistics import mean
 
 import streamlit as st
 from streamlit.runtime.scriptrunner import get_script_run_ctx
-from scripts.amazon_more import AmazonScraper
+from scripts.amazon import AmazonScraper
+from scripts.amazon_more import AmazonScraper as AmazonParallelScraper
+
+st.set_page_config(page_title="Wordsmyth demo", layout="wide")
 
 
 @no_type_check
-@st.cache_resource
+@st.cache_resource()
 def load_model():
     from wordsmyth import Pipeline  # pylint: disable=import-outside-toplevel
 
-    return Pipeline()
+    pipe = Pipeline()
+    return pipe
 
 
 model = load_model()
@@ -47,7 +51,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-data_collection, evaluation = st.columns(2, gap="large")
+data_collection, evaluation = st.columns(2)
 
 
 def inline_bar(percents: list[float]) -> str:
@@ -110,26 +114,60 @@ The following bar shows the actual ratings of each Amazon product review:
         "<div style='background-color: #d8d8d8; width: 100%; height: 20px; position: relative;'></div>",
         unsafe_allow_html=True,
     )
-    # st.markdown(legend([0.2, 0.3, 0.1, 0.2, 0.2], True), unsafe_allow_html=True)
     prediction_legend = st.markdown(
         PLACEHOLDER_LEGEND.format("", NA_PLACEHOLDER),
         unsafe_allow_html=True,
     )
 
 
+def process_review(review: dict) -> None:
+    prediction_results.append(model.predict(review["reviewText"]))
+
+    actual_results.append(review["overall"])
+    predictions = [
+        prediction_results.count(None) / len(prediction_results),
+        *[prediction_results.count(i) / len(prediction_results) for i in range(1, 6)],
+    ]
+    actuals = [
+        0,
+        *[actual_results.count(i) / len(actual_results) for i in range(1, 6)],
+    ]
+    with evaluation:
+        avg = round(mean(filter(lambda x: x is not None, prediction_results)), 2)
+        prediction_bar.markdown(
+            inline_bar(predictions) + str(avg),
+            unsafe_allow_html=True,
+        )
+        prediction_legend.markdown(legend(predictions, True), unsafe_allow_html=True)
+
+        avg = round(mean(filter(lambda x: x is not None, actual_results)), 2)
+        actual_bar.markdown(
+            inline_bar(actuals) + str(avg),
+            unsafe_allow_html=True,
+        )
+        actual_legend.markdown(legend(actuals, False), unsafe_allow_html=True)
+
+
 with data_collection:
     st.markdown(
         """### Amazon reviews
-This downloads 500 written reviews from an Amazon product.
-An Amazon email and password is required for review-specific operations,
-and is only used once."""
+If "Use less data" is unticked, this will download 500 written reviews from an Amazon product.
+An Amazon email and password is required for review-specific operations.
+Otherwise, this will download 100 reviews - the maximum number of publically available reviews."""
     )
     actual_results = []
     prediction_results = []
 
+    use_less = st.checkbox("Use less data")
+    st.write(
+        """You can tick this if you don't want to use an account or if you have limited bandwidth.
+In addition, the average of the actual ratings will be more accurate to the main rating on an Amazon product page."""
+    )
+
     with st.form("data_collection_form"):
-        username = st.text_input("Email/Phone number")
-        password = st.text_input("Password", type="password")
+        if not use_less:
+            username = st.text_input("Email/Phone number")
+            password = st.text_input("Password", type="password")
         product = st.text_input(
             "Amazon product URL",
             "https://www.amazon.com/Samsung-Factory-Unlocked-Warranty-Renewed/dp/B07PB77Z4J",
@@ -137,49 +175,12 @@ and is only used once."""
 
         submitted = st.form_submit_button("Download")
         if submitted:
-            scraper = AmazonScraper(False)
-            scraper.login(username, password)
+            if not use_less:
+                scraper = AmazonParallelScraper()
+                scraper.login(username, password)
 
-            def process_review(review: dict) -> None:
-                get_script_run_ctx()
-                prediction_results.append(model.predict(review["reviewText"]))
-
-                actual_results.append(review["overall"])
-                predictions = [
-                    prediction_results.count(None) / len(prediction_results),
-                    *[
-                        prediction_results.count(i) / len(prediction_results)
-                        for i in range(1, 6)
-                    ],
-                ]
-                actuals = [
-                    0,
-                    *[
-                        actual_results.count(i) / len(actual_results)
-                        for i in range(1, 6)
-                    ],
-                ]
-                with evaluation:
-                    avg = round(
-                        mean(filter(lambda x: x is not None, prediction_results)), 2
-                    )
-                    prediction_bar.markdown(
-                        inline_bar(predictions) + str(avg),
-                        unsafe_allow_html=True,
-                    )
-                    prediction_legend.markdown(
-                        legend(predictions, True), unsafe_allow_html=True
-                    )
-
-                    avg = round(
-                        mean(filter(lambda x: x is not None, actual_results)), 2
-                    )
-                    actual_bar.markdown(
-                        inline_bar(actuals) + str(avg),
-                        unsafe_allow_html=True,
-                    )
-                    actual_legend.markdown(
-                        legend(actuals, False), unsafe_allow_html=True
-                    )
-
-            scraper.scrape("B07PB77Z4J", process_review)
+                scraper.scrape(product.split("/")[-1], process_review)
+            else:
+                scraper = AmazonScraper(location="/usr/bin/firefox")  # type: ignore
+                for review in scraper.fetch_product_reviews(product.split("/")[-1]):  # type: ignore
+                    process_review(review)

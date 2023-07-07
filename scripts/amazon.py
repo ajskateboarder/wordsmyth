@@ -95,20 +95,13 @@ class AmazonScraper:
                 pass
 
     def get_product_source(
-        self, asin: str, pages: int, sort_by: int, delay: float = 0.5
+        self, asin: str, pages: int, delay: float = 0.5
     ) -> Generator[str, None, None]:
         """Fetch n pages of reviews by product ID"""
-        map_star = {
-            1: "one_star",
-            2: "two_star",
-            3: "three_star",
-            4: "four_star",
-            5: "five_star",
-        }
         for page in range(1, pages + 1):
             self.browser.get(
                 f"https://www.amazon.com/product-reviews/{asin}/"
-                f"?ie=UTF8&reviewerType=all_reviews&pageNumber={page}&filterByStar={map_star[sort_by]}"
+                f"?ie=UTF8&reviewerType=all_reviews&pageNumber={page}"
             )
             time.sleep(delay)
             source = self.browser.page_source
@@ -129,33 +122,15 @@ class AmazonScraper:
                 yield {"reviewText": body, "overall": rating}
 
     def fetch_product_reviews(
-        self, asin: str, sort_by: int, pages: int = 10
+        self, asin: str, pages: int = 10
     ) -> Generator[dict, None, None]:
         """Fetch reviews from a single product ASIN"""
-        for page in self.get_product_source(asin, pages, sort_by):
+        for page in self.get_product_source(asin, pages):
             soup = BeautifulSoup(page, "html.parser")
 
             content = soup.select("div[data-hook='review']")
             for item in self.select_reviews(content):
                 yield {**item, "productId": asin}
-
-    async def thread_fetch_reviews(
-        self, asin: str, pages: int = 10
-    ) -> AsyncGenerator[dict, None]:
-        """Scrape reviews available on an Amazon product (max: 500)
-
-        `pages` is a maximum of 10 since reviews beyond page 11 are not accessible"""
-        if pages > 10:
-            raise Exception("pages beyond 10 are not allowed by Amazon")
-
-        with ThreadPoolExecutor() as executor:
-            futures = [
-                executor.submit(self.fetch_product_reviews, asin, i, pages)
-                for i in range(1, 6)
-            ]
-            for future in as_completed(futures):
-                for result in future.result():
-                    yield result
 
     def fetch_bestselling_reviews(
         self, pages: int, limit: Optional[int] = None, *, log: bool = False
@@ -181,6 +156,9 @@ class AmazonScraper:
             ]
             for future in as_completed(futures):
                 yield future.result()
+
+    def close(self) -> None:
+        self.browser.quit()
 
 
 def main() -> None:
