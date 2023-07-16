@@ -1,14 +1,13 @@
 from __future__ import annotations
 
 from typing import no_type_check
-from statistics import mean
+from statistics import mean, StatisticsError
 
 import streamlit as st
-from streamlit.runtime.scriptrunner import get_script_run_ctx
 from scripts.amazon import AmazonScraper
 from scripts.amazon_more import AmazonScraper as AmazonParallelScraper
 
-st.set_page_config(page_title="Wordsmyth demo", layout="wide")
+st.set_page_config(page_title="Wordsmyth demo")
 
 
 @no_type_check
@@ -133,7 +132,11 @@ def process_review(review: dict) -> None:
         *[actual_results.count(i) / len(actual_results) for i in range(1, 6)],
     ]
     with evaluation:
-        avg = round(mean(filter(lambda x: x is not None, prediction_results)), 2)
+        try:
+            avg = round(mean(filter(lambda x: x is not None, prediction_results)), 2)
+        except StatisticsError:
+            avg = 0
+
         prediction_bar.markdown(
             inline_bar(predictions) + str(avg),
             unsafe_allow_html=True,
@@ -149,23 +152,38 @@ def process_review(review: dict) -> None:
 
 
 with data_collection:
+    # If "Use less data" is unticked, this will download 500 written reviews from an Amazon product.
+    # An Amazon email and password is required for review-specific operations.
+    # Otherwise, this will download 100 reviews - the maximum number of publically available reviews.
     st.markdown(
         """### Amazon reviews
-If "Use less data" is unticked, this will download 500 written reviews from an Amazon product.
-An Amazon email and password is required for review-specific operations.
-Otherwise, this will download 100 reviews - the maximum number of publically available reviews."""
+By default, 100 random reviews (10 pages) are selected from a product review page."""
     )
     actual_results = []
     prediction_results = []
 
-    use_less = st.checkbox("Use less data")
-    st.write(
-        """You can tick this if you don't want to use an account or if you have limited bandwidth.
-In addition, the average of the actual ratings will be more accurate to the main rating on an Amazon product page."""
+    use_more = st.checkbox(
+        "Use more data",
+        help="Use this for a larger sample size than 100 reviews",
     )
+    use_even_more = st.empty()
 
+    if use_more:
+        st.write(
+            """
+Note that this will launch five browsers and consume reviews in a parallel,
+which can result in heavy bandwidth usage. This also requires an Amazon account."""
+        )
+        use_even_more = st.checkbox(
+            "Use even more data!!!",
+            help="Use if you want to test model accuracy or if you don't care about the average Amazon rating",
+        )  # type: ignore # ??
+        if use_even_more:
+            st.write("This downloads 500 reviews (50 pages)")
+
+    loading = st.empty()
     with st.form("data_collection_form"):
-        if not use_less:
+        if use_more:
             username = st.text_input("Email/Phone number")
             password = st.text_input("Password", type="password")
         product = st.text_input(
@@ -175,12 +193,17 @@ In addition, the average of the actual ratings will be more accurate to the main
 
         submitted = st.form_submit_button("Download")
         if submitted:
-            if not use_less:
-                scraper = AmazonParallelScraper()
-                scraper.login(username, password)
+            loading = st.markdown("Launching scraper...")
+            if use_more:
+                scrapers = AmazonParallelScraper()
+                loading = st.markdown("Logging scrapers in...")
+                scrapers.login(username, password)
 
-                scraper.scrape(product.split("/")[-1], process_review)
+                loading = st.markdown("Scraping reviews...")
+                scrapers.scrape(product.split("/")[-1], process_review)
+                scrapers.close()
             else:
                 scraper = AmazonScraper(location="/usr/bin/firefox")  # type: ignore
                 for review in scraper.fetch_product_reviews(product.split("/")[-1]):  # type: ignore
                     process_review(review)
+                scraper.close()

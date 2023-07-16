@@ -2,14 +2,11 @@
 Product indexer/review downloader
 Bulk-request reviews and dump them to a JSON file
 """
-import argparse
-import sys
-import json
+from __future__ import annotations
 import itertools
-import logging
 
 import time
-from typing import Generator, Optional, Any, AsyncGenerator
+from typing import Generator, Optional, Any, Union
 from urllib.parse import urlparse
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
@@ -34,50 +31,12 @@ class AmazonScraper:
     `fake_display` creates a virtual display for non-window systems.
     This requires `xvfb`"""
 
-    def __init__(
-        self, fake_display: bool = True, location: str = "/usr/bin/firefox-esr"
-    ) -> None:
+    def __init__(self, fake_display: bool = True) -> None:
         if fake_display:
             display = Display(visible=False, size=(800, 600))
             display.start()
 
-        try:
-            self.browser = Firefox(firefox_binary=location)
-        except TypeError:
-            # unexpected keyword argument 'firefox_binary'
-            self.browser = Firefox()
-
-    def login(self, email: str, password: str) -> bool:
-        """Log the scraper into Amazon with a username and password
-        so reviews can be filtered
-
-        Amazon will likely detect the bot after a couple of scrapes,
-        so you will have to launch the script in headful mode to solve CAPTCHAs.
-        From there, Amazon will trust your public IP.
-        """
-        self.browser.get("https://amazon.com")
-        time.sleep(0.3)
-        try:
-            self.browser.find_element(By.ID, "nav-link-accountList").click()
-            time.sleep(0.3)
-            self.browser.find_element(By.ID, "ap_email").send_keys(email)
-            self.browser.find_element(By.ID, "continue").click()
-            time.sleep(0.3)
-            self.browser.find_element(By.ID, "ap_password").send_keys(password)
-            self.browser.find_element(By.ID, "signInSubmit").click()
-            time.sleep(0.3)
-        except Exception:
-            self.login(email, password)
-
-        if (
-            "ap/cvf/request" in self.browser.current_url
-            or self.browser.current_url == "https://www.amazon.com/ap/signin"
-        ):
-            raise BotDetected(
-                "Solve the CAPTCHA manually by running AmazonScraper with fake_display=False"
-            )
-
-        return True
+        self.browser = Firefox(firefox_binary="/usr/bin/firefox")
 
     def get_bestselling(self) -> Generator[str, None, None]:
         """Fetch product IDs from Amazon's Bestsellers page"""
@@ -93,6 +52,24 @@ class AmazonScraper:
                 self.browser.execute_script("window.scrollBy(0, 1000)")  # type: ignore
             except Exception:
                 pass
+
+    def get_proportions(
+        self, asin: str, total: int = 500
+    ) -> Union[list[float], list[int]]:
+        """Return the distribution of reviews to gather from five to one star
+
+        If `total` is None, return the percentages from a product histogram as floats"""
+        self.browser.get(f"https://amazon.com/product-reviews/{asin}")
+        percentages = self.browser.find_element(
+            By.CSS_SELECTOR, ".histogram"
+        ).text.split("\n")[1::2]
+        parsed = list(map(lambda p: int(p.replace("%", "")) / 100, percentages))
+        if total is None:
+            return parsed
+        parsed = list(map(lambda x: x * 500, parsed))
+        while any(x > 100 for x in parsed):
+            parsed = list(map(lambda x: x * 0.99, parsed))
+        return list(reversed(list(map(lambda x: int(x) + 1, parsed))))
 
     def get_product_source(
         self, asin: str, pages: int, delay: float = 0.5
@@ -133,7 +110,7 @@ class AmazonScraper:
                 yield {**item, "productId": asin}
 
     def fetch_bestselling_reviews(
-        self, pages: int, limit: Optional[int] = None, *, log: bool = False
+        self, pages: int, limit: Optional[int] = None
     ) -> Generator[Generator[dict, None, None], None, None]:
         """Launch a thread pool to scrape reviews from 'Best Sellers'"""
         if limit:
@@ -142,13 +119,6 @@ class AmazonScraper:
             items = list(self.get_bestselling())
         if len(items) == 0:
             raise NoLinksFound()
-        if log:
-            logging.info(
-                "Fetching %s pages of reviews from %s products (%s). Press Ctrl+C to stop at any time",
-                pages,
-                len(items),
-                len(items) * pages * 10,
-            )
         with ThreadPoolExecutor(max_workers=len(items)) as executor:
             futures = [
                 executor.submit(self.fetch_product_reviews, product, pages)
@@ -158,60 +128,5 @@ class AmazonScraper:
                 yield future.result()
 
     def close(self) -> None:
+        """Close the browser"""
         self.browser.quit()
-
-
-def main() -> None:
-    """Entrypoint to command line"""
-    logging.basicConfig(
-        stream=sys.stderr,
-        level=logging.INFO,
-        format="[%(asctime)s] {%(filename)s:%(lineno)d} %(levelname)s - %(message)s",
-    )
-
-    parser = argparse.ArgumentParser(
-        description="Streams Amazon product reviews as JSON lines format (.jsonl)"
-    )
-    parser.add_argument(
-        "pages", type=int, help="Number of pages to scrape from each product"
-    )
-    parser.add_argument(
-        "--no-fake-display",
-        action="store_false",
-        help="Disables fake display for usage on non-window systems. "
-        "Enabled by default because it is compatible with window systems",
-    )
-    parser.add_argument(
-        "--products",
-        type=int,
-        help="Limits the number of bestseller products to scrape from.",
-    )
-    parser.add_argument(
-        "--use-esr",
-        action="store_true",
-        help="Use /usr/bin/firefox-esr for screen scraping. "
-        "This is usually where Firefox is located on Debian",
-    )
-
-    args = parser.parse_args()
-
-    scraper = AmazonScraper(
-        args.no_fake_display,
-        location="/usr/bin/firefox-esr" if args.use_esr else "/usr/bin/firefox",
-    )
-
-    def _try_scrape() -> None:
-        for product in scraper.fetch_reviews(args.pages, args.products, log=True):
-            for review in product:
-                print(json.dumps(review))
-
-    logging.info("Scraping product links on https://amazon.com/gp/bestsellers")
-    try:
-        _try_scrape()
-    except NoLinksFound:
-        logging.warning("Product link scraping failed. Retrying...")
-        _try_scrape()
-
-
-if __name__ == "__main__":
-    main()

@@ -2,8 +2,9 @@
 Product indexer/review downloader
 Bulk-request reviews and dump them to a JSON file
 """
-from typing import Any, Generator, Callable
-from itertools import repeat
+from __future__ import annotations
+from typing import Any, Generator, Callable, Optional
+from itertools import repeat, count, zip_longest
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import threading
 import time
@@ -33,17 +34,17 @@ class AmazonScraper:
         if fake_display:
             display = Display(visible=False, size=(800, 600))
             display.start()
+
         with ThreadPoolExecutor() as executor:
-            self.browsers = list(
+            self.browsers: list[Firefox] = list(
                 map(
                     lambda fut: fut.result(),
                     as_completed([executor.submit(Firefox) for _ in range(5)]),
                 )
             )
 
-    def login_single(self, browser: Firefox, email: str, password: str) -> None:
+    def _login_single(self, browser: Firefox, email: str, password: str) -> None:
         browser.get("https://amazon.com")
-        # print(browser.session_id, "went to amazon.com")
         try:
             browser.find_element(By.ID, "nav-link-accountList").click()
             browser.find_element(By.ID, "ap_email").send_keys(email)
@@ -51,13 +52,13 @@ class AmazonScraper:
             browser.find_element(By.ID, "ap_password").send_keys(password)
             browser.find_element(By.ID, "signInSubmit").click()
         except NoSuchElementException:
-            self.login_single(browser, email, password)
-        # print(browser.session_id, "is logging in")
+            self._login_single(browser, email, password)
 
     def login(self, email: str, password: str) -> None:
+        """Log in all browsers to Amazon with an email and password"""
         with ThreadPoolExecutor() as executor:
             executor.map(
-                self.login_single,
+                self._login_single,
                 self.browsers,
                 repeat(email),
                 repeat(password),
@@ -77,15 +78,20 @@ class AmazonScraper:
                 body = row.select_one("span[data-hook='review-body']").text
                 yield {"reviewText": body.strip(), "overall": rating}
 
-    def scrape_single(
+    def _scrape_single(
         self,
         browser: Firefox,
         asin: str,
         category: int,
         callback: Callable[[dict], Any],
-        ctx: Any,
+        limit: Optional[int] = None,
+        ctx: Optional[Any] = None,
     ) -> None:
-        add_script_run_ctx(threading.currentThread(), ctx)
+        if ctx:
+            add_script_run_ctx(threading.currentThread(), ctx)
+        if limit:
+            counter = count(0)
+
         for page in range(1, 11):
             browser.get(
                 f"https://www.amazon.com/product-reviews/{asin}/"
@@ -94,11 +100,36 @@ class AmazonScraper:
             soup = BeautifulSoup(browser.page_source, "html.parser")
             content = soup.select("div[data-hook='review']")
             for item in self.select_reviews(content):
+                if next(counter) >= limit:  # type: ignore
+                    return
                 callback({**item, "productId": asin})
             time.sleep(0.1)
 
-    def scrape(self, asin: str, callback: Callable[[dict], Any]) -> None:
+    def scrape(
+        self,
+        asin: str,
+        callback: Callable[[dict], Any],
+        proportions: Optional[list[int]] = None,
+    ) -> None:
+        """Scrape reviews from all star categories on a product page given an ASIN
+
+        - `callback` is a function which consumes results
+        - `proportions` is a list of the number of reviews to scrape from each category
+        (none by default)
+        """
+        if not proportions:
+            proportions = []
         with ThreadPoolExecutor() as executor:
-            for i, browser in zip(range(1, 6), self.browsers):
+            for i, browser, prop in zip_longest(
+                range(1, 6), self.browsers, proportions
+            ):
                 ctx = get_script_run_ctx()
-                executor.submit(self.scrape_single, browser, asin, i, callback, ctx)
+                executor.submit(
+                    self._scrape_single, browser, asin, i, callback, prop, ctx
+                )
+
+    def close(self) -> None:
+        """Close all browsers"""
+        with ThreadPoolExecutor() as executor:
+            for browser in self.browsers:
+                executor.submit(browser.quit)

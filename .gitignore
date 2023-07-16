@@ -13,6 +13,7 @@ venv.bak/
 .vscode/
 .pytest_cache/
 pyrightconfig.json
+.ruff_cache/
 .mypy_cache/
 data/*.pkl
 data/*.log

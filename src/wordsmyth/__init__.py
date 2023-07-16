@@ -1,1 +1,1 @@
-from wordsmyth.pipeline import Pipeline
+from wordsmyth.pipeline import Pipeline  # noqa: F401

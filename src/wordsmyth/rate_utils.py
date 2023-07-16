@@ -19,7 +19,8 @@ def find_indices(content: list[str], classes: list[str]) -> list[int]:
 def fix_content(
     text: wordsmyth.items.Output, emojimap: dict
 ) -> Optional[dict[str, Any]]:
-    """Assign a more accurate emoji to some text from TorchMoji output given Flair predictions and an emojimap."""
+    """Assign a more accurate emoji to some text from TorchMoji output
+    given Flair predictions and an emojimap."""
     # `text` is a combination of predictions from TorchMoji and Flair results. This function uses
     # data from this object to better adjust the results from TorchMoji to something more accurate.
 
