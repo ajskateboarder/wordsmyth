@@ -33,8 +33,8 @@ class AmazonScraper:
 
     def __init__(self, fake_display: bool = True) -> None:
         if fake_display:
-            display = Display(visible=False, size=(800, 600))
-            display.start()
+            self.display = Display(visible=False, size=(800, 600))
+            self.display.start()
 
         self.browser = Firefox(firefox_binary="/usr/bin/firefox")
 
@@ -130,3 +130,11 @@ class AmazonScraper:
     def close(self) -> None:
         """Close the browser"""
         self.browser.quit()
+
+    def __enter__(self) -> AmazonScraper:
+        return self
+
+    def __exit__(self, exc_type: Any, exc_val: Any, exc_tb: Any) -> None:
+        if getattr(self, "display", None):
+            self.display.stop()
+        self.close()

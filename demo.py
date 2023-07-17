@@ -64,7 +64,7 @@ def inline_bar(percents: list[float]) -> str:
     <div style="background-color: #AAFF00; width: {width[4]}%; height: 100%; position: absolute; left: {width[0] + width[1] + width[2] + width[3]}%;"></div>
     <div style="background-color: #00FF00; width: {width[5]}%; height: 100%; position: absolute; left: {width[0] + width[1] + width[2] + width[3] + width[4]}%;"></div>
 </div>
-"""
+"""  # noqa: E501
 
 
 def legend(percents: list[float], include_na: bool = True) -> str:
@@ -76,7 +76,7 @@ def legend(percents: list[float], include_na: bool = True) -> str:
     <li><font size="2"><span style="color: #AAFF00">&#9679;</span> 4 stars ({percents[l+3]:.0%})</font></li>
     <li><font size="2"><span style="color: #00FF00">&#9679;</span> 5 stars ({percents[l+4]:.0%})</font></li>
 </ul>
-"""
+"""  # noqa: E501
 
 
 NA_PLACEHOLDER = (
@@ -117,6 +117,16 @@ The following bar shows the actual ratings of each Amazon product review:
         PLACEHOLDER_LEGEND.format("", NA_PLACEHOLDER),
         unsafe_allow_html=True,
     )
+
+
+def find_asin(url: str) -> str:
+    """Find a product ASIN in a URL"""
+    path = url.split("/")
+    if "?" in path[-1]:
+        return path[-2]
+    if not path[0] == "https:":
+        return url
+    return path[-1]
 
 
 def process_review(review: dict) -> None:
@@ -187,23 +197,38 @@ which can result in heavy bandwidth usage. This also requires an Amazon account.
             username = st.text_input("Email/Phone number")
             password = st.text_input("Password", type="password")
         product = st.text_input(
-            "Amazon product URL",
+            "Amazon product URL/ASIN",
             "https://www.amazon.com/Samsung-Factory-Unlocked-Warranty-Renewed/dp/B07PB77Z4J",
         )
 
         submitted = st.form_submit_button("Download")
         if submitted:
+            product_id = find_asin(product)
             loading = st.markdown("Launching scraper...")
-            if use_more:
-                scrapers = AmazonParallelScraper()
-                loading = st.markdown("Logging scrapers in...")
-                scrapers.login(username, password)
 
+            USE_100 = not use_more and not use_even_more
+            USE_PROP = use_more and not use_even_more
+            USE_500 = use_even_more
+
+            if USE_100:
                 loading = st.markdown("Scraping reviews...")
-                scrapers.scrape(product.split("/")[-1], process_review)
-                scrapers.close()
-            else:
-                scraper = AmazonScraper(location="/usr/bin/firefox")  # type: ignore
-                for review in scraper.fetch_product_reviews(product.split("/")[-1]):  # type: ignore
-                    process_review(review)
-                scraper.close()
+                with AmazonScraper() as scraper:
+                    for review in scraper.fetch_product_reviews(product.split("/")[-1]):  # type: ignore
+                        process_review(review)
+                st.stop()
+            if USE_PROP:
+                loading = st.markdown("Fetching product proportions...")
+                with AmazonScraper(False) as scraper:
+                    proportions = scraper.get_proportions(product_id)
+                with AmazonParallelScraper(False) as scrapers:
+                    loading = st.markdown("Logging scrapers in...")
+                    scrapers.login(username, password)
+                    loading = st.markdown("Scraping reviews...")
+                    scrapers.scrape(product.split("/")[-1], process_review, proportions)  # type: ignore
+                st.stop()
+            if USE_500:
+                with AmazonParallelScraper() as scrapers:
+                    loading = st.markdown("Logging scrapers in...")
+                    scrapers.login(username, password)
+                    loading = st.markdown("Scraping reviews...")
+                    scrapers.scrape(product.split("/")[-1], process_review)

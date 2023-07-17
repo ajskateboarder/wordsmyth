@@ -32,8 +32,8 @@ map_star = {
 class AmazonScraper:
     def __init__(self, fake_display: bool = True) -> None:
         if fake_display:
-            display = Display(visible=False, size=(800, 600))
-            display.start()
+            self.display = Display(visible=False, size=(800, 600))
+            self.display.start()
 
         with ThreadPoolExecutor() as executor:
             self.browsers: list[Firefox] = list(
@@ -91,7 +91,6 @@ class AmazonScraper:
             add_script_run_ctx(threading.currentThread(), ctx)
         if limit:
             counter = count(0)
-
         for page in range(1, 11):
             browser.get(
                 f"https://www.amazon.com/product-reviews/{asin}/"
@@ -119,6 +118,7 @@ class AmazonScraper:
         """
         if not proportions:
             proportions = []
+
         with ThreadPoolExecutor() as executor:
             for i, browser, prop in zip_longest(
                 range(1, 6), self.browsers, proportions
@@ -133,3 +133,11 @@ class AmazonScraper:
         with ThreadPoolExecutor() as executor:
             for browser in self.browsers:
                 executor.submit(browser.quit)
+
+    def __enter__(self) -> AmazonScraper:
+        return self
+
+    def __exit__(self, exc_type: Any, exc_val: Any, exc_tb: Any) -> None:
+        if getattr(self, "display", None):
+            self.display.stop()
+        self.close()
