@@ -4,10 +4,11 @@ from typing import no_type_check
 from statistics import mean, StatisticsError
 
 import streamlit as st
-from scripts.amazon import AmazonScraper
-from scripts.amazon_more import AmazonScraper as AmazonParallelScraper
+from streamlit.delta_generator import DeltaGenerator
+from amazon_utils.scrape import AmazonScraper
+from amazon_utils.scrape_parallel import AmazonScraper as AmazonParallelScraper
 
-st.set_page_config(page_title="Wordsmyth demo")
+st.set_page_config(page_title="Wordsmyth Demo")
 
 
 @no_type_check
@@ -22,7 +23,7 @@ def load_model():
 model = load_model()
 
 st.markdown(
-    """# Wordsmyth demo ✨🖊️
+    """# Wordsmyth Demo ✨🖊️
 
 Rate an Amazon product using a novel sentiment analysis approach.
 This does not use existing star ratings, but rather the sentiment of
@@ -64,7 +65,7 @@ def inline_bar(percents: list[float]) -> str:
     <div style="background-color: #AAFF00; width: {width[4]}%; height: 100%; position: absolute; left: {width[0] + width[1] + width[2] + width[3]}%;"></div>
     <div style="background-color: #00FF00; width: {width[5]}%; height: 100%; position: absolute; left: {width[0] + width[1] + width[2] + width[3] + width[4]}%;"></div>
 </div>
-"""  # noqa: E501
+"""
 
 
 def legend(percents: list[float], include_na: bool = True) -> str:
@@ -76,7 +77,7 @@ def legend(percents: list[float], include_na: bool = True) -> str:
     <li><font size="2"><span style="color: #AAFF00">&#9679;</span> 4 stars ({percents[l+3]:.0%})</font></li>
     <li><font size="2"><span style="color: #00FF00">&#9679;</span> 5 stars ({percents[l+4]:.0%})</font></li>
 </ul>
-"""  # noqa: E501
+"""
 
 
 NA_PLACEHOLDER = (
@@ -208,7 +209,9 @@ which can result in heavy bandwidth usage. This also requires an Amazon account.
 
             USE_100 = not use_more and not use_even_more
             USE_PROP = use_more and not use_even_more
-            USE_500 = use_even_more
+            USE_500 = (
+                not use_even_more if isinstance(use_even_more, DeltaGenerator) else True
+            )
 
             if USE_100:
                 loading = st.markdown("Scraping reviews...")
@@ -220,6 +223,7 @@ which can result in heavy bandwidth usage. This also requires an Amazon account.
                 loading = st.markdown("Fetching product proportions...")
                 with AmazonScraper(False) as scraper:
                     proportions = scraper.get_proportions(product_id)
+                print(proportions)
                 with AmazonParallelScraper(False) as scrapers:
                     loading = st.markdown("Logging scrapers in...")
                     scrapers.login(username, password)

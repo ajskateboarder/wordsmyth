@@ -1,13 +1,9 @@
-"""
-Product indexer/review downloader
-Bulk-request reviews and dump them to a JSON file
-"""
+"""Parallel review downloader"""
 from __future__ import annotations
 from typing import Any, Generator, Callable, Optional
 from itertools import repeat, count, zip_longest
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import threading
-import time
 
 from pyvirtualdisplay.display import Display
 from streamlit.runtime.scriptrunner.script_run_context import (
@@ -16,7 +12,7 @@ from streamlit.runtime.scriptrunner.script_run_context import (
 )
 from bs4 import BeautifulSoup
 from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver import Firefox
+from selenium.webdriver import Firefox, FirefoxOptions
 from selenium.webdriver.common.by import By
 
 
@@ -30,16 +26,27 @@ map_star = {
 
 
 class AmazonScraper:
+    """
+    Amazon scraper to fetch reviews from products with multi-threading
+    with support for logging in
+    """
+
     def __init__(self, fake_display: bool = True) -> None:
         if fake_display:
             self.display = Display(visible=False, size=(800, 600))
             self.display.start()
 
+        opts = FirefoxOptions()
+        if fake_display:
+            opts.add_argument("--headless")  # type: ignore
+
         with ThreadPoolExecutor() as executor:
             self.browsers: list[Firefox] = list(
                 map(
                     lambda fut: fut.result(),
-                    as_completed([executor.submit(Firefox) for _ in range(5)]),
+                    as_completed(
+                        [executor.submit(Firefox, options=opts) for _ in range(5)]
+                    ),
                 )
             )
 
@@ -102,7 +109,6 @@ class AmazonScraper:
                 if next(counter) >= limit:  # type: ignore
                     return
                 callback({**item, "productId": asin})
-            time.sleep(0.1)
 
     def scrape(
         self,

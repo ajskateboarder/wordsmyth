@@ -1,20 +1,20 @@
-"""
-Product indexer/review downloader
-Bulk-request reviews and dump them to a JSON file
-"""
+"""Review downloader"""
 from __future__ import annotations
 import itertools
 
 import time
-from typing import Generator, Optional, Any, Union
+from typing import Generator as Generator_, Optional, Any, Union, TypeVar
 from urllib.parse import urlparse
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from bs4 import BeautifulSoup
 from pyvirtualdisplay import Display
 
-from selenium.webdriver import Firefox
+from selenium.webdriver import Firefox, FirefoxOptions
 from selenium.webdriver.common.by import By
+
+_T = TypeVar("_T")
+Generator = Generator_[_T, None, None]
 
 
 class NoLinksFound(Exception):
@@ -36,9 +36,13 @@ class AmazonScraper:
             self.display = Display(visible=False, size=(800, 600))
             self.display.start()
 
-        self.browser = Firefox(firefox_binary="/usr/bin/firefox")
+        opts = FirefoxOptions()
+        if fake_display:
+            opts.add_argument("--headless")  # type: ignore
 
-    def get_bestselling(self) -> Generator[str, None, None]:
+        self.browser = Firefox(options=opts)
+
+    def get_bestselling(self) -> Generator[str]:
         """Fetch product IDs from Amazon's Bestsellers page"""
         self.browser.get("https://www.amazon.com/gp/bestsellers/")
         for _ in range(5):
@@ -52,6 +56,15 @@ class AmazonScraper:
                 self.browser.execute_script("window.scrollBy(0, 1000)")  # type: ignore
             except Exception:
                 pass
+
+    def fetch_product_reviews(self, asin: str, pages: int = 10) -> Generator[dict]:
+        """Fetch reviews from a single product ASIN"""
+        for page in self.get_product_source(asin, pages):
+            soup = BeautifulSoup(page, "html.parser")
+
+            content = soup.select("div[data-hook='review']")
+            for item in self.select_reviews(content):
+                yield {**item, "productId": asin}
 
     def get_proportions(
         self, asin: str, total: int = 500
@@ -73,7 +86,7 @@ class AmazonScraper:
 
     def get_product_source(
         self, asin: str, pages: int, delay: float = 0.5
-    ) -> Generator[str, None, None]:
+    ) -> Generator[str]:
         """Fetch n pages of reviews by product ID"""
         for page in range(1, pages + 1):
             self.browser.get(
@@ -85,7 +98,7 @@ class AmazonScraper:
             yield source
 
     @staticmethod
-    def select_reviews(content: Any) -> Generator[dict, None, None]:
+    def select_reviews(content: Any) -> Generator[dict]:
         """Select reviews from a Amazon page source"""
         for review in content:
             row = review.select_one(".a-row")
@@ -97,35 +110,6 @@ class AmazonScraper:
                 )
                 body = row.select_one("span[data-hook='review-body']").text
                 yield {"reviewText": body, "overall": rating}
-
-    def fetch_product_reviews(
-        self, asin: str, pages: int = 10
-    ) -> Generator[dict, None, None]:
-        """Fetch reviews from a single product ASIN"""
-        for page in self.get_product_source(asin, pages):
-            soup = BeautifulSoup(page, "html.parser")
-
-            content = soup.select("div[data-hook='review']")
-            for item in self.select_reviews(content):
-                yield {**item, "productId": asin}
-
-    def fetch_bestselling_reviews(
-        self, pages: int, limit: Optional[int] = None
-    ) -> Generator[Generator[dict, None, None], None, None]:
-        """Launch a thread pool to scrape reviews from 'Best Sellers'"""
-        if limit:
-            items = list(itertools.islice(self.get_bestselling(), limit))
-        else:
-            items = list(self.get_bestselling())
-        if len(items) == 0:
-            raise NoLinksFound()
-        with ThreadPoolExecutor(max_workers=len(items)) as executor:
-            futures = [
-                executor.submit(self.fetch_product_reviews, product, pages)
-                for product in items
-            ]
-            for future in as_completed(futures):
-                yield future.result()
 
     def close(self) -> None:
         """Close the browser"""
