@@ -1,0 +1,27 @@
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+**/*.bin
+**/*.egg-info
+.vscode/
+.pytest_cache/
+pyrightconfig.json
+.ruff_cache/
+.mypy_cache/
+data/*.pkl
+data/*.log
+.coverage
+scripts/geckodriver.log
+
+# This contains a bunch of saved reviews and client info
+archive/
+data/
+**/*.log
+scripts/*.json
