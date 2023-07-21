@@ -1,17 +1,12 @@
 """Find a bunch of product URLs"""
 from __future__ import annotations
-from typing import Generator as Generator_, TypeVar, Optional
+from typing import Optional
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import itertools
 from urllib.parse import urlparse
 
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import WebDriverException
-
 from .scrape import AmazonScraper
-
-_T = TypeVar("_T")
-Generator = Generator_[_T, None, None]
 
 
 class AmazonBestsellersScraper(AmazonScraper):
@@ -20,20 +15,24 @@ class AmazonBestsellersScraper(AmazonScraper):
     (https://www.amazon.com/gp/bestsellers)
     """
 
-    def get_bestselling(self) -> Generator[str]:
+    def get_bestselling(self, scrolls: int = 5) -> list[str]:
         """Fetch product IDs from Amazon's Bestsellers page"""
         self.browser.get("https://www.amazon.com/gp/bestsellers/")
-        for _ in range(5):
+        results = []
+        for _ in range(scrolls):
             for link in self.browser.find_elements(By.CSS_SELECTOR, "a.a-link-normal"):
                 try:
                     if "product-reviews" in link.get_attribute("href"):
-                        yield urlparse(link.get_attribute("href")).path.split("/")[2]
+                        results.append(
+                            urlparse(link.get_attribute("href")).path.split("/")[2]
+                        )
                 except Exception:  # pylint:disable=broad-exception-caught
                     break
             try:
                 self.browser.execute_script("window.scrollBy(0, 1000)")  # type: ignore
             except Exception:  # pylint:disable=broad-exception-caught
                 pass
+        return list(set(results))
 
     def fetch_bestselling_reviews(
         self, pages: int, limit: Optional[int] = None

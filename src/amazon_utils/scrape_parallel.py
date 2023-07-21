@@ -130,9 +130,11 @@ class AmazonScraper:
                 range(1, 6), self.browsers, proportions
             ):
                 ctx = get_script_run_ctx()
-                executor.submit(
+                future = executor.submit(
                     self._scrape_single, browser, asin, i, callback, prop, ctx
                 )
+                if future.exception():
+                    raise future.exception()
 
     def close(self) -> None:
         """Close all browsers"""

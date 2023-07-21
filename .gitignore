@@ -19,7 +19,9 @@ data/*.pkl
 data/*.log
 .coverage
 scripts/geckodriver.log
-# This contains a bunch of saved reviews
+
+# This contains a bunch of saved reviews and client info
 archive/
+data/
 **/*.log
 scripts/*.json

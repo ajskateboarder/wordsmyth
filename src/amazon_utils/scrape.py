@@ -45,11 +45,19 @@ class AmazonScraper:
     def get_bestselling(self) -> Generator[str]:
         """Fetch product IDs from Amazon's Bestsellers page"""
         self.browser.get("https://www.amazon.com/gp/bestsellers/")
+        ids = []
         for _ in range(5):
             for link in self.browser.find_elements(By.CSS_SELECTOR, "a.a-link-normal"):
                 try:
                     if "product-reviews" in link.get_attribute("href"):
-                        yield urlparse(link.get_attribute("href")).path.split("/")[2]
+                        product_id = urlparse(link.get_attribute("href")).path.split(
+                            "/"
+                        )[2]
+                        if not product_id in ids:
+                            ids.append(product_id)
+                            yield product_id
+                        else:
+                            continue
                 except Exception:
                     break
             try:
