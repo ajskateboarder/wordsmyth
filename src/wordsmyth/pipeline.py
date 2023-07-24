@@ -4,8 +4,7 @@ import warnings
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Generator, Union, Optional
 
-from .models.flair import Flair
-from .models.torchmoji import TorchMoji
+from .models import Flair, TorchMoji
 from .items import Sentiment, Output
 
 
