@@ -22,6 +22,6 @@ scripts/geckodriver.log
 
 # This contains a bunch of saved reviews and client info
 archive/
-data/
+data*/
 **/*.log
 scripts/*.json
