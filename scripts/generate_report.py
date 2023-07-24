@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import sqlite3
 
 from scipy.stats import ttest_rel
@@ -6,7 +7,6 @@ import pandas as pd
 
 from markdown import markdown
 from markdown.extensions.tables import TableExtension
-from markdown.extensions.md_in_html import MarkdownInHtmlExtension
 
 pd.options.mode.chained_assignment = None
 
@@ -19,7 +19,8 @@ tables = list(
 )
 
 print(
-    """<h1>Results</h1>
+    """<link rel="stylesheet" href="github.css" />
+<h1>Results</h1>
 p < 0.05 indicates significance
 """
 )
