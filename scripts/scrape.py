@@ -1,7 +1,6 @@
 #!../venv/bin/python3
 """Fetch a LOT of Amazon product IDs and scrape ~130 reviews from each proportionally"""
 from __future__ import annotations
-from typing import Optional
 
 from functools import partial
 from threading import Lock
@@ -54,7 +53,7 @@ def main() -> None:
     db = LockedSqliteConnection("reviews.sqlite")
     with utils.ParallelAmazonScraper() as scrapers:
         print("logging scrapers in")
-        scrapers.login("the.mystic.6660@gmail.com", "adiiscool74@")
+        scrapers.login("", "")
         with utils.AmazonBestsellersScraper() as products:
             print("collecting product ids")
             product_ids = products.get_bestselling()

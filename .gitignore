@@ -24,4 +24,6 @@ scripts/geckodriver.log
 archive/
 data*/
 **/*.log
+**/*.sqlite
+**/*.html
 scripts/*.json

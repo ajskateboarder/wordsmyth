@@ -1,1 +1,2 @@
-from wordsmyth.pipeline import Pipeline  # noqa: F401
+from wordsmyth.pipeline import Pipeline
+from wordsmyth import scraping

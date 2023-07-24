@@ -5,8 +5,8 @@ from statistics import mean, StatisticsError
 
 import streamlit as st
 from streamlit.delta_generator import DeltaGenerator
-from amazon_utils.scrape import AmazonScraper
-from amazon_utils.scrape_parallel import AmazonScraper as AmazonParallelScraper
+from wordsmyth.scraping import AmazonScraper
+from wordsmyth.scraping import ParallelAmazonScraper
 
 st.set_page_config(page_title="Wordsmyth Demo")
 
@@ -224,14 +224,14 @@ which can result in heavy bandwidth usage. This also requires an Amazon account.
                 with AmazonScraper(False) as scraper:
                     proportions = scraper.get_proportions(product_id)
                 print(proportions)
-                with AmazonParallelScraper(False) as scrapers:
+                with ParallelAmazonScraper(False) as scrapers:
                     loading = st.markdown("Logging scrapers in...")
                     scrapers.login(username, password)
                     loading = st.markdown("Scraping reviews...")
                     scrapers.scrape(product.split("/")[-1], process_review, proportions)  # type: ignore
                 st.stop()
             if USE_500:
-                with AmazonParallelScraper() as scrapers:
+                with ParallelAmazonScraper() as scrapers:
                     loading = st.markdown("Logging scrapers in...")
                     scrapers.login(username, password)
                     loading = st.markdown("Scraping reviews...")

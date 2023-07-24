@@ -20,6 +20,7 @@ tables = list(
 
 print(
     """<link rel="stylesheet" href="github.css" />
+<div class="markdown-body">
 <h1>Results</h1>
 p < 0.05 indicates significance
 """
@@ -32,7 +33,7 @@ for item in tables:
     print(markdown(f"**amazon rating**: {round(df.actual.mean(), 2)}\n"))
     print(markdown(f"**wordsmyth rating**: {round(df.prediction.mean(), 2)}"))
 
-    table = df.head()
+    table = df.sample(5)
     table.text = table.text.apply(lambda x: f"{x.strip()[:100]}...")
     table = table.to_markdown(index=False)
     print(markdown(table, extensions=[TableExtension()]))
@@ -45,3 +46,4 @@ for item in tables:
     )
     score = accuracy_score(df.actual.to_list(), df.prediction.to_list())
     print(markdown(f"**accuracy score**: {score}"))
+print("</div>")
