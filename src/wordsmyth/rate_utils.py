@@ -20,23 +20,33 @@ def fix_content(
     text: wordsmyth.items.Output, emojimap: dict
 ) -> Optional[dict[str, Any]]:
     """Assign a more accurate emoji to some text from TorchMoji output
-    given Flair predictions and an emojimap."""
-    # `text` is a combination of predictions from TorchMoji and Flair results. This function uses
-    # data from this object to better adjust the results from TorchMoji to something more accurate.
+    given Flair predictions and an emojimap.
 
-    # `emojimap` is a mapping of emojis to their floating-point sentiment values in negativity,
-    # neutrality, and positivity. We use this additional information to locate emojis which fit
-    # Flair's text predictions, as we have found this model to have a higher accuracy for detecting
+    - `emojimap` is a mapping of emojis to their floating-point sentiment values in negativity,
+        neutrality, and positivity
+    - `text` is a combination of predictions from TorchMoji and Flair results
+
+    https://kt.ijs.si/data/Emoji_sentiment_ranking/index.html"""
+    # text uses data from this object to better adjust the results from TorchMoji to something more accurate.
+    # emojimap is used to locate emojis which fit Flair's text predictions
+    # as we have found this model to have a higher accuracy for detecting
     # base sentiment.
 
-    # The mentioned data is from https://kt.ijs.si/data/Emoji_sentiment_ranking/index.html
-
     # These emojis often show up in TorchMoji responses, so these are checked
-    target_emojis = [":confused:", ":thumbsup:", ":eyes:", ":smile:"]
+    target_emojis = [":confused:", ":thumbsup:", ":eyes:", ":smile:", ":angry:"]
     emoji_indices = find_indices(text.emojis, target_emojis)
     num_matches = len(emoji_indices)
 
-    if num_matches in (1, 2):
+    allowed_matches = [1, 2]
+    leniency = False
+
+    if num_matches not in allowed_matches:
+        # If there were too many indexed emojis, add a lenience factor
+        # This allows content to be rated but gets adjusted later on
+        leniency = True
+        allowed_matches.extend([3, 4])
+
+    if num_matches in allowed_matches:
         # Find the first emoji that matches one of the target emojis
         # Emojis closer to index 0 are often more accurate
         first_index = min(emoji_indices)
@@ -54,6 +64,7 @@ def fix_content(
             "emojis": text.emojis,
             "matches": text.sentiment.sentiment == match["sentiment"],
             "score": text.sentiment.score,
+            "leniency": leniency,
         }
 
         # If the matched sentiment does not match the text sentiment, try to find a better match
@@ -114,6 +125,12 @@ def rate(text: dict[str, Any], emojimap: list) -> Union[int, float]:
         score = score + 0.5
     if round(1 - score, 4) < 0.8667:
         score = score - abs(em_mean)
+    if text["leniency"]:
+        rounded = round(1 - score, 4)
+        if 0.1 < rounded < 0.15:
+            score = score - 0.3
+        elif 0.49 < rounded > 0.6:
+            score = score + 0.3
 
     rating = min(5, (round(1 - score, 4) / 2))  # type: ignore
     return rating  # type: ignore
