@@ -7,7 +7,7 @@
 
 Wordsmyth eases the pains of manual comment analysis among content creators and users.
 
-Instead of relying on star ratings given by the user, Wordsmyth *generates them* based on the text sentiment by applying pre-trained neural network results to hardcoded rule-based analysis, a process known as *rule-based model fusion*. This combination of data analysis results in high-accuracy rating prediction that handles sarcasm. (for the most part)
+Instead of relying on star ratings given by the user, Wordsmyth *generates them* based on the text sentiment by applying pre-trained neural network results to deterministic rules. This combination of data analysis results in high-accuracy rating prediction.
 
 <div align="center">
 <img src="./media/how_it_works.png">
