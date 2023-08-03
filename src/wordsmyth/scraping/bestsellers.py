@@ -1,6 +1,6 @@
 """Find a bunch of product URLs"""
 from __future__ import annotations
-from typing import Optional
+from typing import Optional, Generator
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import itertools
 from urllib.parse import urlparse

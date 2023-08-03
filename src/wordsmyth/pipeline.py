@@ -5,10 +5,10 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Generator, Union, Optional
 
 from .models import Flair, TorchMoji
-from .items import Sentiment, Output
+from .items import Sentiment, Output, Int, Float
 
 
-Rating = Optional[Union[int, float]]
+Rating = Optional[Union[Int, Float]]
 
 
 def divide_list(array: list, num: int) -> Generator[list, None, None]:
@@ -26,26 +26,9 @@ class Pipeline:
         self._flair = Flair()
         self._torchmoji = TorchMoji()
 
-    def predict(
-        self, text: str, emojis: int = 10, as_object: bool = False
-    ) -> Union[Output, Rating]:
+    def __call__(self, text: str, emojis: int = 10) -> Union[Output, Rating]:
         """Predict the star rating for a single content"""
         torchmoji = self._torchmoji.predict(text, emojis)
         flair = self._flair.predict(text)
         output = Output(sentiment=Sentiment(**flair), emojis=torchmoji, text=text)  # type: ignore
-        return output if as_object else output.rating()
-
-    def predict_parallel(
-        self, texts: list[str], emojis: int = 10
-    ) -> Generator[Output, None, None]:
-        """Predict star ratings for multiple contents.
-        - This uses concurrent.futures.ThreadPoolExecutor.
-        - This only returns data objects which makes it easier to track which content was rated
-        """
-        with ThreadPoolExecutor() as pool:
-            futures = [
-                pool.submit(self.predict, text, emojis, as_object=True)
-                for text in texts
-            ]
-            for future in as_completed(futures):
-                yield future.result()
+        return output.rating()

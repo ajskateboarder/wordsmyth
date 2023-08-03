@@ -1,11 +1,27 @@
 from __future__ import annotations
-from typing import Optional, Union, Any
+from typing import Optional, Any
 from dataclasses import dataclass
 
 import json
 
 from wordsmyth.constants import DIR_PATH
 from wordsmyth.rate_utils import fix_content, rate
+
+
+class Int(int):
+    def __new__(cls, value: int | str, metadata: Optional[dict] = None) -> Int:
+        obj = int.__new__(cls, value)
+        obj.metadata = metadata
+        cls.metadata = metadata
+        return obj
+
+
+class Float(float):
+    def __new__(cls, value: float | str, metadata: Optional[dict] = None) -> Float:
+        obj = int.__new__(cls, value)
+        obj.metadata = metadata
+        cls.metadata = metadata
+        return obj
 
 
 @dataclass
@@ -24,14 +40,18 @@ class Output:
     emojis: list[str]
     text: str
 
-    def rating(self, exact: bool = True) -> Optional[Union[int, float]]:
+    def rating(self, exact: bool = True) -> Optional[Int | Float]:
         """Rate text using data from Flair `en-sentiment` and TorchMoji"""
         with open(f"{DIR_PATH}/data/emojimap.json", encoding="utf-8") as emojimap:
             rate_map = json.load(emojimap)
         fixed = self._fix_content()
         try:
-            rating = rate(fixed, rate_map)  # type: ignore # This can error
-            return round(min(5, rating * 10)) if exact else rating
+            rating = rate(fixed, rate_map)  # type: ignore
+            return (
+                Int(round(min(5, rating * 10)), fixed)  # type: ignore
+                if exact
+                else Float(rating, fixed)  # type: ignore
+            )
         except AttributeError:
             return None
 

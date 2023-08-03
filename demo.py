@@ -131,8 +131,10 @@ def find_asin(url: str) -> str:
 
 
 def process_review(review: dict) -> None:
-    prediction_results.append(model.predict(review["reviewText"]))
-
+    try:
+        prediction_results.append(model(review["reviewText"]))
+    except AssertionError:
+        return
     actual_results.append(review["overall"])
     predictions = [
         prediction_results.count(None) / len(prediction_results),
@@ -221,10 +223,10 @@ which can result in heavy bandwidth usage. This also requires an Amazon account.
                 st.stop()
             if USE_PROP:
                 loading = st.markdown("Fetching product proportions...")
-                with AmazonScraper(False) as scraper:
+                with AmazonScraper() as scraper:
                     proportions = scraper.get_proportions(product_id)
                 print(proportions)
-                with ParallelAmazonScraper(False) as scrapers:
+                with ParallelAmazonScraper() as scrapers:
                     loading = st.markdown("Logging scrapers in...")
                     scrapers.login(username, password)
                     loading = st.markdown("Scraping reviews...")

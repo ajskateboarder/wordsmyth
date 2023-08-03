@@ -31,14 +31,11 @@ and use the module like so:
 ```py
 import wordsmyth
 
-pipe = wordsmyth.Pipeline()
-content = pipe.predict("LOL")
+model = wordsmyth.Pipeline()
+content = model("LOL")
 print(content, "stars") # 5 stars
 
-# uses a thread pool
-contents = pipe.predict_parallel("LOL", "LOL", ...)
-for text in contents:
-    print(text.text, text.rating())
+content.metadata # rating process info
 ```
 
 There are also scripts to download reviews and benchmark this algorithm in `scripts/`.
