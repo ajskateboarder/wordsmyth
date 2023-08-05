@@ -31,4 +31,7 @@ class Pipeline:
         torchmoji = self._torchmoji.predict(text, emojis)
         flair = self._flair.predict(text)
         output = Output(sentiment=Sentiment(**flair), emojis=torchmoji, text=text)  # type: ignore
-        return output.rating()
+        try:
+            return output.rating()
+        except AttributeError:
+            return None

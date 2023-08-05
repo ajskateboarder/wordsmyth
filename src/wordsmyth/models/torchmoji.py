@@ -2,8 +2,10 @@
 Abstracted library to make emoji processing nicer, mostly from this gist
 https://gist.github.com/cw75/57ca89cfa496f10c7c7b888ec5703d7f#file-emojize-py
 """
+from __future__ import annotations
 import json
-from typing import List, Union
+from typing import Union
+from pprint import pprint
 
 import numpy as np
 from torchmoji.model_def import torchmoji_emojis
@@ -46,18 +48,20 @@ class TorchMoji:
 
         max_sentence_length = 100
         self.tokenizer = SentenceTokenizer(vocabulary, max_sentence_length)
-        self.model = torchmoji_emojis(MODEL_WEIGHTS_PATH)
+        self.model = torchmoji_emojis(MODEL_WEIGHTS_PATH, return_attention=True)
 
-    def predict(self, text: Union[str, list], top_n: int = 5) -> List[str]:
+    def predict(self, text: Union[str, list], top_n: int = 5) -> list[str]:
         """Emoji prediction"""
 
         if not isinstance(text, list):
             text = [text]
 
-        tokenized, _, _ = self.tokenizer.tokenize_sentences(text)
-        prob = self.model(tokenized)[0]
+        probabilities, attention_weights = self.model(
+            self.tokenizer.tokenize_sentences(text)[0]
+        )
+        # pprint(dict(zip(attention_weights.tolist()[0], text[0].split(" "))))
 
-        emoji_ids = top_elements(prob, top_n)
+        emoji_ids = top_elements(probabilities[0], top_n)
         emojis = list(map(lambda x: EMOJIS[x], emoji_ids))
 
         return emojis

@@ -45,15 +45,12 @@ class Output:
         with open(f"{DIR_PATH}/data/emojimap.json", encoding="utf-8") as emojimap:
             rate_map = json.load(emojimap)
         fixed = self._fix_content()
-        try:
-            rating = rate(fixed, rate_map)  # type: ignore
-            return (
-                Int(round(min(5, rating * 10)), fixed)  # type: ignore
-                if exact
-                else Float(rating, fixed)  # type: ignore
-            )
-        except AttributeError:
-            return None
+        rating = rate(fixed, rate_map)  # type: ignore
+        return (
+            Int(round(min(5, rating * 10)), fixed)  # type: ignore
+            if exact
+            else Float(rating, fixed)  # type: ignore
+        )
 
     def _fix_content(self) -> Optional[dict[str, Any]]:
         with open(f"{DIR_PATH}/data/emojimap.json", encoding="utf-8") as emojimap:

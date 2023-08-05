@@ -2,6 +2,8 @@
 """Fetch a LOT of Amazon product IDs and scrape ~130 reviews from each proportionally"""
 from __future__ import annotations
 
+import os
+import sys
 from functools import partial
 from threading import Lock
 import sqlite3
@@ -42,7 +44,17 @@ def process_review(review: dict, db: LockedSqliteConnection) -> None:
             f"CREATE TABLE IF NOT EXISTS {name}(text, actual, prediction)"
         )
 
-        prediction = pipe.predict(review["reviewText"])
+        try:
+            prediction = pipe(
+                review["reviewText"]
+                .replace(
+                    "                    The media could not be loaded.\n                ",
+                    "",
+                )
+                .strip()
+            )
+        except Exception:
+            return
         db.cursor.execute(
             f"INSERT INTO {name} VALUES(?, ?, ?)",
             (review["reviewText"], review["overall"], prediction),
@@ -50,10 +62,10 @@ def process_review(review: dict, db: LockedSqliteConnection) -> None:
 
 
 def main() -> None:
-    db = LockedSqliteConnection("reviews.sqlite")
+    db = LockedSqliteConnection(sys.argv[1])
     with utils.ParallelAmazonScraper() as scrapers:
         print("logging scrapers in")
-        scrapers.login("", "")
+        scrapers.login(os.environ["EMAIL"], os.environ["PASSWORD"])
         with utils.AmazonBestsellersScraper() as products:
             print("collecting product ids")
             product_ids = products.get_bestselling()
