@@ -33,7 +33,6 @@ def fix_content(
     # base sentiment.
 
     # These emojis often show up in TorchMoji responses, so these are checked
-    print(text.text, text.emojis)
     target_emojis = [":confused:", ":thumbsup:", ":eyes:", ":smile:", ":persevere:"]
     emoji_indices = find_indices(text.emojis, target_emojis)
     num_matches = len(emoji_indices)
