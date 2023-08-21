@@ -2,31 +2,33 @@
   import Router from "./Router.svelte";
 
   // Don't ask LOL
-  class StyleBuilder {
-    root: HTMLElement;
+  class RootBuilder {
+    private root: HTMLElement;
     constructor() {
       let root = document.querySelector(":root") as HTMLElement;
       this.root = root;
     }
-    add(key: string, value: string): StyleBuilder {
-      this.root.style.setProperty(`--${key}`, value);
+    add(key: string, value: string): RootBuilder {
+      this.root.style.setProperty(`${key}`, value);
       return this;
     }
   }
 
-  new StyleBuilder()
-    .add("bg-hhh", "#1d2021")
-    .add("bg", "#282828")
-    .add("bg_s", "#32302f")
-    .add("bg1", "#3c3836")
-    .add("bg2", "#504945")
-    .add("bg3", "#665c54")
-    .add("bg4", "#7c6f64")
-    .add("fg", "#fbf1c7")
-    .add("fg1", "#ebdbb2")
-    .add("fg2", "#d5c4a1")
-    .add("fg3", "#bdae93")
-    .add("fg4", "#a89984");
+  new RootBuilder()
+    .add("--bg-hhh", "#1d2021")
+    .add("--bg", "#282828")
+    .add("--bg_s", "#32302f")
+    .add("--bg1", "#3c3836")
+    .add("--bg2", "#504945")
+    .add("--bg3", "#665c54")
+    .add("--bg4", "#7c6f64")
+    .add("--fg", "#fbf1c7")
+    .add("--fg1", "#ebdbb2")
+    .add("--fg2", "#d5c4a1")
+    .add("--fg3", "#bdae93")
+    .add("--fg4", "#a89984")
+    .add("background-color", "var(--bg-hhh)")
+    .add("color", "var(--fg)");
 </script>
 
 <svelte:head>
