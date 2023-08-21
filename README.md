@@ -13,7 +13,7 @@ Instead of relying on star ratings given by the user, Wordsmyth *generates them*
 <img src="./media/how_it_works.png">
 </div>
 
-Wordsmyth functions as a modular pipeline with a focus on being easy to maintain and extend.
+Wordsmyth has relatively good performance across different types of content, from YouTube comments to Amazon reviews.
 
 ## Usage with Python
 

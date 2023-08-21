@@ -8,6 +8,7 @@ from flair.models import TextClassifier
 
 class Flair:
     """Abstracted Flair `en-sentiment` sentiment classifier"""
+
     def __init__(self) -> None:
         self.sia = TextClassifier.load("en-sentiment")
         self.lock = Lock()

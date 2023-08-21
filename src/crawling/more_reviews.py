@@ -1,28 +1,17 @@
 """Parallel review downloader"""
 from __future__ import annotations
+
 from typing import Any, Generator, Callable, Optional
+
 from itertools import repeat, count, zip_longest
 from concurrent.futures import ThreadPoolExecutor, as_completed
-import threading
 
-from pyvirtualdisplay.display import Display
-from streamlit.runtime.scriptrunner.script_run_context import (
-    add_script_run_ctx,
-    get_script_run_ctx,
-)
+from typing_extensions import Self
+
 from bs4 import BeautifulSoup
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver import Firefox, FirefoxOptions
 from selenium.webdriver.common.by import By
-
-
-map_star = {
-    1: "one_star",
-    2: "two_star",
-    3: "three_star",
-    4: "four_star",
-    5: "five_star",
-}
 
 
 class AmazonScraper:
@@ -32,10 +21,6 @@ class AmazonScraper:
     """
 
     def __init__(self, fake_display: bool = True) -> None:
-        if fake_display:
-            self.display = Display(visible=False, size=(800, 600))
-            self.display.start()
-
         opts = FirefoxOptions()
         if fake_display:
             opts.add_argument("--headless")  # type: ignore
@@ -94,8 +79,11 @@ class AmazonScraper:
         limit: Optional[int] = None,
         ctx: Optional[Any] = None,
     ) -> None:
+        map_star = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five"}
+
         if ctx:
-            add_script_run_ctx(threading.currentThread(), ctx)
+            pass
+            # add_script_run_ctx(threading.currentThread(), ctx)
         if limit:
             counter = count(0)
         for page in range(1, 11):
@@ -129,12 +117,17 @@ class AmazonScraper:
             for i, browser, prop in zip_longest(
                 range(1, 6), self.browsers, proportions
             ):
-                ctx = get_script_run_ctx()
+                # ctx = get_script_run_ctx()
                 future = executor.submit(
-                    self._scrape_single, browser, asin, i, callback, prop, ctx
+                    self._scrape_single,
+                    browser,
+                    asin,
+                    i,
+                    callback,
+                    prop,  # ctx
                 )
                 if future.exception():
-                    raise future.exception()
+                    raise future.exception()  # type: ignore
 
     def close(self) -> None:
         """Close all browsers"""
@@ -142,7 +135,7 @@ class AmazonScraper:
             for browser in self.browsers:
                 executor.submit(browser.quit)
 
-    def __enter__(self) -> AmazonScraper:
+    def __enter__(self) -> Self:
         return self
 
     def __exit__(self, exc_type: Any, exc_val: Any, exc_tb: Any) -> None:

@@ -1,14 +1,11 @@
 """Review downloader"""
 from __future__ import annotations
-import itertools
 
 import time
-from typing import Generator as Generator_, Optional, Any, Union, TypeVar
+from typing import Generator as Generator_, Any, Union, TypeVar
 from urllib.parse import urlparse
-from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from bs4 import BeautifulSoup
-from pyvirtualdisplay import Display
 
 from selenium.webdriver import Firefox, FirefoxOptions
 from selenium.webdriver.common.by import By
@@ -32,10 +29,6 @@ class AmazonScraper:
     This requires `xvfb`"""
 
     def __init__(self, fake_display: bool = True) -> None:
-        if fake_display:
-            self.display = Display(visible=False, size=(800, 600))
-            self.display.start()
-
         opts = FirefoxOptions()
         if fake_display:
             opts.add_argument("--headless")  # type: ignore
@@ -81,6 +74,7 @@ class AmazonScraper:
 
         If `total` is None, return the percentages from a product histogram as floats"""
         self.browser.get(f"https://amazon.com/product-reviews/{asin}")
+
         percentages = self.browser.find_element(
             By.CSS_SELECTOR, ".histogram"
         ).text.split("\n")[1::2]

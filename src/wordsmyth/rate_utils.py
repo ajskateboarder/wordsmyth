@@ -100,7 +100,6 @@ def fix_content(
             obj["sentiment"]["map"] = "pos"
         else:
             obj["sentiment"]["map"] = "neg"
-        print(obj, "\n")
 
         target_emojis.remove(obj["emoji"])
         try:
@@ -160,17 +159,19 @@ def rate(text: dict[str, Any], emojimap: list) -> Union[int, float]:
             score = score - 0.2
         if text["sentiment"]["map"] == "neg":
             score = score - 0.2
-    if (
-        any(emojis_are_positive)
-        and emojis_are_positive.count(True) > 2
-        and text["sentiment"]["flair"] == "neg"
-        and not low_score
-    ):
-        score = score - 0.15
+    # if (
+    #     any(emojis_are_positive)
+    #     and emojis_are_positive.count(True) > 2
+    #     and text["sentiment"]["flair"] == "neg"
+    #     and not low_score
+    # ):
+    #     print("POOP!")
+    #     score = score - 0.15
     if (
         any(word in text["content"].lower().strip() for word in conjunctions)
         and not low_score
     ):
+        print("POOP")
         if text["sentiment"]["flair"] == "neg":
             score = score - 0.2
         if text["sentiment"]["flair"] == "pos":
