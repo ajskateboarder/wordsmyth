@@ -15,7 +15,37 @@
       "all": false,
       "shell": {
         "all": false,
-        "open": true
+        "execute": true,
+        "scope": [
+          {
+            "name": "river",
+            "cmd": "./river"
+          },
+          {
+            "name": "river.exe",
+            "cmd": "./river.exe"
+          }
+        ]
+      },
+      "os": {
+        "all": true
+      },
+      "fs": {
+        "all": true,
+        "removeFile": true,
+        "writeFile": true,
+        "scope": [
+          "*",
+          "**"
+        ]
+      },
+      "http": {
+        "all": false,
+        "request": true,
+        "scope": [
+          "https://api.github.com/*",
+          "https://github.com/*"
+        ]
       }
     },
     "bundle": {

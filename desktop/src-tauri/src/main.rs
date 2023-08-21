@@ -1,51 +1,131 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
-use serde_json::Value;
-use reqwest::blocking::Client;
-use reqwest::header;
+use std::{vec};
 
-use std::io;
-use std::fs::File;
-use std::process::{Command, Stdio};
+use tauri::api::process::Command;
+use scraper::{Html, Selector};
+use serde::{Deserialize, Serialize};
 
-fn get_river_url() -> Result<(String, String), Box<dyn std::error::Error>> {
-    let url = "https://api.github.com/repos/ajskateboarder/river/releases/latest";
-    let user_agent = header::HeaderValue::from_static("random bot");
-    let client = Client::new();
-
-    let response = client.get(url).header(header::USER_AGENT, user_agent).send()?;
-
-    if response.status().is_success() {
-        let json_response: Value = response.json()?;
-        let assets = json_response["assets"].as_array().unwrap();
-        let download_url: String;
-        if cfg!(windows) {
-            download_url = assets[1]["browser_download_url"].as_str().unwrap().to_string();
-        } else {
-            download_url = assets[0]["browser_download_url"].as_str().unwrap().to_string();
-        }
-        Ok((download_url.clone(), download_url.split("/").collect::<Vec<_>>().last().unwrap().to_string()))
-    } else {
-        Err("heyyy".into())
-    }
+#[tauri::command]
+async fn run_river() {    
+  let _ = Command::new("chmod")
+  .args(["+x", "./river"])
+  .output()
+  .unwrap();
+  let _ = Command::new("./river").spawn();
 }
 
-fn download_file(url: (String, String)) {
-    let resp = reqwest::blocking::get(url.0).expect("request failed");
-    let body = resp.bytes().expect("body invalid");
-    let mut out = File::create(url.1).expect("failed to create file");
-    let body_bytes = body.to_vec();
-    io::copy(&mut &body_bytes[..], &mut out).expect("failed to copy content");
+#[derive(Serialize, Deserialize, Debug)]
+struct AmazonResult {
+    title: String,
+    asin: String,
+    rating: String,
+    price: String,
+    image: String,
+    review_count: String,
+}
+
+#[tauri::command]
+async fn search_results(
+    html: String,
+) -> Result<Vec<AmazonResult>, String> {
+    let cards = Selector::parse("div[class=a-section]").unwrap();
+    let fallback_cards = Selector::parse("div[class='a-section a-spacing-base']").unwrap();
+    let title_links = Selector::parse(
+        ".a-link-normal.s-underline-text.s-underline-link-text.s-link-style .a-text-normal",
+    )
+    .unwrap();
+    let rating = Selector::parse(".a-row.a-size-small span").unwrap();
+    let price = Selector::parse(".a-price").unwrap();
+    let image = Selector::parse(".s-image").unwrap();
+    let review_count = Selector::parse(".a-size-base .s-underline-text").unwrap();
+
+    let document = Html::parse_document(&html);
+
+    let mut found_cards = document.select(&cards).collect::<Vec<_>>();
+    found_cards = found_cards.split_last().unwrap().1.to_vec();
+
+    if found_cards.len() == 0 {
+        found_cards = document.select(&fallback_cards).collect::<Vec<_>>();
+        found_cards = found_cards.split_last().unwrap().1.to_vec();
+    }
+
+    let mut amazon_results: Vec<AmazonResult> = vec![];
+
+    for product in found_cards {
+        let _title_link: Vec<_> = product.select(&title_links).collect::<Vec<_>>();
+
+        if _title_link.len() == 0 {
+            let _ = search_results(html.clone());
+        }
+
+        let mut title_link = _title_link[0];
+        let title_text = title_link.text().collect::<String>();
+        if title_text == "Sponsored" {
+            continue;
+        };
+        if title_text == "" {
+            title_link = product
+                .select(&title_links)
+                .filter(|item| item.text().collect::<String>() != "")
+                .collect::<Vec<_>>()[1];
+        }
+
+        let binding = product.select(&rating).collect::<Vec<_>>();
+        let select_rating: _ = binding.get(0);
+        let mut final_rating = "None".to_string();
+
+        if select_rating != None {
+            final_rating = select_rating
+                .unwrap()
+                .value()
+                .attr("aria-label")
+                .unwrap_or("What")
+                .to_string()
+        }
+
+        let binding = product.select(&price).collect::<Vec<_>>();
+        let select_price: _ = binding.get(0);
+        let mut final_price = "None".to_string();
+
+        if select_price != None {
+            final_price = select_price
+                .unwrap()
+                .text()
+                .collect::<String>()
+                .replace("\n", ".")
+                .split_off(1)
+                .split("$")
+                .collect::<Vec<_>>()[0]
+                .to_string();
+        }
+
+        amazon_results.push(AmazonResult {
+            title: title_link.text().collect::<String>(),
+            asin: title_link
+                .value()
+                .attr("href")
+                .unwrap_or("None")
+                .to_string(),
+            rating: final_rating,
+            price: final_price,
+            image: product.select(&image).collect::<Vec<_>>()[0]
+                .value()
+                .attr("src")
+                .unwrap_or("None")
+                .to_string(),
+            review_count: product.select(&review_count).collect::<Vec<_>>()[0]
+                .text()
+                .collect::<String>()
+                .to_string(),
+        })
+    }
+
+    Ok(amazon_results)
 }
 
 fn main() {
-    let url = get_river_url().unwrap();
-    download_file(url);
-    if !cfg!(windows) {
-        let _ = Command::new("sh")
-            .args(["-c", "chmod +x ./main; ./main &"]).stdout(Stdio::null()).stderr(Stdio::null()).spawn();
-    }
-
     tauri::Builder::default()
-        .run(tauri::generate_context!())
+        .invoke_handler(tauri::generate_handler![run_river, search_results])
+        .run(tauri::generate_context![])
         .expect("error while running tauri application");
 }

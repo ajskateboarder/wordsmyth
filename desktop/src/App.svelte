@@ -1,34 +1,66 @@
 <script lang="ts">
   import Router from "./Router.svelte";
+  import { getClient, ResponseType } from "@tauri-apps/api/http";
+  import { platform } from "@tauri-apps/api/os";
+  import { invoke } from "@tauri-apps/api/tauri";
+  import {
+    writeBinaryFile,
+    type BinaryFileContents,
+    exists,
+  } from "@tauri-apps/api/fs";
+  import Alert from "./lib/Alert.svelte";
 
-  // Don't ask LOL
-  class RootBuilder {
-    private root: HTMLElement;
-    constructor() {
-      let root = document.querySelector(":root") as HTMLElement;
-      this.root = root;
-    }
-    add(key: string, value: string): RootBuilder {
-      this.root.style.setProperty(`${key}`, value);
-      return this;
-    }
+  async function getLatestRelease(): Promise<string[]> {
+    const client = await getClient();
+    const response = await client.get(
+      "https://api.github.com/repos/ajskateboarder/river/releases/latest",
+      {
+        headers: { "User-Agent": "bot" },
+        timeout: 30,
+        responseType: ResponseType.JSON,
+      }
+    );
+    const downloadLinks = (response.data as Record<string, any>).assets.map(
+      (item: any) => item.browser_download_url
+    );
+    return downloadLinks;
   }
 
-  new RootBuilder()
-    .add("--bg-hhh", "#1d2021")
-    .add("--bg", "#282828")
-    .add("--bg_s", "#32302f")
-    .add("--bg1", "#3c3836")
-    .add("--bg2", "#504945")
-    .add("--bg3", "#665c54")
-    .add("--bg4", "#7c6f64")
-    .add("--fg", "#fbf1c7")
-    .add("--fg1", "#ebdbb2")
-    .add("--fg2", "#d5c4a1")
-    .add("--fg3", "#bdae93")
-    .add("--fg4", "#a89984")
-    .add("background-color", "var(--bg-hhh)")
-    .add("color", "var(--fg)");
+  async function downloadEXE(url: string) {
+    const client = await getClient();
+    return (
+      await client.get(url, {
+        headers: { "User-Agent": "bot" },
+        timeout: 30,
+        responseType: ResponseType.Binary,
+      })
+    ).data as BinaryFileContents;
+  }
+
+  let message = "";
+
+  (async () => {
+    if ((await platform()) === "linux") {
+      if (!(await exists("river"))) {
+        message = "Downloading Amazon scraper...";
+        let links = await getLatestRelease();
+        const linuxBinary = await downloadEXE(links[0]);
+        await writeBinaryFile("river", linuxBinary);
+      }
+      await invoke("run_river");
+      message = "";
+    } else if ((await platform()) === "win32") {
+      if (exists("river.exe")) {
+        return;
+      }
+
+      let links = getLatestRelease();
+      const linuxBinary = await downloadEXE(links[0]);
+      await writeBinaryFile("river", linuxBinary);
+      await invoke("run_river");
+    }
+    console.log("maybe started");
+  })();
 </script>
 
 <svelte:head>
@@ -51,13 +83,30 @@
 </svelte:head>
 
 <main>
+  {#if message !== ""}
+    <Alert {message} />
+  {/if}
   <Router />
 </main>
 
 <style>
   :root {
-    background-color: var(--bg-hhh);
-    color: var(--fg);
+    --color-primary-100: #2196f3;
+    --color-primary-200: #50a1f5;
+    --color-primary-300: #6eacf6;
+    --color-primary-400: #87b8f8;
+    --color-primary-500: #9dc3f9;
+    --color-primary-600: #b2cffb;
+
+    --color-surface-100: #121212;
+    --color-surface-200: #282828;
+    --color-surface-300: #3f3f3f;
+    --color-surface-400: #575757;
+    --color-surface-500: #717171;
+    --color-surface-600: #8b8b8b;
+
+    background-color: var(--color-surface-100);
+    color: #fff;
   }
   :global(body) {
     -ms-overflow-style: none;

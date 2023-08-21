@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { invoke } from "@tauri-apps/api";
   import StarRating from "../lib/StarRating.svelte";
 
   let loading = false;
@@ -14,19 +15,16 @@
   };
   let data: Data[] = [];
 
-  async function handle() {
-    loading = true;
-    data = [
-      {
-        asin: "2",
-        price: "12 bu",
-        rating: "5",
-        title: "p",
-        image: "https://google.com/favicon.ico",
-        review_count: "120",
-      },
-    ];
+  const ws = new WebSocket("ws://localhost:8001");
+
+  ws.onmessage = async (e) => {
+    data = await invoke("search_results", { html: e.data });
     loading = false;
+  };
+
+  async function handle() {
+    ws.send(content);
+    loading = true;
   }
 </script>
 
@@ -51,7 +49,6 @@
   </button>
 </div>
 <br />
-
 <div class="list-container">
   {#if !loading}
     {#each data as datum}
@@ -99,7 +96,8 @@
 
   .list-item {
     display: flex;
-    border: 1px solid var(--fg4);
+    background-color: var(--color-surface-200);
+    border-radius: 1q0px;
     padding: 10px;
     align-items: center;
     margin-bottom: 20px;
@@ -127,8 +125,8 @@
     justify-content: center;
     position: sticky;
     padding: 0;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     right: 0;
     top: 0;
     left: 0;
@@ -138,48 +136,38 @@
   .search-bar input[type="text"] {
     flex: 1;
     padding: 8px;
-    border: 1px solid grey;
+    border: 1px solid transparent;
+    background-color: var(--color-surface-200);
     border-right: none;
     font-size: 14px;
     color: var(--fg);
-    background-color: var(--bg1);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+    border-radius: 25px 0 0 25px;
   }
 
   .search-bar input[type="text"]:focus {
     outline: none;
-    border: 1px solid #fdbb7c;
-    box-shadow: 0 0 10px #fdbb7c;
+    border: 1px solid var(--color-primary-200);
+    box-shadow: 0 0 10px var(--color-primary-200);
   }
 
   .search-bar input[type="text"]:focus ~ button {
-    border: 1px solid #fdbb7c;
-    box-shadow: 0 0 10px #fdbb7c;
+    border: 1px solid var(--color-primary-200);
+    box-shadow: 0 0 10px var(--color-primary-200);
   }
 
   .search-bar button {
     padding: 8px 12px;
-    margin-left: -8px; /* Overlap with input box */
-    border: 1px solid grey;
-    border-radius: 0 4px 4px 0; /* Rounded only on the right side */
-    background-color: #fdbb7c;
+    margin-left: -8px;
+    border: 1px solid transparent;
+    border-radius: 0 25px 25px 0;
+    background-color: var(--color-primary-300);
     color: black;
     font-size: 14px;
     cursor: pointer;
   }
 
-  @keyframes pulse-animation {
-    0% {
-      box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
-    }
-    100% {
-      box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
-    }
-  }
-
   .search-bar button:hover {
-    background-color: var(--fg2);
+    background-color: var(--color-primary-200);
   }
 </style>
