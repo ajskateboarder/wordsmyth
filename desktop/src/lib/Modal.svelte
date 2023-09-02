@@ -42,8 +42,8 @@
     padding: 20px;
     overflow: hidden;
     color-scheme: dark;
-    background-color: var(--bg);
-    color: var(--fg);
+    background-color: var(--color-surface-200);
+    color: white;
   }
   dialog::backdrop {
     background: rgba(0, 0, 0, 0.3);
@@ -77,11 +77,17 @@
     }
   }
   button {
-    display: block;
-    color: var(--fg);
+    background-color: var(--color-primary-300);
+    color: var(--color-surface-100);
+    border: none;
+    border-radius: 10px;
+    padding: 5px 15px;
+  }
+  button:hover {
+    background-color: var(--color-primary-200);
   }
   hr {
-    background-color: var(--fg3);
+    background-color: var(--color-surface-600);
     height: 1px;
     border: 0;
   }

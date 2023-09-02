@@ -2,34 +2,7 @@
   import { Router, Route, Link } from "svelte-routing";
   import { email, password } from "./stores";
 
-  import Modal from "./lib/Modal.svelte";
-  import About from "./routes/Search.svelte";
-  import Home from "./routes/Home.svelte";
 
-  let showModal = false;
-  let validPass = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($email);
-
-  $: {
-    const emailValue = localStorage.getItem("email");
-    if (emailValue !== null) {
-      email.set(emailValue);
-    }
-    const passwordValue = localStorage.getItem("password");
-    if (passwordValue !== null) {
-      password.set(passwordValue);
-    }
-    if (showModal === true) {
-      validPass = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($email);
-      (document.querySelector(".submit") as HTMLButtonElement).disabled =
-        validPass;
-    }
-  }
-  email.subscribe((value) => {
-    localStorage.setItem("email", value);
-  });
-  password.subscribe((value) => {
-    localStorage.setItem("password", value);
-  });
 
   let url = "/";
 </script>

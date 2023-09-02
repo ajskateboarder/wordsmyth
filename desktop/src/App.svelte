@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Router from "./Router.svelte";
   import { getClient, ResponseType } from "@tauri-apps/api/http";
   import { platform } from "@tauri-apps/api/os";
   import { invoke } from "@tauri-apps/api/tauri";
@@ -8,7 +7,37 @@
     type BinaryFileContents,
     exists,
   } from "@tauri-apps/api/fs";
+
+  import Modal from "./lib/Modal.svelte";
   import Alert from "./lib/Alert.svelte";
+  import { email, password } from "./stores";
+
+  let showModal = false;
+  let validPass = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($email);
+
+  $: {
+    const emailValue = localStorage.getItem("email");
+    if (emailValue !== null) {
+      email.set(emailValue);
+    }
+    const passwordValue = localStorage.getItem("password");
+    if (passwordValue !== null) {
+      password.set(passwordValue);
+    }
+    if (showModal === true) {
+      validPass = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($email);
+      (document.querySelector(".submit") as HTMLButtonElement).disabled =
+        validPass;
+    }
+  }
+  email.subscribe((value) => {
+    localStorage.setItem("email", value);
+  });
+  password.subscribe((value) => {
+    localStorage.setItem("password", value);
+  });
+
+  let browser: WebSocket;
 
   async function getLatestRelease(): Promise<string[]> {
     const client = await getClient();
@@ -38,6 +67,31 @@
   }
 
   let message = "";
+  let asin = "";
+
+  type Response = {
+    type: "status" | "response";
+    message?: string;
+  };
+
+  function scrapeData() {
+    browser.onmessage = (e) => {
+      let data: Response = JSON.parse(e.data);
+      if (data.type === "status") {
+        message = data.message;
+      } else {
+        console.log(JSON.stringify(data));
+      }
+    };
+    browser.send(
+      JSON.stringify({
+        command: "login",
+        username: $email,
+        password: $password,
+      })
+    );
+    browser.send(JSON.stringify({ command: "scrape", asin: asin }));
+  }
 
   (async () => {
     if ((await platform()) === "linux") {
@@ -49,6 +103,7 @@
       }
       await invoke("run_river");
       message = "";
+      browser = new WebSocket("ws://localhost:8001");
     } else if ((await platform()) === "win32") {
       if (exists("river.exe")) {
         return;
@@ -59,7 +114,6 @@
       await writeBinaryFile("river", linuxBinary);
       await invoke("run_river");
     }
-    console.log("maybe started");
   })();
 </script>
 
@@ -86,7 +140,40 @@
   {#if message !== ""}
     <Alert {message} />
   {/if}
-  <Router />
+  <button on:click={() => (showModal = true)}
+    ><i class="fa fa-cog sidebar-item" /> Settings</button
+  >
+  <div class="search-bar">
+    <input
+      type="text"
+      placeholder="Search..."
+      bind:value={asin}
+      on:keydown={(e) => {
+        if (e.key === "enter") {
+          console.log("OJK");
+        }
+      }}
+    />
+    <button on:click={scrapeData}>
+      <i class="fa fa-magnifying-glass" />
+    </button>
+  </div>
+  <Modal bind:showModal>
+    <div slot="header">
+      <h2>Account information</h2>
+      <p style="color: var(--fg1)">
+        Required to download Amazon reviews for analysis. This is never used
+        anywhere except locally.
+      </p>
+    </div>
+    <label for="Address">Username/email</label>
+    <input type="email" name="Address" bind:value={$email} />
+    {#if validPass}<i class="fa fa-times" />{:else}<i
+        class="fa fa-check"
+      />{/if}<br />
+    <label for="Password">Password</label>
+    <input type="password" name="Password" bind:value={$password} />
+  </Modal>
 </main>
 
 <style>
@@ -108,10 +195,67 @@
     background-color: var(--color-surface-100);
     color: #fff;
   }
+  button {
+    background-color: var(--color-primary-300);
+    color: var(--color-surface-100);
+    border: none;
+    border-radius: 10px;
+    padding: 5px 15px;
+  }
+  button:hover {
+    background-color: var(--color-primary-200);
+  }
   :global(body) {
     -ms-overflow-style: none;
   }
   :global(html::-webkit-scrollbar) {
     display: none;
+  }
+  .search-bar {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    padding: 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    right: 0;
+    top: 0;
+    left: 0;
+    z-index: 3;
+  }
+  .search-bar input[type="text"] {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid transparent;
+    background-color: var(--color-surface-200);
+    border-right: none;
+    font-size: 14px;
+    color: var(--fg);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 25px 0 0 25px;
+  }
+  .search-bar input[type="text"]:focus {
+    outline: none;
+    border: 1px solid var(--color-primary-200);
+    box-shadow: 0 0 10px var(--color-primary-200);
+  }
+  .search-bar input[type="text"]:focus ~ button {
+    border: 1px solid var(--color-primary-200);
+    box-shadow: 0 0 10px var(--color-primary-200);
+  }
+  .search-bar button {
+    padding: 8px 12px;
+    margin-left: -8px;
+    border: 1px solid transparent;
+    border-radius: 0 25px 25px 0;
+    background-color: var(--color-primary-300);
+    color: black;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .search-bar button:hover {
+    background-color: var(--color-primary-200);
   }
 </style>
