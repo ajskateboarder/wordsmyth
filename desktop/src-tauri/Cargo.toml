@@ -13,10 +13,7 @@ edition = "2021"
 tauri-build = { version = "1.4", features = [] }
 
 [dependencies]
-tauri = { version = "1.4", features = [ "fs-all", "http-request", "shell-execute", "os-all"] }
-serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0"
-scraper = "0.17.1"
+tauri = { version = "1.4", features = [ "fs-all", "shell-execute", "os-all"] }
 
 [features]
 # this feature is used for production builds or when `devPath` points to the filesystem

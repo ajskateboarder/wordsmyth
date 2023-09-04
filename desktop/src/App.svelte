@@ -67,30 +67,55 @@
   }
 
   let message = "";
-  let asin = "";
+  let url = "";
+  let contentReceived: number = 0;
+  let reviews: string[] = [];
+
+  $: asin = (() => {
+    let _path = url.split("/");
+    if (_path[_path.length - 1].includes("?")) {
+      return _path[_path.length - 2];
+    }
+    if (_path[0] !== "https:") {
+      return url;
+    }
+    return _path[_path.length - 1];
+  })();
 
   type Response = {
     type: "status" | "response";
     message?: string;
+    reviewText: string;
+    overall: number;
+    productId: string;
   };
 
   function scrapeData() {
+    try {
+      browser.close();
+    } catch {}
+    reviews = [];
+    browser = new WebSocket("ws://localhost:8001");
     browser.onmessage = (e) => {
       let data: Response = JSON.parse(e.data);
       if (data.type === "status") {
         message = data.message;
-      } else {
-        console.log(JSON.stringify(data));
+      } else if (data.type === "response") {
+        reviews = [...reviews, data.reviewText];
+        contentReceived += 1;
+        message = `${contentReceived} reviews collected`;
       }
     };
-    browser.send(
-      JSON.stringify({
-        command: "login",
-        username: $email,
-        password: $password,
-      })
-    );
-    browser.send(JSON.stringify({ command: "scrape", asin: asin }));
+    browser.onopen = () => {
+      browser.send(
+        JSON.stringify({
+          command: "login",
+          username: $email,
+          password: $password,
+        })
+      );
+      browser.send(JSON.stringify({ command: "scrape", asin: asin }));
+    };
   }
 
   (async () => {
@@ -103,7 +128,6 @@
       }
       await invoke("run_river");
       message = "";
-      browser = new WebSocket("ws://localhost:8001");
     } else if ((await platform()) === "win32") {
       if (exists("river.exe")) {
         return;
@@ -142,12 +166,12 @@
   {/if}
   <button on:click={() => (showModal = true)}
     ><i class="fa fa-cog sidebar-item" /> Settings</button
-  >
+  ><br /><br />
   <div class="search-bar">
     <input
       type="text"
-      placeholder="Search..."
-      bind:value={asin}
+      placeholder="Enter an Amazon product URL"
+      bind:value={url}
       on:keydown={(e) => {
         if (e.key === "enter") {
           console.log("OJK");
@@ -158,6 +182,10 @@
       <i class="fa fa-magnifying-glass" />
     </button>
   </div>
+  {#each reviews as review}
+    <p>{review}</p>
+  {/each}
+  <!-- MODAL CODE -->
   <Modal bind:showModal>
     <div slot="header">
       <h2>Account information</h2>
@@ -177,7 +205,9 @@
 </main>
 
 <style>
-  :root {
+  :global(body),
+  :global(html),
+  :global(:root) {
     --color-primary-100: #2196f3;
     --color-primary-200: #50a1f5;
     --color-primary-300: #6eacf6;
@@ -194,6 +224,7 @@
 
     background-color: var(--color-surface-100);
     color: #fff;
+    -ms-overflow-style: none;
   }
   button {
     background-color: var(--color-primary-300);
@@ -204,9 +235,6 @@
   }
   button:hover {
     background-color: var(--color-primary-200);
-  }
-  :global(body) {
-    -ms-overflow-style: none;
   }
   :global(html::-webkit-scrollbar) {
     display: none;

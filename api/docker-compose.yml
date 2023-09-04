@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  redis:
+    image: redis
+    networks:
+    - deploy_network
+
+  modelserver:
+    image: ajskateboarder/modelserver
+    build: ./modelserver
+    depends_on:
+    - redis
+    networks:
+    - deploy_network
+    env_file:
+    - app.env
+    environment:
+    - SERVER_SLEEP=0.25
+    - BATCH_SIZE=32
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints:
+        - node.role == worker
+
+  webserver:
+    image: ajskateboarder/webserver
+    build: ./webserver
+    ports:
+    - "80:80"
+    networks:
+    - deploy_network
+    depends_on:
+    - redis
+    env_file:
+    - app.env
+    environment:
+    - CLIENT_SLEEP=0.25
+    - CLIENT_MAX_TRIES=100
+    deploy:
+      placement:
+        constraints:
+        - node.role == manager
+
+networks:
+    deploy_network:
