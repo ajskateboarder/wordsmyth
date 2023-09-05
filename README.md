@@ -40,17 +40,6 @@ content.metadata # rating process info
 
 There are also scripts to download reviews and benchmark this algorithm in `scripts/`.
 
-## Docker
-
-Install the aforementioned requisites, build a wheel from the library, and copy it to the model server directory:
-
-```bash
-python3 setup.py bdist_wheel
-cp dist/*.whl api/modelserver
-```
-
-Then go into  
-
 ## Caveats
 
 ### Irregular tone shifts in sentiment
