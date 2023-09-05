@@ -20,6 +20,7 @@ data/*.log
 .coverage
 scripts/geckodriver.log
 **/*.whl
+main.*
 
 # This contains a bunch of saved reviews and client info
 archive/
