@@ -7,9 +7,13 @@
     type BinaryFileContents,
     exists,
   } from "@tauri-apps/api/fs";
+  import { appWindow } from "@tauri-apps/api/window";
+  import StarRating from "svelte-star-rating";
 
   import Modal from "./lib/Modal.svelte";
   import Alert from "./lib/Alert.svelte";
+  import Product from "./lib/Product.svelte";
+
   import { email, password } from "./stores";
 
   let showModal = false;
@@ -38,6 +42,7 @@
   });
 
   let browser: WebSocket;
+  let model: WebSocket;
 
   async function getLatestRelease(): Promise<string[]> {
     const client = await getClient();
@@ -68,8 +73,12 @@
 
   let message = "";
   let url = "";
-  let contentReceived: number = 0;
-  let reviews: string[] = [];
+  let reviews: Response[] = [];
+  let analyzed: any[] = [];
+  let product = {
+    title: "",
+    image: "",
+  };
 
   $: asin = (() => {
     let _path = url.split("/");
@@ -88,22 +97,45 @@
     reviewText: string;
     overall: number;
     productId: string;
+    title: string;
+    image: string;
   };
+
+  function doAnalysis() {
+    analyzed = [];
+    console.log(reviews);
+    model = new WebSocket("ws://localhost:8002");
+    model.onmessage = (e) => {
+      analyzed = [...analyzed, JSON.parse(e.data)];
+      console.log(e.data);
+      message = `${analyzed.length}/${reviews.length} reviews analyzed`;
+    };
+    model.onopen = () => {
+      console.log("Model started");
+      reviews.forEach((message) => model.send(message.reviewText));
+    };
+  }
 
   function scrapeData() {
     try {
       browser.close();
+      model.close();
     } catch {}
     reviews = [];
     browser = new WebSocket("ws://localhost:8001");
     browser.onmessage = (e) => {
       let data: Response = JSON.parse(e.data);
       if (data.type === "status") {
-        message = data.message;
+        message = data.message as string;
+        if (data.message === "Scraping done") {
+          browser.close();
+          setTimeout(doAnalysis, 1000);
+        }
       } else if (data.type === "response") {
-        reviews = [...reviews, data.reviewText];
-        contentReceived += 1;
-        message = `${contentReceived} reviews collected`;
+        reviews = [...reviews, data];
+        message = `${reviews.length} reviews collected`;
+      } else if (data.type === "response_product") {
+        product = data;
       }
     };
     browser.onopen = () => {
@@ -129,16 +161,28 @@
       await invoke("run_river");
       message = "";
     } else if ((await platform()) === "win32") {
-      if (exists("river.exe")) {
+      if (await exists("river.exe")) {
         return;
       }
-
-      let links = getLatestRelease();
+      let links = await getLatestRelease();
       const linuxBinary = await downloadEXE(links[0]);
       await writeBinaryFile("river", linuxBinary);
       await invoke("run_river");
     }
   })();
+
+  const average = (array: number[]) =>
+    array.reduce((a, b) => a + b) / array.length;
+
+  const config = {
+    emptyColor: "var(--color-surface-100)",
+    fullColor: "var(--color-primary-100)",
+    showText: true,
+    size: 20,
+  };
+  const style = "margin-top: 10px";
+
+  document.body.classList.add("dark-mode");
 </script>
 
 <svelte:head>
@@ -167,47 +211,69 @@
   <button on:click={() => (showModal = true)}
     ><i class="fa fa-cog sidebar-item" /> Settings</button
   ><br /><br />
-  <div class="search-bar">
-    <input
-      type="text"
-      placeholder="Enter an Amazon product URL"
-      bind:value={url}
-      on:keydown={(e) => {
-        if (e.key === "enter") {
-          console.log("OJK");
-        }
-      }}
-    />
-    <button on:click={scrapeData}>
-      <i class="fa fa-magnifying-glass" />
-    </button>
+  <form on:submit|preventDefault>
+    <div class="search-bar">
+      <input
+        type="text"
+        placeholder="Enter an Amazon product URL"
+        bind:value={url}
+      />
+      <button on:click={scrapeData}>
+        <i class="fa fa-magnifying-glass" />
+      </button>
+    </div>
+  </form>
+  <div class="product-container">
+    <Product title={product.title} image={product.image}>
+      <StarRating
+        rating={reviews.length > 0
+          ? parseFloat(average(reviews.map((e) => e.overall)).toFixed(2))
+          : 0}
+        {config}
+        {style}
+      />
+    </Product>
   </div>
-  {#each reviews as review}
-    <p>{review}</p>
-  {/each}
   <!-- MODAL CODE -->
   <Modal bind:showModal>
     <div slot="header">
-      <h2>Account information</h2>
+      <h3>Account information</h3>
       <p style="color: var(--fg1)">
         Required to download Amazon reviews for analysis. This is never used
         anywhere except locally.
       </p>
+      <label for="Address">Username/email</label>
+      <input type="email" name="Address" bind:value={$email} />
+      {#if validPass}<i class="fa fa-times" />{:else}<i
+          class="fa fa-check"
+        />{/if}<br />
+      <label for="Password">Password</label>
+      <input type="password" name="Password" bind:value={$password} />
     </div>
-    <label for="Address">Username/email</label>
-    <input type="email" name="Address" bind:value={$email} />
-    {#if validPass}<i class="fa fa-times" />{:else}<i
-        class="fa fa-check"
-      />{/if}<br />
-    <label for="Password">Password</label>
-    <input type="password" name="Password" bind:value={$password} />
+    <h3>Theme</h3>
+    <button
+      on:click={() => {
+        if (document.body.classList.contains("dark-mode")) {
+          document.body.classList.remove("dark-mode");
+          document.body.classList.add("light-mode");
+        } else {
+          document.body.classList.add("dark-mode");
+          document.body.classList.remove("light-mode");
+        }
+      }}>Toggle</button
+    >
+    <br />
   </Modal>
 </main>
 
 <style>
-  :global(body),
-  :global(html),
-  :global(:root) {
+  :global(body) {
+    background-color: var(--color-surface-100);
+    -ms-overflow-style: none;
+    user-select: none;
+    cursor: default;
+  }
+  :global(body.dark-mode) {
     --color-primary-100: #2196f3;
     --color-primary-200: #50a1f5;
     --color-primary-300: #6eacf6;
@@ -222,16 +288,39 @@
     --color-surface-500: #717171;
     --color-surface-600: #8b8b8b;
 
-    background-color: var(--color-surface-100);
     color: #fff;
-    -ms-overflow-style: none;
   }
-  button {
-    background-color: var(--color-primary-300);
-    color: var(--color-surface-100);
+  :global(body.light-mode) {
+    --color-primary-100: #2196f3;
+    --color-primary-200: #50a1f5;
+    --color-primary-300: #6eacf6;
+    --color-primary-400: #87b8f8;
+    --color-primary-500: #9dc3f9;
+    --color-primary-600: #b2cffb;
+
+    --color-surface-600: #121212;
+    --color-surface-500: #282828;
+    --color-surface-400: #3f3f3f;
+    --color-surface-300: #575757;
+    --color-surface-200: #717171;
+    --color-surface-100: #a3a3a3;
+
+    color: black;
+  }
+  :global(button) {
+    cursor: pointer;
     border: none;
+    user-select: none;
     border-radius: 10px;
     padding: 5px 15px;
+  }
+  :global(body.dark-mode button) {
+    background-color: var(--color-primary-300);
+    color: var(--color-surface-100);
+  }
+  :global(body.light-mode button) {
+    background-color: var(--color-primary-300);
+    color: var(--color-surface-600);
   }
   button:hover {
     background-color: var(--color-primary-200);
@@ -285,5 +374,13 @@
   }
   .search-bar button:hover {
     background-color: var(--color-primary-200);
+  }
+
+  .product-container {
+    position: absolute;
+    right: 50%;
+    transform: translateX(50%);
+    width: 95%;
+    padding: 10px;
   }
 </style>

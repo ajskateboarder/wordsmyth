@@ -8,6 +8,7 @@ async fn run_river() {
   .output()
   .unwrap();
   let _ = Command::new("./river").spawn();
+  // let _ = Command::new("./main").spawn();
 }
 
 fn main() {

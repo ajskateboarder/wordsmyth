@@ -6,7 +6,7 @@
   <div class="alert">{message}</div>
 </div>
 
-<style>
+<style scoped>
   .alert-container {
     display: flex;
     justify-content: center;
@@ -19,6 +19,7 @@
 
   .alert {
     background-color: black;
+    text-align: center;
     border: 1px solid var(--color-primary-100);
     padding: 15px;
     border-radius: 5px;

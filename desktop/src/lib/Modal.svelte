@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { fs } from "@tauri-apps/api";
   export let showModal: boolean;
 
   let dialog: HTMLDialogElement;
@@ -75,16 +74,6 @@
     to {
       opacity: 1;
     }
-  }
-  button {
-    background-color: var(--color-primary-300);
-    color: var(--color-surface-100);
-    border: none;
-    border-radius: 10px;
-    padding: 5px 15px;
-  }
-  button:hover {
-    background-color: var(--color-primary-200);
   }
   hr {
     background-color: var(--color-surface-600);
