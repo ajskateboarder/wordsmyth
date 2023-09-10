@@ -414,7 +414,6 @@
     border-bottom: 2px solid var(--color-surface-200);
     position: fixed;
   }
-
   :global(body.light-mode .container) {
     background-color: var(--color-surface-300);
   }
