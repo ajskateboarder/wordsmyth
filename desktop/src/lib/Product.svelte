@@ -6,7 +6,7 @@
 {#if title !== "" && image !== ""}
   <div class="container">
     <div class="review">
-      <img src={image} alt={title} />
+      <img src={image} alt={title} height="50" width="50" />
       <span>{title}</span>
     </div>
     <slot />
@@ -18,6 +18,7 @@
     background-color: var(--color-surface-200);
     padding: 10px;
     border-radius: 10px;
+    margin-top: 10px;
   }
   .review {
     display: flex;

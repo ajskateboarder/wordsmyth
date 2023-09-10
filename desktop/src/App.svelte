@@ -182,7 +182,9 @@
   };
   const style = "margin-top: 10px";
 
-  document.body.classList.add("dark-mode");
+  (async function () {
+    document.body.classList.add(`${await appWindow.theme()}-mode`);
+  })();
 </script>
 
 <svelte:head>
@@ -208,31 +210,34 @@
   {#if message !== ""}
     <Alert {message} />
   {/if}
-  <button on:click={() => (showModal = true)}
-    ><i class="fa fa-cog sidebar-item" /> Settings</button
-  ><br /><br />
-  <form on:submit|preventDefault>
-    <div class="search-bar">
-      <input
-        type="text"
-        placeholder="Enter an Amazon product URL"
-        bind:value={url}
-      />
-      <button on:click={scrapeData}>
-        <i class="fa fa-magnifying-glass" />
-      </button>
-    </div>
-  </form>
+  <div class="top-bar">
+    <button on:click={() => (showModal = true)}
+      ><i class="fa fa-cog sidebar-item" /> Settings</button
+    ><br /><br />
+    <form on:submit|preventDefault>
+      <div class="search-bar">
+        <input type="text" placeholder="Enter a URL" bind:value={url} />
+        <button on:click={scrapeData}>
+          <i class="fa fa-magnifying-glass" />
+        </button>
+      </div>
+    </form>
+  </div>
   <div class="product-container">
-    <Product title={product.title} image={product.image}>
-      <StarRating
-        rating={reviews.length > 0
-          ? parseFloat(average(reviews.map((e) => e.overall)).toFixed(2))
-          : 0}
-        {config}
-        {style}
-      />
-    </Product>
+    {#each Array(100).fill() as _}
+      <Product
+        title="guy"
+        image="https://thumbs.dreamstime.com/t/creative-vector-illustration-default-avatar-profile-placeholder-isolated-background-art-design-grey-photo-blank-template-mo-118823351.jpg"
+      >
+        <StarRating
+          rating={reviews.length > 0
+            ? parseFloat(average(reviews.map((e) => e.overall)).toFixed(2))
+            : 0}
+          {config}
+          {style}
+        />
+      </Product>
+    {/each}
   </div>
   <!-- MODAL CODE -->
   <Modal bind:showModal>
@@ -270,8 +275,19 @@
   :global(body) {
     background-color: var(--color-surface-100);
     -ms-overflow-style: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
     cursor: default;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+  }
+  :global(*) {
+    user-select: none;
+    -ms-overflow-style: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
   }
   :global(body.dark-mode) {
     --color-primary-100: #2196f3;
@@ -306,6 +322,7 @@
     --color-surface-100: #a3a3a3;
 
     color: black;
+    background-color: white;
   }
   :global(button) {
     cursor: pointer;
@@ -330,7 +347,7 @@
   }
   .search-bar {
     display: flex;
-    width: 100%;
+    width: 97%;
     align-items: center;
     justify-content: center;
     position: sticky;
@@ -352,6 +369,9 @@
     color: var(--fg);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     border-radius: 25px 0 0 25px;
+  }
+  :global(body.light-mode) .search-bar input[type="text"] {
+    background-color: var(--color-surface-500);
   }
   .search-bar input[type="text"]:focus {
     outline: none;
@@ -375,12 +395,27 @@
   .search-bar button:hover {
     background-color: var(--color-primary-200);
   }
-
   .product-container {
     position: absolute;
     right: 50%;
     transform: translateX(50%);
     width: 95%;
     padding: 10px;
+    margin-top: 100px;
+    margin-left: 10px;
+    z-index: -999;
+    overflow: auto;
+  }
+  .top-bar {
+    width: 100%;
+    top: 0px;
+    padding: 10px;
+    background-color: #1e1e1e;
+    border-bottom: 2px solid var(--color-surface-200);
+    position: fixed;
+  }
+
+  :global(body.light-mode .container) {
+    background-color: var(--color-surface-300);
   }
 </style>
