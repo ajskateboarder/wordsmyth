@@ -1,6 +1,8 @@
-# Tauri + Svelte + Typescript
+# Wordsmyth Desktop
 
-This template should help get you started developing with Tauri, Svelte and TypeScript in Vite.
+A local client to run Wordsmyth and run analyses on Amazon products
+
+![config](./media/demo.gif)
 
 ## Recommended IDE Setup
 
