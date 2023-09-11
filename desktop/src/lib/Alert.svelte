@@ -3,7 +3,7 @@
 </script>
 
 <div class="alert-container">
-  <div class="alert">{message}</div>
+  <div class="alert">{@html message}</div>
 </div>
 
 <style scoped>
@@ -11,7 +11,7 @@
     display: flex;
     justify-content: center;
     position: fixed;
-    top: 20px;
+    bottom: calc(90vh);
     left: 50%;
     transform: translateX(-50%) translateY(85vh);
     z-index: 9999;

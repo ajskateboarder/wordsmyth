@@ -14,7 +14,7 @@
   import Alert from "./lib/Alert.svelte";
   import Product from "./lib/Product.svelte";
 
-  import { email, password } from "./stores";
+  import { email, password, ProductHandler } from "./stores";
 
   let showModal = false;
   let validPass = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($email);
@@ -34,6 +34,7 @@
         validPass;
     }
   }
+
   email.subscribe((value) => {
     localStorage.setItem("email", value);
   });
@@ -71,14 +72,10 @@
     ).data as BinaryFileContents;
   }
 
-  let message = "";
+  let message = ``;
   let url = "";
   let reviews: Response[] = [];
-  let analyzed: any[] = [];
-  let product = {
-    title: "",
-    image: "",
-  };
+  let showStar = false;
 
   $: asin = (() => {
     let _path = url.split("/");
@@ -102,17 +99,21 @@
   };
 
   function doAnalysis() {
-    analyzed = [];
-    console.log(reviews);
     model = new WebSocket("ws://localhost:8002");
+    let toAnalyze = ProductHandler.read(asin)?.reviews as any[];
     model.onmessage = (e) => {
-      analyzed = [...analyzed, JSON.parse(e.data)];
-      console.log(e.data);
-      message = `${analyzed.length}/${reviews.length} reviews analyzed`;
+      let analyzed = ProductHandler.saveAnalysis(asin, JSON.parse(e.data));
+      message = `${analyzed.length}/${
+        reviews?.length
+      } reviews analyzed <progress max="100" value="${
+        (analyzed.length / toAnalyze.length) * 100
+      }"></progress>`;
+      if (analyzed.length === toAnalyze.length) {
+        message = "";
+      }
     };
     model.onopen = () => {
-      console.log("Model started");
-      reviews.forEach((message) => model.send(message.reviewText));
+      toAnalyze.forEach((message) => model.send(message.reviewText));
     };
   }
 
@@ -121,21 +122,23 @@
       browser.close();
       model.close();
     } catch {}
-    reviews = [];
     browser = new WebSocket("ws://localhost:8001");
+    let reviews;
     browser.onmessage = (e) => {
       let data: Response = JSON.parse(e.data);
       if (data.type === "status") {
         message = data.message as string;
         if (data.message === "Scraping done") {
           browser.close();
+          products = ProductHandler.fetchProducts();
           setTimeout(doAnalysis, 1000);
         }
       } else if (data.type === "response") {
-        reviews = [...reviews, data];
+        reviews = ProductHandler.saveReview(asin, data);
         message = `${reviews.length} reviews collected`;
       } else if (data.type === "response_product") {
-        product = data;
+        ProductHandler.saveProductInfo(asin, data);
+        products = ProductHandler.fetchProducts();
       }
     };
     browser.onopen = () => {
@@ -146,6 +149,10 @@
           password: $password,
         })
       );
+      if (localStorage.getItem(asin) !== null) {
+        localStorage.removeItem(asin);
+        products = ProductHandler.fetchProducts();
+      }
       browser.send(JSON.stringify({ command: "scrape", asin: asin }));
     };
   }
@@ -185,6 +192,8 @@
   (async function () {
     document.body.classList.add(`${await appWindow.theme()}-mode`);
   })();
+
+  let products = ProductHandler.fetchProducts();
 </script>
 
 <svelte:head>
@@ -216,7 +225,11 @@
     ><br /><br />
     <form on:submit|preventDefault>
       <div class="search-bar">
-        <input type="text" placeholder="Enter a URL" bind:value={url} />
+        <input
+          type="text"
+          placeholder="Enter an Amazon product URL"
+          bind:value={url}
+        />
         <button on:click={scrapeData}>
           <i class="fa fa-magnifying-glass" />
         </button>
@@ -224,14 +237,13 @@
     </form>
   </div>
   <div class="product-container">
-    {#each Array(100).fill() as _}
-      <Product
-        title="guy"
-        image="https://thumbs.dreamstime.com/t/creative-vector-illustration-default-avatar-profile-placeholder-isolated-background-art-design-grey-photo-blank-template-mo-118823351.jpg"
-      >
+    {#each products as product}
+      <Product title={product.meta.title} image={product.meta.image}>
         <StarRating
-          rating={reviews.length > 0
-            ? parseFloat(average(reviews.map((e) => e.overall)).toFixed(2))
+          rating={product.reviews.length > 0
+            ? parseFloat(
+                average(product.reviews.map((e) => e.overall)).toFixed(2)
+              )
             : 0}
           {config}
           {style}
