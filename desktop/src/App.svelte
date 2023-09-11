@@ -13,6 +13,7 @@
   import Modal from "./lib/Modal.svelte";
   import Alert from "./lib/Alert.svelte";
   import Product from "./lib/Product.svelte";
+  import RatingBar from "./lib/RatingBar.svelte";
 
   import { email, password, ProductHandler } from "./stores";
 
@@ -75,7 +76,6 @@
   let message = ``;
   let url = "";
   let reviews: Response[] = [];
-  let showStar = false;
 
   $: asin = (() => {
     let _path = url.split("/");
@@ -194,6 +194,7 @@
   })();
 
   let products = ProductHandler.fetchProducts();
+  const modalStates = Array(products.length).fill(false);
 </script>
 
 <svelte:head>
@@ -237,8 +238,12 @@
     </form>
   </div>
   <div class="product-container">
-    {#each products as product}
-      <Product title={product.meta.title} image={product.meta.image}>
+    {#each products as product, i}
+      <Product
+        title={product.meta.title}
+        image={product.meta.image}
+        on:analysis={() => (modalStates[i] = true)}
+      >
         <StarRating
           rating={product.reviews.length > 0
             ? parseFloat(
@@ -248,10 +253,29 @@
           {config}
           {style}
         />
+        <Modal bind:showModal={modalStates[i]}>
+          <div slot="header"><h3>Product analysis</h3></div>
+          The product rating predicted by Wordsmyth is:
+          <StarRating
+            rating={parseFloat(
+              average(
+                product.analyzed
+                  .map((e) => e.rating)
+                  .filter((e) => ![null, "empty string"].includes(e))
+              ).toFixed(2)
+            )}
+            config={{ ...config, size: 30 }}
+            {style}
+          /><br />
+          <RatingBar
+            data={product.analyzed
+              .map((e) => e.rating)
+              .filter((e) => e !== "empty string")}
+          /><br />
+        </Modal>
       </Product>
     {/each}
   </div>
-  <!-- MODAL CODE -->
   <Modal bind:showModal>
     <div slot="header">
       <h3>Account information</h3>
@@ -351,7 +375,8 @@
     background-color: var(--color-primary-300);
     color: var(--color-surface-600);
   }
-  button:hover {
+  :global(body.dark-mode button:hover),
+  :global(body.light-mode button:hover) {
     background-color: var(--color-primary-200);
   }
   :global(html::-webkit-scrollbar) {

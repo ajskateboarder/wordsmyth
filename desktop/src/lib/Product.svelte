@@ -1,36 +1,12 @@
-<!-- <script lang="ts">
-  export let title: string | undefined;
-  export let image: string | undefined;
-</script>
-
-{#if title !== "" && image !== ""}
-  <div class="container">
-    <div class="entire-thing">
-      <div class="review">
-        <img src={image} alt={title} height="50" width="50" />
-        <span>{title}</span>
-      </div>
-      <slot />
-    </div>
-  </div>
-{/if}
-
-<style>
-  .container {
-    background-color: var(--color-surface-200);
-    padding: 10px;
-    border-radius: 10px;
-    margin-top: 10px;
-  }
-  .review {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-</style> -->
 <script lang="ts">
+  import { createEventDispatcher } from "svelte";
+
+  const dispatch = createEventDispatcher();
+
   export let title: string | undefined;
   export let image: string | undefined;
+
+  const analysis = () => dispatch("analysis");
 </script>
 
 <div class="container">
@@ -42,7 +18,7 @@
     <slot />
   </div>
   <div class="analysis">
-    <button>See analysis</button>
+    <button on:click={analysis}>See analysis</button>
   </div>
 </div>
 
@@ -64,5 +40,8 @@
   .analysis {
     display: flex;
     align-items: center;
+    width: 150px;
+    min-width: 150px;
+    justify-content: center;
   }
 </style>
