@@ -8,14 +8,13 @@
     exists,
   } from "@tauri-apps/api/fs";
   import { appWindow } from "@tauri-apps/api/window";
-  import StarRating from "svelte-star-rating";
 
   import Modal from "./lib/Modal.svelte";
-  import Alert from "./lib/Alert.svelte";
   import Product from "./lib/Product.svelte";
   import RatingBar from "./lib/RatingBar.svelte";
 
   import { email, password, ProductHandler } from "./stores";
+  import { notify } from "./alert";
 
   let showModal = false;
   let validPass = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($email);
@@ -76,6 +75,7 @@
   let message = ``;
   let url = "";
   let reviews: Response[] = [];
+  let isLatestDone: "not triggered" | "triggered" | "done" = "not triggered";
 
   $: asin = (() => {
     let _path = url.split("/");
@@ -96,6 +96,7 @@
     productId: string;
     title: string;
     image: string;
+    rating: string;
   };
 
   function doAnalysis() {
@@ -110,6 +111,7 @@
       }"></progress>`;
       if (analyzed.length === toAnalyze.length) {
         message = "";
+        isLatestDone = "done";
       }
     };
     model.onopen = () => {
@@ -123,10 +125,25 @@
       model.close();
     } catch {}
     browser = new WebSocket("ws://localhost:8001");
+    isLatestDone = "triggered";
     let reviews;
     browser.onmessage = (e) => {
       let data: Response = JSON.parse(e.data);
       if (data.type === "status") {
+        if (data.message === "Logging in...") {
+          notify({
+            message: "Logging scraper into Amazon... this may take sometime",
+            closable: true,
+            duration: Infinity,
+          });
+          return;
+        }
+        if (data.message === "Logging in done") {
+          try {
+            document.querySelectorAll("sl-alert").forEach((e) => e.remove());
+          } catch {}
+          return;
+        }
         message = data.message as string;
         if (data.message === "Scraping done") {
           browser.close();
@@ -160,13 +177,12 @@
   (async () => {
     if ((await platform()) === "linux") {
       if (!(await exists("river"))) {
-        message = "Downloading Amazon scraper...";
+        notify({ message: "Downloading Amazon scraper..." });
         let links = await getLatestRelease();
         const linuxBinary = await downloadEXE(links[0]);
         await writeBinaryFile("river", linuxBinary);
       }
       await invoke("run_river");
-      message = "";
     } else if ((await platform()) === "win32") {
       if (await exists("river.exe")) {
         return;
@@ -181,14 +197,6 @@
   const average = (array: number[]) =>
     array.reduce((a, b) => a + b) / array.length;
 
-  const config = {
-    emptyColor: "var(--color-surface-100)",
-    fullColor: "var(--color-primary-100)",
-    showText: true,
-    size: 20,
-  };
-  const style = "margin-top: 10px";
-
   (async function () {
     document.body.classList.add(`${await appWindow.theme()}-mode`);
   })();
@@ -200,40 +208,80 @@
 <svelte:head>
   <link
     rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  /><link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin="anonymous"
+    href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.8.0/cdn/themes/light.css"
   />
   <link
-    href="https://fonts.googleapis.com/css2?family=Rubik&display=swap"
     rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.8.0/cdn/themes/dark.css"
+  />
+  <script
+    type="module"
+    src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.8.0/cdn/shoelace.js"
+  ></script>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css"
   />
 </svelte:head>
 
-<main>
-  {#if message !== ""}
-    <Alert {message} />
-  {/if}
+<main class="sl-theme-dark">
   <div class="top-bar">
-    <button on:click={() => (showModal = true)}
-      ><i class="fa fa-cog sidebar-item" /> Settings</button
-    ><br /><br />
     <form on:submit|preventDefault>
-      <div class="search-bar">
-        <input
-          type="text"
+      <div
+        style="display: flex; justify-content: space-between; align-items: center; width: 98.7%; gap: 10px;"
+      >
+        <sl-dropdown>
+          <sl-button
+            slot="trigger"
+            caret
+            style="display: flex; align-items: center;"
+            ><sl-icon name="justify" /></sl-button
+          >
+          <sl-menu>
+            <sl-menu-item
+              on:click={() => (showModal = true)}
+              on:keydown={() => {}}
+              role="button"
+              tabindex="0"
+              ><sl-icon name="person-gear" slot="prefix" /> User settings</sl-menu-item
+            >
+            <sl-menu-item
+              on:click={() => {
+                if (document.body.classList.contains("dark-mode")) {
+                  document.body.classList.remove("dark-mode");
+                  document.body.classList.add("sl-theme-dark");
+                  document.body.classList.add("light-mode");
+                } else {
+                  document.body.classList.add("dark-mode");
+                  document.body.classList.remove("sl-theme-dark");
+                  document.body.classList.remove("light-mode");
+                }
+              }}
+              role="button"
+              tabindex="0"
+              on:keydown={() => {}}
+              ><sl-icon name="moon" slot="prefix" /> Toggle theme</sl-menu-item
+            >
+            <sl-divider />
+            <sl-menu-item>
+              GitHub
+              <sl-icon slot="prefix" name="github" />
+            </sl-menu-item>
+          </sl-menu>
+        </sl-dropdown>
+        <sl-input
+          style="width: 100%; border-radius: 0px;"
           placeholder="Enter an Amazon product URL"
-          bind:value={url}
+          class="search-input"
+          on:sl-input={() => {
+            //@ts-ignore
+            url = document.querySelector(".search-input").value;
+          }}
         />
-        <button on:click={scrapeData}>
-          <i class="fa fa-magnifying-glass" />
-        </button>
+        <!-- svelte-ignore a11y-no-static-element-interactions a11y-click-events-have-key-events -->
+        <sl-button class="search-button" on:click={scrapeData}
+          ><sl-icon name="search" /></sl-button
+        >
       </div>
     </form>
   </div>
@@ -243,29 +291,39 @@
         title={product.meta.title}
         image={product.meta.image}
         on:analysis={() => (modalStates[i] = true)}
-      >
-        <StarRating
-          rating={product.reviews.length > 0
-            ? parseFloat(
-                average(product.reviews.map((e) => e.overall)).toFixed(2)
-              )
-            : 0}
-          {config}
-          {style}
-        />
+        on:remove={() => {
+          localStorage.removeItem(product.productId);
+          products = ProductHandler.fetchProducts();
+        }}
+        disabled={(isLatestDone === "triggered" && i === 0) || null}
+        ><br />
+        {#if message !== "" && isLatestDone === "triggered" && i === 0}
+          <slot name="analysis">{@html message}</slot>
+        {/if}
+        <div style="display: flex; align-items: center; gap: 10px">
+          <sl-rating
+            readonly
+            value={product.reviews.length > 0
+              ? parseFloat(
+                  average(product.reviews.map((e) => e.overall)).toFixed(2)
+                )
+              : 0}
+            style="--symbol-color-active: var(--sl-color-primary-600)"
+            precision="0.01"
+          />
+        </div>
         <Modal bind:showModal={modalStates[i]}>
           <div slot="header"><h3>Product analysis</h3></div>
           The product rating predicted by Wordsmyth is:
-          <StarRating
-            rating={parseFloat(
-              average(
-                product.analyzed
-                  .map((e) => e.rating)
-                  .filter((e) => ![null, "empty string"].includes(e))
-              ).toFixed(2)
-            )}
-            config={{ ...config, size: 30 }}
-            {style}
+          <sl-rating
+            readonly
+            value={product.reviews.length > 0
+              ? parseFloat(
+                  average(product.reviews.map((e) => e.overall)).toFixed(2)
+                )
+              : 0}
+            style="--symbol-color-active: var(--sl-color-primary-600)"
+            precision="0.01"
           /><br />
           <RatingBar
             data={product.analyzed
@@ -279,41 +337,39 @@
   <Modal bind:showModal>
     <div slot="header">
       <h3>Account information</h3>
-      <p style="color: var(--fg1)">
-        Required to download Amazon reviews for analysis. This is never used
-        anywhere except locally.
-      </p>
-      <label for="Address">Username/email</label>
-      <input type="email" name="Address" bind:value={$email} />
-      {#if validPass}<i class="fa fa-times" />{:else}<i
-          class="fa fa-check"
-        />{/if}<br />
-      <label for="Password">Password</label>
-      <input type="password" name="Password" bind:value={$password} />
     </div>
-    <h3>Theme</h3>
-    <button
-      on:click={() => {
-        if (document.body.classList.contains("dark-mode")) {
-          document.body.classList.remove("dark-mode");
-          document.body.classList.add("light-mode");
-        } else {
-          document.body.classList.add("dark-mode");
-          document.body.classList.remove("light-mode");
-        }
-      }}>Toggle</button
-    >
+    <p style="color: var(--fg1)">
+      Required to download Amazon reviews for analysis. This is never used
+      anywhere except locally.
+    </p>
+    <label for="Address">Username/email</label>
+    <input type="email" name="Address" bind:value={$email} />
+    {#if validPass}<i class="fa fa-times" />{:else}<i
+        class="fa fa-check"
+      />{/if}<br />
+    <label for="Password">Password</label>
+    <input type="password" name="Password" bind:value={$password} />
     <br />
   </Modal>
 </main>
 
 <style>
+  .search-input::part(base) {
+    border-radius: 0px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+  .search-button::part(base) {
+    border-radius: 0px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
   :global(body) {
     background-color: var(--color-surface-100);
-    -ms-overflow-style: none;
+    /* -ms-overflow-style: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none;
+    user-select: none; */
     cursor: default;
     padding: 0;
     margin: 0;
@@ -364,7 +420,7 @@
     cursor: pointer;
     border: none;
     user-select: none;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 5px 15px;
   }
   :global(body.dark-mode button) {
@@ -382,74 +438,26 @@
   :global(html::-webkit-scrollbar) {
     display: none;
   }
-  .search-bar {
-    display: flex;
-    width: 97%;
-    align-items: center;
-    justify-content: center;
-    position: sticky;
-    padding: 0;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    right: 0;
-    top: 0;
-    left: 0;
-    z-index: 3;
-  }
-  .search-bar input[type="text"] {
-    flex: 1;
-    padding: 8px;
-    border: 1px solid transparent;
-    background-color: var(--color-surface-200);
-    border-right: none;
-    font-size: 14px;
-    color: var(--fg);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    border-radius: 25px 0 0 25px;
-  }
-  :global(body.light-mode) .search-bar input[type="text"] {
-    background-color: var(--color-surface-500);
-  }
-  .search-bar input[type="text"]:focus {
-    outline: none;
-    border: 1px solid var(--color-primary-200);
-    box-shadow: 0 0 10px var(--color-primary-200);
-  }
-  .search-bar input[type="text"]:focus ~ button {
-    border: 1px solid var(--color-primary-200);
-    box-shadow: 0 0 10px var(--color-primary-200);
-  }
-  .search-bar button {
-    padding: 8px 12px;
-    margin-left: -8px;
-    border: 1px solid transparent;
-    border-radius: 0 25px 25px 0;
-    background-color: var(--color-primary-300);
-    color: black;
-    font-size: 14px;
-    cursor: pointer;
-  }
-  .search-bar button:hover {
-    background-color: var(--color-primary-200);
-  }
   .product-container {
-    position: absolute;
-    right: 50%;
-    transform: translateX(50%);
     width: 95%;
     padding: 10px;
-    margin-top: 100px;
-    margin-left: 10px;
-    z-index: -999;
+    position: relative;
+    z-index: 1;
+    left: 50%;
+    transform: translateX(-50%);
     overflow: auto;
   }
   .top-bar {
     width: 100%;
     top: 0px;
     padding: 10px;
-    background-color: #1e1e1e;
-    border-bottom: 2px solid var(--color-surface-200);
-    position: fixed;
+    background-color: var(--sl-color-neutral-0);
+    position: sticky;
+    box-shadow: 0 30px 30px rgba(0, 0, 0, 0.07), 0 15px 15px rgba(0, 0, 0, 0.06),
+      0 10px 8px rgba(0, 0, 0, 0.05), 0 4px 4px rgba(0, 0, 0, 0.04),
+      0 2px 2px rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid var(--color-surface-300);
+    z-index: 3;
   }
   :global(body.light-mode .container) {
     background-color: var(--color-surface-300);

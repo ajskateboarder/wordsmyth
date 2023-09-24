@@ -5,10 +5,13 @@
 
   export let title: string | undefined;
   export let image: string | undefined;
+  export let disabled: boolean | null;
 
   const analysis = () => dispatch("analysis");
+  const remove = () => dispatch("remove");
 </script>
 
+<!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions a11y-interactive-supports-focus -->
 <div class="container">
   <div>
     <div class="review">
@@ -18,19 +21,31 @@
     <slot />
   </div>
   <div class="analysis">
-    <button on:click={analysis}>See analysis</button>
+    <slot name="analysis"
+      ><sl-button-group>
+        <sl-button on:click={analysis} role="button" {disabled}
+          >See analysis</sl-button
+        >
+        <!-- <button on:click={analysis}>See analysis</button><br /> -->
+        <sl-button class="close-button" on:click={remove} role="button"
+          ><sl-icon name="x" /></sl-button
+        >
+      </sl-button-group>&nbsp;&nbsp;&nbsp;
+    </slot>
   </div>
 </div>
 
 <style>
   .container {
-    background-color: var(--color-surface-200);
+    background-color: var(--sl-color-neutral-50);
     padding: 10px;
     border-radius: 10px;
-    margin-top: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 0 0 1px #000;
+    border: 0.1rem solid var(--color-surface-300);
+    margin-top: 10px;
   }
   .review {
     display: flex;
@@ -43,5 +58,10 @@
     width: 150px;
     min-width: 150px;
     justify-content: center;
+  }
+  .close-button::part(base):hover {
+    background-color: var(--sl-color-danger-100);
+    border: 1px solid var(--sl-color-danger-300);
+    color: var(--sl-color-danger-600);
   }
 </style>

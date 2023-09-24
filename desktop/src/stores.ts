@@ -5,15 +5,16 @@ export let password = writable(localStorage.getItem("password") ?? "");
 
 type Review = {
   reviews: { reviewText: string; overall: number }[];
-  meta: { title: string; image: string };
+  meta: { title: string; image: string; rating: string };
   analyzed: any[];
+  productId: string;
 };
 
 function check(asin: string) {
   if (localStorage.getItem(asin) === null) {
     localStorage.setItem(
       asin,
-      JSON.stringify({ reviews: [], meta: [], analyzed: [] })
+      JSON.stringify({ reviews: [], meta: [], analyzed: [], productId: asin })
     );
   }
 }
@@ -54,7 +55,10 @@ export class ProductHandler {
   static saveProductInfo(asin: string, meta: Review["meta"]) {
     check(asin);
     let existingData = JSON.parse(localStorage.getItem(asin) as string);
-    localStorage.setItem(asin, JSON.stringify({ ...existingData, meta: meta }));
+    localStorage.setItem(
+      asin,
+      JSON.stringify({ ...existingData, meta: meta, productId: asin } as Review)
+    );
   }
   static read(asin: string): Review | undefined {
     if (localStorage.getItem(asin) === null) {
@@ -65,6 +69,10 @@ export class ProductHandler {
   static fetchProducts(): Review[] {
     return Object.keys(localStorage)
       .filter((e) => !["password", "email", "a-font-class"].includes(e))
-      .map((asin) => this.read(asin) as Review);
+      .map((asin) => this.read(asin) as Review)
+      .reverse();
   }
 }
+
+//@ts-ignore
+globalThis.ProductHandler = ProductHandler;
