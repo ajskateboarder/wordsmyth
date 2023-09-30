@@ -334,6 +334,20 @@
       </Product>
     {/each}
   </div>
+  {#if products.length === 0}
+    <div class="empty-space">
+      <h1>Nothing here yet</h1>
+      <a
+        on:click={() => {
+          //@ts-ignore
+          document.querySelector(".search-input").value =
+            "https://www.amazon.com/Samsung-Factory-Unlocked-Warranty-Renewed/dp/B07PB77Z4J";
+        }}
+        style="color: var(--sl-color-neutral-300)"
+        href="#">Here's an example you can use</a
+      >
+    </div>
+  {/if}
   <Modal bind:showModal>
     <div slot="header">
       <h3>Account information</h3>
@@ -354,6 +368,14 @@
 </main>
 
 <style>
+  .empty-space {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    text-align: center;
+    color: var(--sl-color-neutral-300);
+  }
   .search-input::part(base) {
     border-radius: 0px;
     border-top-left-radius: 5px;
@@ -365,56 +387,14 @@
     border-bottom-right-radius: 5px;
   }
   :global(body) {
-    background-color: var(--color-surface-100);
-    /* -ms-overflow-style: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none; */
-    cursor: default;
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
-  }
-  :global(*) {
-    user-select: none;
+    background-color: hsl(240, 5.9%, 8%);
     -ms-overflow-style: none;
     -moz-user-select: none;
     -ms-user-select: none;
-  }
-  :global(body.dark-mode) {
-    --color-primary-100: #2196f3;
-    --color-primary-200: #50a1f5;
-    --color-primary-300: #6eacf6;
-    --color-primary-400: #87b8f8;
-    --color-primary-500: #9dc3f9;
-    --color-primary-600: #b2cffb;
-
-    --color-surface-100: #121212;
-    --color-surface-200: #282828;
-    --color-surface-300: #3f3f3f;
-    --color-surface-400: #575757;
-    --color-surface-500: #717171;
-    --color-surface-600: #8b8b8b;
-
-    color: #fff;
-  }
-  :global(body.light-mode) {
-    --color-primary-100: #2196f3;
-    --color-primary-200: #50a1f5;
-    --color-primary-300: #6eacf6;
-    --color-primary-400: #87b8f8;
-    --color-primary-500: #9dc3f9;
-    --color-primary-600: #b2cffb;
-
-    --color-surface-600: #121212;
-    --color-surface-500: #282828;
-    --color-surface-400: #3f3f3f;
-    --color-surface-300: #575757;
-    --color-surface-200: #717171;
-    --color-surface-100: #a3a3a3;
-
-    color: black;
-    background-color: white;
+    user-select: none;
+    cursor: default;
+    padding: 0;
+    margin: 0;
   }
   :global(button) {
     cursor: pointer;
@@ -453,9 +433,6 @@
     padding: 10px;
     background-color: var(--sl-color-neutral-0);
     position: sticky;
-    box-shadow: 0 30px 30px rgba(0, 0, 0, 0.07), 0 15px 15px rgba(0, 0, 0, 0.06),
-      0 10px 8px rgba(0, 0, 0, 0.05), 0 4px 4px rgba(0, 0, 0, 0.04),
-      0 2px 2px rgba(0, 0, 0, 0.03);
     border-bottom: 1px solid var(--color-surface-300);
     z-index: 3;
   }
