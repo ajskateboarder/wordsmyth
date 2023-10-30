@@ -40,6 +40,19 @@ content.metadata # rating process info
 
 There are also scripts to download reviews and benchmark this algorithm in `scripts/`.
 
+## Desktop app
+
+This provides a GUI for Wordsmyth and allows users to analyze Amazon products, This app is not completely functional yet as there is no bundled version of Wordsmyth to use. However, here are instructions for building and running the app:
+
+```bash
+cd desktop
+pnpm i
+pnpm tauri dev
+```
+
+<!--
+Not sure if this is an issue anymore, so it's commented :P
+
 ## Caveats
 
 ### Irregular tone shifts in sentiment
@@ -52,3 +65,4 @@ An example of this type of text would include:
 | ------------- | ------------- | ------ |
 | works great. we loved ours! till we didn't. these do not last so buy the warranty as you WILL NEED IT. | 4.3935 | 2
 | Luved it for the few months it worked! great little bullet shaped ice cubes. It was a gift for my sister who never opened the box. The next summer during a heat wave I asked for my unused gift back, ha!, and was in heaven for a few months. the next summer after a few weeks the unit gave out... | 4.7115 | 2 |
+-->
