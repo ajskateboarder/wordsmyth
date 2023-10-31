@@ -24,7 +24,6 @@
     <slot name="analysis"
       ><sl-button-group>
         <sl-button on:click={analysis} {disabled}>See analysis</sl-button>
-        <!-- <button on:click={analysis}>See analysis</button><br /> -->
         <sl-button class="close-button" on:click={remove} role="button"
           ><sl-icon name="x" /></sl-button
         >

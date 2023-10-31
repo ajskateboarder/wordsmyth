@@ -1,20 +1,20 @@
 <script lang="ts">
-  import { getClient, ResponseType } from "@tauri-apps/api/http";
   import { platform } from "@tauri-apps/api/os";
   import { invoke } from "@tauri-apps/api/tauri";
-  import {
-    writeBinaryFile,
-    type BinaryFileContents,
-    exists,
-  } from "@tauri-apps/api/fs";
+  import { writeBinaryFile, exists } from "@tauri-apps/api/fs";
   import { appWindow } from "@tauri-apps/api/window";
 
-  import Modal from "./components/Modal.svelte";
-  import Product from "./components/Product.svelte";
-  import RatingBar from "./components/RatingBar.svelte";
+  import Modal from "./lib/components/Modal.svelte";
+  import Product from "./lib/components/Product.svelte";
+  import RatingBar from "./lib/components/RatingBar.svelte";
 
   import { email, password, ProductHandler } from "./lib/stores";
   import { notify } from "./lib/alert";
+  import {
+    downloadEXE,
+    getLatestRelease,
+    type Response,
+  } from "./lib/riverUtils";
 
   let showModal = false;
   let validPass = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($email);
@@ -35,42 +35,11 @@
     }
   }
 
-  email.subscribe((value) => {
-    localStorage.setItem("email", value);
-  });
-  password.subscribe((value) => {
-    localStorage.setItem("password", value);
-  });
+  email.subscribe((value) => localStorage.setItem("email", value));
+  password.subscribe((value) => localStorage.setItem("password", value));
 
   let browser: WebSocket;
   let model: WebSocket;
-
-  async function getLatestRelease(): Promise<string[]> {
-    const client = await getClient();
-    const response = await client.get(
-      "https://api.github.com/repos/ajskateboarder/river/releases/latest",
-      {
-        headers: { "User-Agent": "bot" },
-        timeout: 30,
-        responseType: ResponseType.JSON,
-      }
-    );
-    const downloadLinks = (response.data as Record<string, any>).assets.map(
-      (item: any) => item.browser_download_url
-    );
-    return downloadLinks;
-  }
-
-  async function downloadEXE(url: string) {
-    const client = await getClient();
-    return (
-      await client.get(url, {
-        headers: { "User-Agent": "bot" },
-        timeout: 30,
-        responseType: ResponseType.Binary,
-      })
-    ).data as BinaryFileContents;
-  }
 
   let message = ``;
   let url = "";
@@ -87,17 +56,6 @@
     }
     return _path[_path.length - 1];
   })();
-
-  type Response = {
-    type: "status" | "response";
-    message?: string;
-    reviewText: string;
-    overall: number;
-    productId: string;
-    title: string;
-    image: string;
-    rating: string;
-  };
 
   function doAnalysis() {
     model = new WebSocket("ws://localhost:8002");
@@ -204,25 +162,6 @@
   let products = ProductHandler.fetchProducts();
   const modalStates = Array(products.length).fill(false);
 </script>
-
-<svelte:head>
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.8.0/cdn/themes/light.css"
-  />
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.8.0/cdn/themes/dark.css"
-  />
-  <script
-    type="module"
-    src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.8.0/cdn/shoelace.js"
-  ></script>
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css"
-  />
-</svelte:head>
 
 <main class="sl-theme-dark">
   <div class="top-bar">
