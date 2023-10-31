@@ -9,12 +9,12 @@
   } from "@tauri-apps/api/fs";
   import { appWindow } from "@tauri-apps/api/window";
 
-  import Modal from "./lib/Modal.svelte";
-  import Product from "./lib/Product.svelte";
-  import RatingBar from "./lib/RatingBar.svelte";
+  import Modal from "./components/Modal.svelte";
+  import Product from "./components/Product.svelte";
+  import RatingBar from "./components/RatingBar.svelte";
 
-  import { email, password, ProductHandler } from "./stores";
-  import { notify } from "./alert";
+  import { email, password, ProductHandler } from "./lib/stores";
+  import { notify } from "./lib/alert";
 
   let showModal = false;
   let validPass = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($email);
@@ -313,18 +313,23 @@
           />
         </div>
         <Modal bind:showModal={modalStates[i]}>
-          <div slot="header"><h3>Product analysis</h3></div>
-          The product rating predicted by Wordsmyth is:
-          <sl-rating
-            readonly
-            value={product.reviews.length > 0
+          {@const rating =
+            product.reviews.length > 0
               ? parseFloat(
                   average(product.reviews.map((e) => e.overall)).toFixed(2)
                 )
               : 0}
-            style="--symbol-color-active: var(--sl-color-primary-600)"
-            precision="0.01"
-          /><br />
+          <div slot="header"><h3>Product analysis</h3></div>
+          <span>
+            <sl-rating
+              readonly
+              value={rating}
+              style="--symbol-color-active: var(--sl-color-primary-600)"
+              precision="0.01"
+            />
+            {rating} stars
+          </span>
+          <br />
           <RatingBar
             data={product.analyzed
               .map((e) => e.rating)

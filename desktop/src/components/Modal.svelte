@@ -27,9 +27,7 @@
     <slot />
     <hr />
     <!-- svelte-ignore a11y-autofocus -->
-    <button autofocus on:click={() => dialog.close()} class="submit"
-      >Done</button
-    >
+    <sl-button on:click={() => dialog.close()} class="submit">Done</sl-button>
   </div>
 </dialog>
 
@@ -41,7 +39,7 @@
     padding: 20px;
     overflow: hidden;
     color-scheme: dark;
-    background-color: var(--color-surface-200);
+    background-color: var(--sl-color-neutral-50);
     color: white;
   }
   dialog::backdrop {
