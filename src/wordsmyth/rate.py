@@ -32,10 +32,10 @@ class ReviewRater:
         )
         self.flags: list[Flags] = []
 
-        self.rate_map = emojimap
         self.fix_map: dict[str, dict] = {e["repr"]: e for e in emojimap}
         self.fix_map[":cry:"]["sentiment"] = "neg"
         self.fix_map[":grimacing:"]["sentiment"] = "neu"
+        self.rate_map = [value for key, value in self.fix_map.items()]
 
     @staticmethod
     def find_indices(content: list[str], classes: list[str]) -> list[int]:
