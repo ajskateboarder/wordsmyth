@@ -8,4 +8,4 @@ function model {
 }
 
 TIMEFORMAT="Task completed in %3lR"
-time ${@:-default}
+time model

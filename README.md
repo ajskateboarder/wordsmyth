@@ -23,32 +23,19 @@ Install the requisites:
 python3 -m venv venv
 . venv/bin/activate
 pip install -r requirements.txt
-./helper model # downloads the TorchMoji model locally
+./download_torchmoji
 ```
 
 and use the module like so:
 
 ```py
-import wordsmyth
+from wordsmyth import rate
 
-model = wordsmyth.Pipeline()
-content = model("LOL")
-print(content, "stars") # 5 stars
-
-content.metadata # rating process info
+rating = model("Hello world")
+print(rating, "stars") # 5 stars
 ```
 
 There are also scripts to download reviews and benchmark this algorithm in `scripts/`.
-
-## Desktop app
-
-This provides a GUI for Wordsmyth and allows users to analyze Amazon products, This app is not completely functional yet as there is no bundled version of Wordsmyth to use. However, here are instructions for building and running the app:
-
-```bash
-cd desktop
-pnpm i
-pnpm tauri dev
-```
 
 <!--
 Not sure if this is an issue anymore, so it's commented :P

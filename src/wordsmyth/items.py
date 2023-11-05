@@ -1,60 +1,65 @@
 from __future__ import annotations
-from typing import Optional, Any
+
+from typing import Literal
 from dataclasses import dataclass
+from enum import Enum, auto
 
-import json
+class Flags(str, Enum):
+    # sentiment flags
+    POS_SENTIMENT = auto()
+    """- Positive Flair sentiment
+    - Positive TorchMoji sentiment"""
 
-from wordsmyth.constants import DIR_PATH
-from wordsmyth.rate_utils import fix_content, rate
+    NEG_SENTIMENT = auto()
+    """- Negative Flair sentiment
+    - Negative TorchMoji sentiment"""
+
+    NEG_FLAIR_SENTIMENT = auto()
+    """- Negative Flair sentiment"""
+
+    NEG_MAP_SENTIMENT = auto()
+    """- Negative TorchMoji sentiment"""
+
+    EMOJIS_ARE_POSITIVE = auto()
+    NEG_FLAIR_CONTRADICTING = auto()
+    """- Low Flair score
+    - TorchMoji produced more negative emojis than positive
+    - Negative Flair sentiment"""
+
+    NEG_MAP_CONTRADICTING = auto()
+    """- Low Flair score
+    - TorchMoji produced more negative emojis than positive
+    - Negative TorchMoji sentiment"""
+
+    # text-related flags
+    CONTAINS_LAUGHING_EMOJI = auto()
+    NEG_FLAIR_CONJUGATIONS = auto()
+    """- Negative Flair sentiment
+    - Text contains conjugations"""
+
+    POS_FLAIR_CONJUGATIONS = auto()
+    """- Positive Flair sentiment
+    - Text contains conjugations"""
 
 
-class Int(int):
-    def __new__(cls, value: int | str, metadata: Optional[dict] = None) -> Int:
-        obj = int.__new__(cls, value)
-        obj.metadata = metadata
-        cls.metadata = metadata
-        return obj
-
-
-class Float(float):
-    def __new__(cls, value: float | str, metadata: Optional[dict] = None) -> Float:
-        obj = int.__new__(cls, value)
-        obj.metadata = metadata
-        cls.metadata = metadata
-        return obj
-
-
-@dataclass
-class Sentiment:
-    """Represents Flair sentiment output"""
-
-    sentiment: str
+@dataclass()
+class ReviewData:
+    """General data about a review and its outputs"""
+    content: str
+    emoji: str
+    emojis: list[str]
+    position: int
+    sentiment_flair: str
     score: float
+    sentiment_map: str
+    fixed_emoji: str
+    matches: bool
+    post_fix_status: Literal["fixed", "correct", "incorrect"]
 
 
 @dataclass
 class Output:
-    """Represents output from Pipeline.eval"""
-
-    sentiment: Sentiment
+    """Output from Flair and TorchMoji"""
+    sentiment: dict
     emojis: list[str]
     text: str
-
-    def rating(self, exact: bool = True) -> Optional[Int | Float]:
-        """Rate text using data from Flair `en-sentiment` and TorchMoji"""
-        with open(f"{DIR_PATH}/data/emojimap.json", encoding="utf-8") as emojimap:
-            rate_map = json.load(emojimap)
-        fixed = self._fix_content()
-        rating = rate(fixed, rate_map)  # type: ignore
-        return (
-            Int(round(min(5, rating * 10)), fixed)  # type: ignore
-            if not exact
-            else rating  # type: ignore
-        )
-
-    def _fix_content(self) -> Optional[dict[str, Any]]:
-        with open(f"{DIR_PATH}/data/emojimap.json", encoding="utf-8") as emojimap:
-            fix_map = {e["repr"]: e for e in json.load(emojimap)}
-            fix_map[":cry:"]["sentiment"] = "neg"
-            fix_map[":grimacing:"]["sentiment"] = "neu"
-        return fix_content(self, fix_map)

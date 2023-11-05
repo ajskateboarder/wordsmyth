@@ -1,52 +1,11 @@
 """The flagging and rating algorithm"""
 
 from __future__ import annotations
-from typing import Literal, Any
-from enum import Enum, auto
-from dataclasses import dataclass
+from typing import Any
 
-# from pampy import match
 import numpy as np
 
-from wordsmyth.items import Output
-
-
-class Flags(str, Enum):
-    # sentiment flags
-    POS_SENTIMENT = auto()
-    NEG_SENTIMENT = auto()
-    NEG_FLAIR_SENTIMENT = auto()
-    NEG_MAP_SENTIMENT = auto()
-    EMOJIS_ARE_POSITIVE = auto()
-    NEG_FLAIR_CONTRADICTING = auto()
-    NEG_MAP_CONTRADICTING = auto()
-    # text-related flags
-    CONTAINS_LAUGHING_EMOJI = auto()
-    NEG_FLAIR_CONJUGATIONS = auto()
-    POS_FLAIR_CONJUGATIONS = auto()
-
-
-@dataclass()
-class ReviewData:
-    content: str
-    emoji: str
-    emojis: list[str]
-    position: int
-    sentiment_flair: str
-    score: float
-    sentiment_map: str
-    fixed_emoji: str
-    matches: bool
-    post_fix_status: Literal["fixed", "correct", "incorrect"]
-
-
-def match(var: Flags, cases: dict) -> Any:
-    """Small matching utility for rating system"""
-
-    for key, value in cases.items():
-        if key == var:
-            return value
-
+from wordsmyth.items import Output, ReviewData, Flags
 
 class ReviewRater:
     """Assign a more accurate emoji to some text from TorchMoji output
@@ -64,8 +23,8 @@ class ReviewRater:
             emoji=None,  # type: ignore
             emojis=sentiment_data.emojis,
             position=None,  # type: ignore
-            sentiment_flair=sentiment_data.sentiment.sentiment,
-            score=sentiment_data.sentiment.score,
+            sentiment_flair=sentiment_data.sentiment["sentiment"],
+            score=sentiment_data.sentiment["score"],
             sentiment_map=None,  # type: ignore
             fixed_emoji=None,  # type: ignore
             matches=None,  # type: ignore
@@ -223,8 +182,11 @@ class ReviewRater:
             [float(picked["pos"]), float(picked["neu"]), float(picked["neg"])]
         )
 
+        def _match(var: Flags, cases: dict) -> Any:
+            return next(value for key, value in cases.items() if key == var)
+
         for flag in self.flags:
-            negativity_score = match(
+            negativity_score = _match(
                 flag,
                 {
                     Flags.NEG_FLAIR_SENTIMENT: (
@@ -244,4 +206,4 @@ class ReviewRater:
             )
 
         rating = min(5, (round(1 - negativity_score, 4) / 2))
-        return round(min(5, rating * 10)) if not rounded else rating
+        return round(min(5, rating * 10)) if rounded else rating

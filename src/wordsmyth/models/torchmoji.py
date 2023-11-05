@@ -5,7 +5,6 @@ https://gist.github.com/cw75/57ca89cfa496f10c7c7b888ec5703d7f#file-emojize-py
 from __future__ import annotations
 import json
 from typing import Union
-from pprint import pprint
 
 import numpy as np
 from torchmoji.model_def import torchmoji_emojis
@@ -59,7 +58,6 @@ class TorchMoji:
         probabilities, attention_weights = self.model(
             self.tokenizer.tokenize_sentences(text)[0]
         )
-        # pprint(dict(zip(attention_weights.tolist()[0], text[0].split(" "))))
 
         emoji_ids = top_elements(probabilities[0], top_n)
         emojis = list(map(lambda x: EMOJIS[x], emoji_ids))
