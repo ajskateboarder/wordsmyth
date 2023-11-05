@@ -31,11 +31,14 @@ and use the module like so:
 ```py
 from wordsmyth import rate
 
-rating = model("Hello world")
+rating = rate("Hello world")
 print(rating, "stars") # 5 stars
+
+rating, flags = rate("Hello world", flags=True)
+print(flags) # [content flags ...]
 ```
 
-There are also scripts to download reviews and benchmark this algorithm in `scripts/`.
+There are also scripts to download reviews and benchmark this algorithm in `scripts/`. (they need some updating though)
 
 <!--
 Not sure if this is an issue anymore, so it's commented :P

@@ -5,9 +5,9 @@ from typing import Any
 
 import numpy as np
 
-from wordsmyth.items import Output, ReviewData, Flags
+from wordsmyth.items import Output, Evaluation, Flags
 
-class ReviewRater:
+class Rater:
     """Assign a more accurate emoji to some text from TorchMoji output
     given Flair predictions and an emojimap.
 
@@ -18,7 +18,7 @@ class ReviewRater:
 
     def __init__(self, sentiment_data: Output, emojimap: list[dict]) -> None:
         self.sentiment_data = sentiment_data
-        self.metadata = ReviewData(
+        self.metadata = Evaluation(
             content=sentiment_data.text,
             emoji=None,  # type: ignore
             emojis=sentiment_data.emojis,

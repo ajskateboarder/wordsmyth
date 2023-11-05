@@ -43,7 +43,7 @@ class Flags(str, Enum):
 
 
 @dataclass()
-class ReviewData:
+class Evaluation:
     """General data about a review and its outputs"""
     content: str
     emoji: str
