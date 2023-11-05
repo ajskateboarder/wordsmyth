@@ -48,8 +48,8 @@ class Output:
         rating = rate(fixed, rate_map)  # type: ignore
         return (
             Int(round(min(5, rating * 10)), fixed)  # type: ignore
-            if exact
-            else Float(rating, fixed)  # type: ignore
+            if not exact
+            else rating  # type: ignore
         )
 
     def _fix_content(self) -> Optional[dict[str, Any]]:

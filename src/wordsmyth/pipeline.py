@@ -11,12 +11,6 @@ from .items import Sentiment, Output, Int, Float
 Rating = Optional[Union[Int, Float]]
 
 
-def divide_list(array: list, num: int) -> Generator[list, None, None]:
-    """Divide a list into even chunks"""
-    for i in range(0, len(array), num):
-        yield array[i : i + num]
-
-
 class Pipeline:
     """Wordsmyth text rating pipeline"""
 
@@ -26,12 +20,14 @@ class Pipeline:
         self._flair = Flair()
         self._torchmoji = TorchMoji()
 
-    def __call__(self, text: str, emojis: int = 10) -> Union[Output, Rating]:
+    def __call__(
+        self, text: str, ting: bool = False, emojis: int = 10
+    ) -> Union[Output, Rating]:
         """Predict the star rating for a single content"""
         torchmoji = self._torchmoji.predict(text, emojis)
         flair = self._flair.predict(text)
         output = Output(sentiment=Sentiment(**flair), emojis=torchmoji, text=text)  # type: ignore
         try:
-            return output.rating()
+            return output.rating() if ting else output
         except AttributeError:
             return None

@@ -28,7 +28,7 @@ def fix_content(
 
     https://kt.ijs.si/data/Emoji_sentiment_ranking/index.html"""
     # text uses data from this object to better adjust the results from TorchMoji to something more accurate.
-    # emojimap is used to locate emojis which fit Flair's text predictions
+    # emojimap is used to locate emojis which fit Flair's text prediction.
     # as we have found this model to have a higher accuracy for detecting
     # base sentiment.
 

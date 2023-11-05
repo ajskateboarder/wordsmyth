@@ -29,6 +29,7 @@ data*/
 **/*.sqlite
 **/*.html
 gui/
+desktop
 
 scripts/*.json
 scripts/*.csv
