@@ -1,3 +1,5 @@
+"""Wordsmyth - generate unbiased star ratings from user reviews and comments"""
+
 from functools import lru_cache
 import warnings
 import json
