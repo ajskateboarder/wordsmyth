@@ -17,13 +17,18 @@ Wordsmyth has relatively good performance across different types of content, fro
 
 ## Python
 
+Download the TorchMoji model locally:
+
+```bash
+curl https://www.dropbox.com/s/q8lax9ary32c7t9/pytorch_model.bin?dl=0 -L --output src/wordsmyth/data/pytorch_model.bin
+```
+
 Install the requisites:
 
 ```bash
 python3 -m venv venv
 . venv/bin/activate
 pip install -r requirements.txt
-./download_torchmoji
 ```
 
 and use the module like so:

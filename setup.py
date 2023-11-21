@@ -1,5 +1,6 @@
 from setuptools import setup, find_packages
 
+
 setup(
     name="wordsmyth",
     version="0.1",
