@@ -15,7 +15,7 @@ Instead of relying on star ratings given by the user, Wordsmyth *generates them*
 
 Wordsmyth has relatively good performance across different types of content, from YouTube comments to Amazon reviews.
 
-## Python
+## Usage
 
 Download the TorchMoji model locally:
 
@@ -23,12 +23,20 @@ Download the TorchMoji model locally:
 curl https://www.dropbox.com/s/q8lax9ary32c7t9/pytorch_model.bin?dl=0 -L --output src/wordsmyth/data/pytorch_model.bin
 ```
 
-Install the requisites:
+Install your preferred version of [PyTorch](https://pytorch.org/get-started/locally/#start-locally). Most people will go with the latest version, but `1.13.1+cpu` seems to have the smallest package size:
 
 ```bash
-python3 -m venv venv
-. venv/bin/activate
-pip install -r requirements.txt
+pip install torch==1.13.1+cpu -f https://download.pytorch.org/whl/cpu/torch_stable.html
+```
+
+Install wordsmyth:
+
+```bash
+pip install -e .
+
+# comes with conjugation detection for increased accuracy
+# installs spacy and nltk
+pip install -e ".[cc]"
 ```
 
 and use the module like so:
@@ -44,20 +52,3 @@ print(flags) # [content flags ...]
 ```
 
 There are also scripts to download reviews and benchmark this algorithm in `scripts/`. (they need some updating though)
-
-<!--
-Not sure if this is an issue anymore, so it's commented :P
-
-## Caveats
-
-### Irregular tone shifts in sentiment
-
-Text that quickly changes in tone can sometimes be incorrectly predicted by the algorithm stack, especially in the case of Flair.
-
-An example of this type of text would include:
-
-| content       | predicted     | actual |
-| ------------- | ------------- | ------ |
-| works great. we loved ours! till we didn't. these do not last so buy the warranty as you WILL NEED IT. | 4.3935 | 2
-| Luved it for the few months it worked! great little bullet shaped ice cubes. It was a gift for my sister who never opened the box. The next summer during a heat wave I asked for my unused gift back, ha!, and was in heaven for a few months. the next summer after a few weeks the unit gave out... | 4.7115 | 2 |
--->

@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "wordsmyth"
 
@@ -8,6 +12,13 @@ readme = "README.md"
 requires-python = ">=3.7"
 license = {file = "LICENSE"}
 
+dependencies = [
+    "torchMoji @ git+https://github.com/themysticsavages/torchMoji",
+    "regex==2022.3.2",
+    "transformers",
+    "flair",
+]
+
 classifiers = [
   "Development Status :: 4 - Beta",
   "Intended Audience :: Developers",
@@ -16,9 +27,11 @@ classifiers = [
   "Programming Language :: Python :: 3",
 ]
 
-[build-system]
-requires = ["setuptools>=43.0.0", "wheel"]
-build-backend = "setuptools.build_meta"
+[project.optional-dependencies]
+cc = ["spacy>=3.7.2", "nltk>=3.8.1"]
+
+[tool.setuptools.package-data]
+data = ["emojimap.json", "pytorch_model.bin", "vocabulary.json"]
 
 [tool.distutils.bdist_wheel]
 universal = true

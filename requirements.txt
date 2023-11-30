@@ -1,7 +1,0 @@
--f https://download.pytorch.org/whl/torch_stable.html
-git+https://github.com/themysticsavages/torchMoji
-regex==2022.3.2
-torch==1.13.1+cpu
-transformers
-flair
--e .
