@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "wordsmyth"
 
-version = "0.0.0"
+version = "0.10.1"
 description = "Generate star ratings from user content reviews"
 
 readme = "README.md"

@@ -6,6 +6,8 @@ from typing import Any
 import numpy as np
 
 from wordsmyth.items import Output, Evaluation, Flags
+from wordsmyth.conjugation import Conjugation
+
 
 class Rater:
     """Assign a more accurate emoji to some text from TorchMoji output
@@ -31,6 +33,7 @@ class Rater:
             post_fix_status=None,  # type: ignore
         )
         self.flags: list[Flags] = []
+        self.conjugation = Conjugation()
 
         self.fix_map: dict[str, dict] = {e["repr"]: e for e in emojimap}
         self.fix_map[":cry:"]["sentiment"] = "neg"
@@ -134,6 +137,7 @@ class Rater:
         contradicting = m.score < 0.8 and emojis_are_negative.count(
             True
         ) < emojis_are_positive.count(True)
+        print(self.conjugation.detect(m.content))
         has_conjugations = (
             any(word in m.content.lower().strip() for word in conjunctions)
             and not contradicting
