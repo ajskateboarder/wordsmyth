@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from typing import Literal
 from dataclasses import dataclass
 from enum import Enum, auto
+from typing import Literal
 
 
 class Flags(str, Enum):

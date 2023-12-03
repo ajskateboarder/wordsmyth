@@ -31,7 +31,7 @@ classifiers = [
 cc = ["spacy>=3.7.2", "nltk>=3.8.1"]
 
 [tool.setuptools.package-data]
-data = ["emojimap.json", "pytorch_model.bin", "vocabulary.json"]
+data = ["emojimap.json", "pytorch_model.bin", "vocabulary.json", "modifiers.json"]
 
 [tool.distutils.bdist_wheel]
 universal = true

@@ -1,15 +1,15 @@
 """Find a bunch of product URLs"""
 from __future__ import annotations
 
-from typing import Optional, Generator
-from concurrent.futures import ThreadPoolExecutor, as_completed
-from urllib.parse import quote_plus
 import itertools
-
-from typing_extensions import Self
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from typing import Generator, Optional
+from urllib.parse import quote_plus
 
 import requests
 from selenium.webdriver.common.by import By
+from typing_extensions import Self
+
 from .reviews import AmazonScraper
 
 

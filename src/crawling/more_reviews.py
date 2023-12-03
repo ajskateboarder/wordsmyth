@@ -1,17 +1,15 @@
 """Parallel review downloader"""
 from __future__ import annotations
 
-from typing import Any, Generator, Callable, Optional
-
-from itertools import repeat, count, zip_longest
 from concurrent.futures import ThreadPoolExecutor, as_completed
-
-from typing_extensions import Self
+from itertools import count, repeat, zip_longest
+from typing import Any, Callable, Generator, Optional
 
 from bs4 import BeautifulSoup
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver import Firefox, FirefoxOptions
 from selenium.webdriver.common.by import By
+from typing_extensions import Self
 
 
 class AmazonScraper:

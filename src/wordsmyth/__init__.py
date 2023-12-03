@@ -1,17 +1,17 @@
 """Wordsmyth - generate unbiased star ratings from user reviews and comments"""
 from __future__ import annotations
 
-from functools import lru_cache
-import warnings
 import json
+import warnings
+from functools import lru_cache
 
-from wordsmyth.rate import Rater
-from wordsmyth.items import Output, Flags
 from wordsmyth.constants import DIR_PATH
+from wordsmyth.items import Flags, Output
+from wordsmyth.rate import Rater
 
 CONJUGATION_SUPPORT = True
 try:
-    from wordsmyth.conjugation import Conjugation as _
+    from wordsmyth.conjunction import Con as _
 except ImportError:
     CONJUGATION_SUPPORT = False
 

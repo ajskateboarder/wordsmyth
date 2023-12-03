@@ -24,7 +24,6 @@ main.*
 
 # This contains a bunch of saved reviews and client info
 archive/
-data*/
 **/*.log
 **/*.sqlite
 **/*.html

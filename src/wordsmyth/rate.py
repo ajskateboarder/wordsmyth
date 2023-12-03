@@ -1,12 +1,13 @@
 """The flagging and rating algorithm"""
 
 from __future__ import annotations
+
 from typing import Any
 
 import numpy as np
 
-from wordsmyth.items import Output, Evaluation, Flags
-from wordsmyth.conjugation import Conjugation
+from wordsmyth.conjunction import Conjunction
+from wordsmyth.items import Evaluation, Flags, Output
 
 
 class Rater:
@@ -33,7 +34,7 @@ class Rater:
             post_fix_status=None,  # type: ignore
         )
         self.flags: list[Flags] = []
-        self.conjugation = Conjugation()
+        self.conjugation = Conjunction()
 
         self.fix_map: dict[str, dict] = {e["repr"]: e for e in emojimap}
         self.fix_map[":cry:"]["sentiment"] = "neg"

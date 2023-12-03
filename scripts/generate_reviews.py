@@ -3,10 +3,10 @@
 from __future__ import annotations
 
 import os
+import sqlite3
 import sys
 from functools import partial
 from threading import Lock
-import sqlite3
 
 from wordsmyth import Pipeline
 from wordsmyth import scraping as utils

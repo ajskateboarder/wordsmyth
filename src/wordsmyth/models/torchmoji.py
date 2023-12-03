@@ -3,6 +3,7 @@ Abstracted library to make emoji processing nicer, mostly from this gist
 https://gist.github.com/cw75/57ca89cfa496f10c7c7b888ec5703d7f#file-emojize-py
 """
 from __future__ import annotations
+
 import json
 from typing import Union
 

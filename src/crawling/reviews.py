@@ -2,11 +2,12 @@
 from __future__ import annotations
 
 import time
-from typing import Generator as Generator_, Any, Union, TypeVar
+from typing import Any
+from typing import Generator as Generator_
+from typing import TypeVar, Union
 from urllib.parse import urlparse
 
 from bs4 import BeautifulSoup
-
 from selenium.webdriver import Firefox, FirefoxOptions
 from selenium.webdriver.common.by import By
 

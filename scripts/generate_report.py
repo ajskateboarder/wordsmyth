@@ -1,12 +1,11 @@
 #!/usr/bin/python3
 import sqlite3
 
-from scipy.stats import ttest_rel
-from sklearn.metrics import accuracy_score
 import pandas as pd
-
 from markdown import markdown
 from markdown.extensions.tables import TableExtension
+from scipy.stats import ttest_rel
+from sklearn.metrics import accuracy_score
 
 pd.options.mode.chained_assignment = None
 
