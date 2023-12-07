@@ -34,9 +34,8 @@ Install wordsmyth:
 ```bash
 pip install -e .
 
-# comes with conjugation detection for increased accuracy
-# installs spacy and nltk
-pip install -e ".[cc]"
+# comes with amazon review scraping for scripts
+pip install -e ".[scraping]"
 ```
 
 and use the module like so:
