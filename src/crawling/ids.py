@@ -10,7 +10,7 @@ import requests
 from selenium.webdriver.common.by import By
 from typing_extensions import Self
 
-from .reviews import AmazonScraper
+from .sync_reviews import AmazonScraper
 
 
 def find_asin(url: str) -> str:
@@ -29,7 +29,7 @@ class BestSellersLinks(AmazonScraper):
     (https://www.amazon.com/gp/bestsellers)
     """
 
-    def _get_ids(self, url: str, scrolls: int = 1, to_rust: bool = False) -> list[dict]:
+    def _get_ids(self, url: str, scrolls: int = 1) -> list[dict]:
         """Fetch product IDs given a URL"""
         self.browser.get(url)
 
@@ -40,9 +40,6 @@ class BestSellersLinks(AmazonScraper):
                 y_scroll += 1000
             except Exception:  # pylint:disable=broad-exception-caught
                 pass
-
-        if to_rust:
-            return self.browser.page_source
 
         items = []
         for product in self.browser.find_elements(
@@ -80,13 +77,9 @@ class BestSellersLinks(AmazonScraper):
         """Fetch product IDs from Amazon's Bestsellers page"""
         return self._get_ids("https://www.amazon.com/gp/bestsellers/", scrolls)
 
-    def get_query_ids(
-        self, query: str, scrolls: int = 1, to_rust: bool = False
-    ) -> list[dict]:
+    def get_query_ids(self, query: str, scrolls: int = 1) -> list[dict]:
         """Fetch product IDs from a Amazon search query"""
-        return self._get_ids(
-            f"https://amazon.com/s?k={quote_plus(query)}", scrolls, to_rust
-        )
+        return self._get_ids(f"https://amazon.com/s?k={quote_plus(query)}", scrolls)
 
     def fetch_bestselling_reviews(
         self, pages: int, limit: Optional[int] = None

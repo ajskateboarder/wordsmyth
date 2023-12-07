@@ -122,6 +122,4 @@ class AmazonScraper:
         return self
 
     def __exit__(self, exc_type: Any, exc_val: Any, exc_tb: Any) -> None:
-        if getattr(self, "display", None):
-            self.display.stop()
         self.close()

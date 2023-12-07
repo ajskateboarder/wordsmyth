@@ -1,8 +1,9 @@
 """Parallel review downloader"""
 from __future__ import annotations
 
-from concurrent.futures import ThreadPoolExecutor, as_completed
-from itertools import count, repeat, zip_longest
+from concurrent.futures import ThreadPoolExecutor, as_completed, Future
+from itertools import count, zip_longest
+from functools import partial
 from typing import Any, Callable, Generator, Optional
 
 from bs4 import BeautifulSoup
@@ -12,10 +13,21 @@ from selenium.webdriver.common.by import By
 from typing_extensions import Self
 
 
+class CAPTCHAError(Exception):
+    def __init__(self, browserId: str | None) -> None:
+        self.browserId = browserId
+
+
+class AccountProtectionError(Exception):
+    pass
+
+
 class AmazonScraper:
     """
     Amazon scraper to fetch reviews from products with multi-threading
-    with support for logging in
+    with support for logging in and captcha handling
+
+    To set a custom handler for CAPTCHAs, modify the `captcha_handler` attribute
     """
 
     def __init__(self, fake_display: bool = True) -> None:
@@ -33,9 +45,16 @@ class AmazonScraper:
                 )
             )
 
+        self.captcha_handler = self._handle_captcha
+
     def _login_single(self, browser: Firefox, email: str, password: str) -> None:
         browser.get("https://amazon.com")
         try:
+            if (
+                "Sorry, we just need to make sure you're not a robot"
+                in browser.page_source
+            ):
+                raise CAPTCHAError(browser.session_id)
             browser.find_element(By.ID, "nav-link-accountList").click()
             browser.find_element(By.ID, "ap_email").send_keys(email)
             browser.find_element(By.ID, "continue").click()
@@ -44,15 +63,42 @@ class AmazonScraper:
         except NoSuchElementException:
             self._login_single(browser, email, password)
 
+    def _handle_captcha(self, future: Future, browsers: list) -> None:
+        try:
+            future.result()
+        except CAPTCHAError as e:
+            browser: Firefox = next(
+                b for b in self.browsers if b.session_id == e.browserId
+            )
+            browser.execute_script(  # type: ignore
+                f"document.querySelector('p.a-last').innerHTML += '<b>(Browser {self.browsers.index(browser)})</b>'"
+            )
+            captcha = input(
+                f"Please solve the captcha for {self.browsers.index(browser)}: "
+            )
+            browser.find_element(By.ID, "captchacharacters").send_keys(captcha)
+            browser.find_element(By.CSS_SELECTOR, "button.a-button-text").click()
+            browsers.append(browser)
+
     def login(self, email: str, password: str) -> None:
         """Log in all browsers to Amazon with an email and password"""
+
+        captchad_browsers: list[Firefox] = []
         with ThreadPoolExecutor() as executor:
-            executor.map(
-                self._login_single,
-                self.browsers,
-                repeat(email),
-                repeat(password),
-            )
+            futures = [
+                executor.submit(self._login_single, browser, email, password)
+                for browser in self.browsers
+            ]
+            for f in as_completed(futures):
+                f.add_done_callback(
+                    partial(self.captcha_handler, browsers=captchad_browsers)
+                )
+        if captchad_browsers:
+            with ThreadPoolExecutor() as executor:
+                futures = [
+                    executor.submit(self._login_single, browser, email, password)
+                    for browser in captchad_browsers
+                ]
 
     @staticmethod
     def select_reviews(content: Any) -> Generator[dict, None, None]:
@@ -75,13 +121,9 @@ class AmazonScraper:
         category: int,
         callback: Callable[[dict], Any],
         limit: Optional[int] = None,
-        ctx: Optional[Any] = None,
     ) -> None:
         map_star = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five"}
 
-        if ctx:
-            pass
-            # add_script_run_ctx(threading.currentThread(), ctx)
         if limit:
             counter = count(0)
         for page in range(1, 11):
@@ -115,7 +157,6 @@ class AmazonScraper:
             for i, browser, prop in zip_longest(
                 range(1, 6), self.browsers, proportions
             ):
-                # ctx = get_script_run_ctx()
                 future = executor.submit(
                     self._scrape_single,
                     browser,
@@ -133,10 +174,9 @@ class AmazonScraper:
             for browser in self.browsers:
                 executor.submit(browser.quit)
 
+    # these methods are practically useless at this point
     def __enter__(self) -> Self:
         return self
 
     def __exit__(self, exc_type: Any, exc_val: Any, exc_tb: Any) -> None:
-        if getattr(self, "display", None):
-            self.display.stop()
         self.close()

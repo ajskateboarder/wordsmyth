@@ -8,10 +8,8 @@ import sys
 from functools import partial
 from threading import Lock
 
-from wordsmyth import Pipeline
-from wordsmyth import scraping as utils
-
-pipe = Pipeline()
+from wordsmyth import rate
+import crawling as utils
 
 
 class LockedSqliteConnection:
@@ -45,7 +43,7 @@ def process_review(review: dict, db: LockedSqliteConnection) -> None:
         )
 
         try:
-            prediction = pipe(
+            prediction, _ = rate(
                 review["reviewText"]
                 .replace(
                     "                    The media could not be loaded.\n                ",
@@ -62,19 +60,32 @@ def process_review(review: dict, db: LockedSqliteConnection) -> None:
 
 
 def main() -> None:
+    import logging
+
+    HEADLESS = True
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s [%(levelname)s] %(message)s",
+        handlers=[
+            logging.FileHandler(f"{sys.argv[1]}.log"),
+            logging.StreamHandler(sys.stdout),
+        ],
+    )
+
     db = LockedSqliteConnection(sys.argv[1])
-    with utils.ParallelAmazonScraper() as scrapers:
+    with utils.BestSellersLinks(HEADLESS) as products:
+        logging.info("collecting product ids")
+        product_ids = list(products.get_bestselling())
+    with utils.ParallelAmazonScraper(HEADLESS) as scrapers:
         print("logging scrapers in")
         scrapers.login(os.environ["EMAIL"], os.environ["PASSWORD"])
-        with utils.AmazonBestsellersScraper() as products:
-            print("collecting product ids")
-            product_ids = products.get_bestselling()
-        for product_id in product_ids:
-            print("collecting proportions for:", product_id)
-            with utils.AmazonScraper() as scraper:
+        with utils.AmazonScraper(HEADLESS) as scraper:
+            for product_id in product_ids:
+                logging.info("collecting proportions for: %s", product_id)
                 proportions = scraper.get_proportions(product_id)
-            print("scraping:", product_id)
-            scrapers.scrape(product_id, partial(process_review, db=db), proportions)  # type: ignore
+                logging.info("scraping: %s", product_id)
+                scrapers.scrape(product_id, partial(process_review, db=db), proportions)  # type: ignore
 
 
 if __name__ == "__main__":
