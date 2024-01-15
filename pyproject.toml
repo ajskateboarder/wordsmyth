@@ -28,7 +28,7 @@ classifiers = [
 ]
 
 [project.optional-dependencies]
-scraping = ["requests>=2.31.0", "selenium>=4.15.2"]
+scraping = ["selenium>=4.15.2"]
 
 [tool.setuptools.package-data]
 data = ["emojimap.json", "pytorch_model.bin", "vocabulary.json", "modifiers.json"]

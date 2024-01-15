@@ -8,8 +8,11 @@ import sys
 from functools import partial
 from threading import Lock
 
-from wordsmyth import rate
 import crawling as utils
+
+from wordsmyth import rate
+
+lock = Lock()
 
 
 class LockedSqliteConnection:
@@ -33,59 +36,65 @@ class LockedSqliteConnection:
             self.cursor = None  # type: ignore
 
 
-def process_review(review: dict, db: LockedSqliteConnection) -> None:
-    if review["reviewText"].strip() == "":
-        return
-    with db:
-        name = review["productId"]
-        db.cursor.execute(
-            f"CREATE TABLE IF NOT EXISTS {name}(text, actual, prediction)"
-        )
-
-        try:
-            prediction, _ = rate(
-                review["reviewText"]
-                .replace(
-                    "                    The media could not be loaded.\n                ",
-                    "",
+def process_reviews(
+    reviews: utils.threaded_reviews.Item, db: LockedSqliteConnection
+) -> None:
+    productId = reviews["productId"]
+    with lock:
+        for review in reviews["items"]:
+            if review["reviewText"].strip() == "":
+                return
+            with db:
+                db.cursor.execute(
+                    f"CREATE TABLE IF NOT EXISTS {productId}(text, actual, prediction, flags)"
                 )
-                .strip()
-            )
-        except Exception:
-            return
-        db.cursor.execute(
-            f"INSERT INTO {name} VALUES(?, ?, ?)",
-            (review["reviewText"], review["overall"], prediction),
-        )
+
+                try:
+                    prediction, flags = rate(
+                        review["reviewText"]
+                        .replace(
+                            "                    The media could not be loaded.\n                ",
+                            "",
+                        )
+                        .strip()
+                    )
+                except Exception:
+                    return
+                try:
+                    db.cursor.execute(
+                        f"INSERT INTO {productId} VALUES(?, ?, ?)",
+                        (review["reviewText"], review["overall"], prediction),
+                    )
+                except AttributeError:
+                    db.cursor = db.connection.cursor()
+                    db.cursor.execute(
+                        f"INSERT INTO {productId} VALUES(?, ?, ?)",
+                        (review["reviewText"], review["overall"], prediction),
+                    )
 
 
 def main() -> None:
-    import logging
+    from loguru import logger
 
     HEADLESS = True
 
-    logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s [%(levelname)s] %(message)s",
-        handlers=[
-            logging.FileHandler(f"{sys.argv[1]}.log"),
-            logging.StreamHandler(sys.stdout),
-        ],
-    )
-
     db = LockedSqliteConnection(sys.argv[1])
+
     with utils.BestSellersLinks(HEADLESS) as products:
-        logging.info("collecting product ids")
+        logger.info("Collecting product IDs")
         product_ids = list(products.get_bestselling())
-    with utils.ParallelAmazonScraper(HEADLESS) as scrapers:
-        print("logging scrapers in")
-        scrapers.login(os.environ["EMAIL"], os.environ["PASSWORD"])
-        with utils.AmazonScraper(HEADLESS) as scraper:
+
+    with utils.AmazonScraper(HEADLESS) as prop:
+        with utils.ParallelAmazonScraper(HEADLESS) as scrapers:
+            logger.info("Logging scrapers in")
+            scrapers.login(os.environ["EMAIL"], os.environ["PASSWORD"])
+            # scrapers.scrape(product_id, partial(process_reviews, db=db), proportions)
             for product_id in product_ids:
-                logging.info("collecting proportions for: %s", product_id)
-                proportions = scraper.get_proportions(product_id)
-                logging.info("scraping: %s", product_id)
-                scrapers.scrape(product_id, partial(process_review, db=db), proportions)  # type: ignore
+                proportions = prop.get_proportions(product_id)
+                logger.info(f"Collecting review proportions for: {product_id}")
+
+                logger.info(f"Scraping: {product_id}")
+                scrapers.scrape(product_id, partial(process_reviews, db=db), proportions)  # type: ignore
 
 
 if __name__ == "__main__":

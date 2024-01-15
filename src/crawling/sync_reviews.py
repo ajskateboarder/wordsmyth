@@ -1,33 +1,23 @@
-"""Review downloader"""
+"""Review downloader
+
+Used in review aggregating to find popular products"""
 from __future__ import annotations
 
 import time
-from typing import Any
-from typing import Generator as Generator_
-from typing import TypeVar, Union
+from typing import Any, Generator, Union, cast
 from urllib.parse import urlparse
 
 from bs4 import BeautifulSoup
 from selenium.webdriver import Firefox, FirefoxOptions
 from selenium.webdriver.common.by import By
 
-_T = TypeVar("_T")
-Generator = Generator_[_T, None, None]
-
-
-class NoLinksFound(Exception):
-    """No links were found on a page"""
-
-
-class BotDetected(Exception):
-    """Detected by Amazon and requires a CAPTCHA to proceed"""
+from .dicts import Review
 
 
 class AmazonScraper:
     """This implementation uses Firefox and Geckodriver.
 
-    `fake_display` creates a virtual display for non-window systems.
-    This requires `xvfb`"""
+    `fake_display` creates a virtual display for non-window systems."""
 
     def __init__(self, fake_display: bool = True) -> None:
         opts = FirefoxOptions()
@@ -36,17 +26,17 @@ class AmazonScraper:
 
         self.browser = Firefox(options=opts)
 
-    def get_bestselling(self) -> Generator[str]:
+    def get_bestselling(self) -> Generator[str, None, None]:
         """Fetch product IDs from Amazon's Bestsellers page"""
         self.browser.get("https://www.amazon.com/gp/bestsellers/")
         ids = []
-        for _ in range(5):
+        for _ in range(3):
             for link in self.browser.find_elements(By.CSS_SELECTOR, "a.a-link-normal"):
                 try:
-                    if "product-reviews" in link.get_attribute("href"):
-                        product_id = urlparse(link.get_attribute("href")).path.split(
-                            "/"
-                        )[2]
+                    if "product-reviews" in cast(str, link.get_attribute("href")):
+                        product_id = cast(
+                            str, urlparse(link.get_attribute("href")).path
+                        ).split("/")[2]
                         if not product_id in ids:
                             ids.append(product_id)
                             yield product_id
@@ -59,7 +49,9 @@ class AmazonScraper:
             except Exception:
                 pass
 
-    def fetch_product_reviews(self, asin: str, pages: int = 10) -> Generator[dict]:
+    def fetch_product_reviews(
+        self, asin: str, pages: int = 10
+    ) -> Generator[dict, None, None]:
         """Fetch reviews from a single product ASIN"""
         for page in self.get_product_source(asin, pages):
             soup = BeautifulSoup(page, "html.parser")
@@ -89,7 +81,7 @@ class AmazonScraper:
 
     def get_product_source(
         self, asin: str, pages: int, delay: float = 0.5
-    ) -> Generator[str]:
+    ) -> Generator[str, None, None]:
         """Fetch n pages of reviews by product ID"""
         for page in range(1, pages + 1):
             self.browser.get(
@@ -101,7 +93,7 @@ class AmazonScraper:
             yield source
 
     @staticmethod
-    def select_reviews(content: Any) -> Generator[dict]:
+    def select_reviews(content: Any) -> Generator[Review, None, None]:
         """Select reviews from a Amazon page source"""
         for review in content:
             row = review.select_one(".a-row")
@@ -112,7 +104,7 @@ class AmazonScraper:
                     ]
                 )
                 body = row.select_one("span[data-hook='review-body']").text
-                yield {"reviewText": body, "overall": rating}
+                yield {"text": body, "rating": rating}
 
     def close(self) -> None:
         """Close the browser"""
@@ -121,5 +113,5 @@ class AmazonScraper:
     def __enter__(self) -> AmazonScraper:
         return self
 
-    def __exit__(self, exc_type: Any, exc_val: Any, exc_tb: Any) -> None:
+    def __exit__(self, *_: Any) -> None:
         self.close()
