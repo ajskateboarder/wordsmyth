@@ -13,7 +13,7 @@ Instead of relying on star ratings given by the user, Wordsmyth *generates them*
 <img src="./media/how_it_works.png">
 </div>
 
-Wordsmyth has relatively good performance across different types of content, from YouTube comments to Amazon reviews.
+The goal of this model is not to reach high accuracy with consumer star ratings, but to act as a method for ratings to have more reliable ratings based on a set of standards.   
 
 ## Usage
 
