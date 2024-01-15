@@ -26,6 +26,12 @@ class AmazonScraper:
 
         self.browser = Firefox(options=opts)
 
+    def __enter__(self) -> AmazonScraper:
+        return self
+
+    def __exit__(self, *_: Any) -> None:
+        self.close()
+
     def get_bestselling(self) -> Generator[str, None, None]:
         """Fetch product IDs from Amazon's Bestsellers page"""
         self.browser.get("https://www.amazon.com/gp/bestsellers/")
@@ -109,9 +115,3 @@ class AmazonScraper:
     def close(self) -> None:
         """Close the browser"""
         self.browser.quit()
-
-    def __enter__(self) -> AmazonScraper:
-        return self
-
-    def __exit__(self, *_: Any) -> None:
-        self.close()

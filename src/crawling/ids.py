@@ -81,9 +81,3 @@ class BestSellersLinks(AmazonScraper):
     def get_query_ids(self, query: str, scrolls: int = 1) -> list[Product]:
         """Fetch product IDs from a Amazon search query"""
         return self._get_ids(f"https://amazon.com/s?k={quote_plus(query)}", scrolls)
-
-    def __enter__(self) -> Self:
-        return self
-
-    def __exit__(self, *_: Any) -> None:
-        self.browser.quit()

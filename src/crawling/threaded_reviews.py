@@ -41,6 +41,12 @@ class AmazonScraper:
 
         self.captcha_handler = self.handle_captcha
 
+    def __enter__(self) -> Self:
+        return self
+
+    def __exit__(self, *_: Any) -> None:
+        self.close()
+
     def handle_captcha(self, future: Future, browsers: list) -> None:
         """Default CAPTCHA handler"""
         try:
@@ -192,10 +198,3 @@ class AmazonScraper:
         with ThreadPoolExecutor() as executor:
             for browser in self.browsers:
                 executor.submit(browser.quit)
-
-    # these methods are practically useless at this point
-    def __enter__(self) -> Self:
-        return self
-
-    def __exit__(self, exc_type: Any, exc_val: Any, exc_tb: Any) -> None:
-        self.close()
