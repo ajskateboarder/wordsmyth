@@ -20,7 +20,7 @@ class Flags(str, Enum):
     POS_FLAIR_CONJUGATIONS = "pos_flair_and_conjugations"
 
 
-@dataclass()
+@dataclass
 class Evaluation:
     """General data about a review and its outputs"""
 

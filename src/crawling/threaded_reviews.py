@@ -5,6 +5,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed, Future
 from itertools import count, zip_longest
 from functools import partial
 from typing import Any, Callable, Optional, cast
+import logging
 
 from bs4 import BeautifulSoup
 from selenium.common.exceptions import NoSuchElementException
@@ -21,7 +22,7 @@ class AmazonScraper:
     Amazon scraper to fetch reviews from products with multi-threading
     with support for logging in and captcha handling
 
-    To set custom handlers for CAPTCHAs, modify the `captcha_handler` attribute
+    To set custom handlers for CAPTCHAs, modify the `captcha_hook` attribute
     """
 
     def __init__(self, fake_display: bool = True) -> None:
@@ -39,13 +40,22 @@ class AmazonScraper:
                 )
             )
 
-        self.captcha_handler = self.handle_captcha
+        self.captcha_hook: Callable[
+            [Firefox, Optional[int]], str
+        ] = self._default_captcha_hook
 
     def __enter__(self) -> Self:
         return self
 
     def __exit__(self, *_: Any) -> None:
         self.close()
+
+    @staticmethod
+    def _default_captcha_hook(browser: Firefox, _browser_id: int | None = None) -> str:
+        browser.execute_script(  # type: ignore
+            f"document.querySelector('.a-size-large').innerHTML += ' (browser #{_browser_id})'"
+        )
+        return input(f"(login) Please solve the captcha for browser #{_browser_id}: ")
 
     def handle_captcha(self, future: Future, browsers: list) -> None:
         """Default CAPTCHA handler"""
@@ -55,9 +65,7 @@ class AmazonScraper:
             browser: Firefox = next(  # type: ignore
                 b for b in self.browsers if b.session_id == e.browser_id
             )
-            captcha = input(
-                f"(login) Please solve the captcha for {self.browsers.index(browser)}: "
-            )
+            captcha = self.captcha_hook(browser, self.browsers.index(browser))
             browser.find_element(
                 By.CSS_SELECTOR, "input[name=cvf_captcha_input]"
             ).send_keys(captcha)
@@ -98,7 +106,9 @@ class AmazonScraper:
             self._login_single(browser, email, password)
 
     def login(self, email: str, password: str) -> None:
-        """Log in all browsers to Amazon with an email and password"""
+        """Log in all browsers to Amazon with an email and password
+
+        May raise CAPTCHAError or AccountProtectionError if sign in fails"""
 
         captchad_browsers: list[Firefox] = []
         with ThreadPoolExecutor() as executor:
@@ -108,7 +118,7 @@ class AmazonScraper:
             ]
             for f in as_completed(futures):
                 f.add_done_callback(
-                    partial(self.captcha_handler, browsers=captchad_browsers)
+                    partial(self.handle_captcha, browsers=captchad_browsers)
                 )
         if captchad_browsers:
             with ThreadPoolExecutor() as executor:
@@ -119,7 +129,9 @@ class AmazonScraper:
 
     @staticmethod
     def select_reviews(content: Any) -> list[Review]:
-        """Select reviews from a Amazon page source"""
+        """Select reviews from a Amazon page source
+
+        Returns -1 if rating fails"""
         reviews = []
         for review in content:
             row = review.select_one(".a-row")
@@ -147,11 +159,13 @@ class AmazonScraper:
         limit: Optional[int] = None,
     ) -> None:
         map_star = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five"}
-
         if limit:
             counter = count(0)
+
+        logging.debug(
+            "Fetching %s reviews in %s star category", limit, map_star[category]
+        )
         for page in range(1, 11):
-            print("browser", category, "page", page)
             browser.get(
                 f"https://www.amazon.com/product-reviews/{asin}/"
                 f"?ie=UTF8&reviewerType=all_reviews&pageNumber={page}&filterByStar={map_star[category]}_star"
@@ -184,6 +198,7 @@ class AmazonScraper:
 
         futures = []
         with ThreadPoolExecutor() as executor:
+            logging.debug("Initializing thread pool to scrape %s", asin)
             for i, browser, prop in zip_longest(
                 range(1, 6), self.browsers, proportions
             ):

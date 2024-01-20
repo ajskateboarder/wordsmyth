@@ -7,12 +7,22 @@ import sqlite3
 import sys
 from functools import partial
 from threading import Lock
+import logging
 
-import crawling as utils
+from crawling import bestsellers_reviews
+from crawling.dicts import Reviews
 
 from wordsmyth import rate
 
 lock = Lock()
+
+logging.basicConfig(
+    format="[%(levelname)s] %(asctime)s: %(message)s",
+    datefmt="%d-%b-%y %H:%M:%S",
+    level=logging.DEBUG,
+)
+logging.getLogger("selenium").setLevel(logging.WARNING)
+logging.getLogger("urllib3").setLevel(logging.WARNING)
 
 
 class LockedSqliteConnection:
@@ -28,7 +38,7 @@ class LockedSqliteConnection:
         self.cursor = self.connection.cursor()
         return self
 
-    def __exit__(self, typ, value, traceback) -> None:
+    def __exit__(self, *_) -> None:
         self.lock.release()
         self.connection.commit()
         if self.cursor is not None:
@@ -36,9 +46,7 @@ class LockedSqliteConnection:
             self.cursor = None  # type: ignore
 
 
-def process_reviews(
-    reviews: utils.threaded_reviews.Item, db: LockedSqliteConnection
-) -> None:
+def process_reviews(reviews: Reviews, db: LockedSqliteConnection) -> None:
     productId = reviews["productId"]
     with lock:
         for review in reviews["items"]:
@@ -62,8 +70,13 @@ def process_reviews(
                     return
                 try:
                     db.cursor.execute(
-                        f"INSERT INTO {productId} VALUES(?, ?, ?)",
-                        (review["reviewText"], review["overall"], prediction),
+                        f"INSERT INTO {productId} VALUES(?, ?, ?, ?)",
+                        (
+                            review["reviewText"],
+                            review["overall"],
+                            prediction,
+                            ",".join(flags),
+                        ),
                     )
                 except AttributeError:
                     db.cursor = db.connection.cursor()
@@ -74,27 +87,12 @@ def process_reviews(
 
 
 def main() -> None:
-    from loguru import logger
-
-    HEADLESS = True
+    HEADLESS = False
 
     db = LockedSqliteConnection(sys.argv[1])
 
-    with utils.BestSellersLinks(HEADLESS) as products:
-        logger.info("Collecting product IDs")
-        product_ids = list(products.get_bestselling())
-
-    with utils.AmazonScraper(HEADLESS) as prop:
-        with utils.ParallelAmazonScraper(HEADLESS) as scrapers:
-            logger.info("Logging scrapers in")
-            scrapers.login(os.environ["EMAIL"], os.environ["PASSWORD"])
-            # scrapers.scrape(product_id, partial(process_reviews, db=db), proportions)
-            for product_id in product_ids:
-                proportions = prop.get_proportions(product_id)
-                logger.info(f"Collecting review proportions for: {product_id}")
-
-                logger.info(f"Scraping: {product_id}")
-                scrapers.scrape(product_id, partial(process_reviews, db=db), proportions)  # type: ignore
+    scraper = bestsellers_reviews(partial(process_reviews, db=db), HEADLESS)
+    scraper(os.environ["EMAIL"], os.environ["PASSWORD"])
 
 
 if __name__ == "__main__":

@@ -5,7 +5,6 @@ https://gist.github.com/cw75/57ca89cfa496f10c7c7b888ec5703d7f#file-emojize-py
 from __future__ import annotations
 
 import json
-from typing import Union
 
 import numpy as np
 from torchmoji.model_def import torchmoji_emojis
@@ -50,15 +49,13 @@ class TorchMoji:
         self.tokenizer = SentenceTokenizer(vocabulary, max_sentence_length)
         self.model = torchmoji_emojis(MODEL_WEIGHTS_PATH, return_attention=True)
 
-    def predict(self, text: Union[str, list], top_n: int = 5) -> list[str]:
+    def predict(self, text: str | list, top_n: int = 5) -> list[str]:
         """Emoji prediction"""
 
         if not isinstance(text, list):
             text = [text]
 
-        probabilities, attention_weights = self.model(
-            self.tokenizer.tokenize_sentences(text)[0]
-        )
+        probabilities, _ = self.model(self.tokenizer.tokenize_sentences(text)[0])
 
         emoji_ids = top_elements(probabilities[0], top_n)
         emojis = list(map(lambda x: EMOJIS[x], emoji_ids))

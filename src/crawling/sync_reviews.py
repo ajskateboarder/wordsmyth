@@ -6,12 +6,14 @@ from __future__ import annotations
 import time
 from typing import Any, Generator, Union, cast
 from urllib.parse import urlparse
+from urllib3.exceptions import MaxRetryError
 
 from bs4 import BeautifulSoup
 from selenium.webdriver import Firefox, FirefoxOptions
 from selenium.webdriver.common.by import By
 
 from .dicts import Review
+from .exceptions import PrematureBrowserExit
 
 
 class AmazonScraper:
@@ -32,28 +34,31 @@ class AmazonScraper:
     def __exit__(self, *_: Any) -> None:
         self.close()
 
-    def get_bestselling(self) -> Generator[str, None, None]:
+    def get_bestselling(self) -> list[str]:
         """Fetch product IDs from Amazon's Bestsellers page"""
-        self.browser.get("https://www.amazon.com/gp/bestsellers/")
+        try:
+            self.browser.get("https://www.amazon.com/gp/bestsellers/")
+        except MaxRetryError as e:
+            raise PrematureBrowserExit(
+                "Failed to access a browser session. Did you format your 'with' blocks correctly?"
+            ) from e
         ids = []
         for _ in range(3):
             for link in self.browser.find_elements(By.CSS_SELECTOR, "a.a-link-normal"):
                 try:
-                    if "product-reviews" in cast(str, link.get_attribute("href")):
-                        product_id = cast(
-                            str, urlparse(link.get_attribute("href")).path
-                        ).split("/")[2]
-                        if not product_id in ids:
-                            ids.append(product_id)
-                            yield product_id
-                        else:
-                            continue
+                    if "product-reviews" not in cast(str, link.get_attribute("href")):
+                        continue
+                    product_id = cast(
+                        str, urlparse(link.get_attribute("href")).path
+                    ).split("/")[2]
+                    ids.append(product_id)
                 except Exception:
                     break
             try:
                 self.browser.execute_script("window.scrollBy(0, 1000)")  # type: ignore
             except Exception:
                 pass
+        return list(set(ids))
 
     def fetch_product_reviews(
         self, asin: str, pages: int = 10
@@ -100,7 +105,7 @@ class AmazonScraper:
 
     @staticmethod
     def select_reviews(content: Any) -> Generator[Review, None, None]:
-        """Select reviews from a Amazon page source"""
+        """Select reviews from an Amazon page source"""
         for review in content:
             row = review.select_one(".a-row")
             if row is not None:

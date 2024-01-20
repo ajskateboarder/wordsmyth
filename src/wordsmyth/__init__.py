@@ -3,21 +3,21 @@ from __future__ import annotations
 
 import json
 import warnings
-from functools import cache
+from functools import lru_cache
 
 from wordsmyth.constants import DIR_PATH
 from wordsmyth.items import Flags, Output
 from wordsmyth.rate import Rater
 
 
-@cache
+@lru_cache(maxsize=None)
 def _models():
     from wordsmyth.models import Flair, TorchMoji
 
     return Flair(), TorchMoji()
 
 
-@cache
+@lru_cache(maxsize=None)
 def _emojimap():
     with open(f"{DIR_PATH}/data/emojimap.json", encoding="utf-8") as emojimap:
         return json.load(emojimap)

@@ -1,6 +1,6 @@
 """Wrappers over Flair and TorchMoji to simplify model prediction"""
+from __future__ import annotations
 from threading import Lock
-from typing import Dict, Union
 
 from flair.data import Sentence
 from flair.models import TextClassifier
@@ -13,7 +13,7 @@ class Flair:
         self.sia = TextClassifier.load("en-sentiment")
         self.lock = Lock()
 
-    def predict(self, text: str) -> Dict[str, Union[str, float]]:
+    def predict(self, text: str) -> dict[str, str | float]:
         """Predict text sentiment in a thread-safe manner"""
 
         with self.lock:

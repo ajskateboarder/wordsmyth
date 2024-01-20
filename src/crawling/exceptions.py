@@ -1,6 +1,10 @@
 from __future__ import annotations
 
 
+class PrematureBrowserExit(Exception):
+    """Raised when browsers close early for whatever reason"""
+
+
 class CAPTCHAError(Exception):
     """Detected by Amazon and requires a CAPTCHA to proceed"""
 
