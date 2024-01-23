@@ -148,6 +148,7 @@ class AmazonScraper:
                 reviews.append(
                     cast(Review, {"reviewText": body.strip(), "overall": rating})
                 )
+        logging.debug("Selected %s", reviews)
         return reviews
 
     def _scrape_single(
@@ -159,13 +160,21 @@ class AmazonScraper:
         limit: Optional[int] = None,
     ) -> None:
         map_star = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five"}
-        if limit:
-            counter = count(0)
+        counter = count(0)
 
         logging.debug(
-            "Fetching %s reviews in %s star category", limit, map_star[category]
+            "Fetching %s reviews in %s star category for product %s",
+            limit,
+            map_star[category],
+            asin,
         )
         for page in range(1, 11):
+            logging.debug(
+                "Fetching %s star reviews in page %s for product %s",
+                map_star[category],
+                page,
+                asin,
+            )
             browser.get(
                 f"https://www.amazon.com/product-reviews/{asin}/"
                 f"?ie=UTF8&reviewerType=all_reviews&pageNumber={page}&filterByStar={map_star[category]}_star"
@@ -174,10 +183,16 @@ class AmazonScraper:
             content = soup.select("div[data-hook='review']")
             items = []
             for item in self.select_reviews(content):
-                if next(counter) >= limit:  # type: ignore
+                if limit is not None and next(counter) >= limit:  # type: ignore
                     return
                 items.append(item)
-            callback({"items": items, "productId": asin})
+            logging.debug("Got %s items", len(items))
+            try:
+                callback({"items": items, "productId": asin})
+            except Exception as exc:
+                logging.error(
+                    "Callback for product %s received exception: %s", asin, exc
+                )
 
     def scrape(
         self,
