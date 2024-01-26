@@ -1,35 +1,16 @@
-"""
-Abstracted library to make emoji processing nicer, mostly from this gist
-https://gist.github.com/cw75/57ca89cfa496f10c7c7b888ec5703d7f#file-emojize-py
-"""
+"""Wrappers over Flair and TorchMoji to simplify model prediction"""
 from __future__ import annotations
 
 import json
+from threading import Lock
 
-import numpy as np
+from flair.data import Sentence
+from flair.models import TextClassifier
 from torchmoji.model_def import torchmoji_emojis
 from torchmoji.sentence_tokenizer import SentenceTokenizer
+import numpy as np
 
-from wordsmyth.constants import DIR_PATH
-
-EMOJIS = ":joy: :unamused: :weary: :sob: :heart_eyes: \
-:pensive: :ok_hand: :blush: :heart: :smirk: \
-:grin: :notes: :flushed: :100: :sleeping: \
-:relieved: :relaxed: :raised_hands: :two_hearts: :expressionless: \
-:sweat_smile: :pray: :confused: :kissing_heart: :heartbeat: \
-:neutral_face: :information_desk_person: :disappointed: :see_no_evil: :tired_face: \
-:v: :sunglasses: :rage: :thumbsup: :cry: \
-:sleepy: :yum: :triumph: :hand: :mask: \
-:clap: :eyes: :gun: :persevere: :smiling_imp: \
-:sweat: :broken_heart: :yellow_heart: :musical_note: :speak_no_evil: \
-:wink: :skull: :confounded: :smile: :stuck_out_tongue_winking_eye: \
-:angry: :no_good: :muscle: :facepunch: :purple_heart: \
-:sparkling_heart: :blue_heart: :grimacing: :sparkles:".split(
-    " "
-)
-
-VOCAB_FILE_PATH = f"{DIR_PATH}/data/vocabulary.json"
-MODEL_WEIGHTS_PATH = f"{DIR_PATH}/data/pytorch_model.bin"
+from wordsmyth.constants import VOCAB_FILE_PATH, MODEL_WEIGHTS_PATH, EMOJIS
 
 
 def top_elements(array: np.ndarray, k: int) -> np.ndarray:
@@ -61,3 +42,28 @@ class TorchMoji:
         emojis = list(map(lambda x: EMOJIS[x], emoji_ids))
 
         return emojis
+
+class Flair:
+    """Abstracted Flair `en-sentiment` sentiment classifier"""
+
+    def __init__(self) -> None:
+        self.sia = TextClassifier.load("en-sentiment")
+        self.lock = Lock()
+
+    def predict(self, text: str) -> dict[str, str | float]:
+        """Predict text sentiment"""
+
+        with self.lock:
+            sentence = Sentence(text)
+            self.sia.predict(sentence)
+
+            sent = sentence.labels[0]
+            score = sentence.score
+
+        if "POSITIVE" in str(sent):
+            return {"sentiment": "pos", "score": score}
+
+        if "NEGATIVE" in str(sent):
+            return {"sentiment": "neg", "score": score}
+
+        return {"sentiment": "neu", "score": score}

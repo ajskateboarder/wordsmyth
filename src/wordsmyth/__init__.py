@@ -38,8 +38,4 @@ def rate(
     )
 
     rater = Rater(output, _emojimap())
-
-    rater.fix_content()
-    rater.flag()
-
     return rater.rate(rounded), rater.flags if flags else None

@@ -175,7 +175,10 @@ class Rater:
         self.flags = [flag for flag, condition in conditions if condition]
 
     def rate(self, rounded: bool = True) -> int | float:
-        """Rate content using provided flags"""
+        """Rate some content provided to the Rater instance"""
+        self.fix_content()
+        self.flag()
+
         m = self.metadata
 
         emoji_repr = m.fixed_emoji or m.emoji or m.emojis[0]
