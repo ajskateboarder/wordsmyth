@@ -1,11 +1,11 @@
 """Parallel review downloader"""
 from __future__ import annotations
 
-from concurrent.futures import ThreadPoolExecutor, as_completed, Future
-from itertools import count, zip_longest
-from functools import partial
-from typing import Any, Callable, Optional, cast
 import logging
+from concurrent.futures import Future, ThreadPoolExecutor, as_completed
+from functools import partial
+from itertools import count, zip_longest
+from typing import Any, Callable, Optional, cast
 
 from bs4 import BeautifulSoup
 from selenium.common.exceptions import NoSuchElementException
@@ -13,8 +13,8 @@ from selenium.webdriver import Firefox, FirefoxOptions
 from selenium.webdriver.common.by import By
 from typing_extensions import Self
 
-from .exceptions import CAPTCHAError, AccountProtectionError
-from .dicts import Reviews, Review
+from .exceptions import AccountProtectionError, CAPTCHAError
+from .items import Review, Reviews
 
 
 class AmazonScraper:
@@ -25,9 +25,9 @@ class AmazonScraper:
     To set custom handlers for CAPTCHAs, modify the `captcha_hook` attribute
     """
 
-    def __init__(self, fake_display: bool = True) -> None:
+    def __init__(self, headless: bool = True) -> None:
         opts = FirefoxOptions()
-        if fake_display:
+        if headless:
             opts.add_argument("--headless")  # type: ignore
 
         with ThreadPoolExecutor() as executor:
@@ -145,9 +145,7 @@ class AmazonScraper:
                 except AttributeError:
                     rating = -1
                 body = row.select_one("span[data-hook='review-body']").text
-                reviews.append(
-                    cast(Review, {"reviewText": body.strip(), "overall": rating})
-                )
+                reviews.append(Review(body.strip(), rating))
         logging.debug("Selected %s", reviews)
         return reviews
 
@@ -188,7 +186,7 @@ class AmazonScraper:
                 items.append(item)
             logging.debug("Got %s items", len(items))
             try:
-                callback({"items": items, "productId": asin})
+                callback(Reviews(asin, items))
             except Exception as exc:
                 logging.error(
                     "Callback for product %s received exception: %s", asin, exc
@@ -202,11 +200,13 @@ class AmazonScraper:
     ) -> None:
         """Scrape reviews from all star categories on a product page given an ASIN.
 
-        - `callback` is a function which consumes results
+        - `callback` is a function which consumes results.
+            The provided callback receives data of type `Review <src.crawling.Review>`
         - `proportions` is a list of the number of reviews to scrape from each category
-        (none by default)
+            (none by default)
 
-        Note that callback functions are not run as thread-safe. Use threadinglocks where appropriate
+        Note that callback functions are not run as thread-safe.
+        Use threading.Lock's where appropriate.
         """
         if not proportions:
             proportions = []

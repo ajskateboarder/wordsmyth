@@ -1,19 +1,20 @@
 """Review downloader
 
-Used in review aggregating to find popular products"""
+Used in review aggregating to find popular products.
+Much of this is unused for scraping products in favor of crawling.threaded_reviews"""
 from __future__ import annotations
 
 import time
-from typing import Any, Generator, Union, cast
+from typing import Any, Generator, cast
 from urllib.parse import urlparse
-from urllib3.exceptions import MaxRetryError
 
 from bs4 import BeautifulSoup
 from selenium.webdriver import Firefox, FirefoxOptions
 from selenium.webdriver.common.by import By
+from urllib3.exceptions import MaxRetryError
 
-from .dicts import Review
 from .exceptions import PrematureBrowserExit
+from .items import ProductPageInfo
 
 
 class AmazonScraper:
@@ -21,9 +22,9 @@ class AmazonScraper:
 
     `fake_display` creates a virtual display for non-window systems."""
 
-    def __init__(self, fake_display: bool = True) -> None:
+    def __init__(self, headless: bool = True) -> None:
         opts = FirefoxOptions()
-        if fake_display:
+        if headless:
             opts.add_argument("--headless")  # type: ignore
 
         self.browser = Firefox(options=opts)
@@ -43,22 +44,31 @@ class AmazonScraper:
                 "Failed to access a browser session. Did you format your 'with' blocks correctly?"
             ) from e
         ids = []
-        for _ in range(3):
-            for link in self.browser.find_elements(By.CSS_SELECTOR, "a.a-link-normal"):
-                try:
-                    if "product-reviews" not in cast(str, link.get_attribute("href")):
-                        continue
-                    product_id = cast(
-                        str, urlparse(link.get_attribute("href")).path
-                    ).split("/")[2]
-                    ids.append(product_id)
-                except Exception:
-                    break
+        self.browser.execute_script("window.scrollBy(0, document.body.scrollHeight)")  # type: ignore
+        # TODO: speed up this code, it's noticably slow for some reason
+        for link in self.browser.find_elements(By.CSS_SELECTOR, "a.a-link-normal"):
             try:
-                self.browser.execute_script("window.scrollBy(0, 1000)")  # type: ignore
+                href = link.get_attribute("href")
+                if "product-reviews" not in cast(str, href):
+                    continue
+                ids.append(cast(str, urlparse(href).path).split("/")[2])
             except Exception:
-                pass
+                break
         return list(set(ids))
+
+    @staticmethod
+    def select_reviews(content: Any) -> Generator[dict, None, None]:
+        """Select reviews from an Amazon page source"""
+        for review in content:
+            row = review.select_one(".a-row")
+            if row is not None:
+                rating = int(
+                    row.select_one("i[data-hook='review-star-rating']").text.split(".")[
+                        0
+                    ]
+                )
+                body = row.select_one("span[data-hook='review-body']").text
+                yield {"text": body, "rating": rating}
 
     def fetch_product_reviews(
         self, asin: str, pages: int = 10
@@ -71,10 +81,9 @@ class AmazonScraper:
             for item in self.select_reviews(content):
                 yield {**item, "productId": asin}
 
-    def get_proportions(
-        self, asin: str, total: int = 500
-    ) -> Union[list[float], list[int]]:
-        """Return the distribution of reviews to gather from five to one star
+    def get_extras(self, asin: str, total: int = 500) -> ProductPageInfo:
+        """Return the distribution of reviews to gather from five to one star,
+        as well as any IDs for products on the same page
 
         If `total` is None, return the percentages from a product histogram as floats"""
         self.browser.get(f"https://amazon.com/product-reviews/{asin}")
@@ -82,13 +91,30 @@ class AmazonScraper:
         percentages = self.browser.find_element(
             By.CSS_SELECTOR, ".histogram"
         ).text.split("\n")[1::2]
+
         parsed = list(map(lambda p: int(p.replace("%", "")) / 100, percentages))
         if total is None:
             return parsed
+
         parsed = list(map(lambda x: x * 500, parsed))
+
         while any(x > 100 for x in parsed):
             parsed = list(map(lambda x: x * 0.99, parsed))
-        return list(reversed(list(map(lambda x: int(x) + 1, parsed))))
+
+        ids = []
+        self.browser.execute_script("window.scrollBy(0, document.body.scrollHeight)")  # type: ignore
+        for link in self.browser.find_elements(By.CSS_SELECTOR, "a.a-link-normal"):
+            try:
+                href = link.get_attribute("href")
+                if "/dp/" not in cast(str, href):
+                    continue
+                ids.append(cast(str, urlparse(href).path).split("/")[3])
+            except Exception:
+                break
+
+        return ProductPageInfo(
+            list(reversed(list(map(lambda x: int(x) + 1, parsed)))), list(set(ids))
+        )
 
     def get_product_source(
         self, asin: str, pages: int, delay: float = 0.5
@@ -102,20 +128,6 @@ class AmazonScraper:
             time.sleep(delay)
             source = self.browser.page_source
             yield source
-
-    @staticmethod
-    def select_reviews(content: Any) -> Generator[Review, None, None]:
-        """Select reviews from an Amazon page source"""
-        for review in content:
-            row = review.select_one(".a-row")
-            if row is not None:
-                rating = int(
-                    row.select_one("i[data-hook='review-star-rating']").text.split(".")[
-                        0
-                    ]
-                )
-                body = row.select_one("span[data-hook='review-body']").text
-                yield {"text": body, "rating": rating}
 
     def close(self) -> None:
         """Close the browser"""

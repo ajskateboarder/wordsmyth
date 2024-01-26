@@ -1,8 +1,10 @@
 """Review generation helpers"""
 from __future__ import annotations
-from typing import Callable, Protocol, Any, cast, TYPE_CHECKING
-import subprocess
+
 import logging
+import subprocess
+from itertools import count
+from typing import TYPE_CHECKING, Any, Callable, Protocol, cast
 
 from .sync_reviews import AmazonScraper
 from .threaded_reviews import AmazonScraper as ParallelAmazonScraper
@@ -34,7 +36,11 @@ def bestsellers_reviews(callback: Callable, headless: bool) -> Scraper:
         with AmazonScraper(headless) as products:
             logging.info("Collecting product IDs")
             product_ids = products.get_bestselling()
-            logging.info("Collected following IDs: %s", ",".join(product_ids))
+            logging.info(
+                "Collected %s following IDs: %s",
+                len(product_ids),
+                ",".join(product_ids),
+            )
 
         logging.info("Initializing review gatherer")
 
@@ -43,11 +49,21 @@ def bestsellers_reviews(callback: Callable, headless: bool) -> Scraper:
                 scrapers.captcha_hook = kitty_captcha
                 logging.info("Logging scrapers in")
                 scrapers.login(email, password)
-                for product_id in product_ids:
-                    logging.info("Initiating scrape process for: %s", product_id)
-                    logging.info("\tCollecting review proportions")
-                    proportions = prop.get_proportions(product_id)
-                    logging.info("\tScraping")
-                    scrapers.scrape(product_id, callback, proportions)  # type: ignore
+                for i in count(1):
+                    logging.info("Starting round %s of scraping", i)
+                    for product_id in product_ids[:]:
+                        logging.info("Initiating scrape process for: %s", product_id)
+                        logging.info("\tCollecting review proportions")
+                        data = prop.get_extras(product_id)
+                        logging.info(
+                            "Collected %s following IDs: %s",
+                            len(data.products),
+                            ",".join(data.products),
+                        )
+                        logging.info("\tScraping")
+                        scrapers.scrape(product_id, callback, data.proportions)  # type: ignore
+
+                        product_ids.extend(data.products)
+                        product_ids.remove(product_id)
 
     return scraper

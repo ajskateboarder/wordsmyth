@@ -4,74 +4,79 @@ from __future__ import annotations
 
 import os
 import sys
-from functools import partial
+from math import inf
 from uuid import uuid4
 import logging
 
 from sqlite3worker.sqlite3worker import Sqlite3Worker
 
 from crawling import bestsellers_reviews
-from crawling.dicts import Reviews
+from crawling.items import Reviews
 from wordsmyth import rate
 
 
-logging.basicConfig(
-    format="[%(levelname)s] %(asctime)s: %(message)s",
-    datefmt="%d-%b-%y %H:%M:%S",
-    level=logging.DEBUG,
-    # filename="something.log",
-)
-logging.getLogger("selenium").setLevel(logging.WARNING)
-logging.getLogger("urllib3").setLevel(logging.WARNING)
-
-
 def process_reviews(reviews: Reviews, db: Sqlite3Worker) -> None:
-    productId = reviews["productId"]
-    for review in reviews["items"]:
-        if review["reviewText"].strip() == "":
+    product_id = reviews.product_id
+    for review in reviews.items:
+        if review.text.strip() == "":
             return
         db.execute(
-            f"CREATE TABLE IF NOT EXISTS {productId}(text, actual, prediction, flags)"
+            f"CREATE TABLE IF NOT EXISTS {product_id}(text, actual, prediction, flags)"
         )
 
         try:
             prediction, flags = rate(
-                review["reviewText"]
-                .replace(
+                review.text.replace(
                     "                    The media could not be loaded.\n                ",
                     "",
-                )
-                .strip(),
+                ).strip(),
                 flags=True,
             )
-        except Exception:
+        except Exception as e:
+            logging.error(
+                "Exception raised when attempting to rate %s: %s", review.text, e
+            )
             return
         try:
             db.execute(
-                f"INSERT INTO {productId} VALUES(?, ?, ?, ?)",
+                f"INSERT INTO {product_id} VALUES(?, ?, ?, ?)",
                 (
-                    review["reviewText"],
-                    review["overall"],
+                    review.text,
+                    review.rating,
                     prediction,
                     ",".join(flags),
                 ),
             )
         except AttributeError:
             db.execute(
-                f"INSERT INTO {productId} VALUES(?, ?, ?, ?)",
-                (review["reviewText"], review["overall"], prediction, flags),
+                f"INSERT INTO {product_id} VALUES(?, ?, ?, ?)",
+                (review.text, review.rating, prediction, flags),
             )
 
 
 def main() -> None:
-    HEADLESS = False
+    HEADLESS = True
 
     location = f"{sys.argv[1].split('.')[0]}{str(uuid4())}.sqlite"
-    db = Sqlite3Worker(location)
-    logging.info("Writing reviews to %s", location)
 
-    scraper = bestsellers_reviews(partial(process_reviews, db=db), HEADLESS)
-    scraper(os.environ["EMAIL"], os.environ["PASSWORD"])
+    logging.basicConfig(
+        format="[%(levelname)s] %(asctime)s: %(message)s",
+        datefmt="%d-%b-%y %H:%M:%S",
+        level=logging.DEBUG,
+        filename=f"{location}.log",
+    )
+    logging.getLogger("selenium").setLevel(logging.WARNING)
+    logging.getLogger("urllib3").setLevel(logging.WARNING)
+
+    db = Sqlite3Worker(location, max_queue_size=inf)
+    print(f"Writing reviews to {location} and logging at {location + '.log'}")
+    print("CTRL+C to exit at any time")
+
+    scraper = bestsellers_reviews(lambda x: process_reviews(x, db), HEADLESS)
+    try:
+        scraper(os.environ["EMAIL"], os.environ["PASSWORD"])
+    except KeyboardInterrupt:
+        sys.exit()
 
 
 if __name__ == "__main__":
