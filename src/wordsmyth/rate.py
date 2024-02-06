@@ -141,38 +141,20 @@ class Rater:
             and not contradicting
         )
 
-        conditions = [
-            (Flags.NEG_FLAIR_SENTIMENT, m.sentiment_flair == "neg"),
-            (Flags.NEG_MAP_SENTIMENT, m.sentiment_map == "neg"),
-            (
-                Flags.POS_SENTIMENT,
-                m.sentiment_map == "pos" and m.sentiment_flair == "pos",
-            ),
-            (
-                Flags.CONTAINS_LAUGHING_EMOJI,
-                "🤣" in m.content,
-            ),  # this one is rather rare
-            (Flags.EMOJIS_ARE_POSITIVE, any(emojis_are_positive)),
-            (
-                Flags.NEG_SENTIMENT,
-                m.sentiment_map == "neg" and m.sentiment_flair == "neg",
-            ),
-            (
-                Flags.NEG_FLAIR_CONTRADICTING,
-                contradicting and m.sentiment_flair == "neg",
-            ),
-            (Flags.NEG_MAP_CONTRADICTING, contradicting and m.sentiment_map == "neg"),
-            (
-                Flags.NEG_FLAIR_CONJUGATIONS,
-                has_conjugations and m.sentiment_flair == "neg",
-            ),
-            (
-                Flags.POS_FLAIR_CONJUGATIONS,
-                has_conjugations and m.sentiment_flair == "pos",
-            ),
-        ]
+        conditions = {
+            Flags.NEG_FLAIR_SENTIMENT: m.sentiment_flair == "neg",
+            Flags.NEG_MAP_SENTIMENT: m.sentiment_map == "neg",
+            Flags.POS_SENTIMENT: m.sentiment_map == "pos" and m.sentiment_flair == "pos",
+            Flags.CONTAINS_LAUGHING_EMOJI: "🤣" in m.content,
+            Flags.EMOJIS_ARE_POSITIVE: any(emojis_are_positive),
+            Flags.NEG_SENTIMENT: m.sentiment_map == "neg" and m.sentiment_flair == "neg",
+            Flags.NEG_FLAIR_CONTRADICTING: contradicting and m.sentiment_flair == "neg",
+            Flags.NEG_MAP_CONTRADICTING: contradicting and m.sentiment_map == "neg",
+            Flags.NEG_FLAIR_CONJUGATIONS: has_conjugations and m.sentiment_flair == "neg",
+            Flags.POS_FLAIR_CONJUGATIONS: has_conjugations and m.sentiment_flair == "pos"
+        }
 
-        self.flags = [flag for flag, condition in conditions if condition]
+        self.flags = [flag for flag, condition in conditions.items() if condition]
 
     def rate(self, rounded: bool = True) -> int | float:
         """Rate some content provided to the Rater instance"""
